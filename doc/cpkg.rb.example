@@ -6,12 +6,15 @@ CpkgOnRails::Application.configure do
   config.logout_icon = 'ssologo18x18.png'
   config.support_mail = 'support@virtlab.unibo.it'
   config.action_mailer.default_url_options = { :host => 'tester.dm.unibo.it/cpkg', :protocol => 'https' }
+  #config.homepage_proc = lambda {|p| "https://www.virtlab.unibo.it/cpkg/#{p.name}"},
+  # if not nil each package has a home page as http://homepage_base/#{package.name}
+  config.homepage_base = "https://www.virtlab.unibo.it/cpkg"
 
   # Your secret key for verifying the integrity of signed cookies.
   # If you change this key, all old signed cookies will become invalid!
   # Make sure the secret is at least 30 characters and all random,
   # no regular words or you'll be exposed to dictionary attacks.
-  config.secret_token = 'change-me----can-get-example-key-with-rake-secure'
+  config.secret_token = 'ebf5a12629555cc5591031efac3d9b16ae69d99095b46d86bb0e44edf8f765000b92a97282395696ddddf9c78cccad86135476a720f604d55fccaf51ec1d098d'
   config.i18n.default_locale = :it
 end
 
