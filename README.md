@@ -1,14 +1,16 @@
 Cpkg-on-rails
 =============
 
-Package manager for VirtLab courses
+Package manager for VirtLab courses.
+
+Currently works with development branch of
+https://github.com/virtlab-unibo/active_debian_repository
 
 ## Installation
 
     $ bundle
     $ cp doc/cpkg.rb.example config/initializers/cpkg.rb
 
- 
 Edit `config/initializers/cpkg.rb` to configure your installation.
 
 Then
@@ -20,13 +22,13 @@ settings in `config/database.yml` file)
 
 To authenticate users the defaut is google omniauth (can change 
 with devise configuration file `config/initializers/devise.rb`). 
-To create the first administrator use the the 
-`cpkg:users:create_admin_user` task:
 
-  $ rake cpkg:users:create_admin_user
+To create the first administrator use the `cpkg:users:create_admin_user` task:
 
-At this point you can start the rails server and login.
+    $ rake cpkg:users:create_admin_user
+
+At this point you can start the rails server and login with your 
+google creadentials as administrator.
 
 ## Usage
-
 
