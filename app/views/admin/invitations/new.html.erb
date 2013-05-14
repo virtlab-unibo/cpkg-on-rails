@@ -1,0 +1,10 @@
+<h2><%= t(:invitation) %></h2>
+
+<div class="alert alert-info">
+  <%= t(:invitation_description) %>  
+</div>
+
+<%= simple_form_for [:admin, @invitation] do |invitation| %>  
+  <%= invitation.input :email %>  
+  <%= invitation.button :submit, :class => 'btn' %>  
+<% end %>

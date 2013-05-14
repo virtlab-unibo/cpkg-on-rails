@@ -1,0 +1,37 @@
+<h1><%= t(:modify) %> "<%= @package %>"</h1>
+
+<div class="tabbable tabs-up">
+  <ul class="nav nav-tabs">
+    <li><a href="#info" data-toggle="tab"><%= t(:info) %></a></li>
+    <li><a href="#materiale" data-toggle="tab"><%= t(:material) %></a></li>
+    <li><a href="#software" data-toggle="tab"><%= t(:software) %></a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane" id="info">
+      <%= render 'form' %>
+    </div>
+    <div class="tab-pane" id="materiale">
+      <%= render 'documents' %>
+    </div>
+    <div class="tab-pane" id="software">
+      <%= render 'dependencies' %>
+    </div>
+  </div>
+</div>
+
+<script>  
+  if (window.location.hash == "#software") {
+    $('#software').tab('show');
+    $('#software').addClass('active');
+    $('a[href="#software"]').parent().addClass('active');
+  } else if (window.location.hash == "#materiale") {
+    $('#materiale').tab('show');
+    $('#materiale').addClass('active');
+    $('a[href="#materiale"]').parent().addClass('active');
+  } else {
+    $("#info").tab('show');
+    $('#info').addClass('active');
+    $('a[href="#info"]').parent().addClass('active');
+
+  };
+</script>

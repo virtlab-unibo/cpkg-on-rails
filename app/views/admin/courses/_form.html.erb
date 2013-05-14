@@ -1,0 +1,17 @@
+<%= simple_form_for [:admin, @course] do |course| %>  
+  <div class="row">
+    <div class="span6">
+      <%= course.error_notification %>
+      <%= course.input :name %>  
+      <%= course.association :degree %>  
+      <%= course.input :year, :input_html => { :class => 'input-mini' } %>  
+      <%= course.input :abbr %>  
+      <%= course.input :description %>  
+      <%= course.button :submit, :class => 'btn btn-primary'%>  
+    </div>
+    <div class="span5">
+      <%= course.association :users, :collection => User.order(:surname).all, :label_method => :to_s, :as => :check_boxes %>
+    </div>
+  </div>
+<% end %>
+

@@ -1,0 +1,41 @@
+<h1><%= t(:users_admin) %></h1>
+<br> 
+<table class="table table-striped table-condensed">
+  <tr>
+    <th>Id</th>
+    <th><%= t(:user) %></th>
+    <th>Email</th>
+    <th><%= t(:course) %></th>
+    <th>Admin</th>
+    <th>impersonate</th>
+    <th><%= t(:delete) %></th>
+  </tr>
+  <% @users.each do |user| %>  
+    <tr>
+      <td>
+        <%= user.id %>
+      </td>
+      <td>
+        <%= user %>
+      </td>
+      <td>
+        <%= user.email %>
+      </td>
+      <td>
+        <%= user.courses.length %>
+      </td>
+      <td>
+        <%= user.admin ? icon('asterisk') : '' %>
+      </td>
+      <td>
+        <%= (link_to icon('user'), impersonate_path(:id => user.id)) unless current_user == user %>
+      </td>
+      <td>
+        <%= link_to icon('trash'), admin_user_path(user), :confirm => t(:delete_user_warning), :title => t(:delete_user), :method => :delete %>
+      </td>
+    </tr>  
+  <% end %>
+</table>
+
+<%= link_to t(:new_user), new_admin_invitation_path, :class => 'btn btn-primary' %> -
+<%= link_to t(:invitation_list), admin_invitations_path %>

@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="span4 guide">
+    <%= render 'helps/student_guide' %>
+  </div>
+  <div class="span8">
+    <h2><%= t(:courses) %></h2>
+    <div class="accordion" id="courses_list">
+      <% degree = nil %>
+      <% @courses.each do |course| %>  
+        <% packages = course.packages.all %>  
+        <% if degree != course.degree %>  
+          <div><strong><%= course.degree.code %> - <%= course.degree %></strong></div>
+        <% end %>
+        <% degree = course.degree %>
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#courses_list" href="#crs<%= course.id %>">
+              <%= course %> - <%= course.year %>  
+            </a>
+          </div>
+          <div id="crs<%= course.id %>" class="accordion-body collapse <%= "in" if @course and (@course.id == course.id) %>  ">
+            <div class="accordion-inner">
+	  <p>
+              <%= packages.empty? ? t(:course_wo_debs) : t(:course_w_debs) %>
+<!--              <p>Al corso <%= course %> (<%= course.degree.code %>)
+              <%= packages.empty? ? "non sono ancora stati associati pacchetti:" : "sono associati i seguenti pacchetti:" %> -->
+              </p>
+              <dl>
+                <% course.packages.each do |package| %>
+                  <dd><%= link_to package.name, guest_package_path(package) %> - <%= package.get_description %>  </dd>
+                <% end %>
+              </dl>
+            </div>
+          </div><!-- accordion-body -->
+        </div><!-- accordion-group -->
+      <% end %>
+    </div><!-- accordion -->
+  </div><!-- span8 -->
+</div><!-- row -->
+

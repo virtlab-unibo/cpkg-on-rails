@@ -1,0 +1,26 @@
+<h3><%= t(:dependencies) %></h3>
+
+<%= form_tag depend_package_path(@package), :method => :put do %>
+  <%= label_tag t(:new_dep) %>  
+  <%= autocomplete_field_tag 'depend', '', autocomplete_package_name_packages_path, :size => 75 %><br/>
+  <%= submit_tag t(:add), :class => "btn btn-primary" %>
+  <%= link_to t(:go_back_to_courses), root_path %>
+<% end %>
+
+<div class="guide">
+  <p><%= icon('info-sign') %><%= t(:add_dep_guide_html) %></p>
+</div>
+
+<table class="table table-striped">
+  <tbody>
+    <% @package.depends_on.each do |package| %>
+      <tr>
+      <th><%= package.name %></th>
+      <td><%= package.get_description %></td>
+      <td><%= link_to ("<i class='icon-trash icon-white'></i><span> "+t(:delete)+" </span>").html_safe , undepend_package_path(@package, :depend => package.name ), :method => :put, :title => t(:delete_dep), :class => "btn btn-danger" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

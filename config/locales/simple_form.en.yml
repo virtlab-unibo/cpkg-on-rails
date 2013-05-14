@@ -1,0 +1,54 @@
+en:
+  helpers:
+    submit:
+      changelog:
+        create: "Upload it into the repo"
+      course:
+        create: "Create course"
+        update: "Save changes"
+      package:
+        create: "Create package"
+        update: "Save changes"
+      archive:
+        create: "Insert New Repository"
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      text: 'required'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "Please review the problems below:"
+    labels:
+      course:
+        name: "Course's Name"
+        abbr: "Name's abbreviation (it's used in the package's name)"
+        description: "Description"
+        year: "Year"
+        users: "Responsible for the course"
+      document:
+        name: "Name"
+        description: "Description"
+        attach: "Attachment"
+      changelog:
+        description: Insert a description <small>(Optional)</small>
+      archive:
+        distribution: Distribution
+        component:    Component
+        arch:         Architecture
+      user:
+        name: Name
+        surname: Surname
+        admin: Administrator
+        upn: Email
+      package:
+        name: Name
+        description: Short Description 
+        body: Long Description
+    hints:
+      archive:
+        uri: "Ex. http://mi.mirror.garr.it/mirrors/debian/"
+        distribution: "Ex. precise"

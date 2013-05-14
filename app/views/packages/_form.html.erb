@@ -1,0 +1,9 @@
+<%= simple_form_for [@course, @package] do |package| %>  
+  <%= package.error_notification %>
+  <%= package.input :name, :readonly => (@package.name ? true : false)  %>  
+  <%= package.input :short_description %>  
+  <%= package.input :long_description %>  
+  <%= package.button :submit, :class => "btn-primary"  %>  
+  <%= link_to t(:go_back_to_courses), root_path %>
+<% end %>
+

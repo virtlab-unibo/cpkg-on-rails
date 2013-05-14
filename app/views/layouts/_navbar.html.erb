@@ -1,0 +1,38 @@
+<div class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to 'CpkgOnRails', root_path, :class => "brand" %>
+
+      <ul class="nav pull-left">
+        <li><%= link_to Rails.configuration.project_link[:name], Rails.configuration.project_link[:url] %></li>
+        <li><%= link_to image_tag("#{t(:other_language_prefix)}.png") + ' ' + t(:other_language), url_for( :locale => t(:other_language_prefix) ) %></li>
+      </ul>
+
+      <ul class="nav pull-right">
+        <% if user_signed_in? %>
+          <% if current_page? guest_courses_path %>
+            <li><%= link_to t(:my_courses), root_path %></li>
+          <% else %>
+            <li><%= link_to t(:other_courses), guest_courses_path %></li>
+          <% end %>
+          <% if current_user.is_admin? %>
+            <li><%= link_to 'admin', admin_root_path %></li>
+          <% end %>
+          <li class="disabled"><a><%= current_user %></a></li>
+          <% if current_user != true_user %>
+            <li class="disabled"><a><strike><%= true_user %></strike></a></li>
+          <% end %>
+          <li><%= link_to(image_tag(Rails.configuration.login_icon).html_safe + ' Logout', logout_path) %></li>
+          <% if true_user.admin? %>
+            <% if current_user != true_user %>
+              <li><%= link_to 'back to you', stop_impersonating_path %></li>
+            <% end %>
+          <% end %>
+        <% else %>
+          <li><%= link_to "Sign in", user_omniauth_authorize_path(Rails.configuration.omniauth_default) %></li>
+        <% end %>
+      </ul>
+    </div><!-- container -->
+  </div><!-- navbar-inner -->
+</div><!-- navbar -->
+

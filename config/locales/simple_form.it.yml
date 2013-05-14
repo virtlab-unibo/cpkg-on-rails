@@ -1,0 +1,67 @@
+it:
+  helpers:
+    submit:
+      changelog:
+        create: "Carica nel repo"
+      course:
+        create: "Crea il nuovo Corso"
+        update: "Salva le modifiche"
+      package:
+        create: "Crea il nuovo pacchetto"
+        update: "Salva le modifiche"
+      archive:
+        create: "Inserisci il nuovo Repository"
+  simple_form:
+    "yes": 'Si'
+    "no": 'No'
+    required:
+      text: 'campo necessario'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "Sono stati trovati errori:"
+    labels:
+      course:
+        name: "Nome del corso"
+        degree: Corso di Laurea
+        abbr: "Nome abbreviato (per creare nome dei pacchetti)"
+        description: "Descrizione"
+        year: "Anno"
+        users: "Responsabili del corso"
+      document:
+        name: "Nome"
+        description: "Descrizione"
+        attach: "Allegato"
+      changelog:
+        description: Inserire una descrizione
+      archive:
+        distribution: Distribuzione
+        component:    Componente
+        arch:         Architettura
+      user:
+        name: Nome
+        surname: Cognome
+        admin: Amministratore
+        upn: Email
+      package:
+        name: Nome
+        description: Breve descrizione 
+        body:  Descrizione
+    hints:
+      archive:
+        uri: "Es. http://mi.mirror.garr.it/mirrors/debian/"
+        distribution: "Es. precise"
+    # Labels and hints examples
+    # labels:
+    #   password: 'Password'
+    #   user:
+    #     new:
+    #       email: 'E-mail para efetuar o sign in.'
+    #     edit:
+    #       email: 'E-mail.'
+    # hints:
+    #   username: 'User name to sign in.'
+    #   password: 'No special characters, please.'
+

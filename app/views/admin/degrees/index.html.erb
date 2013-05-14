@@ -1,0 +1,9 @@
+<h1><%= t :degrees %></h1>
+
+<ul>
+  <% @degrees.each do |degree| %>
+    <li><%= degree %> <%= link_to icon('pencil'), edit_admin_degree_path(degree) %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'New', new_admin_degree_path, :class => 'btn btn-primary' %>

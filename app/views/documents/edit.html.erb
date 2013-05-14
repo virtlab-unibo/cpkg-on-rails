@@ -1,0 +1,7 @@
+<h1>Modifica documento</h1>
+
+<%= simple_form_for @document, :html => { :multipart => true } do |document| %>
+  <%= document.input :name %>
+  <%= document.input :description %>
+  <%= document.button :submit, :class => 'btn' %>
+<% end %>
