@@ -1,4 +1,5 @@
 it:
+  back: "indietro"
   other_language_prefix: "en"
   other_language: "English version"
   upload_package_warning: "Sei sicuro di voler caricare il pacchetto nel repository?"

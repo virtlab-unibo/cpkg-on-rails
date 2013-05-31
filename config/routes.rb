@@ -2,12 +2,12 @@ CpkgOnRails::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   devise_scope :user do 
-    match "logout" => 'devise/sessions#destroy', :as => :logout
-    match "logins/logout" => 'devise/sessions#destroy', :as => :logout
+    #get "logout" => 'devise/sessions#destroy', :as => :logout
+    get "logins/logout" => 'devise/sessions#destroy', :as => :logout
   end
 
-  match "impersonate/:id" => 'users#impersonate', :as => :impersonate
-  match "stop_impersonating" => 'users#stop_impersonating', :as => :stop_impersonating
+  get "impersonate/:id" => 'users#impersonate', :as => :impersonate
+  get "stop_impersonating" => 'users#stop_impersonating', :as => :stop_impersonating
 
   resources :courses  do
     resources :packages do
@@ -21,6 +21,7 @@ CpkgOnRails::Application.routes.draw do
     resources :documents
     resources :changelogs
     get :autocomplete_package_name, :on => :collection
+    get :search, :on => :collection
     put :depend, :on => :member
     put :undepend, :on => :member
   end
@@ -48,7 +49,7 @@ CpkgOnRails::Application.routes.draw do
 
   # FIXME 
   # could be more precise about the match: ex \d+-\w+-\d+ for 8014-so-2013
-  match ':id', :controller => "guest::packages", :action => "show"
+  get ':id', :controller => "packages", :action => "show", :module => "guest"
 
   root :to => 'courses#index'
 end

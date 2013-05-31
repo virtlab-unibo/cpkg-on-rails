@@ -1,13 +1,22 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
-
-gem 'sqlite3'
+gem 'rails', '4.0.0.rc1'
 
 gem 'active_debian_repository', :path => '/home/rails/github/active_debian_repository'
+gem 'spawnling'
+# gem 'paperclip'
+gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+gem 'jquery-fileupload-rails'
+gem 'twitter-bootstrap-rails'
 
-# Authentication and Authorization
-gem 'devise'
+gem 'simple_form', github: 'plataformatec/simple_form'
+#gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
+gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
+
+gem 'rails3-jquery-autocomplete'
+gem 'less-rails'
+
+gem 'sqlite3'
 gem 'omniauth'
 gem 'omniauth-openid'
 gem 'omniauth-shibboleth'
@@ -15,53 +24,28 @@ gem 'omniauth-browserid'
 gem 'pretender'
 gem 'cancan'
 
-# long process
-gem 'spawnling'
+gem 'sass-rails', '~> 4.0.0.rc1'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.0.0.rc1'
 
-# Attachments
-gem 'paperclip'
-gem 'jquery-fileupload-rails'
-
-# style 
-gem 'twitter-bootstrap-rails'
-
-# helpers
-gem 'simple_form'
+gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
-gem 'rails3-jquery-autocomplete'
+gem 'turbolinks'
+gem 'jbuilder', '~> 1.0.1'
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'less-rails'
-  gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', :platforms => :ruby
-
-  gem 'uglifier', '>= 1.0.3'
+group :doc do
+  # bundle exec rake doc:rails generates the API under doc/api.
+  gem 'sdoc', require: false
 end
 
-group :test, :development do
-  gem "rspec-rails", "~> 2.0"
-  gem 'factory_girl'
-  gem 'factory_girl_rails'
-  gem 'cucumber-rails', :require => false
-  gem 'database_cleaner'
-end
-
-# To use ActiveModel has_secure_password
+# Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
 
 # Use unicorn as the app server
 # gem 'unicorn'
 
-# Deploy with Capistrano
-# gem 'capistrano'
+# Use Capistrano for deployment
+# gem 'capistrano', group: :development
 
-# To use debugger
-# gem 'debugger'
+# Use debugger
+# gem 'debugger', group: [:development, :test]

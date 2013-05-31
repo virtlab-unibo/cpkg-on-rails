@@ -1,4 +1,5 @@
 en:
+  back: "back"
   other_language_prefix: "it"
   other_language: "versione italiana"
   upload_package_warning: "Do you really want to upload the package into the repository?"
