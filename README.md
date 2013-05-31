@@ -2,12 +2,16 @@ Cpkg-on-rails
 =============
 
 Package manager for VirtLab courses.
+Work in progress for rails 4 compatibility.
 
 Currently works with development branch of
 https://github.com/virtlab-unibo/active_debian_repository
 
 ## Installation
 
+Clone the repository and 
+
+    $ cd cpkg-on-rails
     $ bundle
     $ cp doc/cpkg.rb.example config/initializers/cpkg.rb
 
