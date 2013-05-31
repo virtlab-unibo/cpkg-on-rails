@@ -1,4 +1,7 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  # FIXME FIXME FIXME
+  skip_before_filter :verify_authenticity_token
+
   # email="donapieppo@gmail.com" first_name="Pieppo" last_name="Dona" name="Pieppo Dona"
   def google
     logger.info("google uid = #{request.env['omniauth.auth'].uid}")
@@ -18,7 +21,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     user = User.where(:email => oinfo.email).first
 
     if user
-      sign_in_and_redirect user, :event => :authentication    
+      logger.info "logging #{user.inspect} with sign_in_and_redirect"
+      #sign_in_and_redirect user, :event => :authentication    
+      sign_in user
+      redirect_to root_path
     else
       flash[:error] = "User #{oinfo.email} is not allowed. Please contact #{Rails.configuration.support_mail}"
       logger.info "#{oinfo.inspect} not allowed"

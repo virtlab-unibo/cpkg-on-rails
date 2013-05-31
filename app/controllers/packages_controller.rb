@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 class PackagesController < ApplicationController
-  
-  # for the jquery autocomplete
-  autocomplete :package, :name, :full => true #, :extra_data => [:description]
+  respond_to :json, :only => :search
 
   def new
     @course = Course.find(params[:course_id])
@@ -18,7 +16,7 @@ class PackagesController < ApplicationController
   def create
     @course = Course.find(params[:course_id])
     authorize! :manage, @course
-    @package = @course.packages.new(params[:package])
+    @package = @course.packages.new(package_params)
     if @package.save
       flash[:notice] = I18n.t 'package_crtd_ok'
       redirect_to edit_package_path(@package)
@@ -41,7 +39,7 @@ class PackagesController < ApplicationController
     # name and dependencies cannot be changed 
     params[:package].delete(:name)
     params[:package].delete(:depends)
-    if @package.update_attributes(params[:package])
+    if @package.update_attributes(package_params)
       flash[:notice] = I18n.t 'package_updt_ok'
       redirect_to edit_package_path(@package)
     else
@@ -86,6 +84,22 @@ class PackagesController < ApplicationController
       flash[:error] = I18n.t 'del_pkg_error'
       redirect_to courses_path
     end
+  end
+
+  def search
+    logger.info(params.inspect)
+    is_full_search = true
+    term = params[:q]
+    res = Package.where(["LOWER(name) LIKE ?", "#{(is_full_search ? '%' : '')}#{term.downcase}%"]).limit(10).select(:id, :name)
+    # render :json => { :status => :ok, :res => res.to_json}
+    render :json => { :status => :ok, :res => res.to_json}
+  end
+
+  private
+
+  def package_params
+    # only authorized. Shall we move authorize! here
+    params.require(:package).permit(:name, :short_description, :long_description, :depends, :homepage, :documents, :version, :filename)
   end
 
 end

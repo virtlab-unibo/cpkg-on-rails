@@ -15,12 +15,12 @@ class Package < ActiveRecord::Base
                          :tmp_dir      => '/var/www/tmp/packages', 
                          :hide_depcore => true
 
-  attr_accessible :name, :short_description, :long_description, :depends, :homepage, :documents, :version, :filename
+  #attr_accessible :name, :short_description, :long_description, :depends, :homepage, :documents, :version, :filename
 
   validates_uniqueness_of :name, :message => :package_name_duplication
   validates_presence_of :name
 
-  scope :ours, where('course_id IS NOT NULL')
+  scope :ours,  -> { where('course_id IS NOT NULL') }
   # has to be executed before the validation process to 
   # make sure che correct package name is going to be validated
   before_validation :init_name, :on => :create

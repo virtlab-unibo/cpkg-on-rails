@@ -2,7 +2,7 @@ class Changelog < ActiveRecord::Base
   belongs_to :user
   belongs_to :package
 
-  attr_accessible :description
+  #attr_accessible :description
 
   validates_presence_of :package_id, :user_id
 

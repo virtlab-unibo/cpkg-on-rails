@@ -7,7 +7,7 @@
     <div class="accordion" id="courses_list">
       <% degree = nil %>
       <% @courses.each do |course| %>  
-        <% packages = course.packages.all %>  
+        <% packages = course.packages.to_a %>  
         <% if degree != course.degree %>  
           <div><strong><%= course.degree.code %> - <%= course.degree %></strong></div>
         <% end %>
@@ -26,7 +26,7 @@
               <%= packages.empty? ? "non sono ancora stati associati pacchetti:" : "sono associati i seguenti pacchetti:" %> -->
               </p>
               <dl>
-                <% course.packages.each do |package| %>
+                <% packages.each do |package| %>
                   <dd><%= link_to package.name, guest_package_path(package) %> - <%= package.get_description %>  </dd>
                 <% end %>
               </dl>

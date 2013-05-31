@@ -8,9 +8,10 @@
       <%= course.input :abbr %>  
       <%= course.input :description %>  
       <%= course.button :submit, :class => 'btn btn-primary'%>  
+      - <%= link_to t(:back), admin_courses_path %>
     </div>
-    <div class="span5">
-      <%= course.association :users, :collection => User.order(:surname).all, :label_method => :to_s, :as => :check_boxes %>
+    <div class="span6">
+      <%= course.association :users, :collection => User.order(:surname).to_a, :label_method => :to_s, :as => :check_boxes %>
     </div>
   </div>
 <% end %>

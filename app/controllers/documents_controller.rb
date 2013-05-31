@@ -19,7 +19,7 @@ class DocumentsController < ApplicationController
 
   def create
     package = Package.find(params[:package_id])
-    @document = package.documents.new(params[:document])
+    @document = package.documents.new(document_params)
     # set the name of the document as the filename
     # Remember: we cannot get an arbitrary name for the document
     # if we want to upload multiple documents at a time. Cause
@@ -67,6 +67,13 @@ class DocumentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  private
+
+  def document_params
+    params.require(:document).permit(:attach)
+  end
+
 
 end
 

@@ -5,11 +5,9 @@ class Course < ActiveRecord::Base
   has_many :packages
   belongs_to :degree
 
-  attr_accessible :name, :degree_id, :abbr, :description, :year, :user_ids, :as => :admin
-
   validates_presence_of :name, :year, :degree_id, :abbr
   validates_uniqueness_of :name
-  validates_format_of :abbr, :with => /^[a-z0-9][a-z0-9+.-]+$/, :message => :course_name_format
+  validates_format_of :abbr, :with => /\A[a-z0-9][a-z0-9+.-]+\z/, :message => :course_name_format
 
   def to_s
     self.degree.code + "-" + self.name

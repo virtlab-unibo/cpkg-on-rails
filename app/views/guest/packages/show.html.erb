@@ -38,7 +38,7 @@
       <dl>
         <% @package.depends_on.each do |package| %>  
           <dt><%= package.name %>  </dt>
-          <dd><%= package.description %></dd>
+          <dd><%= package.get_description %></dd>
         <% end %>
       </dl>
       <% if @package.depends_on.empty? %> 

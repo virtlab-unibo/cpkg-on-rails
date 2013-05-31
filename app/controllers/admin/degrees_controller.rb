@@ -2,7 +2,7 @@ class Admin::DegreesController < ApplicationController
   before_filter :user_admin!
 
   def index
-    @degrees = Degree.all
+    @degrees = Degree
   end
 
   def new
@@ -10,7 +10,7 @@ class Admin::DegreesController < ApplicationController
   end 
 
   def create
-    @degree = Degree.new(params[:degree], :as => :admin)
+    @degree = Degree.new(degree_params)
     if @degree.save
       flash[:notice] = I18n.t 'course_crtd_ok'
       redirect_to admin_degrees_path
@@ -25,11 +25,17 @@ class Admin::DegreesController < ApplicationController
 
   def update
     @degree = Degree.find(params[:id])
-    if @degree.update_attributes(params[:degree], :as => :admin)
+    if @degree.update_attributes(degree_params)
       flash[:notice] =  I18n.t 'course_updt_ok'
       redirect_to admin_degrees_path
     else
       render :action => :edit
     end
+  end
+
+  private 
+
+  def degree_params
+    params.require(:degree).permit(:name, :code)
   end
 end

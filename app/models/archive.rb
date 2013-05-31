@@ -4,8 +4,6 @@ class Archive < ActiveRecord::Base
   # has_many :packages, :dependent => :destroy
   has_many :packages
 
-  attr_accessible :uri, :distribution, :component, :arch
-
   acts_as_apt_source
 
   def self.default_attributes

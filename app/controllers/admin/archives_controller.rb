@@ -3,7 +3,7 @@ class Admin::ArchivesController < ApplicationController
   before_filter :user_admin!
 
   def index
-    @archives = Archive.all
+    @archives = Archive
   end
 
   def new
@@ -11,7 +11,7 @@ class Admin::ArchivesController < ApplicationController
   end 
 
   def create
-    @archive = Archive.new(params[:archive])
+    @archive = Archive.new(archive_params)
     if @archive.save
       flash[:notice] = I18n.t 'repo_ins_ok' 
       redirect_to admin_archives_path
@@ -42,6 +42,12 @@ class Admin::ArchivesController < ApplicationController
       flash[:error] = I18n.t 'repo_del_no'
     end
     redirect_to admin_archives_path
+  end
+
+  private
+
+  def archive_params
+    params.require(:archive).permit(:uri, :distribution, :component, :arch)
   end
 
 end
