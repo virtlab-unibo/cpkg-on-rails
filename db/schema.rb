@@ -101,4 +101,15 @@ ActiveRecord::Schema.define(:version => 20120828221401) do
 
   add_index "users", ["email"], :name => "index_email_on_users"
 
+  create_table :scripts, :force => true do |t| 
+    t.integer  "package_id",          :null =>     false
+    t.string   "name",                :null =>     false
+    t.string   "stype",                :null =>    false
+    t.datetime "created_at"
+    t.string   "attach_file_name",    :limit => 250 
+    t.string   "attach_content_type", :limit => 100 
+    t.integer  "attach_file_size"
+    t.datetime "attach_updated_at"
+  end
+
 end
