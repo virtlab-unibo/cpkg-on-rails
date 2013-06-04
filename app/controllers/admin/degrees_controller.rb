@@ -2,7 +2,7 @@ class Admin::DegreesController < ApplicationController
   before_filter :user_admin!
 
   def index
-    @degrees = Degree
+    @degrees = Degree.all
   end
 
   def new
