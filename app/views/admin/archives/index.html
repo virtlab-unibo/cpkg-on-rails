@@ -18,10 +18,10 @@
       <%= archive.packages.count %>
     </td>
     <td> 
-      <%= link_to icon('refresh'), sync_admin_archive_path(archive), :confirm => t(:update_repo_wrng), :title => t(:sync) %>
+      <%= link_to icon('refresh'), sync_admin_archive_path(archive), :data => { :confirm => t(:update_repo_wrng) }, :title => t(:sync) %>
     </td>
     <td>
-      <%= link_to icon('trash'), admin_archive_path(archive), :confirm => t(:delete_repo_wrng), :title => t(:del_repo), :method => :delete %>
+      <%= link_to icon('trash'), admin_archive_path(archive), :data => { :confirm => t(:delete_repo_wrng) }, :title => t(:del_repo), :method => :delete %>
     </td>
   </tr>  
   <% end %>
