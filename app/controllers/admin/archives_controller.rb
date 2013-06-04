@@ -3,7 +3,7 @@ class Admin::ArchivesController < ApplicationController
   before_filter :user_admin!
 
   def index
-    @archives = Archive
+    @archives = Archive.all
   end
 
   def new
