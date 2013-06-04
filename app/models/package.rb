@@ -3,6 +3,7 @@ class Package < ActiveRecord::Base
   belongs_to :archive
   has_many   :documents
   has_many   :changelogs
+  has_many   :scripts
   has_many   :users, :through => :changelogs
 
   acts_as_debian_package :section      => 'vlab',
@@ -12,7 +13,6 @@ class Package < ActiveRecord::Base
                          :install_dir  => '/usr/share/unibo',
                          :repo_dir     => '/var/www/repo/dists/packages',
                          :core_dep     => 'vlab-core',
-                         :tmp_dir      => '/var/www/tmp/packages', 
                          :hide_depcore => true
 
   #attr_accessible :name, :short_description, :long_description, :depends, :homepage, :documents, :version, :filename

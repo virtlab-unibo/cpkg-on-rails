@@ -77,13 +77,15 @@ class PackagesController < ApplicationController
   def download
     @package = Package.find(params[:id])
     @package.version = "0.temporary"
-    begin
-      path = @package.create_deb!(@package.package_options[:tmp_dir])
+   # begin
+      dest_dir = Rails.configuration.tmp_packages_dir
+      equivs = ActiveDebianRepository::Equivs.new(@package, dest_dir) 
+      path = equivs.create!
       send_file path, :type => "application/x-debian-package"
-    rescue 
-      flash[:error] = I18n.t 'del_pkg_error'
-      redirect_to courses_path
-    end
+   # rescue 
+   #   flash[:error] = I18n.t 'del_pkg_error'
+   #   redirect_to courses_path
+   # end
   end
 
   def search
