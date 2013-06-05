@@ -2,7 +2,7 @@ class Changelog < ActiveRecord::Base
   belongs_to :user
   belongs_to :package
 
-  #attr_accessible :description
+  acts_as_debian_changelog
 
   validates_presence_of :package_id, :user_id
 

@@ -8,7 +8,7 @@ class ChangelogsController < ApplicationController
   # create the debian package and put it into the repo_dir
   def create
     @package = Package.find(params[:package_id])
-    @changelog = @package.changelogs.new(params[:changelog])
+    @changelog = @package.changelogs.new(changelog_params)
     @changelog.user_id = current_user.id
     res = false
     begin
@@ -18,7 +18,9 @@ class ChangelogsController < ApplicationController
         # db to get the right version of the package.
         # Maybe there's a better way
         @package.reload
-        res = @package.create_deb! 
+        dest_dir = Rails.configuration.repo_dir
+        equivs = ActiveDebianRepository::Equivs.new(@package, dest_dir) 
+        res = equivs.create!
       end
     rescue => err
       logger.info "ChangelogsController, Failed to create the package: #{err}"
@@ -33,6 +35,13 @@ class ChangelogsController < ApplicationController
       flash[:error] = I18n.t 'pkg_upld_no'
       redirect_to courses_path
     end
+
+  end
+
+  private
+
+  def changelog_params
+    params.permit(:description)
   end
 
 end
