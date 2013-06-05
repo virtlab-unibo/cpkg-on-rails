@@ -41,7 +41,7 @@ class ChangelogsController < ApplicationController
   private
 
   def changelog_params
-    params.permit(:description)
+    params.require(:changelog).permit(:description)
   end
 
 end
