@@ -25,6 +25,9 @@ ActiveRecord::Schema.define(:version => 20120828221401) do
     t.integer "user_id",     :null => false
     t.string  "version"
     t.text    "description"
+    t.string  "date",  :null => false
+    t.string  "urgency",  :null => false
+    t.string  "distributions",  :null => false
   end
 
   add_index "changelogs", ["package_id"], :name => "index_package_id_on_changelogs"
