@@ -9,6 +9,10 @@ CpkgOnRails::Application.configure do
   #config.homepage_proc = lambda {|p| "https://www.virtlab.unibo.it/cpkg/#{p.name}"},
   # if not nil each package has a home page as http://homepage_base/#{package.name}
   config.homepage_base = "https://www.virtlab.unibo.it/cpkg"
+  # Location to store packages created to be downloaded 
+  config.tmp_packages_dir = "/var/www/tmp/packages"
+  # Repo location
+  config.repo_dir = "/var/www/repo/dists/packages"
 
   # Your secret key for verifying the integrity of signed cookies.
   # If you change this key, all old signed cookies will become invalid!
