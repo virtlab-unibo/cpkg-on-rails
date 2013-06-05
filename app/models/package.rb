@@ -11,7 +11,6 @@ class Package < ActiveRecord::Base
                          # FIXME maybe other mail or maybe configurable by user
                          :email        => Rails.configuration.support_mail, 
                          :install_dir  => '/usr/share/unibo',
-                         :repo_dir     => '/var/www/repo/dists/packages',
                          :core_dep     => 'vlab-core',
                          :hide_depcore => true
 
