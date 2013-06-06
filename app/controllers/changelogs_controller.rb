@@ -10,6 +10,11 @@ class ChangelogsController < ApplicationController
     @package = Package.find(params[:package_id])
     @changelog = @package.changelogs.new(changelog_params)
     @changelog.user_id = current_user.id
+    @changelog.date = ActiveDebianRepository::Changelog.date_line
+    # FIXME: make it a user or sysadmin choice
+    @changelog.urgency = "medium"
+    @changelog.distributions = "precise"
+
     res = false
     begin
       Package.transaction do
