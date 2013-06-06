@@ -12,9 +12,13 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_uniqueness_of :email
 
-  # has_and_belongs_to_many :courses
-  has_many :courses_users
-  has_many :courses, :through => :courses_users
+  #NOTE: we don't have an id in the courses_users table. 
+  # We can't declare a composite primary key.
+  # Exception raised with has_many -> UnknownPrimaryKey
+  # Solution -> use has_and_belongs_to_many
+  has_and_belongs_to_many :courses
+ # has_many :courses_users
+ # has_many :courses, :through => :courses_users
   has_many :changelogs
   has_many :packages, :through => :changelogs
 
