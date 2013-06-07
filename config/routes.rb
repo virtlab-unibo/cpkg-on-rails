@@ -21,7 +21,7 @@ CpkgOnRails::Application.routes.draw do
     resources :documents
     resources :changelogs
     get :autocomplete_package_name, :on => :collection
-    get :search, :on => :collection
+    get :search, :on => :collection, :as =>'search'
     put :depend, :on => :member
     put :undepend, :on => :member
   end
