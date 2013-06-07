@@ -76,7 +76,6 @@
       // Load existing files:
       // jQuery.getJSON( url [, data] [, success(data, textStatus, jqXHR)] )
       $.getJSON($('#fileupload').prop('action'), function (files) {
-        console.log($('#fileupload').data('blueimpFileupload'));
         var fu = $('#fileupload').data('blueimpFileupload'), template;
         fu._adjustMaxNumberOfFiles(-files.length);
         template = fu._renderDownload(files).appendTo($('#fileupload .files'));
