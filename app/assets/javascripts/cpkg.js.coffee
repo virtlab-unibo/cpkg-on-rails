@@ -9,17 +9,17 @@ $ ->
   #  $('h1').hide()
 
  $('#typeahead').typeahead(
-    # source can be a function
     source: (query, process) ->
-      # this function receives the typeahead object and the query string
       $.ajax(
         dataType: "json"
-        url: "/packages/search/?q="+query
+        # FIMXE not hard coded
+        url: $('#typeahead').attr('data-searchpath') + "&q=" + query
         # i'm binding the function here using CoffeeScript syntactic sugar,
         # you can use for example Underscore's bind function instead.
         success: (data) =>
           # data must be a list of either strings or objects
           # data = [{'name': 'Joe', }, {'name': 'Henry'}, ...]
+          console.log($('#typeahead').attr('data-searchpath'));
           console.log(data)
           console.log(JSON.parse(data.res))
           names = JSON.parse(data.res).map (p) -> p.name
