@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.0.rc1'
+gem 'rails', '4.0.0.rc2'
 
-gem 'active_debian_repository', :path => '/home/rails/github/active_debian_repository'
+gem 'active_debian_repository', :path => '/home/rails/active_debian_repository'
 gem 'spawnling'
 # gem 'paperclip'
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
