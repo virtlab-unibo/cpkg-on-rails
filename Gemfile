@@ -13,7 +13,7 @@ gem 'simple_form', github: 'plataformatec/simple_form'
 #gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
 gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
 
-gem 'rails3-jquery-autocomplete'
+#gem 'rails3-jquery-autocomplete'
 gem 'less-rails'
 
 gem 'sqlite3'
