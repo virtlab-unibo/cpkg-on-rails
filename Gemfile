@@ -13,17 +13,16 @@ gem 'simple_form', github: 'plataformatec/simple_form'
 #gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
 gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
 
-#gem 'rails3-jquery-autocomplete'
-gem 'less-rails'
-
 gem 'sqlite3'
+
 gem 'omniauth'
 gem 'omniauth-openid'
 gem 'omniauth-shibboleth'
-gem 'omniauth-browserid'
+
 gem 'pretender'
 gem 'cancan'
 
+gem 'less-rails'
 gem 'sass-rails', '~> 4.0.0.rc1'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0.rc1'
