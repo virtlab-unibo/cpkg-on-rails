@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(:version => 20120828221401) do
   create_table "courses_users", :id => false, :force => true do |t|
     t.integer "user_id",                       :null => false
     t.integer "course_id",                     :null => false
-    t.boolean "owner_flag", :default => false
   end
 
   add_index "courses_users", ["course_id"], :name => "index_course_id_on_courses_users"

@@ -9,7 +9,7 @@
 
 <ul>
   <% @course.users.each do |user| %>  
-    <li><%= user %> <% if @course.get_owner == user %> <%= icon('star')%> <% end%></li> 
+    <li><%= user %> </li> 
   <% end %>
 </ul>
 

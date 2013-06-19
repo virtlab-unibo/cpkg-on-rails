@@ -13,14 +13,4 @@ class Course < ActiveRecord::Base
     self.degree.code + "-" + self.name
   end
 
-  def get_owner
-    owner = nil
-    courses_users.each do |cusers|
-      if cusers.owner_flag
-        owner = cusers.user
-      end
-    end
-    return owner
-  end
- 
 end
