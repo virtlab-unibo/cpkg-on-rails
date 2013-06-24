@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20120828221401) do
     t.string   "attach_content_type", :limit => 100
     t.integer  "attach_file_size"
     t.datetime "attach_updated_at"
+    t.string   "install_path"
   end
 
   add_index "documents", ["package_id"], :name => "index_package_id_on_documents"
