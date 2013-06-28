@@ -10,11 +10,8 @@
 
       <ul class="nav pull-right">
         <% if user_signed_in? %>
-          <% if current_page? guest_courses_path %>
-            <li><%= link_to t(:my_courses), root_path %></li>
-          <% else %>
-            <li><%= link_to t(:other_courses), guest_courses_path %></li>
-          <% end %>
+        <li><%= link_to t(:my_courses), root_path %></li>
+        <li><%= link_to t(:other_courses), guest_courses_path %></li>
           <% if current_user.is_admin? %>
             <li><%= link_to 'admin', admin_root_path %></li>
           <% end %>
