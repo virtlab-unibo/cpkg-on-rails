@@ -1,10 +1,10 @@
 <h3><%= t(:dependencies) %></h3>
 
-<%= Package.where(:name => 'gimp').first.inspect %>
+<!-- %= Package.where(:name => 'gimp').first.inspect % -->
 
 <%= form_tag depend_package_path(@package), :method => :put do %>
   <%= label_tag t(:new_dep) %>  
-  <%= raise url_for(:action => 'search') %>
+  <!-- %= raise url_for(:action => 'search') % -->
   <input name="depend" type="text" data-searchpath="<%= search_packages_path %>" id="typeahead">
   <%= submit_tag t(:add), :class => "btn btn-primary" %>
   <%= link_to t(:go_back_to_courses), root_path %>
