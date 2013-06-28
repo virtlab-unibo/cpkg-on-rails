@@ -76,7 +76,10 @@ class PackagesController < ApplicationController
 
   def download
     @package = Package.find(params[:id])
-    @package.version = "0.temporary"
+    #FIXME: If we set a different version we break 
+    # the package creation cause equivs use the version
+    # into the changelogs
+    #@package.version = "0.temporary"
     begin
       dest_dir = Rails.configuration.tmp_packages_dir
       equivs = ActiveDebianRepository::Equivs.new(@package, dest_dir) 
