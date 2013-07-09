@@ -10,9 +10,7 @@ class Package < ActiveRecord::Base
                          :maintainer   => "Unibo Virtlab",
                          # FIXME maybe other mail or maybe configurable by user
                          :email        => Rails.configuration.support_mail, 
-                         :install_dir  => '/usr/share/unibo',
-                         :core_dep     => 'vlab-core',
-                         :hide_depcore => true
+                         :gpg_key     => Rails.configuration.gpg_key
 
   #attr_accessible :name, :short_description, :long_description, :depends, :homepage, :documents, :version, :filename
 
