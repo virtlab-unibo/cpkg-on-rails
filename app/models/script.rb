@@ -10,4 +10,15 @@ class Script < ActiveRecord::Base
   def to_s
     self.attach_file_name
   end 
+
+  def content
+    %q[#!/bin/bash
+
+]
+  end
+
+  def Script.types
+    [:preinst, :prerm, :postinst, :postrm]
+  end
+
 end
