@@ -4,6 +4,7 @@ class Course < ActiveRecord::Base
   #has_many :users, :through => :courses_users
   has_many :packages
   belongs_to :degree
+  belongs_to :corepackage
 
   validates_presence_of :name, :year, :degree_id, :abbr
   validates_uniqueness_of :name

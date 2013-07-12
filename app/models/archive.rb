@@ -3,6 +3,7 @@ class Archive < ActiveRecord::Base
   # FIXME
   # has_many :packages, :dependent => :destroy
   has_many :packages
+  belongs_to :corepackage
 
   acts_as_apt_source
 
