@@ -2,6 +2,7 @@ class Corepackage < ActiveRecord::Base
   has_many   :changelogs
   has_many   :scripts
   has_many   :users, :through => :changelogs
+  has_and_belongs_to_many :courses
 
   acts_as_debian_package :section      => 'vlab-admin',
                          :maintainer   => "Unibo Virtlab",

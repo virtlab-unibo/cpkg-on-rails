@@ -1,10 +1,10 @@
 class Course < ActiveRecord::Base
   has_and_belongs_to_many :users
+  has_and_belongs_to_many :corepackages
   #has_many :courses_users
   #has_many :users, :through => :courses_users
   has_many :packages
   belongs_to :degree
-  belongs_to :corepackage
 
   validates_presence_of :name, :year, :degree_id, :abbr
   validates_uniqueness_of :name

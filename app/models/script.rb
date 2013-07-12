@@ -1,6 +1,7 @@
 class Script < ActiveRecord::Base
   include Paperclip::Glue
   belongs_to :package
+  belongs_to :corepackage
 
   validates_format_of :stype, :with => /^(preinst|postinst|prerm|postrm)$/, :message => :script_type_unknown, :multiline => true
 
