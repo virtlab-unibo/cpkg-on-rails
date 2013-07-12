@@ -18,10 +18,12 @@ ActiveRecord::Schema.define(:version => 20120828221401) do
     t.string "distribution", :limit => 50
     t.string "component",    :limit => 50
     t.string "arch",         :limit => 20
+    t.integer "corepackage_id"
   end
 
   create_table "changelogs", :force => true do |t|
-    t.integer "package_id",  :null => false
+    t.integer "package_id"
+    t.integer "corepackage_id"
     t.integer "user_id",     :null => false
     t.string  "version"
     t.text    "description"
@@ -90,6 +92,21 @@ ActiveRecord::Schema.define(:version => 20120828221401) do
   add_index "packages", ["course_id"], :name => "index_course_id_on_packages"
   add_index "packages", ["name"], :name => "index_name_on_packages"
 
+  create_table "corepackages", :force => true do |t|
+    t.string   "name"
+    t.text     "depends"
+    t.string   "version"
+    t.string   "action"
+    t.string   "short_description"
+    t.text     "long_description"
+    t.boolean  "global"
+  end
+
+  create_table "corepackages_courses", :id => false, :force => true do |t|
+    t.integer "corepackage_id",                :null => false
+    t.integer "course_id",                     :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email",        :null => false
     t.string   "name"
@@ -106,6 +123,7 @@ ActiveRecord::Schema.define(:version => 20120828221401) do
 
   create_table :scripts, :force => true do |t| 
     t.integer  "package_id",          :null =>     false
+    t.integer  "corepackage_id",          :null =>     false
     t.string   "name",                :null =>     false
     t.string   "stype",                :null =>    false
     t.datetime "created_at"
