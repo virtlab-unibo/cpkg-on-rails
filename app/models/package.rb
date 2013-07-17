@@ -22,8 +22,8 @@ class Package < ActiveRecord::Base
   # make sure che correct package name is going to be validated
   before_validation :init_name, :on => :create
 
-  before_create :init_dependencies, 
-                :generate_homepage
+  before_create :generate_homepage
+               # :init_dependencies
 
   # automatically generated home page. See homepage_base in configuration
   def generate_homepage

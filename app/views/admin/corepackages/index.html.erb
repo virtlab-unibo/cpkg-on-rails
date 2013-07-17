@@ -1,0 +1,11 @@
+<h1><!-- %= t(:corepackage_admin) %--> "Traduci il titolo"</h1>
+
+<dl>
+  <% @corepackages.each do |cpackage| %>  
+  <dt> <%= cpackage %> <%= link_to icon('pencil'), edit_admin_corepackage_path(cpackage) %> </dt>
+  <% end %>
+</dl>
+
+<%= link_to t(:new_corepackage), new_admin_corepackage_path, :class => 'btn btn-primary' %>  
+- <%= link_to t(:back), admin_root_path %>
+

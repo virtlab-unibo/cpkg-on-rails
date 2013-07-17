@@ -1,0 +1,75 @@
+<div class="accordion" id="accordion2">
+
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapsePrerm">
+        <h4>PreRemove script</h4>
+      </a>
+    </div>
+    <div id="collapsePrerm" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <%= form_tag script_admin_corepackage_path(@corepackage), :method => :put do %>
+          <%= hidden_field_tag(:stype, "prerm") %>
+          <%= text_area_tag(:content, @corepackage.prerm) %>
+          <br> 
+          <%= submit_tag("Submit changes") %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapsePreinst">
+        <h4>PreInstall script</h4>
+      </a>
+    </div>
+    <div id="collapsePreinst" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <%= form_tag script_admin_corepackage_path(@corepackage), :method => :put do %>
+          <%= hidden_field_tag(:stype, "preinst") %>
+          <%= text_area_tag(:content, @corepackage.preinst) %>
+          <br> 
+          <%= submit_tag("Submit changes") %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapsePostrm">
+        <h4>PostRemove script</h4>
+      </a>
+    </div>
+    <div id="collapsePostrm" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <%= form_tag script_admin_corepackage_path(@corepackage), :method => :put do %>
+          <%= hidden_field_tag(:stype, "postrm") %>
+          <%= text_area_tag(:content, @corepackage.postrm) %>
+          <br> 
+          <%= submit_tag("Submit changes") %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapsePostinst">
+        <h4>PostInstall script</h4>
+      </a>
+    </div>
+    <div id="collapsePostinst" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <%= form_tag script_admin_corepackage_path(@corepackage), :method => :put do %>
+          <%= hidden_field_tag(:stype, "postinst") %>
+          <%= text_area_tag(:content, @corepackage.postinst) %>
+          <br> 
+          <%= submit_tag("Submit changes") %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>

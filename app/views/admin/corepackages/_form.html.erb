@@ -1,0 +1,11 @@
+<%= simple_form_for [:admin, @corepackage] do |cpackage| %>
+  <%= cpackage.error_notification %>
+  <%= cpackage.input :name, :readonly => (@corepackage.name ? true : false)  %>
+  <%= cpackage.input :homepage %>
+  <%= cpackage.input :action %>
+  <%= cpackage.input :global %>
+  <%= cpackage.input :short_description %>
+  <%= cpackage.input :long_description %>
+  <%= cpackage.button :submit, :class => "btn-primary" %>
+  <%= link_to "Torna indientro (Traducimi)", admin_corepackages_path %><!-- t(:go_back_to_courses) -->
+<% end %>

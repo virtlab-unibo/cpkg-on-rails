@@ -2,6 +2,10 @@
 class PackagesController < ApplicationController
   respond_to :json, :only => :search
 
+  def get_model
+    Package
+  end
+
   def new
     @course = Course.find(params[:course_id])
     authorize! :manage, @course
@@ -9,7 +13,7 @@ class PackagesController < ApplicationController
   end
 
   def edit 
-    @package = Package.find(params[:id])
+    @package = get_model.find(params[:id])
     @course = @package.course
   end
 
@@ -27,7 +31,7 @@ class PackagesController < ApplicationController
   end
 
   def destroy
-    @package = Package.find(params[:id])
+    @package = get_model.find(params[:id])
     authorize! :manage, @course
     raise "Non si puo' eliminare"
   end
@@ -51,11 +55,16 @@ class PackagesController < ApplicationController
   def depend
     @package = Package.find(params[:id])
     authorize! :manage, @package.course
-    if @package.add_dependency(params[:depend])
-      flash[:notice] = I18n.t 'added_dep_ok' 
+    if Package.where(:name => params[:depend]).count > 0
+      if @package.add_dependency(params[:depend])
+        flash[:notice] = I18n.t 'added_dep_ok' 
+      else
+        logger.info @package.errors.inspect
+        # FIXME refactor...
+        flash[:error] = @package.errors[:base].join(', ')
+      end
     else
-      logger.info @package.errors.inspect
-      # FIXME refactor...
+      @package.errors.add(:base, "Unknown package #{params[:depend]}")
       flash[:error] = @package.errors[:base].join(', ')
     end
     # FIXME to refactor 
@@ -68,8 +77,8 @@ class PackagesController < ApplicationController
     if @package.remove_dependency(params[:depend])
       flash[:notice] = I18n.t 'dep_rem_ok'
     else
-       logger.info @package.errors.inspect
-       flash[:notice] = I18n.t 'dep_rem_no'
+      logger.info @package.errors.inspect
+      flash[:notice] = I18n.t 'dep_rem_no'
     end
     redirect_to edit_package_path(@package, :anchor => 'software')
   end

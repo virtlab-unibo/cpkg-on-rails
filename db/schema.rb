@@ -57,7 +57,8 @@ ActiveRecord::Schema.define(:version => 20120828221401) do
   end
 
   create_table "documents", :force => true do |t|
-    t.integer  "package_id",                         :null => false
+    t.integer  "package_id"
+    t.integer  "corepackage_id"
     t.string   "name",                :limit => 200
     t.text     "description"
     t.datetime "created_at"
@@ -99,6 +100,7 @@ ActiveRecord::Schema.define(:version => 20120828221401) do
     t.string   "action"
     t.string   "short_description"
     t.text     "long_description"
+    t.string   "homepage"
     t.boolean  "global"
   end
 
@@ -122,8 +124,8 @@ ActiveRecord::Schema.define(:version => 20120828221401) do
   add_index "users", ["email"], :name => "index_email_on_users"
 
   create_table :scripts, :force => true do |t| 
-    t.integer  "package_id",          :null =>     false
-    t.integer  "corepackage_id",      :null =>     false
+    t.integer  "package_id"
+    t.integer  "corepackage_id"
     t.string   "name",                :null =>     false
     t.string   "stype",               :null =>     false
     t.datetime "created_at"

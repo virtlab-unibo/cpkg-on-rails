@@ -23,21 +23,64 @@ class Corepackage < ActiveRecord::Base
   #before_create :init_dependencies, 
   #              :generate_homepage
 
+  # FIXME: we should re-use the code in the module not rewrite
+  # the entire method just cause: self.class.where in the module
+  def depends_on
+    if self.depends
+      self.depends.split(', ').inject([]) do |res, name|
+        if p = Package.where(:name => name.split(/ /)[0]).first
+          res << p
+        else
+          logger.info("No package #{name.split(/ /)[0]} for #{self.depends} in #{self.inspect}")
+        end 
+        res 
+      end 
+    else
+      []  
+    end 
+  end 
+
+  def script_content type 
+    s = get_script type
+    if s
+      File.open(s, 'r'){|file| file.readlines.join("")}
+    else
+      ""
+    end
+  end
+
+  def prerm
+    script_content :prerm
+  end
+
+  def preinst
+    script_content :preinst
+  end
+
+  def postrm
+    script_content :postrm
+  end
+
+  def postinst
+    script_content :postinst
+  end
+
+    
   # automatically generated home page. See homepage_base in configuration
- # def generate_homepage
- #   Rails.configuration.homepage_base or return true
- #   self.homepage ||= (Rails.configuration.homepage_base + "/#{self.name}")
- # end
+  # def generate_homepage
+  #   Rails.configuration.homepage_base or return true
+  #   self.homepage ||= (Rails.configuration.homepage_base + "/#{self.name}")
+  # end
 
   def get_description
     self.short_description.blank? ? I18n.t(:no_description) : self.short_description
   end
 
- # def init_dependencies
- #   unless self.course.nil?
- #     self.depends = self.core_dep
- #   end
- # end
+  # def init_dependencies
+  #   unless self.course.nil?
+  #     self.depends = self.core_dep
+  #   end
+  # end
 
 #  def init_name
 #    unless self.course.nil?

@@ -1,0 +1,29 @@
+<h3><%= t(:dependencies) %></h3>
+
+<!-- %= Package.where(:name => 'gimp').first.inspect % -->
+
+<%= form_tag depend_admin_corepackage_path(@corepackage), :method => :put do %>
+  <%= label_tag t(:new_dep) %>  
+  <!-- %= raise url_for(:action => 'search') % -->
+  <input name="depend" type="text" data-searchpath="<%= search_packages_path %>" id="typeahead">
+  <%= submit_tag t(:add), :class => "btn btn-primary" %>
+  <%= link_to t(:go_back_to_courses), root_path %>
+<% end %>
+
+<div class="guide">
+  <p><%= icon('info-sign') %><%= t(:add_dep_guide_html) %></p>
+</div>
+
+<table class="table table-striped">
+  <tbody>
+    <% @corepackage.depends_on.each do |package| %>
+      <tr>
+      <th><%= package.name %></th>
+      <td><%= package.get_description %></td>
+      <td><%= link_to ("<i class='icon-trash icon-white'></i><span> "+t(:delete)+" </span>").html_safe , undepend_admin_corepackage_path(@corepackage, :depend => package.name ), :method => :put, :title => t(:delete_dep), :class => "btn btn-danger" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

@@ -38,6 +38,13 @@ CpkgOnRails::Application.routes.draw do
     end
     resources :users 
     resources :invitations
+    resources :corepackages do
+      resources :documents
+      resources :changelogs
+      put :depend, :on => :member
+      put :undepend, :on => :member
+      put :script, :on => :member
+    end
   end
 
   get "register", :controller => "invitations", :action => :register, :as => 'register'
