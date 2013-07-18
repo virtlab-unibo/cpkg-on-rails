@@ -12,7 +12,7 @@
           <%= hidden_field_tag(:stype, "prerm") %>
           <%= text_area_tag(:content, @corepackage.prerm) %>
           <br> 
-          <%= submit_tag("Submit changes") %>
+          <%= submit_tag("Submit changes", :class => "btn btn-primary") %>
         <% end %>
       </div>
     </div>
@@ -30,7 +30,7 @@
           <%= hidden_field_tag(:stype, "preinst") %>
           <%= text_area_tag(:content, @corepackage.preinst) %>
           <br> 
-          <%= submit_tag("Submit changes") %>
+          <%= submit_tag("Submit changes", :class => "btn btn-primary") %>
         <% end %>
       </div>
     </div>
@@ -48,7 +48,7 @@
           <%= hidden_field_tag(:stype, "postrm") %>
           <%= text_area_tag(:content, @corepackage.postrm) %>
           <br> 
-          <%= submit_tag("Submit changes") %>
+          <%= submit_tag("Submit changes", :class => "btn btn-primary") %>
         <% end %>
       </div>
     </div>
@@ -66,7 +66,7 @@
           <%= hidden_field_tag(:stype, "postinst") %>
           <%= text_area_tag(:content, @corepackage.postinst) %>
           <br> 
-          <%= submit_tag("Submit changes") %>
+          <%= submit_tag("Submit changes", :class => "btn btn-primary") %>
         <% end %>
       </div>
     </div>
