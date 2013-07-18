@@ -90,8 +90,12 @@ class Admin::CorepackagesController < ApplicationController
     script = @package.get_script params[:stype]
     res = false
     if script
-      #script.content = params[:content]
-      #TODO: open file and write new contents
+      if params[:content].strip != ""
+        File.open(script, 'w'){|file| file.write(params[:content]) } 
+        res = true
+      else
+       res = true if @package.get_script_object(params[:stype]).destroy
+      end
     else #FIXME: check that stype is correct and not a nonsense string
       res = @package.add_script params[:stype], params[:content]
     end
