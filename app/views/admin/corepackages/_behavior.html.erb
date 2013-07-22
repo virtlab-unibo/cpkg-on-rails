@@ -1,7 +1,10 @@
 <%= simple_form_for [:admin, @corepackage] do |cpackage| %>
   <%= cpackage.error_notification %>
-  <%= cpackage.input :action %>
-  <%= cpackage.input :global %>
+  <%= cpackage.input :action, label: "Specify what to do", as: :select, :collection => [["nothing", 1], ["update", 2]] %>
+  <%= cpackage.input :global, label: false, inline_label: "Make it a dependency for all packages" %>
+  <div class="well well-small" <% if @corepackage.global %> hidden <% end %>  >
+    <%= cpackage.association :courses, :as => :check_boxes, label: "<b>Select which course should depends on this package</b>", :checked => @corepackage.courses.collect{ |course| course.id } %>
+  </div>
   <%= cpackage.button :submit, :class => "btn-primary" %>
   <%= link_to "Torna indientro (Traducimi)", admin_corepackages_path %><!-- t(:go_back_to_courses) -->
 <% end %>
