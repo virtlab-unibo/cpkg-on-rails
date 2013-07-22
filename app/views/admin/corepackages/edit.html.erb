@@ -3,6 +3,7 @@
 <div class="tabbable tabs-up">
   <ul class="nav nav-tabs">
     <li><a href="#general" data-toggle="tab"><%= t(:general) %></a></li>
+    <li><a href="#behavior" data-toggle="tab"><%= t(:behavior ) %></a></li>
     <li><a href="#materiale" data-toggle="tab"><%= t(:material) %></a></li>
     <li><a href="#software" data-toggle="tab"><%= t(:software) %></a></li>
     <li><a href="#script" data-toggle="tab"><%= t(:script) %></a></li>
@@ -11,8 +12,11 @@
     <div class="tab-pane" id="general">
       <%= render 'form' %>
     </div>
+    <div class="tab-pane" id="behavior">
+      <%= render 'behavior' %>
+    </div>
     <div class="tab-pane" id="materiale">
-      <!--%= render 'documents' %-->
+      <%= render 'documents' %>
     </div>
     <div class="tab-pane" id="software">
       <%= render 'dependencies' %>
@@ -32,7 +36,11 @@
     $('#materiale').tab('show');
     $('#materiale').addClass('active');
     $('a[href="#materiale"]').parent().addClass('active');
-  } else if (window.location.hash == "#script") {
+  } else if (window.location.hash == "#behavior") {
+    $('#behavior').tab('show');
+    $('#behavior').addClass('active');
+    $('a[href="#behavior"]').parent().addClass('active');
+} else if (window.location.hash == "#script") {
     $('#script').tab('show');
     $('#script').addClass('active');
     $('a[href="#script"]').parent().addClass('active');
