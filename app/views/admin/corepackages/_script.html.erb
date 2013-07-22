@@ -1,12 +1,12 @@
 <div class="guide well well-large">
-  <p> <%= icon('info-sign') %>Sono una guida</p>
+  <p> <%= icon('info-sign') %> <%= render "script_guide" %></p>
 </div>
 <div class="accordion" id="accordion2">
 
   <div class="accordion-group">
     <div class="accordion-heading">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapsePrerm">
-        <h4>PreRemove script</h4>
+        <h4>PreRemove script <%= icon('flag') if @corepackage.prerm != "" %></h4>
       </a>
     </div>
     <div id="collapsePrerm" class="accordion-body collapse">
@@ -24,7 +24,7 @@
   <div class="accordion-group">
     <div class="accordion-heading">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapsePreinst">
-        <h4>PreInstall script</h4>
+        <h4>PreInstall script <%= icon('flag') if @corepackage.preinst != "" %> </h4>
       </a>
     </div>
     <div id="collapsePreinst" class="accordion-body collapse">
@@ -42,7 +42,7 @@
   <div class="accordion-group">
     <div class="accordion-heading">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapsePostrm">
-        <h4>PostRemove script</h4>
+        <h4>PostRemove script <%= icon('flag') if @corepackage.postrm != "" %></h4>
       </a>
     </div>
     <div id="collapsePostrm" class="accordion-body collapse">
@@ -60,7 +60,7 @@
   <div class="accordion-group">
     <div class="accordion-heading">
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapsePostinst">
-        <h4>PostInstall script</h4>
+        <h4>PostInstall script <%= icon('flag') if @corepackage.postinst != "" %></h4>
       </a>
     </div>
     <div id="collapsePostinst" class="accordion-body collapse">

@@ -44,6 +44,8 @@ CpkgOnRails::Application.routes.draw do
       put :depend, :on => :member
       put :undepend, :on => :member
       put :script, :on => :member
+      post :del_doc, :on => :member
+      put :add_doc, :on => :member
     end
   end
 

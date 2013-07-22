@@ -3,6 +3,7 @@
 #
 class Document < ActiveRecord::Base
   belongs_to :package
+  belongs_to :corepackage
 
   validates_attachment_presence :attach
 

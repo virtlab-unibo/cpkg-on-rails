@@ -10,6 +10,7 @@ class Admin::CorepackagesController < ApplicationController
 
   def edit 
     @corepackage = Corepackage.find(params[:id])
+    @documents = @corepackage.documents
   end
 
   def index
@@ -30,6 +31,14 @@ class Admin::CorepackagesController < ApplicationController
 
   def show
     @corepackage = Corepackage.find(params[:id])
+  end
+
+  def del_doc
+    #TODO: implement delete document
+  end
+
+  def add_doc
+    #TODO: implement add document
   end
 
   def destroy

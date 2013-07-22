@@ -1,0 +1,32 @@
+<div class="guide well well-large">
+  <p> <%= icon('info-sign') %> <%= render "document_guide" %></p>
+</div>
+
+<%= form_tag add_doc_admin_corepackage_path(@corepackage), :method => :put do %>
+  <%= submit_tag("Add document", :class => "btn btn-primary") %>
+<% end %>
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>description</th>
+      <th>Install path</th>
+      <th>Created at</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @documents.each do |doc| %>
+      <tr>
+        <th><%= doc.name %></th>
+        <td><%= doc.description %></td>
+        <td><%= doc.install_path %></td>
+        <td><%= doc.created_at%></td>
+        <td><%= link_to ("<i class='icon-trash icon-white'></i><span> "+t(:delete)+" </span>").html_safe , del_doc_admin_corepackage_path(@corepackage, :doc => doc.name ), :method => :post, :title => t(:delete_doc), :class =>  "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
