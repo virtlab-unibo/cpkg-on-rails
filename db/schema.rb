@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(:version => 20120828221401) do
     t.string "distribution", :limit => 50
     t.string "component",    :limit => 50
     t.string "arch",         :limit => 20
-    t.integer "corepackage_id"
+    t.boolean "global"
   end
 
   create_table "changelogs", :force => true do |t|
@@ -50,6 +50,14 @@ ActiveRecord::Schema.define(:version => 20120828221401) do
 
   add_index "courses_users", ["course_id"], :name => "index_course_id_on_courses_users"
   add_index "courses_users", ["user_id"], :name => "index_user_id_on_courses_users"
+
+  create_table "courses_archives", :id => false, :force => true do |t|
+    t.integer "course_id",                      :null => false
+    t.integer "archive_id",                     :null => false
+  end
+
+  add_index "courses_archives", ["course_id"],  :name => "index_course_id_on_courses_archives"
+  add_index "courses_archives", ["archive_id"], :name => "index_archive_id_on_courses_archives"
 
   create_table "degrees", :force => true do |t|
     t.string "code", :limit => 6, :null => false
@@ -92,22 +100,6 @@ ActiveRecord::Schema.define(:version => 20120828221401) do
   add_index "packages", ["archive_id"], :name => "index_archive_id_on_packages"
   add_index "packages", ["course_id"], :name => "index_course_id_on_packages"
   add_index "packages", ["name"], :name => "index_name_on_packages"
-
-  create_table "corepackages", :force => true do |t|
-    t.string   "name"
-    t.text     "depends"
-    t.string   "version"
-    t.string   "action"
-    t.string   "short_description"
-    t.text     "long_description"
-    t.string   "homepage"
-    t.boolean  "global"
-  end
-
-  create_table "corepackages_courses", :id => false, :force => true do |t|
-    t.integer "corepackage_id",       :null => false
-    t.integer "course_id",            :null => false
-  end
 
   create_table "users", :force => true do |t|
     t.string   "email",        :null => false
