@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20120828221401) do
     t.string "distribution", :limit => 50
     t.string "component",    :limit => 50
     t.string "arch",         :limit => 20
+    t.boolean "global"
   end
 
   create_table "changelogs", :force => true do |t|
@@ -48,6 +49,14 @@ ActiveRecord::Schema.define(:version => 20120828221401) do
 
   add_index "courses_users", ["course_id"], :name => "index_course_id_on_courses_users"
   add_index "courses_users", ["user_id"], :name => "index_user_id_on_courses_users"
+
+  create_table "courses_archives", :id => false, :force => true do |t|
+    t.integer "course_id",                      :null => false
+    t.integer "archive_id",                     :null => false
+  end
+
+  add_index "courses_archives", ["course_id"],  :name => "index_course_id_on_courses_archives"
+  add_index "courses_archives", ["archive_id"], :name => "index_archive_id_on_courses_archives"
 
   create_table "degrees", :force => true do |t|
     t.string "code", :limit => 6, :null => false
