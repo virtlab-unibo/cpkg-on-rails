@@ -2,6 +2,8 @@
 class Admin::CorepackagesController < ApplicationController
   respond_to :json, :only => :search
 
+  @@ACTIONS = [["nothing", 1], ["update", 2]]
+
   def new
 #    @course = Course.find(params[:course_id])
     #authorize! :manage, @course
@@ -54,6 +56,7 @@ class Admin::CorepackagesController < ApplicationController
     # name and dependencies cannot be changed 
     params[:corepackage].delete(:name)
     params[:corepackage].delete(:depends)
+    #TODO: parse selected courses and add the tuple into the db
     if @corepackage.update_attributes(corepackage_params)
       flash[:notice] = I18n.t 'package_updt_ok'
       redirect_to edit_admin_corepackage_path(@corepackage)
