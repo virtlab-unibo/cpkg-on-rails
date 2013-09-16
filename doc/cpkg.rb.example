@@ -14,6 +14,10 @@ CpkgOnRails::Application.configure do
   # Repo location
   config.repo_dir = "/var/www/reprepro/incoming"
 
+  # Global dependencies. A comma-separaed list of packages that will be 
+  # added to every package created with cpkg.
+  config.global_deps = "vlab-core"
+
   # Your secret key for verifying the integrity of signed cookies.
   # If you change this key, all old signed cookies will become invalid!
   # Make sure the secret is at least 30 characters and all random,

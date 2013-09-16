@@ -22,12 +22,18 @@ class Package < ActiveRecord::Base
   # make sure che correct package name is going to be validated
   before_validation :init_name, :on => :create
 
-  before_create :generate_homepage
+  before_create :add_global_deps,
+                :generate_homepage
 
   # automatically generated home page. See homepage_base in configuration
   def generate_homepage
     Rails.configuration.homepage_base or return true
     self.homepage ||= (Rails.configuration.homepage_base + "/#{self.name}")
+  end
+
+  # Adds global dependencies defined in the config file
+  def add_global_deps
+    self.depends = Rails.configuration.global_deps
   end
 
   def get_description
