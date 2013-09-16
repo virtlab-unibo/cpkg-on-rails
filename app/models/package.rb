@@ -22,8 +22,7 @@ class Package < ActiveRecord::Base
   # make sure che correct package name is going to be validated
   before_validation :init_name, :on => :create
 
-  before_create :init_dependencies, 
-                :generate_homepage
+  before_create :generate_homepage
 
   # automatically generated home page. See homepage_base in configuration
   def generate_homepage
@@ -33,12 +32,6 @@ class Package < ActiveRecord::Base
 
   def get_description
     self.short_description.blank? ? I18n.t(:no_description) : self.short_description
-  end
-
-  def init_dependencies
-    unless self.course.nil?
-      self.depends = self.core_dep
-    end
   end
 
   def init_name
