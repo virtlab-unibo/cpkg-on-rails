@@ -3,42 +3,64 @@ require 'tmpdir'
 
 namespace :cpkg do
   namespace :fs_core_package do
-    desc "Updates core package of course"
+    desc "Updates fs core package"
     task :update_core_package => :environment do
-      course_id = ENV['course'] or raise "I need the name of the course"
       begin
-        course = Course.find(course_id)
         Dir.mktmpdir do |tmp_dir|
-          
           # copy debian directory template.
           puts "copying debain directory template"
           FileUtils.cp_r(File.expand_path(File.join(Rails.root, "config", "debian")), tmp_dir)
-          deb_dir =  File.join(tmp_dir, "debian")
           # copy filesystem global hierarchy.
           puts "copying filesystem global hierarchy"
-          FileUtils.cp_r(File.expand_path(File.join(Rails.root, "packages", "global") + "/"), deb_dir)
-          # copy filesystem course hierarchy and overwrite existing files.
-          puts "copying filesystem local hierarchy"
-          course_dir = File.expand_path(File.join(Rails.root, "packages", course.name))
-          if Dir.exists? course_dir 
-            FileUtils.cp_r(course_dir, deb_dir)
+          global_path = File.expand_path(File.join(Rails.root, "packages", "global"))
+          files_list = Dir.glob("#{global_path}/**/*").select {|f| not File.directory? f}
+          # building the install file
+          install = ""
+          files_list.each do |f|
+            fkroot_path = f.split("global")[1]
+            install += "#{File.basename(fkroot_path)} #{File.dirname(fkroot_path)}\n"
+            FileUtils.cp(f, tmp_dir)
           end
+          # writing the changelog and control file
+          name = "vlab-fs-core"
+          version = Time.new.strftime("%Y%m%d-%H")
+          date = Time.new.strftime("%a, %d %b %Y %H:%M:%S %z")
 
+          chlog = """#{name} (#{version}) precise; urgency=low
+
+  * Updated manually from rake script 
+
+ -- VirtLab Team <support@virtlab.unibo.it>  #{date}"""
+
+          control = """Priority: optional
+Section: vlab
+Build-Depends: debhelper (>= 7)
+Maintainer: VirtLab Team <support@virtlab.unibo.it>
+Standards-Version: 3.9.2
+Source: #{name}
+
+Package: #{name}
+Architecture: all
+Description: This is a corepackage of the Virtlab Project.
+ This is a corepackage of the Virtlab Project.
+"""
           puts "executing dpkg-buildpackage" 
-          # TODO: create package
-          # FIXME FIXME FIXME FIXME FIXME
           Dir.chdir (tmp_dir)
-          puts Dir.entries("./debian")
-          key = "" #FIXME set global gpg key
+          File.open("debian/install", 'w+') { |file| file.write(install) }
+          File.open("debian/control", 'w+') { |file| file.write(control) }
+          File.open("debian/changelog", 'w+') { |file| file.write(chlog) }
+          key = "-k" + Rails.configuration.gpg_key 
           stdout = `dpkg-buildpackage -rfakeroot #{key} 2>&1`
-          puts $?.success?
-          # FIXME FIXME FIXME FIXME FIXME
-          # TODO: move to repo
+          puts stdout
+          # move the generated files into the incoming folder of the repo
+          if $?.success?
+            FileUtils.mv(Dir.glob(File.join("..", "#{name}_#{version}")+"*"), 
+                         Rails.configuration.repo_dir, :force => true)
+          end
         end
       rescue => err 
         puts "An error has occured: #{err}"
       end
-
 
     end
   end
