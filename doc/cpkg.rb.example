@@ -25,17 +25,13 @@ CpkgOnRails::Application.configure do
   # Default maintainer
   config.pkgs_default_maintainer = "Cpkg Admin"
 
-  # Your secret key for verifying the integrity of signed cookies.
-  # If you change this key, all old signed cookies will become invalid!
-  # Make sure the secret is at least 30 characters and all random,
-  # no regular words or you'll be exposed to dictionary attacks.
-  config.secret_token = 'ebf5a12629555cc5591031efac3d9b16ae69d99095b46d86bb0e44edf8f765000b92a97282395696ddddf9c78cccad86135476a720f604d55fccaf51ec1d098d'
-  config.secret_key_base = '106daf6e00bf92776007764557767e704ec8338fd8c0ac50618cf1641534396e6f853c9a2b77121b4394bdf53b2b6238741ce1205ef9ce27c8e551b81dda3f88'
   config.i18n.default_locale = :it
   # the gpg key-id of the gpg key you want to use to sign packages.
   # leave an empty string if you don't want to sign them.
   config.gpg_key = "09A0DEDE"
 
+  config.i18n.default_locale = :it
+  config.time_zone = 'Rome'
 end
 
 
