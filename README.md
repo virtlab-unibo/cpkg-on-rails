@@ -15,6 +15,7 @@ Clone the repository and
 
     $ cd cpkg-on-rails
     $ bundle
+    $ rake secret
     $ cp doc/cpkg.rb.example config/initializers/cpkg.rb
 
 Edit `config/initializers/cpkg.rb` to configure your installation.

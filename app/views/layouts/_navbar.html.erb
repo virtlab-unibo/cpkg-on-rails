@@ -10,10 +10,18 @@
 
       <ul class="nav pull-right">
         <% if user_signed_in? %>
-        <li><%= link_to t(:my_courses), root_path %></li>
-        <li><%= link_to t(:other_courses), guest_courses_path %></li>
+          <li><%= link_to t(:my_courses), root_path %></li>
+          <li><%= link_to t(:other_courses), guest_courses_path %></li>
           <% if current_user.is_admin? %>
-            <li><%= link_to 'admin', admin_root_path %></li>
+            <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">admin</a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+              <li><%= link_to t(:degree_admin), admin_degrees_path %></li>
+              <li><%= link_to t(:course_admin), admin_courses_path %></li>
+              <li><%= link_to t(:repo_admin), admin_archives_path %></li>
+              <li><%= link_to t(:users_admin), admin_users_path %></li>
+            </ul>
+            </li>
           <% end %>
           <li class="disabled"><a><%= current_user %></a></li>
           <% if current_user != true_user %>
