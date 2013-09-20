@@ -4,7 +4,7 @@
 class Document < ActiveRecord::Base
   belongs_to :package
 
-  validates_attachment_presence :attach
+  validates :attch, :attachment_presence => true
 
   validates_uniqueness_of :attach_file_name, :scope => :package_id, 
                           :message => "Il File non e' stato uploadato. Il nome del file deve essere univoco nel pacchetto." 
