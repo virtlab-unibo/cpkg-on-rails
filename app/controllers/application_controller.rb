@@ -1,15 +1,17 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+  # Prevent CSRF attacks by raising an exception.
+  # For APIs, you may want to use :null_session instead.
+  protect_from_forgery with: :exception
 
   impersonates :user
 
   before_filter :handle_guest, :set_locale
- 
+
   def handle_guest
     devise_controller? and return true
     user_signed_in? or redirect_to guest_courses_path
   end
-  
+
   def default_url_options(options={})
     { :locale => I18n.locale }
   end
@@ -22,7 +24,7 @@ class ApplicationController < ActionController::Base
     current_user.admin or raise "NO ADMIN"
   end
 
-  # FIXME 
+  # FIXME
   # for shibboleth
   private
 
