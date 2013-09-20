@@ -76,10 +76,12 @@ class PackagesController < ApplicationController
 
   def download
     @package = Package.find(params[:id])
-    #FIXME: If we set a different version we break 
-    # the package creation cause equivs use the version
-    # into the changelogs
-    #@package.version = "0.temporary"
+    # If the has never been uploaded into the
+    # repository it doesn't have a version.
+    # So we temporarely set one.
+    if @package.changelogs.size <= 0
+      @package.version = "0.temporary"
+    end
     begin
       dest_dir = Rails.configuration.tmp_packages_dir
       @package.add_global_deps
@@ -89,6 +91,10 @@ class PackagesController < ApplicationController
     rescue 
       flash[:error] = I18n.t 'del_pkg_error'
       redirect_to courses_path
+    end
+    # Removing the temporary version.
+    if @package.changelogs.size <= 0
+      @package.version = nil 
     end
   end
 
