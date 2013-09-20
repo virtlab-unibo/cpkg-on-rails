@@ -8,6 +8,9 @@ class ChangelogsController < ApplicationController
   # create the debian package and put it into the repo_dir
   def create
     @package = Package.find(params[:package_id])
+    # check if all the corepackages are into the dependency
+    # list, if not we add them
+    @package.add_global_deps
     @changelog = @package.changelogs.new(changelog_params)
     @changelog.user_id = current_user.id
     @changelog.date = ActiveDebianRepository::Changelog.date_line

@@ -82,6 +82,7 @@ class PackagesController < ApplicationController
     #@package.version = "0.temporary"
     begin
       dest_dir = Rails.configuration.tmp_packages_dir
+      @package.add_global_deps
       equivs = ActiveDebianRepository::Equivs.new(@package, dest_dir) 
       path = equivs.create!
       send_file path, :type => "application/x-debian-package"

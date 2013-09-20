@@ -6,8 +6,8 @@ class Package < ActiveRecord::Base
   has_many   :scripts
   has_many   :users, :through => :changelogs
 
-  acts_as_debian_package :section      => 'vlab',
-                         :maintainer   => "Unibo Virtlab",
+  acts_as_debian_package :section      => Rails.configuration.pkgs_default_section,
+                         :maintainer   => Rails.configuration.pkgs_default_maintainer,
                          # FIXME maybe other mail or maybe configurable by user
                          :email        => Rails.configuration.support_mail, 
                          :gpg_key     => Rails.configuration.gpg_key
@@ -32,8 +32,16 @@ class Package < ActiveRecord::Base
   end
 
   # Adds global dependencies defined in the config file
+  # if not already present.
   def add_global_deps
-    self.depends = Rails.configuration.global_deps
+    if self.depends
+      deps_l = self.depends.split(", ")
+      Rails.configuration.global_deps.split(",").each do |gdep| 
+        (self.depends += ", #{gdep.strip}") unless deps_l.include? gdep.strip
+      end
+    else
+      self.depends = Rails.configuration.global_deps
+    end
   end
 
   def get_description

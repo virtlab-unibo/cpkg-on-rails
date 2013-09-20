@@ -18,6 +18,13 @@ CpkgOnRails::Application.configure do
   # added to every package created with cpkg.
   config.global_deps = "vlab-core"
 
+  # Default email inserted into the packages creared by cpkg.
+  config.support_email = "admin@cpkg.it"
+  # Default section which the packages will be part of.
+  config.pkgs_default_section = "cpkg"
+  # Default maintainer
+  config.pkgs_default_maintainer = "Cpkg Admin"
+
   # Your secret key for verifying the integrity of signed cookies.
   # If you change this key, all old signed cookies will become invalid!
   # Make sure the secret is at least 30 characters and all random,
