@@ -4,7 +4,7 @@ require 'tmpdir'
 namespace :cpkg do
   namespace :fs_core_package do
     desc "Updates fs core package"
-    task :update_core_package => :environment do
+    task :update => :environment do
       begin
         Dir.mktmpdir do |tmp_dir|
           # copy debian directory template.
