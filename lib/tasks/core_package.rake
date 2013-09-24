@@ -2,17 +2,18 @@ require 'fileutils'
 require 'tmpdir'
 
 namespace :cpkg do
-  namespace :fs_core_package do
+  namespace :cpkg_core do
     desc "Updates fs core package"
     task :update => :environment do
       begin
         Dir.mktmpdir do |tmp_dir|
+          name = "cpkg-core"
           # copy debian directory template.
           puts "copying debain directory template"
           FileUtils.cp_r(File.expand_path(File.join(Rails.root, "config", "debian")), tmp_dir)
           # copy filesystem global hierarchy.
           puts "copying filesystem global hierarchy"
-          global_path = File.expand_path(File.join(Rails.root, "packages", "global"))
+          global_path = File.expand_path(File.join(Rails.root, "packages", name))
           files_list = Dir.glob("#{global_path}/**/*").select {|f| not File.directory? f}
           # building the install file
           install = ""
@@ -22,7 +23,6 @@ namespace :cpkg do
             FileUtils.cp(f, tmp_dir)
           end
           # writing the changelog and control file
-          name = "vlab-fs-core"
           version = Time.new.strftime("%Y%m%d-%H")
           date = Time.new.strftime("%a, %d %b %Y %H:%M:%S %z")
 

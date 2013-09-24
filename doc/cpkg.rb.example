@@ -16,7 +16,7 @@ CpkgOnRails::Application.configure do
 
   # Global dependencies. A comma-separaed list of packages that will be 
   # added to every package created with cpkg.
-  config.global_deps = "vlab-core"
+  config.global_deps = "cpkg-core"
 
   # Default email inserted into the packages creared by cpkg.
   config.support_email = "admin@cpkg.it"
