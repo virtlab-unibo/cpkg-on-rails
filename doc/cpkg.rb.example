@@ -25,6 +25,8 @@ CpkgOnRails::Application.configure do
   # Default maintainer
   config.pkgs_default_maintainer = "Cpkg Admin"
 
+  config.linux_distro = "precise"
+
   # the gpg key-id of the gpg key you want to use to sign packages.
   # leave an empty string if you don't want to sign them.
   config.gpg_key = "09A0DEDE"

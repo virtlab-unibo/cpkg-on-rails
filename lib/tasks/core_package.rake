@@ -2,18 +2,23 @@ require 'fileutils'
 require 'tmpdir'
 
 namespace :cpkg do
-  namespace :cpkg_core do
-    desc "Updates fs core package"
+  namespace :core_package do
+    desc "Updates core package"
     task :update => :environment do
       begin
         Dir.mktmpdir do |tmp_dir|
-          name = "cpkg-core"
+          if not ENV.include? "name"
+            puts "ERROR: we need a name"
+            return
+          end
+          name = ENV['name']
+          pkg_path = File.join(Rails.root, "packages", name)
           # copy debian directory template.
-          puts "copying debain directory template"
-          FileUtils.cp_r(File.expand_path(File.join(Rails.root, "config", "debian")), tmp_dir)
+          puts "copying debian directory template"
+          FileUtils.cp_r(File.expand_path(File.join(pkg_path, "debian")), tmp_dir)
           # copy filesystem global hierarchy.
           puts "copying filesystem global hierarchy"
-          global_path = File.expand_path(File.join(Rails.root, "packages", name))
+          global_path = File.expand_path(File.join(pkg_path, "fs"))
           files_list = Dir.glob("#{global_path}/**/*").select {|f| not File.directory? f}
           # building the install file
           install = ""
@@ -25,17 +30,18 @@ namespace :cpkg do
           # writing the changelog and control file
           version = Time.new.strftime("%Y%m%d-%H")
           date = Time.new.strftime("%a, %d %b %Y %H:%M:%S %z")
+          rc = Rails.configuration
 
-          chlog = """#{name} (#{version}) precise; urgency=low
+          chlog = """#{name} (#{version}) #{rc.linux_distro}; urgency=low
 
   * Updated manually from rake script 
 
- -- VirtLab Team <support@virtlab.unibo.it>  #{date}"""
+ -- #{rc.pkgs_default_maintainer} <#{rc.support_mail}>  #{date}"""
 
           control = """Priority: optional
-Section: vlab
+Section: #{rc.pkgs_default_section} 
 Build-Depends: debhelper (>= 7)
-Maintainer: VirtLab Team <support@virtlab.unibo.it>
+Maintainer: #{rc.pkgs_default_maintainer} <#{rc.support_mail}>
 Standards-Version: 3.9.2
 Source: #{name}
 
@@ -49,13 +55,13 @@ Description: This is a corepackage of the Virtlab Project.
           File.open("debian/install", 'w+') { |file| file.write(install) }
           File.open("debian/control", 'w+') { |file| file.write(control) }
           File.open("debian/changelog", 'w+') { |file| file.write(chlog) }
-          key = "-k" + Rails.configuration.gpg_key 
+          key = "-k" + rc.gpg_key 
           stdout = `dpkg-buildpackage -rfakeroot #{key} 2>&1`
           puts stdout
           # move the generated files into the incoming folder of the repo
           if $?.success?
             FileUtils.mv(Dir.glob(File.join("..", "#{name}_#{version}")+"*"), 
-                         Rails.configuration.repo_dir, :force => true)
+                         rc.repo_dir, :force => true)
           end
         end
       rescue => err 
