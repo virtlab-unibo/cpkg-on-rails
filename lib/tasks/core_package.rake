@@ -2,8 +2,9 @@ require 'fileutils'
 require 'tmpdir'
 
 namespace :cpkg do
+
   namespace :core_package do
-    desc "Updates core package"
+    desc "Updates core package. Is mandatory to pass name=$PKG-NAME as argument."
     task :update => :environment do
       begin
         Dir.mktmpdir do |tmp_dir|
@@ -69,6 +70,25 @@ Description: This is a corepackage of the Virtlab Project.
       end
 
     end
+
+    desc "Create the directory structure for a corepackage. name=$PKG_NAME param is mandatory."
+    task :create => :environment do
+      if not ENV.include? "name"
+        puts "ERROR: we need a name"
+        return
+      end
+      name = ENV["name"]
+      pkg_path = File.join(Rails.root, "packages", name)
+      if File.exists?(pkg_path)
+        puts "ERROR: A directory named #{name} already exists."
+        return
+      end
+
+      FileUtils.mkdir_p File.join(pkg_path, "fs")
+      FileUtils.cp_r(File.expand_path(File.join(Rails.root, "config", "debian")), pkg_path)
+
+    end
+
   end
 
   namespace :courses do
@@ -80,4 +100,3 @@ Description: This is a corepackage of the Virtlab Project.
     end
   end
 end
-
