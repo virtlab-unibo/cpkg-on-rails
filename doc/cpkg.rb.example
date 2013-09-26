@@ -24,7 +24,7 @@ CpkgOnRails::Application.configure do
   config.pkgs_default_section = "cpkg"
   # Default maintainer
   config.pkgs_default_maintainer = "Cpkg Admin"
-
+  # Distribution code name. This value is a field of the debian package.
   config.linux_distro = "precise"
 
   # the gpg key-id of the gpg key you want to use to sign packages.
