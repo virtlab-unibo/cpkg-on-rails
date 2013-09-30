@@ -1,0 +1,2 @@
+This package is part of the cpkg system. Every package created with cpkg depends on it.
+

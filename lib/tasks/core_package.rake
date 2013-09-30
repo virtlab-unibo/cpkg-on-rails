@@ -3,6 +3,10 @@ require 'tmpdir'
 
 namespace :cpkg do
 
+  DEFAULT_PKG_DESC = "This is a corepackage of the Virtlab Project."
+  DEFAULT_CHLOG_DESC = "Updated manually from rake script"
+  URGENCY = "low"
+
   namespace :core_package do
     desc "Updates core package. Is mandatory to pass name=$PKG-NAME as argument."
     task :update => :environment do
@@ -33,11 +37,35 @@ namespace :cpkg do
           date = Time.new.strftime("%a, %d %b %Y %H:%M:%S %z")
           rc = Rails.configuration
 
-          chlog = """#{name} (#{version}) #{rc.linux_distro}; urgency=low
+          # If the default changelog description works, just hit enter and let the data keep processing
+          # Otherwise, change the description to your liking
+          print "Enter Changelog description: [#{DEFAULT_CHLOG_DESC}] "
+          chlog_desc = STDIN.gets.strip
+          if chlog_desc.blank?
+            chlog_desc = DEFAULT_CHLOG_DESC
+          end
 
-  * Updated manually from rake script 
+          chlog = """#{name} (#{version}) #{rc.linux_distro}; urgency=#{URGENCY}
+
+  * #{chlog_desc} 
 
  -- #{rc.pkgs_default_maintainer} <#{rc.support_mail}>  #{date}"""
+
+
+          # setting description from file or by default value
+          pkg_desc = ""
+          begin
+            File.open(File.join(pkg_path, "DESCRIPTION.txt"), "r") do |f| 
+              f.each { |line| pkg_desc += line}
+            end
+          rescue 
+            puts "Unable to read DESCRIPTION.txt. Setting default description."
+          end
+          if pkg_desc.blank?
+            pkg_desc = DEFAULT_PKG_DESC
+          end
+
+         
 
           control = """Priority: optional
 Section: #{rc.pkgs_default_section} 
@@ -48,8 +76,8 @@ Source: #{name}
 
 Package: #{name}
 Architecture: all
-Description: This is a corepackage of the Virtlab Project.
- This is a corepackage of the Virtlab Project.
+Description: #{name} 
+ #{pkg_desc} 
 """
           puts "executing dpkg-buildpackage" 
           Dir.chdir (tmp_dir)
@@ -86,6 +114,8 @@ Description: This is a corepackage of the Virtlab Project.
 
       FileUtils.mkdir_p File.join(pkg_path, "fs")
       FileUtils.cp_r(File.expand_path(File.join(Rails.root, "config", "debian")), pkg_path)
+      # writing default descrition
+      File.open(File.join(pkg_path, "DESCRIPTION.txt"), "w") { |f| f.write(DEFAULT_PKG_DESC) }
 
     end
 
