@@ -15,10 +15,11 @@ Clone the repository and
 
     $ cd cpkg-on-rails
     $ bundle
-    $ rake secret
     $ cp doc/cpkg.rb.example config/initializers/cpkg.rb
 
-Edit `config/initializers/cpkg.rb` to configure your installation.
+Edit `config/initializers/cpkg.rb` to configure your installation. In this file you need to
+manually change `config.secret_key_base` with a random key. You can generate a new key with
+`rake secret` (for example `sed -i -e "s/'SECRET KEY BASE.*'/'$(rake secret)'/" cpkg.rb`).
 
 Then
 
