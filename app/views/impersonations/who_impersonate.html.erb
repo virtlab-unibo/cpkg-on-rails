@@ -1,0 +1,6 @@
+<ul>
+  <% @users.each do |user| %>
+    <li><%= link_to user.upn, impersonate_path(user) %></li>
+  <% end %>
+</ul>
+

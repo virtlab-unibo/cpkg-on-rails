@@ -6,8 +6,9 @@ CpkgOnRails::Application.routes.draw do
     get "logins/logout" => 'devise/sessions#destroy', :as => :logout
   end
 
-  get "impersonate/:id" => 'users#impersonate', :as => :impersonate
-  get "stop_impersonating" => 'users#stop_impersonating', :as => :stop_impersonating
+  get "who_impersonate"    => 'impersonations#who_impersonate',    :as => :who_impersonate
+  get "impersonate/:id"    => 'impersonations#impersonate',        :as => :impersonate
+  get "stop_impersonating" => 'impersonations#stop_impersonating', :as => :stop_impersonating
 
   resources :courses  do
     resources :packages do
