@@ -31,6 +31,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def log_omniauth
     logger.info("shibboleth uid = #{request.env['omniauth.auth'].uid}")
     logger.info("shibboleth info = #{request.env['omniauth.auth'].info}")
+    logger.info("shibboleth raw_info = #{request.env['omniauth.auth'].extra.raw_info}")
   end
   
   # if invited we create the user and log
