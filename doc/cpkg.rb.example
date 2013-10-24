@@ -19,6 +19,19 @@ CpkgOnRails::Application.configure do
   # leave an empty string if you don't want to sign them.
   config.gpg_key = "09A0DEDE"
 
+  # Global dependencies. A comma-separaed list of packages that will be 
+  # added to every package created with cpkg.
+  config.global_deps = "cpkg-core"
+
+  # Default email inserted into the packages creared by cpkg.
+  config.support_email = "admin@cpkg.it"
+  # Default section which the packages will be part of.
+  config.pkgs_default_section = "cpkg"
+  # Default maintainer
+  config.pkgs_default_maintainer = "Cpkg Admin"
+  # Distribution code name. This value is a field of the debian package.
+  config.linux_distro = "precise"
+
   config.secret_key_base = 'fd79c402a74845cd2b44c17bb6d4219154a58b7dccd1c8d260ec2e4925805edc490bae07bf1410eb83cf36aa6e64e18f2b757b6163e30c6067edba781d629b47'
 end
 
