@@ -9,10 +9,9 @@ ALTER TABLE `changelogs` ADD COLUMN distributions varchar(100);
 ALTER TABLE `documents`  ADD COLUMN install_path text;
 
 ALTER TABLE `courses_users` DROP COLUMN owner_flag;
-ALTER TABLE `documents` ADD COLUMN install_path text;
 
+ALTER TABLE `packages` CHANGE description long_description varchar(100);
 ALTER TABLE `packages` ADD COLUMN short_description text;
-ALTER TABLE `packages` ADD COLUMN long_description text;
 ALTER TABLE `packages` ADD COLUMN filename text;
 ALTER TABLE `packages` DROP COLUMN description;
 
