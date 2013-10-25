@@ -10,7 +10,7 @@ ALTER TABLE `documents`  ADD COLUMN install_path text;
 
 ALTER TABLE `courses_users` DROP COLUMN owner_flag;
 
-ALTER TABLE `packages` CHANGE description long_description varchar(100);
+ALTER TABLE `packages` CHANGE description long_description text;
 ALTER TABLE `packages` ADD COLUMN short_description text;
 ALTER TABLE `packages` ADD COLUMN filename text;
 
