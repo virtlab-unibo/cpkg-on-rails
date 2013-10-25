@@ -18,24 +18,26 @@ class Document < ActiveRecord::Base
   #multiple attachments with the same name. If you didn't alter your
   #attachment's path and are using Paperclip's default, you'll have to add
   #`:path` and `:url` to your `has_attached_file` definition. For example:
+  # url  = da dove si scarica (creato in config/routes)
+  # path = dove si salva il file
+  # rack_base_uri = ENV["RACK_BASE_URI"] || ''
   #has_attached_file :avatar,
-  #    :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
+  #    :path => ":rails_root/public/system/:class/:attachment/:id_partition/:style/:filename"
   #    :url => "/system/:attachment/:id/:style/:filename"
+  # has_attached_file :attach,
+  #                   :url  => rack_base_uri + "/documents/:id/download",
+  #                   :path => ":rails_root/files/:upn/:filename"
 
-  has_attached_file :attach
+
+  has_attached_file :attach, 
+                    :path => ":rails_root/public/system/:class/:attachment/:id_partition/:style/:filename",
+                    :url => "#{ENV["RACK_BASE_URI"]}/system/:class/:attachment/:id_partition/:style/:filename"
 
   # in questo modo possiamo mettere :upn nel path del document
   #Paperclip.interpolates :upn do |att, style|
     # paperclip attachments i quali hanno come instance il document a cui sono allegati
     # att.instance.user.upn
   # end
-
-  # url  = da dove si scarica (creato in config/routes)
-  # path = dove si salva il file
-  # rack_base_uri = ENV["RACK_BASE_URI"] || ''
-  # has_attached_file :attach,
-  #                   :url  => rack_base_uri + "/documents/:id/download",
-  #                   :path => ":rails_root/files/:upn/:filename"
 
   def to_s
     self.description.blank? ? self.attach_file_name : self.description
