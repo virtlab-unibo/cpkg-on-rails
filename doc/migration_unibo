@@ -10,8 +10,8 @@ ALTER TABLE `documents`  ADD COLUMN install_path text;
 
 ALTER TABLE `courses_users` DROP COLUMN owner_flag;
 
-ALTER TABLE `packages` CHANGE description long_description text;
-ALTER TABLE `packages` ADD COLUMN short_description text;
+ALTER TABLE `packages` CHANGE COLUMN `body` `long_description` text;
+ALTER TABLE `packages` CHANGE COLUMN `description` `short_description` varchar(255);
 ALTER TABLE `packages` ADD COLUMN filename text;
 
 ALTER TABLE `users` ADD COLUMN email varchar(255);
