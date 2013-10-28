@@ -1,8 +1,8 @@
 CpkgOnRails::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
+  # remember Notify Channel="front" in shibboleth
   devise_scope :user do 
-    #get "logout" => 'devise/sessions#destroy', :as => :logout
     get "logins/logout" => 'devise/sessions#destroy', :as => :logout
   end
 
