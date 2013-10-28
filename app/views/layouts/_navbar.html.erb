@@ -27,7 +27,7 @@
           <% if current_user != true_user %>
             <li class="disabled"><a><strike><%= true_user %></strike></a></li>
           <% end %>
-          <li><%= link_to(image_tag(Rails.configuration.login_icon).html_safe + ' Logout', logout_path) %></li>
+          <li><%= logout_link %></li>
           <% if true_user.admin? %>
             <% if current_user != true_user %>
               <li><%= link_to 'back to you', stop_impersonating_path %></li>
