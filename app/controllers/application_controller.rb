@@ -24,12 +24,15 @@ class ApplicationController < ActionController::Base
     current_user.admin or raise "NO ADMIN"
   end
 
-  # FIXME
-  # for shibboleth
+  # for unibo shibboleth
   private
 
-  # Overwriting the sign_out redirect path method
-  #def after_sign_out_path_for(resource_or_scope)
-  # ActionController::Base.helpers.asset_path('greencheck.gif')
-  #end
+  def after_sign_out_path_for(resource_or_scope)
+    cookies.each do |c|
+      cookies.delete(c[0].to_sym)
+    end
+    reset_session
+    logger.info("called after_sign_out_path_for")
+    '/greencheck.gif'
+  end
 end
