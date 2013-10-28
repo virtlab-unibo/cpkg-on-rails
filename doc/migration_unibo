@@ -17,3 +17,16 @@ ALTER TABLE `packages` ADD COLUMN filename text;
 ALTER TABLE `users` ADD COLUMN email varchar(255);
 ALTER TABLE `users` ADD COLUMN uid varchar(255);
 
+CREATE TABLE scripts (
+  id int(11) unsigned auto_increment, 
+  package_id int(11) unsigned, 
+  name varchar(255), 
+  stype varchar(20), 
+  created_at datetime, 
+  attach_file_name varchar(255), 
+  attach_updated_at datetime, 
+  attach_content_type varchar(100), 
+  attach_file_size int(10), 
+  PRIMARY KEY(id) 
+);
+
