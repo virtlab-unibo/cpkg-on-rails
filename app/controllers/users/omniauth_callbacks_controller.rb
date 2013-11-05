@@ -13,6 +13,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     #logger.info("using shibboleth")
   end
 
+  private 
+
   def log_if_email
     oinfo = request.env['omniauth.auth'].info
     user = User.where(:email => oinfo.email.downcase).first
@@ -53,7 +55,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   #def fake
   #  if Rails.configuration.ominiauth_simulator and defined?(OmniAuth::Strategies::Fake) and Rails.env.development? 
   #    oinfo = request.env['omniauth.auth'].info
-
   #    user = User.where(:email => oinfo.username).first
   #    if user
   #      sign_in_and_redirect user, :event => :authentication    
@@ -65,3 +66,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   #  end
   #end
 end
+
+# user_omniauth_authorize_path  GET|POST  /users/auth/:provider(.:format)   users/omniauth_callbacks#passthru {:provider=>/google|shibboleth/}
+# user_omniauth_callback_path   GET|POST  /users/auth/:action/callback(.:format)  users/omniauth_callbacks#(?-mix:google|shibboleth)
+# logout_path   GET   /logins/logout(.:format)  devise/sessions#destroy 
