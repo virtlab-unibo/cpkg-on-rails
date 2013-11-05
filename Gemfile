@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.1'
 
-gem 'active_debian_repository', :git => 'git@github.com:virtlab-unibo/active_debian_repository.git'
+gem 'active_debian_repository', :path => '/home/rails/gems/active_debian_repository'
 
 gem 'spawnling'
 gem "paperclip"
@@ -12,7 +12,7 @@ gem 'twitter-bootstrap-rails'
 gem 'simple_form'
 gem 'devise'
  
-gem 'sqlite3'
+gem 'mysql2'
  
 gem 'omniauth'
 gem 'omniauth-openid'
