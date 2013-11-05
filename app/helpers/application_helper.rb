@@ -11,7 +11,7 @@ module ApplicationHelper
            when :google
              logout_path
            end
-    link_to (image_tag(Rails.configuration.login_icon) + '<strong>Logout</strong>'.html_safe), dest
+    link_to (image_tag(Rails.configuration.login_icon) + ' <strong>Logout</strong>'.html_safe), dest
   end
 
 end
