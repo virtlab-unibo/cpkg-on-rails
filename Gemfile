@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
 
-gem 'active_debian_repository', :git => 'git@github.com:virtlab-unibo/active_debian_repository.git'
+gem 'active_debian_repository', :git => 'https://github.com/virtlab-unibo/active_debian_repository.git'
 
 gem 'spawnling'
 gem "paperclip"
