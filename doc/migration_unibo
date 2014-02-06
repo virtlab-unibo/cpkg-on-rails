@@ -6,8 +6,6 @@ ALTER TABLE `changelogs` ADD COLUMN date DATE;
 ALTER TABLE `changelogs` ADD COLUMN urgency varchar(100);
 ALTER TABLE `changelogs` ADD COLUMN distributions varchar(100);
 
-ALTER TABLE `courses` ADD COLUMN abbr varchar(10);
-
 ALTER TABLE `courses_users` DROP COLUMN owner_flag;
 
 ALTER TABLE `documents`  ADD COLUMN install_path text;
