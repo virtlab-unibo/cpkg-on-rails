@@ -48,7 +48,6 @@ ActiveRecord::Schema.define(version: 20120828221401) do
   end
 
   add_index "courses_users", ["course_id"], name: "course_id", using: :btree
-  add_index "courses_users", ["user_id"], name: "user_id", using: :btree
 
   create_table "degrees", force: true do |t|
     t.string "code", limit: 6, null: false
@@ -67,7 +66,6 @@ ActiveRecord::Schema.define(version: 20120828221401) do
     t.text     "install_path"
   end
 
-  add_index "documents", ["package_id"], name: "package_id", using: :btree
 
   create_table "invitations", force: true do |t|
     t.string "email",                  null: false
@@ -88,7 +86,6 @@ ActiveRecord::Schema.define(version: 20120828221401) do
   end
 
   add_index "packages", ["archive_id"], name: "archive_id", using: :btree
-  add_index "packages", ["course_id"], name: "course_id", using: :btree
   add_index "packages", ["name"], name: "package_name", using: :btree
 
   create_table "scripts", force: true do |t|
