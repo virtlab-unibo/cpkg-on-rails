@@ -12,6 +12,7 @@ install it on other linux distros as long as you install dpkg and the debhelper 
 
 *  Rails 4
 *  Ruby 2.0+
+*  debhelper
 
 ## Languages 
 
