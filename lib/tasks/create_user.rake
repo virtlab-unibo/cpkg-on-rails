@@ -5,7 +5,7 @@ namespace :cpkg do
       print "Provide e-mail of the user: "
       email = STDIN.gets.chomp
 
-      u = User.new(:email => email)
+      u = User.new(:upn => email, :email => email)
       u.save!
     end
 
@@ -14,7 +14,7 @@ namespace :cpkg do
       print "Provide e-mail of the admin user: "
       email = STDIN.gets.chomp
 
-      u = User.new(:email => email)
+      u = User.new(:upn => email, :email => email)
       u.admin = 1
       u.save!
     end
