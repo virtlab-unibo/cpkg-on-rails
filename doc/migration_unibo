@@ -30,3 +30,4 @@ CREATE TABLE scripts (
   PRIMARY KEY(id) 
 );
 
+update users u set u.email=u.upn where u.id=u.id;
