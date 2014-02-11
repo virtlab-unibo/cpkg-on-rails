@@ -16,7 +16,7 @@ class ChangelogsController < ApplicationController
     @changelog.date = ActiveDebianRepository::Changelog.date_line
     # FIXME: make it a user or sysadmin choice
     @changelog.urgency = "medium"
-    @changelog.distributions = "precise"
+    @changelog.distributions = Rails.configuration.linux_distro
 
     res = false
     begin
