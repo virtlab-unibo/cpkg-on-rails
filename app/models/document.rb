@@ -33,6 +33,9 @@ class Document < ActiveRecord::Base
                     :path => ":rails_root/public/system/:class/:attachment/:id_partition/:style/:filename",
                     :url => "#{ENV["RACK_BASE_URI"]}/system/:class/:attachment/:id_partition/:style/:filename"
 
+  # Validate content type
+  validates_attachment_content_type :attach, :content_type => Rails.configuration.content_types 
+
   # in questo modo possiamo mettere :upn nel path del document
   #Paperclip.interpolates :upn do |att, style|
     # paperclip attachments i quali hanno come instance il document a cui sono allegati

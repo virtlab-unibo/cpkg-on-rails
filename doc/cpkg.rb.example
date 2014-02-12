@@ -33,6 +33,9 @@ CpkgOnRails::Application.configure do
   config.linux_distro = "precise"
 
   config.secret_key_base = 'fd79c402a74845cd2b44c17bb6d4219154a58b7dccd1c8d260ec2e4925805edc490bae07bf1410eb83cf36aa6e64e18f2b757b6163e30c6067edba781d629b47'
+
+  # List of content types allowed to be uploaded and inserted into a package
+  config.content_types = ['application/x-tar', 'application/zip', 'application/x-zip-compressed', 'application/pdf', 'text/plain', 'image/jpeg', 'image/png'] 
 end
 
 
