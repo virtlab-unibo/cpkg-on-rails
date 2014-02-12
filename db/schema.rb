@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20120828221401) do
     t.integer "user_id",                   null: false
     t.string  "version"
     t.text    "description"
-    t.date    "date"
+    t.string  "date"
     t.string  "urgency",       limit: 100
     t.string  "distributions", limit: 100
   end
