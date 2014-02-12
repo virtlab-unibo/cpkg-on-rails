@@ -37,7 +37,7 @@ it:
   cancel_upload: "Cancella l'upload"
   delete: "Elimina"
   upload_guide_html: "Clicca sul bottone <i>Seleziona file</i> per selezionare uno o più file dal tuo computer ed aggiungerli al pacchetto. Con il tasto <i>Avvia Upload</i> potrai far partire il caricamento di tutti i file selezionati in contemporanea."
-  max_size_warning: "La dimensione massima consentita del singolo file è 30MB."
+  max_size_warning: "La dimensione massima consentita del singolo file è 30MB. I File permessi sono: ZIP, TAR, PDF, TXT, JPG, PNG."
   dependencies: "Dipendenze"
   new_dep: "Nuova dipendenza:"
   add: "Aggiungi"

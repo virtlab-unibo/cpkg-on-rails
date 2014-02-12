@@ -36,7 +36,7 @@ en:
   cancel_upload: "Cancel uploads"
   delete: "Delete"
   upload_guide_html: "Click on the <i>Select files</i> button to select one or more files from your hard drive. You can start the upload of the selected files by clicking on the <i>Start Upload</i> button."
-  max_size_warning: "The maximum file size is 30MB."
+  max_size_warning: "The maximum file size is 30MB. Allowed files: ZIP, TAR, PDF, TXT, JPG, PNG."
   dependencies: "Dependencies"
   new_dep: "New dependency:"
   add: "Add"
