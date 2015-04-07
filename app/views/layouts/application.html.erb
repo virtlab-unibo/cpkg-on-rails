@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>CpkgOnRails</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Gestione tesi di laurea dei Cdl in Matematica. Università di Bologna.">
+    <meta name="author" content="Dipartimento di Matematica - Unibo">
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= yield :head %>
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%= render 'layouts/navbar' %>
+    <%= render :partial => 'layouts/menu' %>
+
     <div class="container">
       <%= bootstrap_flash %>
+      <%= bootstrap_modal_div %>
       <%= yield %>
     </div><!-- container -->
+
+    <%= dm_footer %>  
   </body>
 </html>
+

@@ -1,0 +1,28 @@
+<%= dm_menu do %>  
+  <%= dm_header 'suitcase', 'CpkgOnRails', 'package manager for VirtLab courses' %>  
+
+  <ul class="nav navbar-nav">
+    <li><%= link_to Rails.configuration.project_link[:name], Rails.configuration.project_link[:url] %></li>
+    <li><%= link_to image_tag("#{t(:other_language_prefix)}.png") + ' ' + t(:other_language), url_for( :locale => t(:other_language_prefix) ) %></li>
+  </ul>
+
+  <% if user_signed_in? %>
+    <ul class="nav navbar-nav">
+      <li><%= link_to t(:my_courses), root_path %></li>
+      <li><%= link_to t(:other_courses), guest_courses_path %></li>
+      <% if current_user.is_admin? %>
+        <%= dropdown_menu 'Admin' do  %>  
+          <li><%= link_to t(:degree_admin), admin_degrees_path %></li>
+          <li><%= link_to t(:course_admin), admin_courses_path %></li>
+          <li><%= link_to t(:repo_admin), admin_archives_path %></li>
+          <li><%= link_to t(:users_admin), admin_users_path %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  <% end %>
+  <!-- right -->
+  <ul class="nav navbar-nav navbar-right">
+    <%= logged_user %>  
+  </ul>
+<% end %>
+
