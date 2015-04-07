@@ -4,7 +4,7 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  config.secret_key = '6389017c0a37ba3fea2bd3da4ccb8f3fe4eea15ef32142fbd0808e5fa6c875ea41fbcf1963dfc8cd9a1de3a75cabde1b42705a48d58468e268ade120b1be820c'
+  config.secret_key = '3d4385c088a4a5583de44adfd8e9e6d27b0932534b1c4a6ddaeda395e4166e1cbf05574e5f3c6bd9193d02ccde28411bc0466484a2186ba8cb08b9376d41b932'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -98,7 +98,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = 'c038ad39d044bd7828bd3971d1ecea31bb18179f2901006ca814777825e8adae15b6eaf9c570a51c41d0b0cbfc787bfd50aeaa9c5a99a92b567a21e38479746e'
+  # config.pepper = '694e51f794fe5cefa035af872132df43f43f3e49d1d0fd4c0e80c5c860b2b71dd43c8e58c22476f8208f0a27e8c64862526ea70e6fabea93a9ca3b8e48617646'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -232,19 +232,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-  require 'openid/store/filesystem' 
-  config.omniauth :open_id, :store => OpenID::Store::Filesystem.new('/tmp'), 
-                  :name => 'google', 
-                  :identifier => 'https://www.google.com/accounts/o8/id',
-                  :require => 'omniauth-openid'
-
-  # shibboleth
-  config.omniauth :shibboleth, {:uid_field => 'eppn',
-                                :info_fields => {:email => 'eppn', 
-                                                 :name => 'givenName', 
-                                                 :last_name => 'sn'},
-                                :extra_fields => [:idAnagraficaUnica, :isMemberOf]}
-
+  config.omniauth :google_oauth2, ENV['CMSINO_GOOGLE_APP_ID'], ENV['CMSINO_GOOGLE_APP_SECRET'], { }
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

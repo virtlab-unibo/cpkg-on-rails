@@ -1,14 +1,4 @@
-CpkgOnRails::Application.routes.draw do
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-
-  # remember Notify Channel="front" in shibboleth
-  devise_scope :user do 
-    get "logins/logout" => 'devise/sessions#destroy', :as => :logout
-  end
-
-  get "who_impersonate"    => 'impersonations#who_impersonate',    :as => :who_impersonate
-  get "impersonate/:id"    => 'impersonations#impersonate',        :as => :impersonate
-  get "stop_impersonating" => 'impersonations#stop_impersonating', :as => :stop_impersonating
+Rails.application.routes.draw do
 
   resources :courses  do
     resources :packages do
