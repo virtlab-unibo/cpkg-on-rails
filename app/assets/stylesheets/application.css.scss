@@ -1,6 +1,6 @@
-body { 
-  padding-top: 60px;
-}
+@import "dm_common/variables";
+@import "dm_common/dm";
+
 textarea {
   height: 150px;
 }
@@ -42,5 +42,6 @@ textarea {
 .accordion-group {
   .in {
     border-left: 10px solid yellow;
+    padding: 10px;
   }
 }
