@@ -1,7 +1,7 @@
 <h3><%= t(:manage_materials) %></h3>
 <%= form_tag package_documents_path(@package), :multipart => true, :id => "fileupload"  do |f| %>
   <div class="row fileupload-buttonbar">
-    <div class="span7">
+    <div class="col-md-7">
       <span class="btn btn-success fileinput-button">
         <i class="icon-plus icon-white"></i>
         <span><%= t(:select_files) %></span>
@@ -21,7 +21,7 @@
       </button>
       <input type="checkbox" class="toggle">
     </div>
-    <div class="span5">
+    <div class="col-md-5">
       <!-- The global progress bar -->
       <div class="progress progress-success progress-striped active fade">
         <div class="bar" style="width:0%;"></div>
