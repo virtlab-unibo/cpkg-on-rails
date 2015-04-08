@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+
+  include DmCommonHelper 
 
   impersonates :user
 
@@ -9,7 +9,11 @@ class ApplicationController < ActionController::Base
 
   def handle_guest
     devise_controller? and return true
-    user_signed_in? or redirect_to guest_courses_path
+    if user_signed_in? 
+      logger.info("Current user: #{current_user.upn}")
+    else
+      redirect_to guest_courses_path and return
+    end
   end
 
   def default_url_options(options={})
