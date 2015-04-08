@@ -11,7 +11,7 @@
           <p><%= package.get_description %></p>
         </div><!-- heading -->
         <div id="<%= package.name %>" class="collapse accordion-body">  
-          <div class="span4">
+          <div class="col-md-4">
             <p><%= icon('info-sign')%>Lista del materiale incluso nel pacchetto.</p>
             <h3>Materiale:</h3>
             <div class=" scrollable" style="border-style:none; border-top-style:solid">
@@ -25,8 +25,8 @@
 	              <p> <i>Non contiene alcun file.</i></p>
               <% end %>
             </div>
-          </div><!-- span4-->
-         <div class="span5">
+          </div><!-- col-md-4-->
+         <div class="col-md-5">
            <p><%= icon('info-sign')%>Lista dei software che vengono installati insieme al pacchetto.</p>
            <h3>Software:</h3>
            <div class="scrollable" style="border-style:none; border-top-style:solid ">
@@ -40,7 +40,7 @@
                <p>  <i>Questo pacchetto non installa alcun software.</i> </p>
              <% end %>
            </div>
-        </div><!-- span5 -->
+        </div><!-- col-md-5 -->
      </div>
   </div>
   <% end %>
