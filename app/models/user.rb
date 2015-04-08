@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   # devise :database_authenticatable, :rememberable, :trackable, :validatable
   devise :omniauthable
 
+  include DmCommon::User
+
   ##attr_accessible :email, :name, :surname
   ##attr_accessible :admin, :as => :admin
 
@@ -37,12 +39,6 @@ class User < ActiveRecord::Base
   def ==(another_user)
     self.id == another_user.id
   end
-
-  # fake
-  #def self.fake_authenticate(login)
-  #  where(:email => login).first
-  #  true
-  #end
 end
 
 
