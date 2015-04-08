@@ -1,8 +1,8 @@
 <div class="row">
-  <div class="span4 guide">
+  <div class="col-md-4 guide">
     <%= render 'helps/admin_guide' %>  
   </div>
-  <div class="span8">
+  <div class="col-md-8">
     <h2><%= @current_user.courses.empty? ? t(:list_of_courses) : t(:your_courses) %></h2>
     <% @courses.each do |course| %>  
       <% packages = course.packages.to_a %>  
