@@ -1,17 +1,15 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  include DmCommonHelper 
+  include DmUniboCommon::Controllers::Helpers
 
   impersonates :user
 
-  before_filter :handle_guest, :set_locale
+  before_filter :log_current_user, :handle_guest, :set_locale
 
   def handle_guest
     devise_controller? and return true
-    if user_signed_in? 
-      logger.info("Current user: #{current_user.upn}")
-    else
+    if ! user_signed_in? 
       redirect_to guest_courses_path and return
     end
   end
@@ -28,15 +26,4 @@ class ApplicationController < ActionController::Base
     current_user.admin or raise "NO ADMIN"
   end
 
-  # for unibo shibboleth
-  private
-
-  def after_sign_out_path_for(resource_or_scope)
-    cookies.each do |c|
-      cookies.delete(c[0].to_sym)
-    end
-    reset_session
-    logger.info("called after_sign_out_path_for")
-    '/greencheck.gif'
-  end
 end
