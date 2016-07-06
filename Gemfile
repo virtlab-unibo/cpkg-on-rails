@@ -1,12 +1,11 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.1'
+gem 'dm_unibo_common', git: 'https://github.com/donapieppo/dm_unibo_common.git', branch: 'master'
+gem 'active_debian_repository', :git => 'https://github.com/virtlab-unibo/active_debian_repository.git'
+
+# gem "dsa_search", :path => '../gems/dsa_search'
 
 gem 'omniauth-openid'
-
-gem 'active_debian_repository', :git => 'https://github.com/virtlab-unibo/active_debian_repository.git'
-gem 'dm_common', :path => '../gems/dm_common'
-gem "dsa_search", :path => '../gems/dsa_search'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 
