@@ -1,4 +1,5 @@
 en:
+  abbr_hint: "it's used in the package's name"
   helpers:
     submit:
       changelog:
@@ -25,7 +26,7 @@ en:
     labels:
       course:
         name: "Course's Name"
-        abbr: "Name's abbreviation (it's used in the package's name)"
+        abbr: "Name's abbreviation" 
         description: "Description"
         year: "Year"
         users: "Responsible for the course"

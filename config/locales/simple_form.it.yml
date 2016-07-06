@@ -1,4 +1,5 @@
 it:
+  abbr_hint: "per creare nome dei pacchetti"
   helpers:
     submit:
       changelog:
@@ -26,7 +27,7 @@ it:
       course:
         name: "Nome del corso"
         degree: Corso di Laurea
-        abbr: "Nome abbreviato (per creare nome dei pacchetti)"
+        abbr: "Nome abbreviato" 
         description: "Descrizione"
         year: "Anno"
         users: "Responsabili del corso"
