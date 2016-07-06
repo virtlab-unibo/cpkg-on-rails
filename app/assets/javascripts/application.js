@@ -10,7 +10,7 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require dm_common
+//= require dm_unibo_common
 //= require typeahead.bundle
 //= require jquery.sortable.min
 //= require jquery-fileupload
