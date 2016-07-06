@@ -1,49 +1,53 @@
-<div class="well">
-  <dl class="dl-horizontal">
-    <dt><%= t(:package_name) %></dt>
-    <dd><em><%= @package %></em>
-        <%= link_to(icon('pencil'), edit_package_path(@package)) if can? :update, @package %>
-    </dd>
-    <dt><%= t(:description) %></dt><dd><%= @package.get_description %></dd>
-    <dt><%= t(:course_name) %></dt><dd><%= link_to @course, guest_course_path(@course.id) %></dd>
-  </dl>
-  <% if ! @other_packages.empty? %>
-    <p><%= t(:other_package_list) %> <i><%= @course %></i>:</p>
-    <ul>
-      <% @other_packages.each do |package| %>  
-        <li><%= link_to package, guest_package_path(package) %></li>
-      <% end %>
-    </ul>
-  <% end %>
-</div>
-<div class="row">
-  <div class="col-md-6">
-    <h2><%= t(:course_materials) %></h2>
-    <p><%= icon('info-sign')%><%= t(:materials_included_into_deb) %></p>
-    <div class="scrollable" style="border-style:none; border-top-style:solid">
+<h1><%= @package %> <%= link_to(icon('pencil'), edit_package_path(@package)) if can? :update, @package %></h1>
+
+<div class="package-panel">
+  <div class="panel-heading">
+    <dl class="dl-horizontal">
+      <dt><%= t(:description) %></dt><dd><%= @package.get_description %></dd>
+      <dt><%= t(:course_name) %></dt><dd><%= link_to @course, guest_course_path(@course.id) %></dd>
+    </dl>
+    <% if ! @other_packages.empty? %>
+      <p><%= t(:other_package_list) %> <i><%= @course %></i>:</p>
       <ul>
-        <% @package.documents.each do |document| %>
-          <li><%= link_to document.name, document.attach.url, :title => "Scarica file" %></li>
+        <% @other_packages.each do |package| %>  
+          <li><%= link_to package, guest_package_path(package) %></li>
         <% end %>
       </ul>
-      <% if @package.documents.empty? %>
-        <p><i><%= t(:package_without_materials) %></i></p>
-      <% end %>
-    </div>
-  </div><!-- span-->
-  <div class="col-md-6">
-    <h2>Software:</h2>
-    <p><%= icon('info-sign')%><%= t(:sw_included_into_deb) %></p>
-    <div class="scrollable" style="border-style:none; border-top-style:solid ">
-      <dl>
-        <% @package.depends_on.each do |package| %>  
-          <dt><%= package.name %>  </dt>
-          <dd><%= package.get_description %></dd>
-        <% end %>
-      </dl>
-      <% if @package.depends_on.empty? %> 
-        <p><i><%= t(:package_without_dependecies) %></i></p>
-      <% end %>
-    </div>
-  </div><!-- span -->
-</div><!-- row -->
+    <% end %>
+  </div>
+
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-6">
+        <h2><%= t(:course_materials) %></h2>
+        <p><%= icon('info-sign')%><%= t(:materials_included_into_deb) %></p>
+        <div class="scrollable" style="border-style:none; border-top-style:solid">
+          <ul>
+            <% @package.documents.each do |document| %>
+              <li><%= link_to document.name, document.attach.url, :title => "Scarica file" %></li>
+            <% end %>
+          </ul>
+          <% if @package.documents.empty? %>
+            <p><i><%= t(:package_without_materials) %></i></p>
+          <% end %>
+        </div>
+      </div><!-- span-->
+      <div class="col-md-6">
+        <h2>Software:</h2>
+        <p><%= icon('info-sign')%><%= t(:sw_included_into_deb) %></p>
+        <div class="scrollable" style="border-style:none; border-top-style:solid ">
+          <dl>
+            <% @package.depends_on.each do |package| %>  
+              <dt><%= package.name %>  </dt>
+              <dd><%= package.get_description %></dd>
+            <% end %>
+          </dl>
+          <% if @package.depends_on.empty? %> 
+            <p><i><%= t(:package_without_dependecies) %></i></p>
+          <% end %>
+        </div>
+      </div><!-- span -->
+    </div><!-- row -->
+  </div>
+</div>
+

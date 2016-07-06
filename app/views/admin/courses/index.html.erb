@@ -1,11 +1,12 @@
 <h1><%= t(:course_admin) %></h1>
 
-<dl>
+<ul class="courses">
   <% @courses.each do |course| %>  
-  <dt> <%= course %> <%= link_to icon('pencil'), edit_admin_course_path(course) %> </dt>
-  <dd> <%= course.degree %> (<%= course.users.join(', ') %>) </dd>  
+    <li> 
+    <%= link_to course, edit_admin_course_path(course) %> - <%= course.degree %> (<%= course.users.join(', ') %>)
+    </li>
   <% end %>
-</dl>
+</ul>
 
 <%= link_to t(:new_course), new_admin_course_path, :class => 'btn btn-primary' %>  
 - <%= link_to t(:back), admin_root_path %>

@@ -1,7 +1,7 @@
-<%= simple_form_for [:admin, @degree] do |degree| %>  
+<%= horizontal_form_for [:admin, @degree] do |degree| %>  
   <%= degree.error_notification %>
   <%= degree.input :code %>  
   <%= degree.input :name %>  
-  <%= degree.button :submit, :class => 'btn btn-primary'%>  
+  <%= degree.submit %>  
 <% end %>
 

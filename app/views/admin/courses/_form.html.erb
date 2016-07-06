@@ -1,11 +1,11 @@
-<%= simple_form_for [:admin, @course] do |course| %>  
+<%= horizontal_form_for [:admin, @course] do |course| %>  
   <div class="row">
     <div class="col-md-6">
       <%= course.error_notification %>
       <%= course.input :name %>  
       <%= course.association :degree %>  
       <%= course.input :year, :input_html => { :class => 'input-mini' } %>  
-      <%= course.input :abbr %>  
+      <%= course.input :abbr, hint: t(:abbr_hint) %>  
       <%= course.input :description %>  
       <%= course.button :submit, :class => 'btn btn-primary'%>  
       - <%= link_to t(:back), admin_courses_path %>
