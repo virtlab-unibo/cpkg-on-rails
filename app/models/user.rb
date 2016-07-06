@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   # devise :database_authenticatable, :rememberable, :trackable, :validatable
   devise :omniauthable
 
-  include DmCommon::User
+  include DmUniboCommon::User
 
   ##attr_accessible :email, :name, :surname
   ##attr_accessible :admin, :as => :admin
