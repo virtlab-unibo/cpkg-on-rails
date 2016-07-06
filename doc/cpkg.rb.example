@@ -36,6 +36,14 @@ CpkgOnRails::Application.configure do
 
   # List of content types allowed to be uploaded and inserted into a package
   config.content_types = ['application/x-tar', 'application/zip', 'application/x-zip-compressed', 'application/pdf', 'text/plain', 'image/jpeg', 'image/png'] 
+
+  # see config/dm_unibo_common.yml
+  config.dm_unibo_common.update(
+      login_method: :log_and_create,
+      message_footer: %Q{Messaggio inviato da 'CpkgOnRails'.\nNon rispondere a questo messaggio.},
+      impersonate_admins: [],
+      interceptor_mails: [] 
+  )
 end
 
 
