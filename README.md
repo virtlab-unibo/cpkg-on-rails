@@ -10,7 +10,7 @@ Only debian or ubuntu server are supported. Although you can successfully
 install it on other linux distros as long as you install dpkg and the debhelper utilities. This is because by default it use active_debian_repository gem. You can easily port that gem to rpm or other formats and then use cpkg with it.
 
 
-*  Rails 4
+*  Rails 4.2
 *  Ruby 2.0+
 *  debhelper
 
@@ -25,14 +25,16 @@ Clone the repository and
 
     $ cd cpkg-on-rails
     $ bundle
+    $ cp doc/dm_unibo_common.yml config/dm_unibo_common.yaml
     $ cp doc/cpkg.rb.example config/initializers/cpkg.rb
 
-Edit `config/initializers/cpkg.rb` to configure your installation. 
+Edit `config/dm_unibo_common.yaml` and `config/initializers/cpkg.rb` 
+to configure your installation. 
 
-In this file you need to manually change `config.secret_key_base` with a random key. You can generate a new key with `rake secret` (for example `sed -i -e "s/'SECRET KEY BASE.*'/'$(rake secret)'/" cpkg.rb`).
+In `config/initializers/cpkg.rb` manually change `config.secret_key_base` with a random key. 
+You can generate a new key with `rake secret` (for example `sed -i -e "s/'SECRET KEY BASE.*'/'$(rake secret)'/" cpkg.rb`).
 
-You should also change almost all the other preferences according to your
-setup.
+You should also change almost all the other preferences according to your setup.
 
    Then
 
@@ -41,8 +43,10 @@ setup.
 to load che db schema (default with sqlite3 but you can change db
 settings in `config/database.yml` file)
 
-To authenticate users the defaut is google omniauth (can change 
-with devise configuration file `config/initializers/devise.rb`). 
+To authenticate users the defaut is google_oauth2 omniauth 
+(can change with shibboleth or other omniauth strategies, see 
+[https://github.com/intridea/omniauth/wiki/List-of-Strategies]) 
+in `config/dm_unibo_common.yaml`.
 
 To create the first administrator use the `cpkg:users:create_admin_user` task:
 
