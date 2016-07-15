@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'dm_unibo_common',      '= 1.2.0'
-gem 'dm_unibo_user_search', '= 0.1.0'
+gem 'dm_unibo_common',      git: 'https://github.com/donapieppo/dm_unibo_common.git',      ref: 'omniauth', branch: 'omniauth'
+gem 'dm_unibo_user_search', git: 'https://github.com/donapieppo/dm_unibo_user_search.git', ref: 'master', branch: 'master'
 
 gem 'active_debian_repository', :git => 'https://github.com/virtlab-unibo/active_debian_repository.git'
 
