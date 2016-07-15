@@ -1,5 +1,5 @@
 class Guest::CoursesController < ApplicationController
-  skip_filter :handle_guest
+  skip_filter :redirect_unsigned_user
 
   def index
     @courses = Course.includes(:degree).order('degrees.code')
@@ -9,7 +9,7 @@ class Guest::CoursesController < ApplicationController
   def show
     @courses = Course.includes(:degree).order('degrees.code')
     @course = Course.find(params[:id])
-    render :action => :index
+    render action: :index
   end
 
 end
