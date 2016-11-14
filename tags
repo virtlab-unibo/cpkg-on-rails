@@ -1,0 +1,119 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+==	app/models/user.rb	/^  def ==(another_user)$/;"	f	class:User
+Ability	app/models/ability.rb	/^class Ability$/;"	c
+Admin	app/controllers/admin/admin_controller.rb	/^class Admin::AdminController < ApplicationController$/;"	c
+Admin	app/controllers/admin/archives_controller.rb	/^class Admin::ArchivesController < ApplicationController$/;"	c
+Admin	app/controllers/admin/courses_controller.rb	/^class Admin::CoursesController < ApplicationController$/;"	c
+Admin	app/controllers/admin/degrees_controller.rb	/^class Admin::DegreesController < ApplicationController$/;"	c
+Admin	app/controllers/admin/invitations_controller.rb	/^class Admin::InvitationsController < ApplicationController$/;"	c
+Admin	app/controllers/admin/users_controller.rb	/^class Admin::UsersController < ApplicationController$/;"	c
+ApplicationController	app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c
+ApplicationHelper	app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
+Archive	app/models/archive.rb	/^class Archive < ActiveRecord::Base$/;"	c
+Changelog	app/models/changelog.rb	/^class Changelog < ActiveRecord::Base$/;"	c
+ChangelogsController	app/controllers/changelogs_controller.rb	/^class ChangelogsController < ApplicationController$/;"	c
+Course	app/models/course.rb	/^class Course < ActiveRecord::Base$/;"	c
+CoursesController	app/controllers/courses_controller.rb	/^class CoursesController < ApplicationController$/;"	c
+CoursesUser	app/models/courses_user.rb	/^class CoursesUser < ActiveRecord::Base$/;"	c
+Degree	app/models/degree.rb	/^class Degree < ActiveRecord::Base$/;"	c
+Document	app/models/document.rb	/^class Document < ActiveRecord::Base$/;"	c
+DocumentsController	app/controllers/documents_controller.rb	/^class DocumentsController < ApplicationController$/;"	c
+Guest	app/controllers/guest/courses_controller.rb	/^class Guest::CoursesController < ApplicationController$/;"	c
+Guest	app/controllers/guest/packages_controller.rb	/^class Guest::PackagesController < ApplicationController$/;"	c
+ImpersonationsController	app/controllers/impersonations_controller.rb	/^class ImpersonationsController < ApplicationController$/;"	c
+Invitation	app/models/invitation.rb	/^class Invitation < ActiveRecord::Base$/;"	c
+InvitationMailer	app/mailers/invitation_mailer.rb	/^class InvitationMailer < ActionMailer::Base$/;"	c
+InvitationsController	app/controllers/invitations_controller.rb	/^class InvitationsController < ApplicationController$/;"	c
+Package	app/models/package.rb	/^class Package < ActiveRecord::Base$/;"	c
+PackagesController	app/controllers/packages_controller.rb	/^class PackagesController < ApplicationController$/;"	c
+Script	app/models/script.rb	/^class Script < ActiveRecord::Base$/;"	c
+User	app/models/user.rb	/^class User < ActiveRecord::Base$/;"	c
+UsersController	app/controllers/users_controller.rb	/^class UsersController < ApplicationController$/;"	c
+add_global_deps	app/models/package.rb	/^  def add_global_deps$/;"	f	class:Package
+archive_params	app/controllers/admin/archives_controller.rb	/^  def archive_params$/;"	f	class:Admin
+changelog_params	app/controllers/changelogs_controller.rb	/^  def changelog_params$/;"	f	class:ChangelogsController
+content	app/models/script.rb	/^  def content$/;"	f	class:Script
+course_params	app/controllers/admin/courses_controller.rb	/^  def course_params$/;"	f	class:Admin
+create	app/controllers/admin/archives_controller.rb	/^  def create$/;"	f	class:Admin
+create	app/controllers/admin/courses_controller.rb	/^  def create$/;"	f	class:Admin
+create	app/controllers/admin/degrees_controller.rb	/^  def create$/;"	f	class:Admin
+create	app/controllers/admin/invitations_controller.rb	/^  def create$/;"	f	class:Admin
+create	app/controllers/admin/users_controller.rb	/^  def create$/;"	f	class:Admin
+create	app/controllers/changelogs_controller.rb	/^  def create$/;"	f	class:ChangelogsController
+create	app/controllers/documents_controller.rb	/^  def create$/;"	f	class:DocumentsController
+create	app/controllers/packages_controller.rb	/^  def create$/;"	f	class:PackagesController
+default_attributes	app/models/archive.rb	/^  def self.default_attributes$/;"	F	class:Archive
+default_url_options	app/controllers/application_controller.rb	/^  def default_url_options(options={})$/;"	f	class:ApplicationController
+degree_params	app/controllers/admin/degrees_controller.rb	/^  def degree_params$/;"	f	class:Admin
+depend	app/controllers/packages_controller.rb	/^  def depend$/;"	f	class:PackagesController
+destroy	app/controllers/admin/archives_controller.rb	/^  def destroy$/;"	f	class:Admin
+destroy	app/controllers/admin/users_controller.rb	/^  def destroy$/;"	f	class:Admin
+destroy	app/controllers/documents_controller.rb	/^  def destroy$/;"	f	class:DocumentsController
+destroy	app/controllers/packages_controller.rb	/^  def destroy$/;"	f	class:PackagesController
+document_params	app/controllers/documents_controller.rb	/^  def document_params$/;"	f	class:DocumentsController
+download	app/controllers/packages_controller.rb	/^  def download$/;"	f	class:PackagesController
+edit	app/controllers/admin/courses_controller.rb	/^  def edit$/;"	f	class:Admin
+edit	app/controllers/admin/degrees_controller.rb	/^  def edit$/;"	f	class:Admin
+edit	app/controllers/courses_controller.rb	/^  def edit$/;"	f	class:CoursesController
+edit	app/controllers/documents_controller.rb	/^  def edit$/;"	f	class:DocumentsController
+edit	app/controllers/packages_controller.rb	/^  def edit $/;"	f	class:PackagesController
+fake_upn	app/controllers/invitations_controller.rb	/^  def fake_upn$/;"	f	class:InvitationsController
+force_unique_email	app/models/invitation.rb	/^  def force_unique_email$/;"	f	class:Invitation
+generate_expiration	app/models/invitation.rb	/^  def generate_expiration$/;"	f	class:Invitation
+generate_homepage	app/models/package.rb	/^  def generate_homepage$/;"	f	class:Package
+generate_uuid	app/models/invitation.rb	/^  def generate_uuid$/;"	f	class:Invitation
+get_description	app/models/package.rb	/^  def get_description$/;"	f
+impersonate	app/controllers/impersonations_controller.rb	/^  def impersonate$/;"	f	class:ImpersonationsController
+impersonate	app/controllers/users_controller.rb	/^  def impersonate$/;"	f	class:UsersController
+increment_version	app/models/changelog.rb	/^  def increment_version$/;"	f	class:Changelog
+index	app/controllers/admin/archives_controller.rb	/^  def index$/;"	f	class:Admin
+index	app/controllers/admin/courses_controller.rb	/^  def index$/;"	f	class:Admin
+index	app/controllers/admin/degrees_controller.rb	/^  def index$/;"	f	class:Admin
+index	app/controllers/admin/invitations_controller.rb	/^  def index$/;"	f	class:Admin
+index	app/controllers/admin/users_controller.rb	/^  def index$/;"	f	class:Admin
+index	app/controllers/courses_controller.rb	/^  def index$/;"	f	class:CoursesController
+index	app/controllers/documents_controller.rb	/^  def index$/;"	f	class:DocumentsController
+index	app/controllers/guest/courses_controller.rb	/^  def index$/;"	f	class:Guest
+init_name	app/models/package.rb	/^  def init_name$/;"	f
+initialize	app/models/ability.rb	/^  def initialize(user)$/;"	f	class:Ability
+invitation_email	app/mailers/invitation_mailer.rb	/^  def invitation_email(invitation)$/;"	f	class:InvitationMailer
+is_admin?	app/models/user.rb	/^  def is_admin?$/;"	f	class:User
+new	app/controllers/admin/archives_controller.rb	/^  def new$/;"	f	class:Admin
+new	app/controllers/admin/courses_controller.rb	/^  def new$/;"	f	class:Admin
+new	app/controllers/admin/degrees_controller.rb	/^  def new$/;"	f	class:Admin
+new	app/controllers/admin/invitations_controller.rb	/^  def new   $/;"	f	class:Admin
+new	app/controllers/admin/users_controller.rb	/^  def new   $/;"	f	class:Admin
+new	app/controllers/changelogs_controller.rb	/^  def new$/;"	f	class:ChangelogsController
+new	app/controllers/packages_controller.rb	/^  def new$/;"	f	class:PackagesController
+package_params	app/controllers/packages_controller.rb	/^  def package_params$/;"	f	class:PackagesController
+register	app/controllers/invitations_controller.rb	/^  def register$/;"	f	class:InvitationsController
+search	app/controllers/packages_controller.rb	/^  def search$/;"	f	class:PackagesController
+set_locale	app/controllers/application_controller.rb	/^  def set_locale$/;"	f	class:ApplicationController
+show	app/controllers/courses_controller.rb	/^  def show$/;"	f	class:CoursesController
+show	app/controllers/guest/courses_controller.rb	/^  def show$/;"	f	class:Guest
+show	app/controllers/guest/packages_controller.rb	/^  def show$/;"	f	class:Guest
+stop_impersonating	app/controllers/impersonations_controller.rb	/^  def stop_impersonating$/;"	f	class:ImpersonationsController
+stop_impersonating	app/controllers/users_controller.rb	/^  def stop_impersonating$/;"	f	class:UsersController
+sync	app/controllers/admin/archives_controller.rb	/^  def sync$/;"	f	class:Admin
+to_jq_upload	app/models/document.rb	/^  def to_jq_upload$/;"	f	class:Document
+to_s	app/models/course.rb	/^  def to_s$/;"	f	class:Course
+to_s	app/models/degree.rb	/^  def to_s$/;"	f	class:Degree
+to_s	app/models/document.rb	/^  def to_s$/;"	f	class:Document
+to_s	app/models/script.rb	/^  def to_s$/;"	f	class:Script
+true_user_can_impersonate?	app/controllers/impersonations_controller.rb	/^  def true_user_can_impersonate?$/;"	f	class:ImpersonationsController
+types	app/models/script.rb	/^  def Script.types$/;"	F	class:Script
+undepend	app/controllers/packages_controller.rb	/^  def undepend$/;"	f	class:PackagesController
+update	app/controllers/admin/courses_controller.rb	/^  def update$/;"	f	class:Admin
+update	app/controllers/admin/degrees_controller.rb	/^  def update$/;"	f	class:Admin
+update	app/controllers/courses_controller.rb	/^  def update$/;"	f	class:CoursesController
+update	app/controllers/documents_controller.rb	/^  def update$/;"	f	class:DocumentsController
+update	app/controllers/packages_controller.rb	/^  def update$/;"	f	class:PackagesController
+update_package_version	app/models/changelog.rb	/^  def update_package_version$/;"	f	class:Changelog
+user_admin!	app/controllers/application_controller.rb	/^  def user_admin!$/;"	f	class:ApplicationController
+validate_uuid	app/models/invitation.rb	/^  def self.validate_uuid(uuid, email)$/;"	F	class:Invitation
+who_impersonate	app/controllers/impersonations_controller.rb	/^  def who_impersonate$/;"	f	class:ImpersonationsController
