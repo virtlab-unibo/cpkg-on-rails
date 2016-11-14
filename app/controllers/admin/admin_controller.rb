@@ -1,5 +1,5 @@
 class Admin::AdminController < ApplicationController
-  before_filter :user_admin!
+  before_action :user_admin!
 
 end
 

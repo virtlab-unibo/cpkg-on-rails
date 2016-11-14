@@ -1,5 +1,5 @@
 class Admin::InvitationsController < ApplicationController
-  before_filter :user_admin!
+  before_action :user_admin!
 
   def index
     @invitations = Invitation.order(:expiration).all

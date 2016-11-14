@@ -5,10 +5,10 @@ class ApplicationController < ActionController::Base
 
   impersonates :user
 
-  before_filter :log_current_user, :redirect_unsigned_user, :set_locale
+  before_action :log_current_user, :redirect_unsigned_user, :set_locale
 
   def default_url_options(options={})
-    { :locale => I18n.locale }
+    { locale: I18n.locale }
   end
 
   def set_locale

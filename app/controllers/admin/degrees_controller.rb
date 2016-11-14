@@ -1,5 +1,5 @@
 class Admin::DegreesController < ApplicationController
-  before_filter :user_admin!
+  before_action :user_admin!
 
   def index
     @degrees = Degree.all

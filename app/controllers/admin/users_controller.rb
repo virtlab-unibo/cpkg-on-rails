@@ -1,6 +1,6 @@
 # -*- coding:  utf-8 -*-
 class Admin::UsersController < ApplicationController
-  before_filter :user_admin!
+  before_action :user_admin!
 
   def index
     @users = User.all
