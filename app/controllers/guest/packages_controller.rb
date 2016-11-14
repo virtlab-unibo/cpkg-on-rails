@@ -1,5 +1,5 @@
 class Guest::PackagesController < ApplicationController
-  skip_filter :redirect_unsigned_user
+  skip_before_action :redirect_unsigned_user
 
   # remember in config/routes
   # match ':id', :controller => "guest::packages", :action => "show"

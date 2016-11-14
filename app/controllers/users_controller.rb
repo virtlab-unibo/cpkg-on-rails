@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_filter :handle_guest
+  skip_before_action :handle_guest
 
   def impersonate
     if true_user.is_admin?
