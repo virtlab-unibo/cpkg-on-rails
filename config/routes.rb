@@ -40,7 +40,7 @@ Rails.application.routes.draw do
 
   # FIXME 
   # could be more precise about the match: ex \d+-\w+-\d+ for 8014-so-2013
-  get ':id', controller: "packages", action: "show", module: "guest"
+  get ':id', controller: "packages", action: "show", module: "guest", constraints: { id: /\d+-\w+-\d+/ }
 
   root to: 'guest/courses#index'
 end
