@@ -7,7 +7,7 @@
 
 <div id="listofpackages" >
   <% @course.packages.each do |package| %>
-  <% if not package.changelogs.empty? or user_owns?(@course) or @current_user.is_admin? %>
+  <% if not package.changelogs.empty? or user_owns?(@course) or current_user.is_admin? %>
   <div class="accordion-group">
      <div class="accordion-heading">  
          <% if user_owns?(@course) %>
