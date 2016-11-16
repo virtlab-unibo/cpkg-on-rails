@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 class PackagesController < ApplicationController
-  respond_to :json, :only => :search
-
   def new
     @course = Course.find(params[:course_id])
     authorize! :manage, @course
@@ -103,7 +101,6 @@ class PackagesController < ApplicationController
     is_full_search = true
     term = params[:q]
     res = Package.where(["LOWER(name) LIKE ?", "#{(is_full_search ? '%' : '')}#{term.downcase}%"]).limit(10).select(:id, :name)
-    # render :json => { :status => :ok, :res => res.to_json}
     render :json => { :status => :ok, :res => res.to_json}
   end
 
