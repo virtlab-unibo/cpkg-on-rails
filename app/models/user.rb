@@ -10,10 +10,6 @@ class User < ActiveRecord::Base
   has_many :changelogs
   has_many :packages, :through => :changelogs
 
-  def is_admin?
-    self.admin
-  end
-
   def ==(another_user)
     self.id == another_user.id
   end
