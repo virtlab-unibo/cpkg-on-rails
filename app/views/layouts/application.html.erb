@@ -22,7 +22,15 @@
       <%= yield %>
     </div><!-- container -->
 
-    <%= dm_footer %>  
+    <div id="footer" role="navigation">
+      <div class="container" style="text-align: center">
+        &mdash; <strong><a href="http://virtlab.unibo/it">Laboratorio Virtuale</a></strong> &mdash;<br/>
+        <a href="http://www.unibo.it">Università di Bologna</a><br/>
+        Per problemi di carattere tecnico contattare <%= support_mail %><br/>
+        <a href="http://www.unibo.it/it/ateneo/privacy-e-note-legali/privacy/informative-sul-trattamento-dei-dati-personali">Privacy</a><br/>
+        <%= raw stop_impersonation_link %> <%= raw start_impersonation_link %>
+      </div>
+    </div>
   </body>
 </html>
 
