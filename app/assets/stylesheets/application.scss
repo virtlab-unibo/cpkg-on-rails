@@ -1,5 +1,6 @@
 @import "dm_unibo_common/variables";
 @import "dm_unibo_common/dm";
+@import "jquery.fileupload";
 
 textarea {
   height: 150px;
@@ -56,4 +57,10 @@ ul.courses, ul.degrees {
   li {
     @extend .list-group-item;
   }
+}
+
+
+// fix donatini bootstrap
+.checkbox input[type="checkbox"] {
+  position: relative;
 }
