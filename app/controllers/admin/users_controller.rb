@@ -6,23 +6,27 @@ class Admin::UsersController < ApplicationController
     @users = User.all
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def new   
     @user = User.new
   end 
 
   def create
-    @user = User.new(params[:user], :as => :admin)
+    @user = User.new(params[:user], as: :admin)
     if @user.save
       flash[:notice] = I18n.t 'user_crtd_ok'
       redirect_to admin_users_path
     else
-      render :action => :new
+      render action: :new
     end
   end
 
   def destroy
     # FIXME: we need to carefully think about this.
-    flash[:notice] = I18n.t 'user_del_ok'
+    flash[:alert] = I18n.t 'user_del_ok'
     redirect_to admin_users_path
   end
 
