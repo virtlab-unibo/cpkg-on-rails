@@ -4,14 +4,14 @@
 class Document < ActiveRecord::Base
   belongs_to :package
 
-  validates :attach, :attachment_presence => true
+  validates :attach, attachment_presence: true
 
-  validates_uniqueness_of :attach_file_name, :scope => :package_id, 
-                          :message => "Il File non e' stato uploadato. Il nome del file deve essere univoco nel pacchetto." 
+  validates_uniqueness_of :attach_file_name, scope: :package_id, 
+                          message: "Il File non e' stato uploadato. Il nome del file deve essere univoco nel pacchetto." 
 
-  validates_presence_of   :name, :message => "Si prega di assegnare un nome al documento allegato" 
-  validates_uniqueness_of :name, :scope => :package_id,
-                          :message => "Il File non e' stato uploadato. Il nome del file deve essere univoco nel pacchetto." 
+  validates_presence_of   :name, message: "Si prega di assegnare un nome al documento allegato" 
+  validates_uniqueness_of :name, scope: :package_id,
+                          message: "Il File non e' stato uploadato. Il nome del file deve essere univoco nel pacchetto." 
 
   #Paperclip 3.0 introduces a non-backward compatible change in your attachment
   #path. This will help to prevent attachment name clashes when you have
@@ -22,19 +22,19 @@ class Document < ActiveRecord::Base
   # path = dove si salva il file
   # rack_base_uri = ENV["RACK_BASE_URI"] || ''
   #has_attached_file :avatar,
-  #    :path => ":rails_root/public/system/:class/:attachment/:id_partition/:style/:filename"
-  #    :url => "/system/:attachment/:id/:style/:filename"
+  #    path: ":rails_root/public/system/:class/:attachment/:id_partition/:style/:filename"
+  #    url: "/system/:attachment/:id/:style/:filename"
   # has_attached_file :attach,
-  #                   :url  => rack_base_uri + "/documents/:id/download",
-  #                   :path => ":rails_root/files/:upn/:filename"
+  #                   url: rack_base_uri + "/documents/:id/download",
+  #                   path: ":rails_root/files/:upn/:filename"
 
 
   has_attached_file :attach, 
-                    :path => ":rails_root/public/system/:class/:attachment/:id_partition/:style/:filename",
-                    :url => "#{ENV["RACK_BASE_URI"]}/system/:class/:attachment/:id_partition/:style/:filename"
+                    path: ":rails_root/public/system/:class/:attachment/:id_partition/:style/:filename",
+                    url: "#{ENV["RACK_BASE_URI"]}/system/:class/:attachment/:id_partition/:style/:filename"
 
   # Validate content type
-  validates_attachment_content_type :attach, :content_type => Rails.configuration.content_types 
+  validates_attachment_content_type :attach, content_type: Rails.configuration.content_types 
 
   # in questo modo possiamo mettere :upn nel path del document
   #Paperclip.interpolates :upn do |att, style|
