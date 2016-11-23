@@ -7,10 +7,9 @@ class Guest::CoursesController < ApplicationController
 
   # the show is the index with the @course selected
   def show
-    @courses = Course.includes(:degree).order('degrees.code')
     @course = Course.find(params[:id])
+    @courses = @course.degree.courses.includes(:degree).order('degrees.code')
     render action: :index
   end
-
 end
 
