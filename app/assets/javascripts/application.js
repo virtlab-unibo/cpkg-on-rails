@@ -11,7 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require dm_unibo_common
-//= require typeahead.bundle
 //= require jquery.sortable.min
 //= require jquery-fileupload/basic-plus
+//= require typeahead.bundle
 //= require_tree .
