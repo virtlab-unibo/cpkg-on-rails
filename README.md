@@ -10,8 +10,8 @@ Only debian or ubuntu server are supported. Although you can successfully
 install it on other linux distros as long as you install dpkg and the debhelper utilities. This is because by default it use active_debian_repository gem. You can easily port that gem to rpm or other formats and then use cpkg with it.
 
 
-*  Rails 4.2
-*  Ruby 2.0+
+*  Rails 5
+*  Ruby 2.3+
 *  debhelper
 
 ## Languages 
