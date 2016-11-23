@@ -1,74 +1,7 @@
-<div class="row">
+<h1><%= @course %></h1>
+<h2><%= @course.description %></h2>
 
-<h1>Panoramica dei pacchetti relativi al corso di <%= @course %></h1>
-<p> <big><%= @course.description %> </big></p>
+<% @course.packages.each do |package| %>
+  <%= render package %>  
+<% end %>
 
-
-
-<div id="listofpackages" >
-  <% @course.packages.each do |package| %>
-  <% if not package.changelogs.empty? or user_owns?(@course) or current_user.is_admin? %>
-  <div class="accordion-group">
-     <div class="accordion-heading">  
-         <% if user_owns?(@course) %>
-         <p style="width:100%; text-align:right"> <%= link_to icon('pencil'), edit_package_path(package), :title => 'Modifica pacchetto' %></p>
-	 <% end %>
-       <a data-parent="#listofpackages" class="accordion-toggle" href="#<%= package.name %>" data-toggle="collapse" data-target="#<%= package.name %>"> 
-         <h2><%= package %></h2> 
-	 </a> 
-         <p style="margin-left:30px"><big><%= package.get_description %></big></p>
-      
-     </div>
-     <div id="<%= package.name %>" class="collapse accordion-body">  
-       <div class="col-md-4">
-	 <p><%= icon('info-sign')%>Lista del materiale incluso nel pacchetto.</p>
-	  <h3>Materiale:</h3>
-	 <div class=" scrollable" style="border-style:none; border-top-style:solid">
-	  
-	   <ul>
-	     <% package.documents.each do |document| %>
-             <li>
-	       <%# FIXME: url sotto  %>
-               <%= link_to document.name, ('/cpkg' + document.attach.url), :title => "Scarica file" %></li>
-
-             <% end %>
-	   </ul>
-	   <% if package.documents.empty? %>
-	   
-	  <p> <i>Non contiene alcun file.</i></p>
-	   <% end %>
-	 </div>
-       </div>
-
-       <div class="col-md-5">
-	 <p><%= icon('info-sign')%>Lista dei software che vengono installati insieme al pacchetto.</p>
-	   <h3>Software:</h3>
-	 <div class="scrollable" style="border-style:none; border-top-style:solid ">
-	   <dl>
-	     <% package.depends_on.each do |package| %>  
-             <div>
-	       <dt><%=  package.name %>  </dt>
-	       <dd><%= package.description %></dd>
-             </div>
-	     <% end %>
-	   </dl>
-	   <% if package.depends_on.empty? %> 
-	 <p>  <i>Questo pacchetto non installa alcun software.</i> </p>
-	   <% end %>
-	 </div>
-       </div>
-     </div>
-  </div>
-  <% end %>
-   <% end %>
-  <% if  @course.packages.empty? %>
-  <br>
-  <big><p>  <%= icon('warning-sign') %> <i> Questo corso non possiede ancora pacchetti.</i> </p></big>
-  <% end %>
- 
-
-</div>
-
-
-
-</div>
