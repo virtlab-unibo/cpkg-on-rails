@@ -11,7 +11,7 @@ class CoursesController < ApplicationController
   def update
     @course.description = params[:course][:description]
     if @course.save
-      redirect_to courses_path, notice 'OK'
+      redirect_to courses_path, notice: 'OK'
     else
       render action: :edit
     end
