@@ -1,6 +1,6 @@
 <div class="row">
   <h2>Panoramica dei pacchetti relativi al corso di <%= @course %></h2>
-  <p><big><%= @course.description %></big></p>
+  <p><%= @course.description %></p>
   
   <div id="listofpackages" >
     <% @course.packages.each do |package| %>
