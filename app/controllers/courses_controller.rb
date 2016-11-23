@@ -1,23 +1,30 @@
 class CoursesController < ApplicationController
+  before_action :get_course_and_check_permission, only: [:edit, :update]
+
   def index
     @courses = current_user.courses.includes(:packages)
   end
 
   def edit
-    @course = Course.find(params[:id])
-    authorize! :manage, @course
   end
 
   def update
-    @course = Course.find(params[:id])
-    authorize! :manage, @course
     @course.description = params[:course][:description]
-    @course.save
-    redirect_to courses_path
+    if @course.save
+      redirect_to courses_path, notice 'OK'
+    else
+      render action: :edit
+    end
   end
 
   def show
     @course = Course.find(params[:id])
   end
 
+  private
+
+  def get_course_and_check_permission
+    @course = Course.find(params[:id])
+    authorize! :manage, @course
+  end
 end
