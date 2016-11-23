@@ -1,89 +1,31 @@
-<h3><%= t(:manage_materials) %></h3>
-<%= form_tag package_documents_path(@package), :multipart => true, :id => "fileupload"  do |f| %>
-  <div class="row fileupload-buttonbar">
-    <div class="col-md-7">
-      <span class="btn btn-success fileinput-button">
-        <i class="icon-plus icon-white"></i>
-        <span><%= t(:select_files) %></span>
-        <input type="file" name="document[attach]" multiple>
-      </span>
-      <button type="submit" class="btn btn-primary start">
-        <i class="icon-upload icon-white"></i>
-        <span><%= t(:start_upload) %></span>
-      </button>
-      <button type="reset" class="btn btn-warning cancel">
-        <i class="icon-ban-circle icon-white"></i>
-        <span><%= t(:cancel_upload) %></span>
-      </button>
-      <button type="button" class="btn btn-danger delete">
-        <i class="icon-trash icon-white"></i>
-        <span><%= t(:delete) %></span>
-      </button>
-      <input type="checkbox" class="toggle">
-    </div>
-    <div class="col-md-5">
-      <!-- The global progress bar -->
-      <div class="progress progress-success progress-striped active fade">
-        <div class="bar" style="width:0%;"></div>
-      </div>
-    </div>
+<div class="row">
+<div class="col-md-6">
+  <p>
+  <span class="button fileinput-button">
+    <i class="fa fa-plus"></i>
+    <span>Add file</span>
+    <!-- The file input field used as target for the file upload widget -->
+    <input id="fileupload" type="file" name="files[]" multiple/>
+  </span>
+  </p>
+
+  <!-- The global progress bar -->
+  <div id="progress" class="progress">
+    <div class="progress-bar progress-bar-success"></div>
   </div>
-  <div class="guide">
-    <p><%= icon('info-sign')%> <%= t(:upload_guide_html) %></p>
-    <p><%= icon('warning-sign')%> <%= t(:max_size_warning) %></p>
-  </div>
-  <!-- The loading indicator is shown during image processing -->
-  <div class="fileupload-loading"></div>
-  <br>
-  <!-- The table listing the files available for upload/download -->
-  <table class="table table-striped"><tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody>
-  </table>
-  <ul id="files_container">
+
+  <!-- The container for the uploaded files -->
+  <div id="files" class="files"></div>
+
+  <%= render 'jquery_fileupload_script' %>  
+</div>
+
+<div class="col-md-6">
+  <h2>Documents</h2>
+  <ul>
+    <% @package.documents.each do |document| %>  
+      <li><%= link_to document.name, document.attach.url %></li>
+    <% end %>
   </ul>
-<% end %>
-
-<script>
-  var fileUploadErrors = {
-  maxFileSize: 'Il file &egrave; troppo grande.',
-  minFileSize: 'Il file &egrave; troppo piccolo.',
-  acceptFileTypes: 'Tipo di file non consentito.',
-  maxNumberOfFiles: 'Max number of files exceeded',
-  uploadedBytes: 'Uploaded bytes exceed file size',
-  emptyResult: 'Empty file upload result'
-  };
-</script>
-
-<%= render 'jquery_fileupload_templates' %>  
-
-<script type="text/javascript" charset="utf-8">
-  $(function () {
-      // Initialize the jQuery File Upload widget:
-      $('#fileupload').fileupload();
-
-      $('#fileupload').fileupload('option', {
-        maxFileSize:30000000,
-        acceptFileTypes:/.+$/i, // originale era (\.|\/)(gif|jpe?g|png) 
-        sequentialUploads:true,
-        previewSourceMaxFileSize:1,
-        // The container for the list of files. If undefined, it is set to
-        // an element with class "files" inside of the widget element:
-        //filesContainer:'#files_container',
-        // By default, files are appended to the files container.
-        // Set the following option to true, to prepend files instead:
-        prependFiles:true,
-      });
-
-      // Load existing files:
-      // jQuery.getJSON( url [, data] [, success(data, textStatus, jqXHR)] )
-      $.getJSON($('#fileupload').prop('action'), function (files) {
-        var fu = $('#fileupload').data('blueimpFileupload'), template;
-        fu._adjustMaxNumberOfFiles(-files.length);
-        template = fu._renderDownload(files).appendTo($('#fileupload .files'));
-        // Force reflow:
-        fu._reflow = fu._transition && template.length && template[0].offsetWidth;
-        template.addClass('in');
-        $('#loading').remove();
-      });
-  });
-</script>
-
+</div>
+</div>
