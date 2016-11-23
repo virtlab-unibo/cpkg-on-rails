@@ -1,0 +1,7 @@
+<h1><%= t(:degrees) %></h1>
+
+<ul>
+<% @degrees.each do |degree| %>  
+  <li><%= link_to degree.to_s_with_code, degree %></li>
+<% end %>
+</ul>
