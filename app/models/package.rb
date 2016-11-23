@@ -4,23 +4,23 @@ class Package < ActiveRecord::Base
   has_many   :documents
   has_many   :changelogs
   has_many   :scripts
-  has_many   :users, :through => :changelogs
+  has_many   :users, through: :changelogs
 
-  acts_as_debian_package :section      => Rails.configuration.pkgs_default_section,
-                         :maintainer   => Rails.configuration.pkgs_default_maintainer,
+  acts_as_debian_package section: Rails.configuration.pkgs_default_section,
+                         maintainer: Rails.configuration.pkgs_default_maintainer,
                          # FIXME maybe other mail or maybe configurable by user
-                         :email        => Rails.configuration.support_mail, 
-                         :gpg_key     => Rails.configuration.gpg_key
+                         email: Rails.configuration.support_mail, 
+                         gpg_key: Rails.configuration.gpg_key
 
   #attr_accessible :name, :short_description, :long_description, :depends, :homepage, :documents, :version, :filename
 
-  validates_uniqueness_of :name, :message => :package_name_duplication
+  validates_uniqueness_of :name, message: :package_name_duplication
   validates_presence_of :name
 
   scope :ours,  -> { where('course_id IS NOT NULL') }
   # has to be executed before the validation process to 
   # make sure che correct package name is going to be validated
-  before_validation :init_name, :on => :create
+  before_validation :init_name, on: :create
 
   before_create :add_global_deps,
                 :generate_homepage
