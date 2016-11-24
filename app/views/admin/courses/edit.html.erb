@@ -1,3 +1,9 @@
-<h1>Modifica <%= @course %></h1>
+<h1><%= @course %></h1>
 
 <%= render 'form' %>
+
+<h2>Packages</h2>
+
+<% @course.packages.find_each do |package| %>  
+  <%= render 'packages/package', package: package %>  
+<% end %>

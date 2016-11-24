@@ -3,11 +3,12 @@
 <ul class="courses">
   <% @courses.each do |course| %>  
     <li> 
-    <%= link_to course, edit_admin_course_path(course) %> - <%= course.degree %> (<%= course.users.join(', ') %>)
+      <strong><%= link_to course, edit_admin_course_path(course) %></strong> -
+      <em><%= course.degree %></em>
+      <span class="pull-right">(<%= course.users.join(', ') %>)</span>
     </li>
   <% end %>
 </ul>
 
-<%= link_to t(:new_course), new_admin_course_path, :class => 'btn btn-primary' %>  
-- <%= link_to t(:back), admin_root_path %>
+<%= link_to t(:new_course), new_admin_course_path, class: :button %> - <%= link_to_back admin_root_path %>
 
