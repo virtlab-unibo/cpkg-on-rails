@@ -1,27 +1,22 @@
-<h3><%= t(:dependencies) %></h3>
-
-<!-- %= Package.where(:name => 'gimp').first.inspect % -->
-
-<%= form_tag depend_package_path(@package), :method => :put do %>
-  <%= label_tag t(:new_dep) %>  
-  <!-- %= raise url_for(:action => 'search') % -->
-  <input name="depend" type="text" data-searchpath="<%= search_packages_path %>" id="typeahead">
-  <%= submit_tag t(:add), :class => "btn btn-primary" %>
-  <%= link_to t(:go_back_to_courses), root_path %>
-<% end %>
-
-<div class="guide">
-  <p><%= icon('info-sign') %><%= t(:add_dep_guide_html) %></p>
+<div class="alert alert-info">
+  <p><%= big_icon('info-circle') %><%= t(:add_dep_guide_html) %></p>
 </div>
 
-<table class="table table-striped">
+<%= form_tag depend_package_path(@package), method: :put do %>
+  <label style="display: inline"><%= t(:new_dep) %></label>
+  <input name="depend" type="text" data-searchpath="<%= search_packages_path %>" id="typeahead" style="display: inline">
+  <%= submit_tag t(:add) %>
+<% end %>
+
+<table class="table table-striped table-condensed">
   <tbody>
     <% @package.depends_on.each do |package| %>
       <tr>
-      <th><%= package.name %></th>
-      <td><%= package.get_description %></td>
-      <td><%= link_to ("<i class='icon-trash icon-white'></i><span> "+t(:delete)+" </span>").html_safe , undepend_package_path(@package, :depend => package.name ), :method => :put, :title => t(:delete_dep), :class => "btn btn-danger" %></td>
-    </tr>
+        <th><%= package.name %></th>
+        <td><em><%= package.get_description %></em></td>
+        <td><%= package.version %></td>
+        <td><%= link_to_delete undepend_package_path(@package, depend: package.name) %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>

@@ -1,19 +1,9 @@
 <h1><%= @package %></h1>
 
-<ul class="nav nav-tabs" role="tablist">
-  <li role="presentation" class="active"><a href="#info" data-toggle="tab"><%= t(:info) %></a></li>
-  <li role="presentation"><a href="#materiale" data-toggle="tab"><%= t(:material) %></a></li>
-  <li role="presentation"><a href="#software" data-toggle="tab"><%= t(:software) %></a></li>
-</ul>
+<%= render 'form' %>
 
-<div class="tab-content">
-  <div role="tabpanel" class="tab-pane fade in active" id="info">
-    <%= render 'form' %>
-  </div>
-  <div role="tabpanel" class="tab-pane fade" id="materiale">
-    <%= render 'documents' %>
-  </div>
-  <div role="tabpanel" class="tab-pane fade" id="software">
-    <%= render 'dependencies' %>
-  </div>
-</div>
+<h2><%= t(:dependencies) %></h2>
+<%= render 'dependencies' %>
+
+<h2><%= t(:material) %></h2>
+<%= render 'documents' %>

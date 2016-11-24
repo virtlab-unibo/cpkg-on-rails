@@ -1,13 +1,19 @@
 <div class="row">
 <div class="col-md-6">
-  <p>
-  <span class="button fileinput-button">
+  <ul>
+    <% @package.documents.each do |document| %>  
+      <li><%= link_to document.name, document.attach.url %></li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="col-md-6">
+  <div class="button fileinput-button">
     <i class="fa fa-plus"></i>
-    <span>Add file</span>
+    Add file
     <!-- The file input field used as target for the file upload widget -->
-    <input id="fileupload" type="file" name="files[]" multiple/>
-  </span>
-  </p>
+    <input id="fileupload" type="file" name="files[]" multiple />
+  </div>
 
   <!-- The global progress bar -->
   <div id="progress" class="progress">
@@ -16,16 +22,8 @@
 
   <!-- The container for the uploaded files -->
   <div id="files" class="files"></div>
-
   <%= render 'jquery_fileupload_script' %>  
 </div>
+</div>
 
-<div class="col-md-6">
-  <h2>Documents</h2>
-  <ul>
-    <% @package.documents.each do |document| %>  
-      <li><%= link_to document.name, document.attach.url %></li>
-    <% end %>
-  </ul>
-</div>
-</div>
+
