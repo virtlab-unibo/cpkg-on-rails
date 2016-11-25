@@ -1,5 +1,5 @@
 <h1><%= t(:users_admin) %></h1>
-<br> 
+
 <table class="table table-striped table-condensed">
   <tr>
     <th>Id</th>
@@ -16,7 +16,7 @@
         <%= user.id %>
       </td>
       <td>
-        <%= user %>
+        <%= link_to user, user_path(user) %>
       </td>
       <td>
         <%= user.email %>
@@ -28,14 +28,14 @@
         <%= user.admin ? icon('asterisk') : '' %>
       </td>
       <td>
-        <%= (link_to icon('user'), impersonate_path(:id => user.id)) unless current_user == user %>
+        <%= (link_to icon('user'), impersonate_path(id: user.id)) unless current_user == user %>
       </td>
       <td>
-        <%= link_to icon('trash'), admin_user_path(user), :confirm => t(:delete_user_warning), :title => t(:delete_user), :method => :delete %>
+        <%= link_to icon('trash'), user_path(user), confirm: t(:delete_user_warning), title: t(:delete_user), method: :delete %>
       </td>
     </tr>  
   <% end %>
 </table>
 
-<%= link_to t(:new_user), new_admin_invitation_path, :class => 'btn btn-primary' %> -
+<%= link_to t(:new_user), new_admin_invitation_path, class: :button %> -
 <%= link_to t(:invitation_list), admin_invitations_path %>

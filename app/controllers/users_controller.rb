@@ -1,19 +1,32 @@
 class UsersController < ApplicationController
-  skip_before_action :handle_guest
+  before_action :user_admin!
 
-  def impersonate
-    if true_user.is_admin?
-      user = User.find(params[:id])
-      impersonate_user(user)
-    end
-    redirect_to root_path
+  def index
+    @users = User.all
   end
 
-  # do not require admin for this method if access control
-  # is performed on the current_user instead of true_user
-  def stop_impersonating
-    stop_impersonating_user
-    redirect_to root_path
+  def show
+    @user = User.find(params[:id])
+  end
+
+  def new   
+    @user = User.new
+  end 
+
+  def create
+    @user = User.new(params[:user], as: :admin)
+    if @user.save
+      flash[:notice] = I18n.t 'user_crtd_ok'
+      redirect_to users_path
+    else
+      render action: :new
+    end
+  end
+
+  def destroy
+    # FIXME: we need to carefully think about this.
+    flash[:alert] = I18n.t 'user_del_ok'
+    redirect_to users_path
   end
 end
 
