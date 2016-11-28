@@ -7,31 +7,20 @@
     <th>Email</th>
     <th><%= t(:course) %></th>
     <th>Admin</th>
-    <th>impersonate</th>
-    <th><%= t(:delete) %></th>
+    <th>actions</th>
   </tr>
   <% @users.each do |user| %>  
     <tr>
+      <%= content_tag(:td, user.id) %>
+      <%= content_tag(:td, link_to(user, user_path(user))) %>
+      <%= content_tag(:td, user.email) %>
+      <%= content_tag(:td, user.courses.count) %>
+      <%= content_tag(:td, user.admin ? icon('asterisk') : '') %>
       <td>
-        <%= user.id %>
-      </td>
-      <td>
-        <%= link_to user, user_path(user) %>
-      </td>
-      <td>
-        <%= user.email %>
-      </td>
-      <td>
-        <%= user.courses.length %>
-      </td>
-      <td>
-        <%= user.admin ? icon('asterisk') : '' %>
-      </td>
-      <td>
-        <%= (link_to icon('user'), impersonate_path(id: user.id)) unless current_user == user %>
-      </td>
-      <td>
-        <%= link_to icon('trash'), user_path(user), confirm: t(:delete_user_warning), title: t(:delete_user), method: :delete %>
+        <% unless current_user == user %>  
+          <%= link_to icon('user'), impersonate_path(id: user.id) %>
+          <%= link_to_delete(user_path(user)) %>
+        <% end %>
       </td>
     </tr>  
   <% end %>
