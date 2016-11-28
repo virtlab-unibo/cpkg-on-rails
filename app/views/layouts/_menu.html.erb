@@ -1,23 +1,24 @@
 <%= dm_menu do %>  
   <%= dm_header %>
   <%= dm_nav do  %>  
-    <li><%= link_to big_icon('home') + Rails.configuration.project_link[:name], Rails.configuration.project_link[:url] %></li>
+    <li><%= link_to big_icon('home') + ' Home', root_path %></li>
 
     <% if user_signed_in? %>
-      <%= dropdown_menu big_icon('list') + t(:courses) do  %>  
-        <li><%= link_to t(:my_courses), root_path %></li>
-        <li><%= link_to t(:other_courses), guest_courses_path %></li>
-      <% end %>
+      <li><%= link_to big_icon('list') + t(:my_courses), courses_path %></li>
       <% if current_user.is_admin? %>
-        <%= dropdown_menu big_icon('wrench') + ' Admin' do  %>  
-          <li><%= link_to t(:degree_admin), admin_degrees_path %></li>
+        <%= dropdown_menu big_icon('wrench') do  %>  
+          <li><%= link_to t(:degree_admin), degrees_path %></li>
           <li><%= link_to t(:course_admin), admin_courses_path %></li>
-          <li><%= link_to t(:repo_admin),   admin_archives_path %></li>
-          <li><%= link_to t(:users_admin),  admin_users_path %></li>
+          <li><%= link_to t(:repo_admin),   archives_path %></li>
+          <li><%= link_to t(:users_admin),  users_path %></li>
         <% end %>
       <% end %>
     <% end %>
-    <li><%= link_to image_tag("#{t(:other_language_prefix)}.png") + ' ' + t(:other_language), url_for(locale: t(:other_language_prefix)) %></li>
+
+    <li><%= link_to image_tag("#{t(:other_language_prefix)}.png", style: 'vertical-align: bottom') + ' ' + t(:other_language), url_for(locale: t(:other_language_prefix)) %></li>
+    <% unless user_signed_in? %>  
+      <li><%= link_to 'enter', send('auth_' + Rails.configuration.dm_unibo_common[:omniauth_provider].to_s + '_callback_path')%>  </li>
+    <% end %>
   <% end %>
 <% end %>
 
