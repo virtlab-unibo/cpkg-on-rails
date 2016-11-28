@@ -19,6 +19,7 @@ $(function() {
   });
   $('#typeahead').typeahead(null, {
     source: packages,
+    limit: 10, 
     display: 'value'
     //minLength: 3
   });
