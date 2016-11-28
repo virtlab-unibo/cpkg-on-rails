@@ -1,7 +1,0 @@
-<%= horizontal_form_for [:admin, @archive] do |archive| %>  
-  <%= archive.input :uri %>  
-  <%= archive.input :distribution %>  
-  <%= archive.input :component  %>  
-  <%= archive.input :arch, :collection => ActiveDebianRepository::AptSource::ARCH_LIST %>
-  <%= archive.button :submit, :class => 'btn btn-primary'  %>  
-<% end %>

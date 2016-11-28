@@ -1,0 +1,7 @@
+<%= simple_form_for @archive do |archive| %>  
+  <%= archive.input :uri %>  
+  <%= archive.input :distribution %>  
+  <%= archive.input :component  %>  
+  <%= archive.input :arch, collection: ActiveDebianRepository::AptSource::ARCH_LIST %>
+  <%= archive.submit %>  
+<% end %>
