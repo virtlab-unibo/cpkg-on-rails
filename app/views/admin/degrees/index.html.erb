@@ -1,9 +1,0 @@
-<h1><%= t :degrees %></h1>
-
-<ul class="degrees">
-  <% @degrees.each do |degree| %>
-    <li><%= link_to degree, edit_admin_degree_path(degree) %> (<%= degree.code %>)</li>
-  <% end %>
-</ul>
-
-<%= link_to 'New', new_admin_degree_path, class: 'button' %> - <%= link_to_back admin_root_path %>
