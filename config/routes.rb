@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   get "packages/:id/download", controller: "packages", action: "download", as: 'packages_download'
 
+  resources :users 
+
   resources :packages do
     resources :documents
     resources :changelogs
@@ -23,15 +25,13 @@ Rails.application.routes.draw do
 
   resources :documents
   resources :changelogs
+  resources :archives do
+    get "sync", on: :member
+  end
   
   namespace :admin do
     root to: "admin#index"
-    resources :degrees
     resources :courses
-    resources :archives do
-      get "sync", on: :member
-    end
-    resources :users 
     resources :invitations
   end
 
