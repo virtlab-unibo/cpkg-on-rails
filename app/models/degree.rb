@@ -1,6 +1,8 @@
 class Degree < ActiveRecord::Base
   has_many :courses
 
+  validates :name, uniqueness: true
+
   def to_s
     self.name
   end
