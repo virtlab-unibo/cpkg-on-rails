@@ -54,5 +54,9 @@ class Package < ActiveRecord::Base
     end
   end
 
+  def webid
+    "pkg_#{self.id}"
+  end
+
 end
 
