@@ -8,7 +8,13 @@
   <% if @courses.any? %>  
     <ul class="all_clickable">
       <% @courses.each do |course| %>  
-        <li><%= link_to course, course %></li>
+        <% packages_num = course.packages.count %>  
+        <li>
+          <%= link_to course, class: packages_num == 0 ? "disabled" : '' do %>
+            <%= course %>  
+            <%= content_tag :span, packages_num, class: "badge pull-right" %>
+          <% end %>
+        </li>
       <% end %>
     </ul>
   <% else %>
