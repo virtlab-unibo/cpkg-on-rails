@@ -5,11 +5,13 @@
 
 <div class="row">
   <div class="col-md-6">
-    <select id="pkg_select">
+    <% if @course.packages.size > 1 %>  
+    <select id="pkg_select" onchange="go_package(this.value);">
       <% @course.packages.each do |package|  %>  
-        <option href="#<%= package.webid %>"> <%= package.name %></option>
+        <option value="#<%= package.webid %>"> <%= package.name %></option>
       <% end %>
     </select>
+  <% end %>
   </div>
   <div class="col-md-6">
     <p class="degree-badge">
@@ -19,11 +21,9 @@
 </div>
 
 <%= javascript_tag do %>  
-  $(function(){
-  $('#pkg_select').change(function() {
-  window.location = $(':selected',this).attr('href');
-  });
-  });
+  function go_package(val) {
+    window.location=val;
+  }
 <% end %>
 
 <% if @packages.empty? %>  
