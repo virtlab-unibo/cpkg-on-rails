@@ -1,7 +1,38 @@
-<h1><%= @course %></h1>
-<h2><%= @course.description %></h2>
+<h1>
+<%= @course %> <br/>
+<small><%= @course.description %></small>
+</h1>
 
-<% @course.packages.each do |package| %>
-  <%= render package %>  
+<div class="row">
+  <div class="col-md-6">
+    <select id="pkg_select">
+      <% @course.packages.each do |package|  %>  
+        <option href="#<%= package.webid %>"> <%= package.name %></option>
+      <% end %>
+    </select>
+  </div>
+  <div class="col-md-6">
+    <p class="degree-badge">
+    <%= link_to @course.degree, @course.degree, class: :badge %>  
+    </p>
+  </div>
+</div>
+
+<%= javascript_tag do %>  
+  $(function(){
+  $('#pkg_select').change(function() {
+  window.location = $(':selected',this).attr('href');
+  });
+  });
+<% end %>
+
+<% if @packages.empty? %>  
+  <div class="alert alert-warning">
+    <%= t(:no_packages) %>  
+  </div>
+<% else %>
+  <% @course.packages.each do |package| %>
+    <%= render package %>  
+  <% end %>
 <% end %>
 

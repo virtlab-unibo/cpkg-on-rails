@@ -1,31 +1,38 @@
 <div class="row">
-  <div class="col-md-4 guide">
-    <%= render 'helps/admin_guide' %>  
-  </div>
-  <div class="col-md-8">
-    <h2><%= current_user.courses.empty? ? t(:list_of_courses) : t(:your_courses) %></h2>
-    <% @courses.each do |course| %>  
-      <% packages = course.packages.to_a %>  
-      <div class="well">
-        <h3><%= course %> - <%= course.year %> <%= link_to icon('pencil'), edit_course_path(course), :title => t(:modify) %></h3>
-        <p>
-          <%= t(:to_the_course) %>  <%= course %> (<%= course.degree %>)
-          <%= packages.empty? ? t(:no_deb_in_course) : t(:deb_in_course) %>
-        </p>
+<div class="col-md-4 guide">
+  <%= render 'helps/admin_guide' %>  
+</div>
+<div class="col-md-8">
+  <h1><%= current_user.courses.empty? ? t(:list_of_courses) : t(:your_courses) %></h1>
+  <% @courses.each do |course| %>  
+    <% packages = course.packages.to_a %>  
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3><%= course %> - <%= course.year %></h3>
+      </div>
+      <div class="panel-body">
+        <p><%= t(:to_the_course) %> <%= course %> (<%= course.degree %>)
+        <%= packages.empty? ? t(:no_deb_in_course) : t(:deb_in_course) %></p>
         <dl> 
           <% course.packages.each do |package| %>
             <dt>
-              <%= package %> 
-              <%= link_to icon('pencil'), edit_package_path(package), :title => t(:mod_package) %>
-              <%= link_to icon('upload'), new_package_changelog_path(package), :data => { :confirm => t(:upload_package_warning)}, :title => t(:upload_deb) %>
-              <%= link_to icon('download'), packages_download_path(package), :title => t(:download_deb) %>
+            <%= package %> 
+            <%= link_to icon('pencil'), edit_package_path(package), title: t(:mod_package) %>
+            <%= link_to icon('upload'), new_package_changelog_path(package), data: { confirm: t(:upload_package_warning)}, title: t(:upload_deb) %>
+            <%= link_to icon('download'), packages_download_path(package), title: t(:download_deb) %>
             </dt>
-            <dd><%= package.get_description %></dd><br/>
+            <dd><%= package.get_description %></dd>
           <% end %>
         </dl>
-        <p><%= link_to t(:new_package), new_course_package_path(course), :class => 'btn btn-primary' %></p>
-      </div><!-- well -->
-    <% end %>
-  </div>
+      </div>
+      <div class="panel-footer">
+        <%= link_to t(:edit), edit_course_path(course), class: :button %></h3>
+      <%= link_to t(:new_package), new_course_package_path(course), class: 'btn btn-primary' %>
+      </div>
+    </div><!-- panel -->
+
+  <% end %>
+</div>
 </div>
 
