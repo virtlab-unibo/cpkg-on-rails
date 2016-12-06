@@ -11,7 +11,7 @@ class Changelog < ActiveRecord::Base
 
   # version is date-ver (20120703-3)
   def increment_version
-    old_version = Changelog.maximum(:version, :conditions => ["package_id = ?", self.package_id])
+    old_version = Changelog.where(package_id: self.package_id).maximum(:version)
     now_date = Date.today.to_s.split("-").join # 20120703
     counter = 1
 
