@@ -2,8 +2,8 @@ class Package < ActiveRecord::Base
   belongs_to :course
   belongs_to :archive
   has_many   :documents
-  has_many   :changelogs
   has_many   :scripts
+  has_many   :changelogs, dependent: :destroy
   has_many   :users, through: :changelogs
 
   acts_as_debian_package section: Rails.configuration.pkgs_default_section,
@@ -24,6 +24,8 @@ class Package < ActiveRecord::Base
 
   before_create :add_global_deps,
                 :generate_homepage
+
+  before_destroy :verify_no_dependencies
 
   # automatically generated home page. See homepage_base in configuration
   def generate_homepage
@@ -51,6 +53,13 @@ class Package < ActiveRecord::Base
   def init_name
     unless self.course.nil?
       self.name = "#{self.course.degree.code}-#{self.course.abbr}-#{self.name}"
+    end
+  end
+
+  def verify_no_dependencies
+    if self.documents.any?
+      self.errors.add(:base, 'There are documents')
+      return false
     end
   end
 
