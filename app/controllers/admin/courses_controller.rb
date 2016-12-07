@@ -13,7 +13,7 @@ class Admin::CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     if @course.save
-      redirect_to admin_courses_path, :flash => { :notice => I18n.t('course_crtd_ok') }
+      redirect_to admin_courses_path, notice: I18n.t('course_crtd_ok') 
     else
       render :action => :new
     end
@@ -26,11 +26,22 @@ class Admin::CoursesController < ApplicationController
   def update
     @course = Course.find(params[:id])
     if @course.update_attributes(course_params)
-      redirect_to admin_courses_path, :flash => { :notice =>  I18n.t('course_updt_ok') }
+      redirect_to admin_courses_path, notice: I18n.t('course_updt_ok') 
     else
       render :action => :edit
     end
   end
+
+  def destroy
+    @course = Course.find(params[:id])
+    if @course.destroy
+      flash[:notice] = 'The course has been deleted.'
+    else
+      flash[:error] = 'The course can not be deleted.'
+    end
+    redirect_to admin_courses_path
+  end
+
   
   private
 
