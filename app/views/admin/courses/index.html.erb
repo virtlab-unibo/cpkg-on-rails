@@ -5,7 +5,11 @@
     <li> 
       <strong><%= link_to course, edit_admin_course_path(course) %></strong> -
       <em><%= course.degree %></em>
-      <span class="pull-right">(<%= course.users.join(', ') %>)</span>
+      <span class="pull-right">
+        <em><%= course.users.join(', ') %></em> 
+        (<%= count =  course.packages.count %>)
+        <%= link_to_delete admin_course_path(course) if count == 0 %>  
+      </span>
     </li>
   <% end %>
 </ul>
