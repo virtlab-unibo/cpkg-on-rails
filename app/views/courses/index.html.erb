@@ -27,8 +27,8 @@
         </dl>
       </div>
       <div class="panel-footer">
-        <%= link_to t(:edit), edit_course_path(course), class: :button %></h3>
-      <%= link_to t(:new_package), new_course_package_path(course), class: 'btn btn-primary' %>
+        <%= link_to icon('pencil') + t(:edit), edit_course_path(course), class: :button %></h3>
+        <%= link_to icon('plus')   + t(:new_package), new_course_package_path(course), class: 'button' %>
       </div>
     </div><!-- panel -->
 
