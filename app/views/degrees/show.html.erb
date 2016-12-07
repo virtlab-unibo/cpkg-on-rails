@@ -21,8 +21,9 @@
     <p class="alert alert-warning"><%= t :no_packages %></p>
   <% end %>
 
-  <% if user_admin? %>  
-    <%= link_to_edit   'Edit', edit_degree_path(@degree), button: true %>
-  <% end %>
+  <p>
+    <%= link_to_edit('Edit', edit_degree_path(@degree), button: true) if user_admin? %>
+    <%= link_to_back root_path %>
+  </p>
 </div>
 </div>
