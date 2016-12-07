@@ -1,10 +1,8 @@
-# -*- coding: utf-8 -*-
 class PackagesController < ApplicationController
   skip_before_action :redirect_unsigned_user, only: :show
 
-  # remember in config/routes
-  # match ':id', :controller => "guest::packages", :action => "show"
-  # we reach this also with url like '8080-so-2013'
+  # reach this also with url like '8080-so-2013'
+  # get ':id', controller: "packages", action: "show", constraints: { id: /\d+-\w+-\d+/ }
   def show
     @package = params[:id] =~ /^\d+$/ ? Package.find(params[:id]) : Package.find_by_name(params[:id])
     @other_packages = @package.course.packages - [@package]
@@ -26,8 +24,7 @@ class PackagesController < ApplicationController
     authorize! :manage, @course
     @package = @course.packages.new(package_params)
     if @package.save
-      flash[:notice] = I18n.t 'package_crtd_ok'
-      redirect_to edit_package_path(@package)
+      redirect_to edit_package_path(@package), notice: I18n.t('package_crtd_ok')
     else
       @package.name = nil
       render :new
@@ -36,8 +33,13 @@ class PackagesController < ApplicationController
 
   def destroy
     @package = Package.find(params[:id])
-    authorize! :manage, @course
-    raise "Non si puo' eliminare"
+    authorize! :manage, @package
+    if @package.destroy
+      flash[:notice] = 'The package has been deleted.'
+    else
+      flash[:error] = 'The package can not be deleted.'
+    end
+    redirect_to @package.course
   end
 
   def update
@@ -49,10 +51,10 @@ class PackagesController < ApplicationController
     params[:package].delete(:depends)
     if @package.update_attributes(package_params)
       flash[:notice] = I18n.t 'package_updt_ok'
-      redirect_to edit_package_path(@package)
+      redirect_to edit_package_path(@package), notice: I18n.t('package_updt_ok')
     else
       logger.info @package.errors.inspect
-      render :action => :new
+      render action: :new
     end
   end
 
@@ -67,7 +69,7 @@ class PackagesController < ApplicationController
       flash[:error] = @package.errors[:base].join(', ')
     end
     # FIXME to refactor 
-    redirect_to edit_package_path(@package, :anchor => 'software')
+    redirect_to edit_package_path(@package, anchor: 'software')
   end
 
   def undepend
@@ -79,7 +81,7 @@ class PackagesController < ApplicationController
        logger.info @package.errors.inspect
        flash[:notice] = I18n.t 'dep_rem_no'
     end
-    redirect_to edit_package_path(@package, :anchor => 'software')
+    redirect_to edit_package_path(@package, anchor: 'software')
   end
 
   def download
@@ -95,7 +97,7 @@ class PackagesController < ApplicationController
       @package.add_global_deps
       equivs = ActiveDebianRepository::Equivs.new(@package, dest_dir) 
       path = equivs.create!
-      send_file path, :type => "application/x-debian-package"
+      send_file path, type: "application/x-debian-package"
     rescue 
       flash[:error] = I18n.t 'del_pkg_error'
       redirect_to courses_path
@@ -110,8 +112,8 @@ class PackagesController < ApplicationController
     logger.info(params.inspect)
     is_full_search = true
     term = params[:q]
-    res = Package.where(["LOWER(name) LIKE ?", "#{(is_full_search ? '%' : '')}#{term.downcase}%"]).limit(10).select(:id, :name)
-    render :json => { :status => :ok, :res => res.to_json}
+    res = Package.where(["LOWER(name) LIKE ?", "#{(is_full_search ? '%' : '')}#{term.downcase}%"]).limit(11).select(:id, :name)
+    render json: { status: :ok, res: res.to_json}
   end
 
   private
