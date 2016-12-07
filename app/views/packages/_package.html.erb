@@ -1,3 +1,4 @@
+<% deletable = true %>  
 <div class="package-panel" id="<%= package.webid %>">
   <div class="panel-heading">
     <h1><%= package %></h1>
@@ -15,6 +16,7 @@
       <p><%= icon('info-circle')%><%= t(:materials_included_into_deb) %></p>
       <ul>
         <% package.documents.each do |document| %>
+          <% deletable = false %>  
           <li><%= link_to document.name, document.attach.url, title: "Scarica file" %></li>
         <% end %>
       </ul>
@@ -24,7 +26,7 @@
     <% if package.depends_on.empty? %> 
       <p><i><%= t(:package_without_dependecies) %></i></p>
     <% else %>
-      <p><%= icon('info-circle')%><%= t(:sw_included_into_deb) %></p>
+      <p><%= icon('info-circle') %><%= t(:sw_included_into_deb) %></p>
       <ul>
         <% package.depends_on.each do |package| %>  
           <li><strong><%= package.name %></strong> (<em><%= package.get_description %></em>)</li>
@@ -45,6 +47,9 @@
   <% if can? :update, package %>
     <div class="panel-footer">
       <%= link_to icon('pencil') + ' edit', edit_package_path(package), class: :button %>
+      <% if deletable %>  
+        <%= link_to_delete ' delete', package_path(package), button: true %>
+      <% end %>
     </div>
   <% end %>
 </div>
