@@ -1,0 +1,12 @@
+deb http://mi.mirror.garr.it/mirrors/debian/ stretch main contrib non-free
+deb-src http://mi.mirror.garr.it/mirrors/debian/ stretch main contrib non-free
+
+deb http://security.debian.org/ stretch/updates main contrib non-free
+deb-src http://security.debian.org/ stretch/updates main contrib non-free
+
+# stretch-updates, previously known as 'volatile'
+deb http://mi.mirror.garr.it/mirrors/debian/ stretch-updates main contrib non-free
+deb-src http://mi.mirror.garr.it/mirrors/debian/ stretch-updates main contrib non-free
+
+deb http://mi.mirror.garr.it/mirrors/debian/ stretch-backports main contrib non-free
+deb-src http://mi.mirror.garr.it/mirrors/debian/ stretch-backports main contrib 

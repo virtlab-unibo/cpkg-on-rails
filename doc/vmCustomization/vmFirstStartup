@@ -1,0 +1,208 @@
+#!/bin/bash
+# Virtlab first-startup script based on raspi-config script -> raspi-config https://github.com/RPi-Distro/raspi-config
+# 
+#
+### BEGIN INIT INFO
+# Provides:          vmFirstStartup
+# Required-Start:    
+# Required-Stop:     
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: first start script
+# Description:       
+### END INIT INFO
+
+calc_wt_size() {
+  # NOTE: it's tempting to redirect stderr to /dev/null, so supress error 
+  # output from tput. However in this case, tput detects neither stdout or 
+  # stderr is a tty and so only gives default 80, 24 values
+  WT_HEIGHT=17
+  WT_WIDTH=$(tput cols)
+
+  if [ -z "$WT_WIDTH" ] || [ "$WT_WIDTH" -lt 60 ]; then
+    WT_WIDTH=80
+  fi
+  if [ "$WT_WIDTH" -gt 178 ]; then
+    WT_WIDTH=120
+  fi
+  WT_MENU_HEIGHT=$(($WT_HEIGHT-7))
+}
+
+remove_all_users() {
+	while read line 
+	do
+		uid=`echo $line | cut -d ":" -f3`
+		if [ $uid -ge "1000" ]; then
+			if [ $uid -lt "60000" ]; then
+				username=`echo $line | cut -d ":" -f1`
+				userdel -r $username
+				groupdel $username
+			fi
+		fi
+	done < /etc/passwd
+}
+
+do_create_new_user() {
+	remove_all_users
+        
+	whiptail --msgbox "You will now be asked to enter the new username followed by password" 10 75 1
+
+	NEW_USERNAME=$(whiptail --inputbox "Please enter the new username" 10 70 3>&1 1>&2 2>&3)
+
+	EXIT_STATUS=$?
+	if [ $EXIT_STATUS != 0 ]; then
+			return 0
+	fi
+
+	NEW_USER_GECOS="-"
+	NEW_USER_GECOS=$(whiptail --inputbox "Please enter user full name" 10 70 3>&1 1>&2 2>&3)
+
+	EXIT_STATUS=$?
+	if [ $EXIT_STATUS != 0 ]; then
+			return 0
+	fi
+
+	while true; do
+		NEW_PASSWORD=$(whiptail --passwordbox "Please enter the password" 10 70 3>&1 1>&2 2>&3)
+		
+		EXIT_STATUS=$?
+		if [ $EXIT_STATUS != 0 ]; then
+			return 0
+		fi
+
+		NEW_PASSWORD2=$(whiptail --passwordbox "Please repeat the password" 10 70 3>&1 1>&2 2>&3)
+
+		EXIT_STATUS=$?
+		if [ $EXIT_STATUS != 0 ]; then
+			return 0
+		fi
+
+		if [ "$NEW_PASSWORD" == "$NEW_PASSWORD2" ]; then
+			whiptail --msgbox "All data inserted OK, now create user!" 10 70 1
+			break
+		else
+			whiptail --msgbox "Password mismatch, please repeat!" 10 70 1
+			#sleep 2
+		fi
+	done
+
+	# Add new user
+	/usr/sbin/adduser --disabled-password --gecos "$NEW_USER_GECOS" $NEW_USERNAME 
+	/usr/sbin/usermod -a -G sudo $NEW_USERNAME
+	echo $NEW_USERNAME:$NEW_PASSWORD | chpasswd
+}
+
+do_configure_keyboard() {
+  dpkg-reconfigure keyboard-configuration &&
+  printf "Reloading keymap. This may take a short while\n" &&
+  invoke-rc.d keyboard-setup start || return $?
+  udevadm trigger --subsystem-match=input --action=change
+  return 0
+}
+
+do_change_locale() {
+  dpkg-reconfigure locales
+}
+
+do_change_timezone() {
+  dpkg-reconfigure tzdata
+}
+
+do_change_hostname() {
+  CURRENT_HOSTNAME=`cat /etc/hostname | tr -d " \t\n\r"`
+  NEW_HOSTNAME=$(whiptail --inputbox "Please enter a hostname" 9 60 "$CURRENT_HOSTNAME" 3>&1 1>&2 2>&3)
+
+  if [ $? -eq 0 ]; then
+    echo $NEW_HOSTNAME > /etc/hostname
+    sed -i "s/127.0.1.1.*$CURRENT_HOSTNAME/127.0.1.1\t$NEW_HOSTNAME/g" /etc/hosts
+    ASK_TO_REBOOT=1
+  fi
+}
+
+disable_config_at_boot() {
+    systemctl set-default graphical.target
+    systemctl disable vmFirstStartup.service
+    #rm /etc/systemd/system/vmFirstStartup.service
+    chmod -x /etc/init.d/vmFirstStartup
+}
+
+do_finish() {
+
+  passwd -l root
+  disable_config_at_boot
+  whiptail --msgbox "Will now reboot!" 9 60 2
+
+  if [ $? -eq 0 ]; then # yes
+   sync
+   reboot
+  fi
+  exit 0
+}
+
+do_internationalisation_menu() {
+  FUN=$(whiptail --title "First startup configuration tool" --menu "Internationalisation Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Back --ok-button Select \
+    "I1 Change Locale" "Set up language and regional settings to match your location" \
+    "I2 Change Timezone" "Set up timezone to match your location" \
+    "I3 Change Keyboard Layout" "Set the keyboard layout to match your keyboard" \
+    3>&1 1>&2 2>&3)
+  RET=$?
+  if [ $RET -eq 1 ]; then
+    return 0
+  elif [ $RET -eq 0 ]; then
+    case "$FUN" in
+      I1\ *) do_change_locale ;;
+      I2\ *) do_change_timezone ;;
+      I3\ *) do_configure_keyboard ;;
+      *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
+    esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
+  fi
+}
+
+#
+# Interactive use loop
+#
+
+
+
+whiptail --title "VirtLab Virtual Machine first startup configuration tool" --msgbox "First configuration script, it will ask to create a new user, set timezone and keyboard" 10 75 2
+
+#
+# Interactive use loop
+#
+chvt 1
+calc_wt_size
+FIRSTEXEC=0
+USERCREATED=0
+
+while true; do
+    if [ $FIRSTEXEC -eq 0 ]; then
+       do_create_new_user
+       RET=$?
+       if [ $RET -eq 0 ]; then
+          USERCREATED=1
+       fi
+       RET=0
+       FIRSTEXEC=1
+    fi
+    
+  
+    FUN=$(whiptail --title "VirtLab - Virtual Machine first startup configuration tool" --menu "Setup Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Finish --ok-button Select \
+      "1 Create the new user and set its password" ""\
+      "2 Set up language and regional settings"  ""\
+      "3 Change the hostname" ""\
+      3>&1 1>&2 2>&3)
+    RET=$?
+    if [ $RET -eq 1 ]; then
+      do_finish
+    elif [ $RET -eq 0 ]; then
+      case "$FUN" in
+        1\ *) do_create_new_user ;;
+        2\ *) do_internationalisation_menu ;;
+        3\ *) do_change_hostname ;;
+        *) whiptail --msgbox "Programmer error: unrecognized option" 20 60 1 ;;
+      esac || whiptail --msgbox "There was an error running option $FUN" 20 60 1
+    else
+      exit 1
+    fi
+done
+

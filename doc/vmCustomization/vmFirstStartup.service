@@ -1,0 +1,16 @@
+[Unit]
+Description=simple first boot test service
+Before=getty@tty1.service
+
+[Service]
+Type=oneshot
+ExecStart=/etc/init.d/vmFirstStartup
+StandardInput=tty-force
+StandardOutput=tty
+TTYPath=/dev/tty1
+TTYReset=yes
+TTYVHangup=yes
+TTYVTDisallocate=yes
+
+[Install]
+WantedBy=multi-user.target
