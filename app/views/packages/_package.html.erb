@@ -1,19 +1,16 @@
 <% deletable = true %>  
-<div class="package-panel" id="<%= package.webid %>">
-  <div class="panel-heading">
-    <h1><%= package %></h1>
+<div class="dm-card mb-3" id="<%= package.webid %>">
+  <div class="dm-card-title"><%= t(:package).capitalize %>: <%= package %></div>
+
+  <div class="dm-card-body">
     <dl class="dl-horizontal">
       <dt><%= t(:description) %></dt><dd><%= package.get_description %></dd>
       <dt><%= t(:course_name) %></dt><dd><%= link_to package.course, course_path(package.course) %></dd>
     </dl>
-  </div>
-
-  <div class="panel-body">
-    <h2><%= t(:course_materials) %></h2>
+    <h4><%= t(:materials_included_into_deb) %>:</h4>
     <% if package.documents.empty? %>
       <p><i><%= t(:package_without_materials) %></i></p>
     <% else %>
-      <p><%= icon('info-circle')%><%= t(:materials_included_into_deb) %></p>
       <ul>
         <% package.documents.each do |document| %>
           <% deletable = false %>  
@@ -22,11 +19,10 @@
       </ul>
     <% end %>
 
-    <h2>Software:</h2>
+    <h4><%= t(:sw_included_into_deb) %>:</h4>
     <% if package.depends_on.empty? %> 
       <p><i><%= t(:package_without_dependecies) %></i></p>
     <% else %>
-      <p><%= icon('info-circle') %><%= t(:sw_included_into_deb) %></p>
       <ul>
         <% package.depends_on.each do |package| %>  
           <li><strong><%= package.name %></strong> (<em><%= package.get_description %></em>)</li>
@@ -35,7 +31,7 @@
     <% end %>
 
     <% if defined?(other_packages) and other_packages.any? %>
-      <h2><%= t(:other_package_list) %>:</h2>
+      <h4><%= t(:other_package_list) %>:</h4>
       <ul>
         <% @other_packages.each do |package| %>  
           <li><%= link_to package, package_path(package) %></li>
@@ -45,8 +41,8 @@
   </div>
 
   <% if can? :update, package %>
-    <div class="panel-footer">
-      <%= link_to icon('pencil') + ' edit', edit_package_path(package), class: :button %>
+    <div class="card-footer">
+      <%= link_to icon('edit') + ' edit', edit_package_path(package), class: :button %>
       <% if deletable %>  
         <%= link_to_delete ' delete', package_path(package), button: true %>
       <% end %>

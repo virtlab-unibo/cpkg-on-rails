@@ -1,8 +1,8 @@
 <h1><%= t(:course_admin) %></h1>
 
-<ul class="courses">
+<ul class="list-group mb-3 mt-3">
   <% @courses.each do |course| %>  
-    <li> 
+    <li class="list-group-item"> 
       <strong><%= link_to course, edit_admin_course_path(course) %></strong> -
       <em><%= course.degree %></em>
       <span class="pull-right">
@@ -14,5 +14,5 @@
   <% end %>
 </ul>
 
-<%= link_to t(:new_course), new_admin_course_path, class: :button %> - <%= link_to_back admin_root_path %>
+<p><%= link_to t(:new_course), new_admin_course_path, class: :button %> - <%= link_to_back admin_root_path %></p>
 

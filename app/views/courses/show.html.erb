@@ -1,12 +1,12 @@
-<h1>
-<%= @course %> <br/>
+<h1> <%= @course %> <br/>
 <small><%= @course.description %></small>
 </h1>
 
 <div class="row">
   <div class="col-md-6">
     <% if @course.packages.size > 1 %>  
-    <select id="pkg_select" onchange="go_package(this.value);">
+      <label>Packages:</label> 
+      <select id="pkg_select" onchange="go_package(this.value);">
       <% @course.packages.each do |package|  %>  
         <option value="#<%= package.webid %>"> <%= package.name %></option>
       <% end %>
@@ -14,9 +14,7 @@
   <% end %>
   </div>
   <div class="col-md-6">
-    <p class="degree-badge">
-    <%= link_to @course.degree, @course.degree, class: :badge %>  
-    </p>
+    <%= link_to @course.degree, @course.degree %>  
   </div>
 </div>
 

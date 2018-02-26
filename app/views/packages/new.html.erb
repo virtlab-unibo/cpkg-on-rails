@@ -1,11 +1,6 @@
-<h1> <%= t(:new_package_for) %> <%= @course %></h1>
-<br>
-<div class="row">
-  <div class="col-md-5">
-    <%= render 'form' %>
-  </div>
-   <div class="col-md-7 guide">
-    <%= render 'new_package_guide' %>
-  </div>
-</div>
+<h1><%= t(:new_package_for) %> <%= @course %></h1>
+
+<%= render 'new_package_guide' %>
+
+<%= render 'form' %>
 

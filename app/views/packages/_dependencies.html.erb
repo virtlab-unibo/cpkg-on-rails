@@ -15,7 +15,7 @@
         <th><%= package.name %></th>
         <td><em><%= package.get_description %></em></td>
         <td><%= package.version %></td>
-        <td><%= link_to icon('trash'), undepend_package_path(@package, depend: package.name), method: :put %></td>
+        <td><%= link_to icon('trash-alt'), undepend_package_path(@package, depend: package.name), method: :put %></td>
       </tr>
     <% end %>
   </tbody>

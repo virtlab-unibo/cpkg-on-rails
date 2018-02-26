@@ -1,9 +1,17 @@
 <h1><%= @package %></h1>
 
-<%= render 'form' %>
-
-<h2><%= t(:dependencies) %></h2>
-<%= render 'dependencies' %>
-
-<h2><%= t(:material) %></h2>
-<%= render 'documents' %>
+<div class='row'>
+  <div class="col-md-12 mb-3">
+    <%= render 'form' %>
+  </div>
+  <div class='col-md-6'>
+    <%= dm_card title: t(:dependencies) do %>
+      <%= render 'dependencies' %>
+    <% end %>
+  </div>
+  <div class='col-md-6'>
+    <%= dm_card title: t(:material) do %>
+      <%= render 'documents' %>
+    <% end %>
+  </div>
+</div>

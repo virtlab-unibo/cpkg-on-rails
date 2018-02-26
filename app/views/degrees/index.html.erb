@@ -1,19 +1,11 @@
-<div class="row">
-<div class="col-md-4 guide">
-  <%= render partial: 'helps/degrees' %>
-</div>
-<div class="col-md-6">
-  <h1><%= t(:degrees) %></h1>
+<h1><%= t :degrees %> <small><%= t :partecipating %></small></h1>
 
-  <ul class="list-group">
-    <% @degrees.each do |degree| %>  
-      <li><%= link_to degree.to_s_with_code, degree, class: "list-group-item" %></li>
-    <% end %>
-  </ul>
-
-  <% if user_admin?  %>  
-    <%= link_to_new 'New', new_degree_path %> 
+<ul class="all_clickable mb-3 mt-3">
+  <% @degrees.each do |degree| %>  
+    <li><%= link_to degree.to_s_with_code, degree %></li>
   <% end %>
-</div>
-</div>
+</ul>
 
+<% if user_admin?  %>  
+  <p><%= link_to_new 'New', new_degree_path %></p>
+<% end %>

@@ -14,13 +14,13 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%= render :partial => 'layouts/menu' %>
+    <%= render partial: 'layouts/menu' %>
 
-    <div class="container">
-      <%= bootstrap_flash %>
+    <main role="main" class="container">
       <%= bootstrap_modal_div %>
+      <%= bootstrap_flash %>
       <%= yield %>
-    </div><!-- container -->
+    </main>
 
     <div id="footer" role="navigation">
       <div class="container" style="text-align: center">

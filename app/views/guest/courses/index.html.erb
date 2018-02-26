@@ -1,9 +1,16 @@
+
 <div class="row">
   <div class="col-md-4 guide">
     <%= render 'helps/student_guide' %>
   </div>
   <div class="col-md-8">
-    <h2><%= t(:courses) %></h2>
+    <h1><%= t(:courses) %></h1>
+    <ul>
+      <% @courses.each do |course| %>    
+        <li><%= link_to course, guest_course_packages_path(course) %> </li>
+      <% end %>
+    </ul>
+
     <div class="panel-group" id="courses_list" role="tablist">
       <% degree = nil %>
       <% @courses.each do |course| %>  
@@ -31,7 +38,7 @@
               </p>
               <dl>
                 <% packages.each do |package| %>
-                  <dd><%= link_to package.name, guest_package_path(package) %> - <%= package.get_description %>  </dd>
+                  <dd><%= link_to package.name, package_path(package) %> - <%= package.get_description %>  </dd>
                 <% end %>
               </dl>
             </div><!-- panel-body -->
