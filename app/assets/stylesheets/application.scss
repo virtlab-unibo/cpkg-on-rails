@@ -7,8 +7,7 @@
   text-align:justify;
 }
 .package-panel {
-  @extend .panel;
-  @extend .panel-info;
+  @extend .card;
 }
 ul.courses, ul.degrees {
   @extend .list-group;
@@ -33,7 +32,27 @@ ul.courses, ul.degrees {
   margin-top: 20px;
 }
 
-.degree-badge {
-  width: 100%;
-  text-align: right;
+
+.dl-horizontal {
+  @extend .row;
+  dt {
+    text-align: right;
+    @extend .col-sm-3;
+  }
+  dd {
+    @extend .col-sm-9;
+  }
+}
+
+
+.check_boxes {
+  span.checkbox {
+    display: block;
+    input {
+      display: inline;
+    }
+    label {
+      margin-left: 0;
+    }
+  }
 }
