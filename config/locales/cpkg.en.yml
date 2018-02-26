@@ -1,4 +1,7 @@
 en:
+  degrees: Degrees
+  no_packages: There are no packages in this course
+
   back: "back"
   other_language_prefix: "it"
   other_language: "versione italiana"
@@ -23,6 +26,7 @@ en:
   courses: "Courses"
   guest_guide: "Guest guide"
   guide: "Guide"
+  partecipating: "partecipating to the project"
   new_package: "New Package"
   new_package_for: "New Package for"
   info: "General"
@@ -55,11 +59,13 @@ en:
   repo_mng_warning_html: "<b>N.B. It's mandatory that all the repositories in cpkg are also in the sources.list file of the VM. If you don't follow this rule you can encounter problems in the installation phase of the packages.</b>"
   list_of_repo_incpkg: "List of repositories in Cpkg:"
   add_repo: "Add New Repository"
-  cpkg_admin: "CPKG Administration"
+
+  cpkg_admin:   "CPKG Administration"
   degree_admin: "Degrees Administration"
   course_admin: "Courses Administration"
-  repo_admin: "Repositories Administration"
-  users_admin: "Users Administration"
+  repo_admin:   "Repositories Administration"
+  users_admin:  "Users Administration"
+
   new_course: "New Course"
   user: "User"
   course: "Course"
@@ -108,6 +114,7 @@ en:
       course: "Course"
       package: "Package"
       document: "Document"
+      degree: "Degree"
     errors:
       models:
         course:

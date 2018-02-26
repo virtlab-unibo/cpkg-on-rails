@@ -48,21 +48,10 @@ it:
         upn: Email
       package:
         name: Nome
-        description: Breve descrizione 
-        body:  Descrizione
+        short_description: Breve descrizione 
+        long_description:  Descrizione
     hints:
       archive:
         uri: "Es. http://mi.mirror.garr.it/mirrors/debian/"
         distribution: "Es. precise"
-    # Labels and hints examples
-    # labels:
-    #   password: 'Password'
-    #   user:
-    #     new:
-    #       email: 'E-mail para efetuar o sign in.'
-    #     edit:
-    #       email: 'E-mail.'
-    # hints:
-    #   username: 'User name to sign in.'
-    #   password: 'No special characters, please.'
 

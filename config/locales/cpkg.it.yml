@@ -1,4 +1,7 @@
 it:
+  degrees: Corsi di Laurea
+  no_packages: Non sono presenti pacchetti relativi a questo corso.
+
   back: "indietro"
   other_language_prefix: "en"
   other_language: "English version"
@@ -7,18 +10,20 @@ it:
   list_of_courses: "Elenco dei corsi"
   my_courses: "I Miei Corsi"
   other_courses: "Tutti i corsi"
+  package: "pacchetto"
   package_name: "Nome del pacchetto:"
   description: "Descrizione:"
   no_description: "Descrizione non fornita."
   course_name: "Nome del corso:"
   name: "Nome"
   guide: "Guida"
+  partecipating: "che partecipano al progetto"
   other_package_list: "Lista degli altri pacchetti del corso"
   course_materials: "Materiale incluso:"
-  materials_included_into_deb: "Lista del materiale incluso nel pacchetto."
+  materials_included_into_deb: "Lista del materiale incluso nel pacchetto"
   package_without_dependecies: "Questo pacchetto non installa alcun software."
   package_without_materials: "Questo pacchetto non contiene alcun file."
-  sw_included_into_deb: "Lista dei software che vengono installati insieme al pacchetto."
+  sw_included_into_deb: "Lista dei software che vengono installati insieme al pacchetto"
   course_wo_debs: "A questo corso non è stato associato nessun pacchetto."
   course_w_debs: "A questo corso sono associati i seguenti pacchetti:"
   courses: "Corsi"
@@ -91,7 +96,7 @@ it:
   repo_updated_no: "ERRORE: Il Repository non è stato aggiornato correttamente."
   repo_updated_ok: "La lista dei pacchetti nel repository è stata aggiornata."
   repo_ins_ok: "L'archivio è stato inserito."
-  user_del_ok: "L'utente non è stato eliminato. Feature non implementata"
+  user_del_ok: "L'utente non è stato eliminato. Feature non implementata."
   user_crtd_ok: "L'utente è stato creato con successo."
   course_updt_ok: "The package has been updated successfully."
   course_crtd_ok: "The package has been created successfully."
@@ -109,6 +114,7 @@ it:
       package: "Pacchetto"
       document: "Documento"
       invitation: "Invito"
+      degree: "Corso di laurea"
     errors:
       models:
         course:
