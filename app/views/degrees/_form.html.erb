@@ -1,4 +1,4 @@
-<%= simple_form_for @degree do |degree| %>  
+<%= dm_form_for @degree, title: t(:degree) do |degree| %>  
   <%= degree.error_notification %>
   <%= degree.input :code %>  
   <%= degree.input :name %>  

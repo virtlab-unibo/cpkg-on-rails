@@ -1,9 +1,8 @@
-<%= simple_form_for [@course, @package] do |package| %>  
-  <%= package.error_notification %>
+<%= dm_form_for [@course, @package], title: 'Attributi' do |package| %>  
+  <%= package.dm_error_notification %>  
   <%= package.input :name, disabled: (@package.name ? true : false)  %>  
   <%= package.input :short_description %>  
   <%= package.input :long_description %>  
-  <%= package.submit %>  
-  <%= link_to t(:go_back_to_courses), root_path %>
+  <%= package.submit %> - <%= link_to_back root_path %>
 <% end %>
 

@@ -1,3 +1,7 @@
-<h1><%= t(:new_repo) %></h1>
-
-<%= render 'form' %>
+<%= dm_form_for @archive, title: t(:new_repo) do |archive| %>  
+  <%= archive.input :uri %>  
+  <%= archive.input :distribution %>  
+  <%= archive.input :component  %>  
+  <%= archive.input :arch, collection: ActiveDebianRepository::AptSource::ARCH_LIST %>
+  <%= archive.submit %>  
+<% end %>

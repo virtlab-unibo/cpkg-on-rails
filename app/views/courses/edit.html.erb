@@ -1,18 +1,17 @@
-<h1><%= @course %></h1>
-<%= simple_form_for @course do |course| %>  
+<%= dm_form_for @course, title: @course do |course| %>  
   <%= course.input :description %>  
-  <%= course.button :submit, :class => "btn-primary"%>  
+  <%= course.button :submit %>  
   <%= link_to t(:go_back_to_courses), root_path %>
 <% end %>
 
-<h2><%= t(:people_allowed) %></h2>
+<h3><%= t(:people_allowed) %></h3>
 
 <ul>
   <% @course.users.each do |user| %>  
-    <li><%= user %> </li> 
+    <li><%= user %></li> 
   <% end %>
 </ul>
 
 <div class="alert alert-info">
-  <p><%= t(:add_people_to_course, :mail => Rails.configuration.support_mail) %></p>
+  <p><%= t(:add_people_to_course, mail: Rails.configuration.support_mail) %></p>
 </div>

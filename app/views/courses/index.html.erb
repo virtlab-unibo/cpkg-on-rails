@@ -7,31 +7,23 @@
   <% @courses.each do |course| %>  
     <% packages = course.packages.to_a %>  
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3><%= course %> - <%= course.year %></h3>
-      </div>
-      <div class="panel-body">
-        <p><%= t(:to_the_course) %> <%= course %> (<%= course.degree %>)
-        <%= packages.empty? ? t(:no_deb_in_course) : t(:deb_in_course) %></p>
-        <dl> 
-          <% course.packages.each do |package| %>
-            <dt>
-            <%= package %> 
-            <%= link_to icon('pencil'), edit_package_path(package), title: t(:mod_package) %>
-            <%= link_to icon('upload'), new_package_changelog_path(package), data: { confirm: t(:upload_package_warning)}, title: t(:upload_deb) %>
-            <%= link_to icon('download'), packages_download_path(package), title: t(:download_deb) %>
-            </dt>
-            <dd><%= package.get_description %></dd>
-          <% end %>
-        </dl>
-      </div>
-      <div class="panel-footer">
-        <%= link_to icon('pencil') + t(:edit), edit_course_path(course), class: :button %></h3>
-        <%= link_to icon('plus')   + t(:new_package), new_course_package_path(course), class: 'button' %>
-      </div>
-    </div><!-- panel -->
-
+    <%= dm_card title: "#{course} - #{course.year}" do %>
+      <p><%= t(:to_the_course) %> <%= course %> (<%= course.degree %>)
+      <%= packages.empty? ? t(:no_deb_in_course) : t(:deb_in_course) %></p>
+      <dl> 
+        <% course.packages.each do |package| %>
+          <dt>
+          <%= package %> 
+          <%= link_to icon('edit'), edit_package_path(package), title: t(:mod_package) %>
+          <%= link_to icon('upload'), new_package_changelog_path(package), data: { confirm: t(:upload_package_warning)}, title: t(:upload_deb) %>
+          <%= link_to icon('download'), packages_download_path(package), title: t(:download_deb) %>
+          </dt>
+          <dd><%= package.get_description %></dd>
+        <% end %>
+      </dl>
+      <%= link_to icon('edit') + t(:edit), edit_course_path(course), class: :button %></h3>
+      <%= link_to icon('plus')   + t(:new_package), new_course_package_path(course), class: 'button' %>
+    <% end %>
   <% end %>
 </div>
 </div>
