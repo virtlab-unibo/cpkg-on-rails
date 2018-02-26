@@ -1,29 +1,43 @@
-<div class="row">
-<div class="col-md-6">
-  <ul>
-    <% @package.documents.each do |document| %>  
-      <li><%= link_to document.name, document.attach.url %></li>
-    <% end %>
-  </ul>
+<ul id="documents_list">
+<% @package.documents.each do |document| %>  
+  <li><%= link_to document.name, document.attach.url %> <%= link_to_delete document_path(document) %></li>
+<% end %>
+</ul>
+
+<div class="button fileinput-button">
+  <i class="fa fa-plus"></i>
+  Add file
+  <!-- The file input field used as target for the file upload widget -->
+  <input id="fileupload" type="file" name="files[]" data-url="<%= package_documents_path(@package) %>" multiple />
 </div>
 
-<div class="col-md-6">
-  <div class="button fileinput-button">
-    <i class="fa fa-plus"></i>
-    Add file
-    <!-- The file input field used as target for the file upload widget -->
-    <input id="fileupload" type="file" name="files[]" multiple />
-  </div>
+<%# <!-- The global progress bar --> %>
+<%# <div id="progress" class="progress"> %>
+  <%#   <div class="progress-bar progress-bar-success"></div> %>
+  <%# </div> %>
 
-  <!-- The global progress bar -->
-  <div id="progress" class="progress">
-    <div class="progress-bar progress-bar-success"></div>
-  </div>
-
-  <!-- The container for the uploaded files -->
-  <div id="files" class="files"></div>
-  <%= render 'jquery_fileupload_script' %>  
-</div>
-</div>
+<!-- The container for the uploaded files -->
+<div id="files" class="files"></div>
+<%# <%= render 'jquery_fileupload_script' %>  
 
 
+<script>
+$(function () {
+    $('#fileupload').fileupload({
+        acceptFileTypes: /.*/,
+        maxFileSize: 1999000,
+        dataType: 'json',
+        done: function (e, data) {
+            $.each(data.result.files, function (index, file) {
+              console.log(file);
+              var filename_tag = document.createElement("li");
+              var filename_link = document.createElement("a");
+              filename_link.setAttribute('href', file.url);
+              filename_link.appendChild(document.createTextNode(file.name));
+              filename_tag.appendChild(filename_link);
+              $("#documents_list").append(filename_tag);
+            });
+        }
+    });
+});
+</script>

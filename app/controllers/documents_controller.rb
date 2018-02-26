@@ -1,5 +1,5 @@
 class DocumentsController < ApplicationController
-  respond_to :json
+  # respond_to :json
 
   def index
     package = Package.find(params[:package_id])
@@ -19,13 +19,15 @@ class DocumentsController < ApplicationController
 
   def create
     package = Package.find(params[:package_id])
-    @document = package.documents.new(document_params)
+    @document = package.documents.new
+    @document.name = params[:files].first.original_filename.gsub(/[^0-9A-Za-z.\-_]/, '')
+    @document.attach = params[:files].first
     # set the name of the document as the filename
     # Remember: we cannot get an arbitrary name for the document
     # if we want to upload multiple documents at a time. Cause
     # there can only be one inputfield with the right name.
-    params[:document][:attach].original_filename = params[:document][:attach].original_filename.gsub(/[^0-9A-Za-z.\-_]/, '')
-    @document.name = params[:document][:attach].original_filename
+    #params[:document][:attach].original_filename = params[:document][:attach].original_filename.gsub(/[^0-9A-Za-z.\-_]/, '')
+    #@document.name = params[:document][:attach].original_filename
 
     # FIXME 
     # check_ownership
@@ -52,7 +54,7 @@ class DocumentsController < ApplicationController
     @document.description = params[:document][:description]
     if @document.save
       flash[:notice] = I18n.t 'updated_attachment' 
-      redirect_to edit_package_path(@document.package.id, :anchor => 'materiale')
+      redirect_to edit_package_path(@document.package.id)
     else
       render :edit
     end 
@@ -63,7 +65,7 @@ class DocumentsController < ApplicationController
     user_owns!(@document.package.course)
     @document.destroy
     respond_to do |format|
-      format.html { redirect_to edit_package_path(document.package.id, :anchor => 'materiale') }
+      format.html { redirect_to edit_package_path(@document.package) }
       format.json { head :no_content }
     end
   end
@@ -71,7 +73,7 @@ class DocumentsController < ApplicationController
   private
 
   def document_params
-    params.require(:document).permit(:attach)
+    params[:files].first
   end
 
 
