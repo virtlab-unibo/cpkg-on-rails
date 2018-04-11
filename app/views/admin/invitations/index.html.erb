@@ -1,9 +1,9 @@
-<h2><%= t :invitation_list %></h2>
+<%= dm_card title: t(:invitation_list) do %>  
+  <ul>
+  <% @invitations.each do |invitation| %>  
+    <li><%= invitation.email %> <small>(valid until <%= l invitation.expiration %>)</small></li>
+  <% end %>
+  </ul>
 
-</ul>
-<% @invitations.each do |invitation| %>  
-  <li><%= invitation.email %> <small>(valid until <%= l invitation.expiration %>)</li>
+  <p><%= link_to t(:back), users_path %></p>
 <% end %>
-</ul>
-
-<%= link_to t(:back), users_path %>

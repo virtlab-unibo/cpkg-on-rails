@@ -1,7 +1,7 @@
 <h1>Sincronizzazione avviata</h1>
 
+<p class="alert alert-warning">La sincronizzazione può richiedere molti minuti per essere completata.</p>
+
 <p><%= @archive %></p>
 
-<p>Sono presenti <%= @archive.packages.count %> pacchetti</p>
-
-<%= link_to 'avanti', archives_path %>
+<%= link_to 'avanti', archives_path, class: :button %>

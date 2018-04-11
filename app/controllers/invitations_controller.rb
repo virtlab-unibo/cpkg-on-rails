@@ -8,13 +8,6 @@ class InvitationsController < ApplicationController
       redirect_to root_path and return
     end
   end
-
-  def fake_upn
-    "valeria.montesi3@unibo.it"
-    nil
-    "pietro.donatini@unibo.it"
-  end
-
 end
 
 

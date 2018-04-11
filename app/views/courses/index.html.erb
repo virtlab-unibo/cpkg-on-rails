@@ -7,16 +7,16 @@
   <% @courses.each do |course| %>  
     <% packages = course.packages.to_a %>  
 
-    <%= dm_card title: "#{course} - #{course.year}" do %>
+    <%= dm_card title: "#{course} (abbr: \"#{course.abbr}\", year: #{course.year})" do %>
       <p><%= t(:to_the_course) %> <%= course %> (<%= course.degree %>)
       <%= packages.empty? ? t(:no_deb_in_course) : t(:deb_in_course) %></p>
       <dl> 
         <% course.packages.each do |package| %>
           <dt>
           <%= package %> 
-          <%= link_to icon('edit'), edit_package_path(package), title: t(:mod_package) %>
-          <%= link_to icon('upload'), new_package_changelog_path(package), data: { confirm: t(:upload_package_warning)}, title: t(:upload_deb) %>
-          <%= link_to icon('download'), packages_download_path(package), title: t(:download_deb) %>
+          <%= link_to icon('edit') + ' edit', edit_package_path(package), title: t(:mod_package) %> 
+          <%= link_to icon('upload') + ' upload', new_package_changelog_path(package), data: { confirm: t(:upload_package_warning)}, title: t(:upload_deb) %>  
+          <%= link_to icon('download') + ' download', packages_download_path(package), title: t(:download_deb) %> 
           </dt>
           <dd><%= package.get_description %></dd>
         <% end %>
