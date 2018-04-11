@@ -1,9 +1,9 @@
-<%= dm_form_for [:admin, @course], title: @course do |course| %>  
+<%= dm_form_for [:admin, @course] do |course| %>  
   <%= course.dm_error_notification %>
   <%= course.input :name %>  
   <%= course.association :degree %>  
   <%= course.input :year, input_html: { class: 'input-mini' } %>  
-  <%= course.input :abbr, hint: t(:abbr_hint) %>  
+  <%= course.input :abbr %>  
   <%= course.input :description %>  
   <%= course.association :users, collection: User.order(:surname).to_a, label_method: :to_s, as: :check_boxes %>
   <%= course.submit %> - <%= link_to t(:back), admin_courses_path %>

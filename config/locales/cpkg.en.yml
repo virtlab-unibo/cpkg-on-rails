@@ -126,3 +126,14 @@ en:
             name:
               package_name_format: 'The name can only contain lower case letters (a-z), digits (0-9), plus (+) and minus (-) signs, and periods'
               package_name_duplication: "Package name already taken. Choose a different name."
+  simple_form:
+    hints:
+      package:  
+        name: The final name will have code and abbreviation of the course as suffix
+      archive:
+        uri: "Ex. http://mi.mirror.garr.it/mirrors/debian/"
+        distribution: "Ex. stretch"
+      course:
+        abbr: Used to build the name of the packages
+
+  prepend_to_name: The name will have "%{degree_code}-%{course_abbr}-" as prefix
