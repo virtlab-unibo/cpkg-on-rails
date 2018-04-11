@@ -23,7 +23,9 @@ class ArchivesController < ApplicationController
     @archive = Archive.find(params[:id])
     logger.info("going to sync #{@archive.inspect}")
     begin
+      Rails.env.development? and Rails.logger.level = Logger::INFO
       @archive.update_db_in_background
+      Rails.env.development? and Rails.logger.level = Logger::DEBUG
       flash[:notice] = I18n.t 'repo_updated_ok' 
     rescue => e
       logger.info e 
