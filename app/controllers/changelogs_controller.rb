@@ -31,19 +31,17 @@ class ChangelogsController < ApplicationController
         res = equivs.create!
       end
     rescue => err
-      logger.info "ChangelogsController, Failed to create the package: #{err}"
+      logger.info "ChangelogsController: Failed to create the package: #{err}"
       # reload the previous state from db. (maybe it's unnecessary)
       # NB changelog doesn't exist then it doesn't need to be reloaded.
       @package.reload
     end
     if res 
       flash[:notice] = I18n.t 'pkg_upld_ok' 
-      redirect_to courses_path
     else
       flash[:error] = I18n.t 'pkg_upld_no'
-      redirect_to courses_path
     end
-
+    redirect_to courses_path
   end
 
   private
