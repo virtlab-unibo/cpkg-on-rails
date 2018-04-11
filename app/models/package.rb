@@ -35,6 +35,7 @@ class Package < ActiveRecord::Base
 
   # Adds global dependencies defined in the config file
   # if not already present.
+  # FIXME
   def add_global_deps
     if self.depends
       deps_l = self.depends.split(", ")
@@ -50,10 +51,16 @@ class Package < ActiveRecord::Base
     self.short_description.blank? ? I18n.t(:no_description) : self.short_description
   end
 
-  def init_name
-    unless self.course.nil?
-      self.name = "#{self.course.degree.code}-#{self.course.abbr}-#{self.name}"
+  def name_prefix
+    if self.course.nil?
+      "undef-course"
+    else
+      "#{self.course.degree.code}-#{self.course.abbr}"
     end
+  end
+
+  def init_name
+    self.name = "#{self.name_prefix}-#{self.name}"
   end
 
   def verify_no_dependencies
