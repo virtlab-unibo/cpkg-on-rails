@@ -1,7 +1,7 @@
 // data = [{'name': 'Joe', }, {'name': 'Henry'}, ...]
 // see http://jsfiddle.net/Fresh/bbzt9hcr/
 datumTokenizer = function(datum) {
-        console.log(datum);
+  console.log(datum);
 }
 $(function() {
   packages = new Bloodhound({
@@ -18,9 +18,9 @@ $(function() {
     }
   });
   $('#typeahead').typeahead(null, {
-    source: packages,
-    limit: 10, 
-    display: 'value'
+    limit: 30, 
+    display: 'value',
+    source: packages
     //minLength: 3
   });
 });
