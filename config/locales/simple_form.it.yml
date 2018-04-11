@@ -1,5 +1,4 @@
 it:
-  abbr_hint: "per creare nome dei pacchetti"
   helpers:
     submit:
       changelog:
@@ -24,34 +23,3 @@ it:
     error_notification:
       default_message: "Sono stati trovati errori:"
     labels:
-      course:
-        name: "Nome del corso"
-        degree: Corso di Laurea
-        abbr: "Nome abbreviato" 
-        description: "Descrizione"
-        year: "Anno"
-        users: "Responsabili del corso"
-      document:
-        name: "Nome"
-        description: "Descrizione"
-        attach: "Allegato"
-      changelog:
-        description: Inserire una descrizione
-      archive:
-        distribution: Distribuzione
-        component:    Componente
-        arch:         Architettura
-      user:
-        name: Nome
-        surname: Cognome
-        admin: Amministratore
-        upn: Email
-      package:
-        name: Nome
-        short_description: Breve descrizione 
-        long_description:  Descrizione
-    hints:
-      archive:
-        uri: "Es. http://mi.mirror.garr.it/mirrors/debian/"
-        distribution: "Es. precise"
-

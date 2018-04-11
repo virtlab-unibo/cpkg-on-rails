@@ -6,7 +6,7 @@ it:
   other_language_prefix: "en"
   other_language: "English version"
   upload_package_warning: "Sei sicuro di voler caricare il pacchetto nel repository?"
-  your_courses:    "Elenco dei suoi corsi"
+  your_courses:    "Elenco dei tuoi corsi"
   list_of_courses: "Elenco dei corsi"
   my_courses: "I Miei Corsi"
   other_courses: "Tutti i corsi"
@@ -115,6 +115,34 @@ it:
       document: "Documento"
       invitation: "Invito"
       degree: "Corso di laurea"
+    attributes:
+      package:
+        name: Nome
+        short_description: Breve descrizione 
+        long_description:  Descrizione
+      course:
+        name: "Nome del corso"
+        degree: Corso di Laurea
+        abbr: "Nome abbreviato" 
+        description: "Descrizione"
+        year: "Anno"
+        users: "Responsabili del corso"
+        code: "Codice"
+      document:
+        name: "Nome"
+        description: "Descrizione"
+        attach: "Allegato"
+      changelog:
+        description: Inserire una descrizione
+      archive:
+        distribution: Distribuzione
+        component:    Componente
+        arch:         Architettura
+      user:
+        name: Nome
+        surname: Cognome
+        admin: Amministratore
+        upn: Email
     errors:
       models:
         course:
@@ -127,3 +155,14 @@ it:
             name:
               package_name_format: 'Il nome di un pacchetto deve essere composto solo da lettere minuscole (a-z), numeri (0-9), i segni più (+) e meno (-), ed i punti'
               package_name_duplication: 'Il nome del pacchetto deve essere unico nel sistema'
+  simple_form:
+    hints:
+      package:  
+        name: Al nome verrà preposto il codice e l'abbreviativo del corso.
+      archive:
+        uri: "Es. http://mi.mirror.garr.it/mirrors/debian/"
+        distribution: "Es. precise"
+      course:
+        abbr: utilizzato nella creazione dei nome dei pacchetti
+
+  prepend_to_name: Il nome sarà preceduto da "%{degree_code}-%{course_abbr}-" 
