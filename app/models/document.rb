@@ -1,6 +1,6 @@
 # has_attached_file:
 #   url: The default value is “/system/:class/:attachment/:id_partition/:style/:filename”.
-#
+
 class Document < ActiveRecord::Base
   belongs_to :package
 

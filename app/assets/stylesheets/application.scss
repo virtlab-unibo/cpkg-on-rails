@@ -23,15 +23,10 @@ ul.courses, ul.degrees {
   }
 }
 
-// fix donatini bootstrap
-.checkbox input[type="checkbox"] {
-  position: relative;
-}
 // mistery
 .tab-content {
   margin-top: 20px;
 }
-
 
 .dl-horizontal {
   @extend .row;
@@ -41,19 +36,6 @@ ul.courses, ul.degrees {
   }
   dd {
     @extend .col-sm-9;
-  }
-}
-
-
-.check_boxes {
-  span.checkbox {
-    display: block;
-    input {
-      display: inline;
-    }
-    label {
-      margin-left: 0;
-    }
   }
 }
 

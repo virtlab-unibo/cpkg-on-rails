@@ -1,11 +1,13 @@
-<%= dm_form_for [:admin, @course] do |course| %>  
+<%= dm_form_for @course do |course| %>  
   <%= course.dm_error_notification %>
+
   <%= course.input :name %>  
-  <%= course.association :degree %>  
+  <%= course.association :degree, include_blank: false %>  
   <%= course.input :year, input_html: { class: 'input-mini' } %>  
-  <%= course.input :abbr %>  
+  <%= course.input :abbr, input_html: { class: 'input-small' } %>  
   <%= course.input :description %>  
   <%= course.association :users, collection: User.order(:surname).to_a, label_method: :to_s, as: :check_boxes %>
-  <%= course.submit %> - <%= link_to t(:back), admin_courses_path %>
+
+  <%= course.submit %> - <%= link_to t(:back), courses_path %>
 <% end %>
 

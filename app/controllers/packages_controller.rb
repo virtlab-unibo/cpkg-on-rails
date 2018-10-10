@@ -1,5 +1,6 @@
 class PackagesController < ApplicationController
   skip_before_action :redirect_unsigned_user, only: :show
+  before_action :get_course_and_check_permission, only: [:new, :create]
 
   # reach this also with url like '8080-so-2013'
   # get ':id', controller: "packages", action: "show", constraints: { id: /\d+-\w+-\d+/ }
@@ -9,8 +10,6 @@ class PackagesController < ApplicationController
   end
 
   def new
-    @course = Course.find(params[:course_id])
-    authorize! :manage, @course
     @package = @course.packages.new
   end
 
@@ -121,6 +120,11 @@ class PackagesController < ApplicationController
   def package_params
     # only authorized. Shall we move authorize! here
     params.require(:package).permit(:name, :short_description, :long_description, :depends, :homepage, :documents, :version, :filename)
+  end
+
+  def get_course_and_check_permission
+    @course = Course.find(params[:course_id])
+    authorize @course
   end
 
 end

@@ -4,8 +4,10 @@ class Course < ActiveRecord::Base
   belongs_to :degree
 
   validates_presence_of :name, :year, :degree_id, :abbr
-  validates_uniqueness_of :name
-  validates_format_of :abbr, :with => /\A[a-z0-9][a-z0-9+.-]+\z/, :message => :course_name_format
+  validates :name, presence: true, uniqueness: true
+  validates :abbr, format: { with: /\A[a-z0-9][a-z0-9+.-]+\z/, message: :course_name_format },
+                   length: { in: 2..10 },
+                   uniqueness: true
 
   before_destroy :verify_no_dependencies
 
@@ -19,5 +21,4 @@ class Course < ActiveRecord::Base
       return false
     end
   end
-
 end

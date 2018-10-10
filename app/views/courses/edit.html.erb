@@ -1,16 +1,4 @@
-<%= dm_form_for @course, title: @course do |course| %>  
-  <%= course.input :description %>  
-  <%= course.button :submit %>  
-  <%= link_to t(:go_back_to_courses), root_path %>
-<% end %>
-
-<h3><%= t(:people_allowed) %></h3>
-
-<ul>
-  <% @course.users.each do |user| %>  
-    <li><%= user %></li> 
-  <% end %>
-</ul>
+<%= render partial: 'form'  %>  
 
 <div class="alert alert-info">
   <p><%= t(:add_people_to_course, mail: Rails.configuration.support_mail) %></p>

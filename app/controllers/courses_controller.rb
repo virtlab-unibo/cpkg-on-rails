@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
   skip_before_action :redirect_unsigned_user, only: [:index, :show]
+  before_action :user_admin!, only: [:new, :create, :destroy]
   before_action :get_course_and_check_permission, only: [:edit, :update]
 
   # only teacher (current_user)
@@ -11,6 +12,29 @@ class CoursesController < ApplicationController
   def show
     @course = Course.includes(packages: :documents).find(params[:id])
     @packages = @course.packages.all
+  end
+
+  def new
+    @course = Course.new(year: Date.today.year, degree_id: params[:degree_id])
+  end 
+
+  def create
+    @course = Course.new(course_params)
+    if @course.save
+      redirect_to courses_path, notice: I18n.t('course_crtd_ok') 
+    else
+      render action: :new
+    end
+  end
+
+  def destroy
+    @course = Course.find(params[:id])
+    if @course.destroy
+      flash[:notice] = 'The course has been deleted.'
+    else
+      flash[:error] = 'The course can not be deleted.'
+    end
+    redirect_to courses_path
   end
 
   def edit
@@ -29,6 +53,10 @@ class CoursesController < ApplicationController
 
   def get_course_and_check_permission
     @course = Course.find(params[:id])
-    authorize! :manage, @course
+    authorize @course
+  end
+
+  def course_params
+    params.require(:course).permit(:name, :degree_id, :abbr, :description, :year, :user_ids => [])
   end
 end

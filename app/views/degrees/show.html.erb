@@ -1,22 +1,17 @@
 <h1><%= @degree %></h1>
 
 <% if @courses.any? %>  
-  <ul class="all_clickable mb-3 mt-3">
-    <% @courses.each do |course| %>  
-      <% packages_num = course.packages.count %>  
-      <li>
-        <%= link_to course, class: packages_num == 0 ? "disabled" : '' do %>
-          <%= course %>  
-          <%= content_tag :span, packages_num, class: "badge badge-info pull-right" %>
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
+  <% @courses.each do |course| %>  
+    <%= render course %>
+  <% end %>
 <% else %>
-  <p class="alert alert-warning"><%= t :no_packages %></p>
+  <p class="alert alert-warning"><%= t :no_courses %></p>
 <% end %>
 
 <p>
-<%= link_to_edit('Edit', edit_degree_path(@degree), button: true) if user_admin? %>
+<% if user_admin? %>  
+  <%= link_to_edit t(:edit_degree), edit_degree_path(@degree), button: true %> -
+  <%= link_to_new t(:new_course), new_degree_course_path(@degree), button: true %> -
+<% end %>
 <%= link_to_back root_path %>
 </p>

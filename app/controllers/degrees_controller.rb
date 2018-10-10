@@ -18,8 +18,7 @@ class DegreesController < ApplicationController
   def create
     @degree = Degree.new(degree_params)
     if @degree.save
-      flash[:notice] = I18n.t 'course_crtd_ok'
-      redirect_to degrees_path
+      redirect_to degrees_path, notice: I18n.t('course_crtd_ok')
     else
       render action: :new
     end
