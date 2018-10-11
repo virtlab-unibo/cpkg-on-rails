@@ -21,4 +21,8 @@ class Course < ActiveRecord::Base
       return false
     end
   end
+
+  def description_to_s
+    self.description.blank? ? I18n.t(:no_description) : self.description
+  end
 end

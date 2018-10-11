@@ -9,7 +9,7 @@ class Degree < ActiveRecord::Base
   end
 
   def to_s_with_code
-    self.code + " " + self.name
+    self.code + " - " + self.name
   end
 end
 

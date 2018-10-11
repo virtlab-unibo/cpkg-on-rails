@@ -2,7 +2,7 @@
 
 <div class="dm-card">
   <div class="dm-card-header">
-    <%= course %> (abbr: <%= course.abbr %>, year: <%= course.year %>)
+    <%= course %> 
     <% if policy(:course).edit? %>  
       <span class="float-right">
         <%= link_to_edit edit_course_path(course) %>
@@ -11,11 +11,11 @@
   </div>
   <div class="dm-card-body">
     <p style="border-left: 2px solid; padding-left:10px;">
-      <%= course.description %>  
+      <%= course.description_to_s %>  
     </p>
-    <h4>Pacchetti</h4>
-    <%= t(:to_the_course) %> <%= course %> (<%= course.degree %>)
-    <%= packages.empty? ? t(:no_deb_in_course) : t(:deb_in_course) %>
+    <% if defined?(with_packages) %>  
+    <h4><%= t :packages %></h4>
+    <%= t(:to_the_course) %> <%= packages.empty? ? t(:no_deb_in_course) : t(:deb_in_course) %>
     <dl class="ml-3"> 
       <% packages.each do |package| %>
         <dt>
@@ -32,7 +32,12 @@
       <% end %>
     </dl>
     <% if policy(:package).new? %>  
-      <%= link_to icon('plus') + t(:new_package), new_course_package_path(course), class: 'button' %>
+      <%= link_to icon('plus') + t(:new_package), new_course_package_path(course), class: 'btn btn-primary btn-sm' %>
     <% end %>
+  <% end %>
+  </div>
+  <div class="dm-card-footer">
+    <small><%= course.year %> abbr: <%= course.abbr %></small>
   </div>
 </div>
+

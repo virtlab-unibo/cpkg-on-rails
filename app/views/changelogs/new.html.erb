@@ -1,4 +1,6 @@
-<%= simple_form_for [@package, @changelog] do |changelog| %>
+<h1><%= @package.to_s %></h1>
+
+<%= dm_form_for [@package, @changelog], title: t(:new_changelog) do |changelog| %>
   <%= changelog.input :description %>
   <%= changelog.button :submit %>
 <% end %>

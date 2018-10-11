@@ -40,7 +40,7 @@
     <% end %>
   </div>
 
-  <% if can? :update, package %>
+  <% if policy(package).edit? %>
     <div class="card-footer">
       <%= link_to icon('edit') + ' edit', edit_package_path(package), class: :button %>
       <% if deletable %>  

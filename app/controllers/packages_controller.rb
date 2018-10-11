@@ -13,14 +13,7 @@ class PackagesController < ApplicationController
     @package = @course.packages.new
   end
 
-  def edit 
-    @package = Package.find(params[:id])
-    @course = @package.course
-  end
-
   def create
-    @course = Course.find(params[:course_id])
-    authorize! :manage, @course
     @package = @course.packages.new(package_params)
     if @package.save
       redirect_to edit_package_path(@package), notice: I18n.t('package_crtd_ok')
@@ -30,21 +23,15 @@ class PackagesController < ApplicationController
     end
   end
 
-  def destroy
+  def edit 
     @package = Package.find(params[:id])
-    authorize! :manage, @package
-    if @package.destroy
-      flash[:notice] = 'The package has been deleted.'
-    else
-      flash[:error] = 'The package can not be deleted.'
-    end
-    redirect_to @package.course
+    @course = @package.course
   end
 
   def update
     @package = Package.find(params[:id])
     @course = @package.course
-    authorize! :manage, @course
+    authorize @course
     # name and dependencies cannot be changed 
     params[:package].delete(:name)
     params[:package].delete(:depends)
@@ -57,9 +44,20 @@ class PackagesController < ApplicationController
     end
   end
 
+  def destroy
+    @package = Package.find(params[:id])
+    authorize @package
+    if @package.destroy
+      flash[:notice] = 'The package has been deleted.'
+    else
+      flash[:error] = 'The package can not be deleted.'
+    end
+    redirect_to @package.course
+  end
+
   def depend
     @package = Package.find(params[:id])
-    authorize! :manage, @package.course
+    authorize @package.course
     if @package.add_dependency(params[:depend])
       flash[:notice] = I18n.t 'added_dep_ok' 
     else
@@ -73,7 +71,7 @@ class PackagesController < ApplicationController
 
   def undepend
     @package = Package.find(params[:id])
-    authorize! :manage, @package.course
+    authorize @package.course
     if @package.remove_dependency(params[:depend])
       flash[:notice] = I18n.t 'dep_rem_ok'
     else
@@ -91,6 +89,7 @@ class PackagesController < ApplicationController
     if @package.changelogs.size <= 0
       @package.version = "0.temporary"
     end
+
     begin
       dest_dir = Rails.configuration.tmp_packages_dir
       @package.add_global_deps

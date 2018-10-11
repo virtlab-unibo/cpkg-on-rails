@@ -1,6 +1,7 @@
-<%= dm_form_for [@course, @package], title: 'Attributi' do |package| %>  
+<%= dm_form_for [@course, @package], title: (@package.new_record? ? @course : @package).to_s do |package| %>  
   <%= package.dm_error_notification %>  
-  <%= package.input :name, disabled: (@package.name ? true : false), hint: t(:prepend_to_name, degree_code: @course.degree.code, course_abbr: @course.abbr) %>  
+  <% hint = @package.new_record? ? t(:prepend_to_name, degree_code: @course.degree.code, course_abbr: @course.abbr) : "" %>  
+  <%= package.input :name, disabled: (! @package.new_record?), hint: hint %>  
   <%= package.input :short_description %>  
   <%= package.input :long_description %>  
   <%= package.submit %> - <%= link_to_back root_path %>

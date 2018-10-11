@@ -1,9 +1,11 @@
-<h1><%= @degree %></h1>
+<h1><%= t :degree %>: <%= @degree %></h1>
+
+<h2><%= t :list_of_courses %>:</h2>
 
 <% if @courses.any? %>  
-  <% @courses.each do |course| %>  
-    <%= render course %>
-  <% end %>
+  <div class="card-columns">
+    <%= render @courses %>
+  </div>
 <% else %>
   <p class="alert alert-warning"><%= t :no_courses %></p>
 <% end %>

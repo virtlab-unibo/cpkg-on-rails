@@ -36,6 +36,14 @@ class CoursePolicy
     false
   end
 
+  def depend?
+    update?
+  end
+
+  def undepend?
+    update?
+  end
+
   # class Scope
   #   attr_reader :user, :scope
 

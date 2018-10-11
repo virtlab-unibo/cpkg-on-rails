@@ -1,13 +1,12 @@
 class ChangelogsController < ApplicationController
+  before_action :get_package_and_check_permission, only: [:new, :create]
 
   def new
-    @package = Package.find(params[:package_id])
     @changelog = @package.changelogs.new
   end
 
   # create the debian package and put it into the repo_dir
   def create
-    @package = Package.find(params[:package_id])
     # check if all the corepackages are into the dependency
     # list, if not we add them
     @package.add_global_deps
@@ -45,6 +44,11 @@ class ChangelogsController < ApplicationController
   end
 
   private
+
+  def get_package_and_check_permission
+    @package = Package.find(params[:package_id])
+    authorize @package
+  end
 
   def changelog_params
     params.require(:changelog).permit(:description)

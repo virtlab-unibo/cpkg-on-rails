@@ -1,10 +1,10 @@
 <h1><%= t :degrees %> <small><%= t :partecipating %></small></h1>
 
-<ul class="all_clickable mb-3 mt-3">
+<div class="list-group mb-3 mt-3">
   <% @degrees.each do |degree| %>  
-    <li><%= link_to degree.to_s_with_code, degree %></li>
+    <%= link_to degree.to_s_with_code, degree, class: "list-group-item list-group-item-action" %>
   <% end %>
-</ul>
+</div>
 
 <% if user_admin?  %>  
   <p><%= link_to_new t(:new_degree), new_degree_path %></p>

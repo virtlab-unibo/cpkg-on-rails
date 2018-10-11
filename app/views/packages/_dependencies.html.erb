@@ -8,17 +8,14 @@
   <p><%= submit_tag t(:add) %></p>
 <% end %>
 
-<table class="table table-striped table-condensed">
-  <tbody>
-    <% @package.depends_on.each do |package| %>
-      <tr>
-        <th><%= package.name %></th>
-        <td><em><%= package.get_description %></em></td>
-        <td><%= package.version %></td>
-        <td><%= link_to icon('trash-alt'), undepend_package_path(@package, depend: package.name), method: :put %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="list-group">
+<% @package.depends_on.each do |package| %>
+  <div class="list-group-item">
+    <strong><%= package.name %></strong>
+    <span class="float-right"><%= link_to icon('trash-alt'), undepend_package_path(@package, depend: package.name), method: :put %></span><br/>
+    <span class="ml-2"><em><%= package.get_description %></em> (<small><%= package.version %></small>)</span>
+  </div>
+<% end %>
+</div>
 
 

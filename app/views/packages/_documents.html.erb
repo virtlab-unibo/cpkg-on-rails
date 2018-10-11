@@ -1,6 +1,6 @@
-<ul id="documents_list">
+<ul class="list-group mb-3" id="documents_list">
 <% @package.documents.each do |document| %>  
-  <li><%= link_to document.name, document.attach.url %> <%= link_to_delete document_path(document) %></li>
+  <li class="list-group-item"><%= link_to document.name, document.attach.url, target: '_new' %> <span class="float-right"><%= link_to_delete document_path(document) %></span></li>
 <% end %>
 </ul>
 
