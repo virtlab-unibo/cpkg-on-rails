@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   resources :degrees do
     resources :courses
   end
@@ -36,13 +35,6 @@ Rails.application.routes.draw do
   end
 
   get "register", controller: "invitations", action: :register, as: 'register'
-
-  # namespace :guest do
-  #   resources :courses do
-  #     resources :packages
-  #   end
-  #   resources :packages
-  # end
 
   # FIXME 
   # could be more precise about the match: ex \d+-\w+-\d+ for 8014-so-2013
