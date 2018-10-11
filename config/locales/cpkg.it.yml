@@ -1,36 +1,41 @@
 it:
+  degree: Corso di Laurea
   degrees: Corsi di Laurea
-  no_packages: Non sono presenti pacchetti relativi a questo corso.
+  no_packages: Non sono presenti pacchetti relativi a questo insegnamento.
+  no_courses: Non sono presenti corsi relativi a questo Corso di Laurea.
 
   back: "indietro"
   other_language_prefix: "en"
   other_language: "English version"
   upload_package_warning: "Sei sicuro di voler caricare il pacchetto nel repository?"
   your_courses:    "Elenco dei tuoi corsi"
-  list_of_courses: "Elenco dei corsi"
+  list_of_courses: "Elenco degli insegnamenti"
   my_courses: "I Miei Corsi"
   other_courses: "Tutti i corsi"
   package: "pacchetto"
   package_name: "Nome del pacchetto:"
   description: "Descrizione:"
   no_description: "Descrizione non fornita."
-  course_name: "Nome del corso:"
+  course_name: "Nome dell'insegnamento:"
   name: "Nome"
   guide: "Guida"
   partecipating: "che partecipano al progetto"
-  other_package_list: "Lista degli altri pacchetti del corso"
+  other_package_list: "Lista degli altri pacchetti dell'insegnamento"
   course_materials: "Materiale incluso:"
   materials_included_into_deb: "Lista del materiale incluso nel pacchetto"
   package_without_dependecies: "Questo pacchetto non installa alcun software."
   package_without_materials: "Questo pacchetto non contiene alcun file."
   sw_included_into_deb: "Lista dei software che vengono installati insieme al pacchetto"
-  course_wo_debs: "A questo corso non è stato associato nessun pacchetto."
-  course_w_debs: "A questo corso sono associati i seguenti pacchetti:"
+  course_wo_debs: "A questo insegnamento non è stato associato nessun pacchetto."
+  course_w_debs: "A questo insegnamento sono associati i seguenti pacchetti:"
   courses: "Corsi"
   guest_guide: "Guida visitatore"
+  new_degree: "Nuovo Corso di Laurea"
+  edit_degree: "Modifica il Corso di Laurea"
   new_package: "Nuovo Pacchetto"
   new_repo: "Nuovo Repository"
   new_package_for: "Nuovo pacchetto per"
+  new_changelog: Nuovo upload
   info: "Informazioni"
   material: "Materiale"
   softare: "Software"
@@ -48,14 +53,14 @@ it:
   add: "Aggiungi"
   add_dep_guide_html: "Inserisci il nome del pacchetto che vuoi aggiungere come dipendenza nella casella sottostante, man mano che scrivi ti verranno forniti dei suggerimenti sul nome del pacchetto che desideri aggiungere. Una volta scritto correttamente il nome del pacchetto clicca sul tasto <i>Aggiungi</i> per aggiungere la dipendenza al pacchetto."
   delete_dep: "elimina dipendenza"
-  to_the_course: "Al corso"
+  to_the_course: "All'insegnamento"
   no_deb_in_course: "non sono ancora stati associati pacchetti."
   deb_in_course: "sono associati i seguenti pacchetti:"
   mod_package: "clicca per modificare il pacchetto"
   upload_deb: "Carica il pacchetto nel repository."
   download_deb: "Scarica il pacchetto sul tuo disco rigido."
-  people_allowed: "Hanno accesso al corso le seguenti persone:"
-  add_people_to_course: "Per modificare l'elenco delle persone che hanno accesso al corso si prega di inviare una mail a %{mail}"
+  people_allowed: "Hanno accesso all'insegnamento le seguenti persone:"
+  add_people_to_course: "Per modificare l'elenco delle persone che hanno accesso all'insegnamento si prega di inviare una mail a %{mail}"
   repo_mng: "Amministrazione Repository"
   repo_mng_desc_html: "In questa pagina è possibile amministrare i repository a cui fa riferimento cpkg."
   repo_mng_warning_html: "NB. È necessario che i repository presenti in cpkg siano anche presenti nel file sources.list delle VM se non si vuole incorrere in errori in fase di installazione dei pacchetti nelle VM."
@@ -66,9 +71,9 @@ it:
   course_Admin: "Amministrazione Corsi"
   repo_admin: "Amministrazione Repository"
   users_admin: "Amministrazione Utenti"
-  new_course: "Nuovo Corso"
+  new_course: "Nuovo insegnamento"
   user: "Utente"
-  course: "Corso"
+  course: "Insegnamento"
   yes: "si"
   no: "no"
   new_user: "Nuovo Utente"
@@ -110,30 +115,33 @@ it:
   actual_number: "Numero di pacchetti"
   activerecord:
     models:
-      course: "Corso"
-      package: "Pacchetto"
-      document: "Documento"
-      invitation: "Invito"
-      degree: "Corso di laurea"
+      degree: Corso di Laurea
+      course: Insegnamento
+      package: Pacchetto
+      document: Documento
+      invitation: Invito
     attributes:
+      degree:
+        code: Codice
+        name: Nome
       package:
         name: Nome
         short_description: Breve descrizione 
         long_description:  Descrizione
       course:
-        name: "Nome del corso"
+        name: Nome dell'insegnamento
         degree: Corso di Laurea
-        abbr: "Nome abbreviato" 
-        description: "Descrizione"
-        year: "Anno"
-        users: "Responsabili del corso"
-        code: "Codice"
+        abbr: Nome abbreviato
+        description: Descrizione
+        year: Anno
+        users: Responsabili dell'insegnamento
+        code: Codice
       document:
         name: "Nome"
         description: "Descrizione"
         attach: "Allegato"
       changelog:
-        description: Inserire una descrizione
+        description: Inserire una descrizione belle modifiche per l'upload
       archive:
         distribution: Distribuzione
         component:    Componente
@@ -148,21 +156,23 @@ it:
         course:
           attributes: 
             abbr:
-              course_name_format: 'Il nome di un pacchetto deve essere composto solo da lettere minuscole (a-z), numeri (0-9), i segni più (+) e meno (-), ed i punti'
+              course_name_format: 'deve essere composto solo da lettere minuscole (a-z), numeri (0-9), i segni più (+) e meno (-) e punti.'
               package_name_duplication: 'Il nome del pacchetto deve essere unico nel sistema'
         package:
           attributes: 
             name:
-              package_name_format: 'Il nome di un pacchetto deve essere composto solo da lettere minuscole (a-z), numeri (0-9), i segni più (+) e meno (-), ed i punti'
+              package_name_format: 'deve essere composto solo da lettere minuscole (a-z), numeri (0-9), i segni più (+) e meno (-) e punti.'
               package_name_duplication: 'Il nome del pacchetto deve essere unico nel sistema'
   simple_form:
     hints:
+      degree:
+        code: Al più 6 caratteri
       package:  
-        name: Al nome verrà preposto il codice e l'abbreviativo del corso.
+        name: Al nome verrà preposto il codice e l'abbreviativo dell'insegnamento.
       archive:
         uri: "Es. http://mi.mirror.garr.it/mirrors/debian/"
         distribution: "Es. precise"
       course:
-        abbr: utilizzato nella creazione dei nome dei pacchetti
+        abbr: 3-10 lettere. È utilizzato nella creazione dei nome dei pacchetti (solo lettere minuscole (a-z), numeri (0-9), i segni più (+) e meno (-) e punti).'
 
   prepend_to_name: Il nome sarà preceduto da "%{degree_code}-%{course_abbr}-" 

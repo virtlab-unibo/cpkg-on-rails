@@ -1,6 +1,7 @@
 en:
   degrees: Degrees
   no_packages: There are no packages in this course
+  no_courses: There are no courses in this degree
 
   back: "back"
   other_language_prefix: "it"
@@ -29,6 +30,7 @@ en:
   partecipating: "partecipating to the project"
   new_package: "New Package"
   new_package_for: "New Package for"
+  new_changelog: Package upload
   info: "General"
   material: "Material"
   softare: "Software"
@@ -120,7 +122,7 @@ en:
         course:
           attributes: 
             abbr:
-              course_name_format: 'The name can only contain lower case letters (a-z), digits (0-9), plus (+) and minus (-) signs, and periods'
+              course_name_format: 'The name can only contain lower case letters (a-z), digits (0-9), plus (+) and minus (-) signs, and periods.'
         package:
           attributes: 
             name:
@@ -128,6 +130,8 @@ en:
               package_name_duplication: "Package name already taken. Choose a different name."
   simple_form:
     hints:
+      degree:
+        code: Max 6 characters
       package:  
         name: The final name will have code and abbreviation of the course as suffix
       archive:
