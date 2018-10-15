@@ -1,23 +1,8 @@
 GIT
-  remote: https://github.com/donapieppo/dm_unibo_user_search.git
-  revision: 47323de20512360848d2a7ecffdbab4334288844
+  remote: https://github.com/donapieppo/dm_unibo_common.git
+  revision: 60e7fef9c842161f9f15c6e4bda04136495acfdb
   ref: master
   branch: master
-  specs:
-    dm_unibo_user_search (0.1.1)
-      savon
-
-PATH
-  remote: /home/rails/gems/active_debian_repository
-  specs:
-    active_debian_repository (0.0.1)
-      mini_magick
-      paperclip (~> 6.1)
-      rails (~> 5.2.1)
-      spawnling
-
-PATH
-  remote: /home/rails/gems/dm_unibo_common
   specs:
     dm_unibo_common (2.0.1)
       bootsnap (>= 1.1.0)
@@ -37,6 +22,25 @@ PATH
       sass-rails (~> 5.0)
       simple_form (~> 4)
       uglifier (>= 1.3.0)
+
+GIT
+  remote: https://github.com/donapieppo/dm_unibo_user_search.git
+  revision: 47323de20512360848d2a7ecffdbab4334288844
+  ref: master
+  branch: master
+  specs:
+    dm_unibo_user_search (0.1.1)
+      savon
+
+GIT
+  remote: https://github.com/virtlab-unibo/active_debian_repository.git
+  revision: 8456e6e46adb4900e9ecf9c657a673e70352623e
+  specs:
+    active_debian_repository (0.0.1)
+      mini_magick
+      paperclip (~> 6.1)
+      rails (~> 5.2.1)
+      spawnling
 
 GEM
   remote: https://rubygems.org/
@@ -86,7 +90,7 @@ GEM
       gyoku (>= 0.4.0)
       nokogiri
     arel (9.0.0)
-    autoprefixer-rails (9.1.4)
+    autoprefixer-rails (9.2.0)
       execjs
     bootsnap (1.3.2)
       msgpack (~> 1.0)
@@ -107,7 +111,7 @@ GEM
     crass (1.0.4)
     erubi (1.7.1)
     execjs (2.7.0)
-    faraday (0.12.2)
+    faraday (0.15.3)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.25)
     font-awesome-sass (5.3.1)
@@ -120,7 +124,7 @@ GEM
     httpi (2.4.4)
       rack
       socksify
-    i18n (1.1.0)
+    i18n (1.1.1)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
@@ -133,7 +137,7 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
-    jwt (1.5.6)
+    jwt (2.1.0)
     libv8 (6.7.288.46.1)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -141,7 +145,7 @@ GEM
     loofah (2.2.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    mail (2.7.0)
+    mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
@@ -165,9 +169,9 @@ GEM
     nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
     nori (2.6.0)
-    oauth2 (1.4.0)
-      faraday (>= 0.8, < 0.13)
-      jwt (~> 1.0)
+    oauth2 (1.4.1)
+      faraday (>= 0.8, < 0.16.0)
+      jwt (>= 1.0, < 3.0)
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
@@ -299,4 +303,4 @@ DEPENDENCIES
   spawnling
 
 BUNDLED WITH
-   1.16.2
+   1.16.6
