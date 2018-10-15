@@ -8,13 +8,13 @@ module BreadcrumbsHelper
       content_tag :ol, class: 'breadcrumb' do
         concat content_tag(:li, link_to('Home', root_path), class: "breadcrumb-item")
         if degree
-          concat content_tag(:li, link_to(degree, degree), class: "breadcrumb-item")
+          concat content_tag(:li, link_to(I18n.t(:degree) + ": #{degree}", degree), class: "breadcrumb-item")
         end
         if course
-          concat content_tag(:li, link_to(course, course), class: "breadcrumb-item")
+          concat content_tag(:li, link_to(I18n.t(:course) + ": #{course}", course), class: "breadcrumb-item")
         end
         if package
-          concat content_tag(:li, link_to(package, package), class: "breadcrumb-item")
+          concat content_tag(:li, link_to(I18n.t(:package) + ": #{package}", package), class: "breadcrumb-item")
         end
       end
     end
