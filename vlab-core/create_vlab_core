@@ -1,0 +1,66 @@
+#!/bin/bash
+
+set -x
+
+# in config/initializers/cpkg.rb 
+# config.tmp_packages_dir = "/var/www/tmp/packages"
+# config.repo_dir = "/var/www/repo/incoming"
+VLAB_CORE_SRC_DIR="/home/rails/cpkg-on-rails/vlab-core"
+BUILD_DIR="/tmp/build_dir"
+WEB_ARCHIVE_ROOT='/var/www/repo'
+
+# 2018031601
+version=`grep -oP "[0-9]{10}" ${VLAB_CORE_SRC_DIR}/debian/changelog`
+echo "*** version: ${version}"
+
+# /tmp/build_dir/vlab-core-deb/vlab-core_20180316.orig.tar.gz
+current_date=`date "+%Y%m%d"`
+orig_archive_filename="${BUILD_DIR}/vlab-core_${current_date}.orig.tar.gz"
+echo "*** orig_archive_filename: ${orig_archive_filename}"
+
+# /tmp/build_dir/vlab-core-2018032903
+folder_name=${BUILD_DIR}/"vlab-core-"${version}
+echo "*** folder_name: ${folder_name}"
+
+mkdir -pv $folder_name 
+
+echo "*** copy debian src files in ${folder_name}"
+echo "*** and create tar ${orig_archive_filename}"
+cp -rv ${VLAB_CORE_SRC_DIR}/* ${folder_name}
+
+tar -czf $orig_archive_filename $folder_name
+
+echo   "*** creating version ${version} of vlab-core"
+logger "creating version ${version} of vlab-core in ${folder_name}"
+
+#######################
+# actual deb creating #
+#######################
+
+cd $folder_name/debian
+
+# -uc comes from dpkg-buildpackage (-uc, --unsigned-changes Do not sign the .buildinfo and .changes files)
+# -us comes from dpkg-buildpackage (-us, --unsigned-source)
+/usr/bin/debuild -us -uc
+
+cd $WEB_ARCHIVE_ROOT
+
+mv -v $BUILD_DIR/vlab-core_${version}_all.deb ${WEB_ARCHIVE_ROOT}/dists/stretch/vlab/binary-amd64
+# dpkg-scanpackages dists/stretch/vlab/binary-amd64 | gzip -9c > dists/stretch/vlab/binary-amd64/Packages.gz
+
+apt-ftparchive generate apt-ftparchive.conf
+# To download packages from a repository apt would download a InRelease or Release file from the $WEB_ARCHIVE_ROOT/dists/$DISTRIBUTION directory.
+
+apt-ftparchive -c apt-ftparchive.conf release dists/stretch > dists/stretch/Release
+gpg -abs -o dists/stretch/Release.gpg dists/stretch/Release
+
+# InRelease files are signed in-line while Release files should have an accompanying Release.gpg file. # 
+# gpg -a -s --clearsign
+
+# REMEMBER
+# deb uri distribution [component1] [component2] [...]
+# The uri specifies the root of the archive
+# The distribution part (squeeze in this case) specifies a subdirectory in $WEB_ARCHIVE_ROOT/dists
+
+
+

@@ -1,0 +1,4 @@
+files/usr/share/unibo usr/share
+files/usr/share/desktop-directories/xfce-unibo.directory usr/share/desktop-directories
+files/usr/share/applications/vlab.desktop usr/share/applications
+files/usr/share/applications/vlab-homepage.desktop usr/share/applications

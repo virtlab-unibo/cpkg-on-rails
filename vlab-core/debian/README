@@ -1,0 +1,9 @@
+https://www.debian.org/doc/manuals/maint-guide/dreq.en.html
+  control: values to manage the package (https://www.debian.org/doc/debian-policy/ch-controlfields.html)  
+  install: files that need to be installed into your package but your standard make install won't do it
+           This install file has one line per file installed, with the name of the file (relative to the top build directory) 
+           then a space then the installation directory (relative to the install directory).
+  {pre,post}{inst,rm} These postinst, preinst, postrm, and prerm files [58] are called maintainer scripts.
+
+https://www.debian.org/doc/manuals/maint-guide/dother.en.html
+  compat: The compat file defines the debhelper compatibility level Currently, you should set it to the debhelper v10 as follows: echo 10 > debian/compat
