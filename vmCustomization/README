@@ -3,9 +3,12 @@
 README per la personalizzazione e customizzazione di una virtual machine VirtualBox Debian all'utilizzo nel laboratorio virtuale.
 Possono essere utilizzate solo le macchine virtuali Debian Stretch di architettura amd64. 
 
-Si raccomanda in fase di installazione della vm di selezionare nel menu del "tasksel" solamente il desktop manager XFCE per evitare l'installazione non necessaria di ulteriori dm, è consigliata l'installazione del server ssh.
+Si raccomanda in fase di installazione della vm di selezionare nel menu del "tasksel" solamente il desktop manager XFCE 
+per evitare l'installazione non necessaria di ulteriori dm, è consigliata l'installazione del server ssh.
 
-Per customizzare e configurare in modo opportuno una macchina virtuale Debian Stretch per l'utilizzo nel sistema di VirtLab è necessario installare alcuni pacchetti e personalizzare alcune configurazioni tutto ciò è reso automatico dall'esecuzione dello script "vmCustomizer.sh" secondo la procedura seguente.
+Per customizzare e configurare in modo opportuno una macchina virtuale Debian Stretch per 
+l'utilizzo nel sistema di VirtLab è necessario installare alcuni pacchetti e personalizzare alcune configurazioni 
+tutto ciò è reso automatico dall'esecuzione dello script "vmCustomizer.sh" secondo la procedura seguente.
 
 0- scompattare l'archivio compresso nella macchina virtuale nativa, tutte le operazioni successive sono da eseguire come root
 1- installare il software di base che si ritiene indispensabile per la nuova macchina virtuale
