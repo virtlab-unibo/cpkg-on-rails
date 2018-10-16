@@ -17,7 +17,7 @@ class CoursePolicy
   end
 
   def create?
-    @user.is_admin?
+    @user and @user.is_admin?
   end
 
   def new?
@@ -25,7 +25,7 @@ class CoursePolicy
   end
 
   def update?
-    @user.is_admin? or @course.user_ids.include?(@user.id)
+    @user and (@user.is_admin? or @course.user_ids.include?(@user.id))
   end
 
   def edit?

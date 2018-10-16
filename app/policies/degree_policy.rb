@@ -15,7 +15,7 @@ class DegreePolicy
   end
 
   def create?
-    @user.is_admin?
+    @user and @user.is_admin?
   end
 
   def new?
