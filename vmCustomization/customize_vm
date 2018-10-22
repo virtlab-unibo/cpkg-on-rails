@@ -1,0 +1,48 @@
+#!/bin/sh
+# SCRIPT PER PERSONALIZZARE ED ADATTARE UNA MACCHINA VIRTUALE DEBIAN VIRTUALBOX, COME IMMAGINE IN USO PRESSO IL VIRTLAB
+
+echo "Virtlab Debian Virtual Machine image customization script starting ..."
+
+echo ""
+echo "Copy sources.list and startup files ..."
+echo ""
+
+/bin/cp -v sources.list /etc/apt
+/bin/cp -v vmFirstStartup /usr/local/bin
+/bin/cp -v vmFirstStartup.service /etc/systemd/system
+
+echo ""
+echo "Update and install the needed packages ..."
+echo ""
+
+# COPIARE, DECOMMENTARE E SOSTITUIRE L'URL PRESENTE CON QUELLO CORRETTO NEL CASO OCCORRA AGGIUNGERE CHIAVI PER REPOSITORY NON DELLA DISTRIBUZIONE
+# wget -O - http://dedalo.cs.unibo.it/repo/vlab.gpg.key | apt-key add -
+
+apt-get update 
+apt-get -y upgrade
+apt-get -y install sudo python-glade2 build-essential network-manager-openvpn-gnome network-manager-openvpn openvpn vim gedit build-essential
+
+# old vpn
+#dpkgARCH=`dpkg --print-architecture`
+#dpkg -i uniboaccountconf_0.7-1_$dpkgARCH.deb
+
+#echo ""
+#echo "Customize Network Manager VPN connections"
+#echo ""
+
+#/bin/cp -v unibo /etc/NetworkManager/system-connections
+#service network-manager restart
+
+echo ""
+echo "Set the system to start user customization script as first service of the next first boot"
+echo ""
+
+# at the end of vmFirstStartup "systemctl set-default graphical.target" "systemctl disable vmFirstStartup.service"
+systemctl set-default multi-user.target
+systemctl enable vmFirstStartup.service
+
+echo ""
+echo "Type reboot to restart system now, or poweroff to shutdown the vm without restart!"
+echo ""
+
+

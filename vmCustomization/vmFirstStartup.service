@@ -4,7 +4,7 @@ Before=getty@tty1.service
 
 [Service]
 Type=oneshot
-ExecStart=/etc/init.d/vmFirstStartup
+ExecStart=/usr/local/bin/vmFirstStartup
 StandardInput=tty-force
 StandardOutput=tty
 TTYPath=/dev/tty1
