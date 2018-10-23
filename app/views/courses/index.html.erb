@@ -1,30 +1,26 @@
-<div class="row">
-<div class="col-md-4 guide">
-  <%= render 'helps/admin_guide' %>  
-</div>
-<div class="col-md-8">
-  <h1><%= current_user.courses.empty? ? t(:list_of_courses) : t(:your_courses) %></h1>
-  <% @courses.each do |course| %>  
-    <% packages = course.packages.to_a %>  
+<h1><%= current_user.courses.empty? ? t(:list_of_courses) : t(:your_courses) %></h1>
+<% @courses.each do |course| %>  
+  <% packages = course.packages.to_a %>  
 
-    <%= dm_card title: "#{course} (abbr: \"#{course.abbr}\", year: #{course.year})" do %>
-      <p><%= t(:to_the_course) %> <%= course %> (<%= course.degree %>)
-      <%= packages.empty? ? t(:no_deb_in_course) : t(:deb_in_course) %></p>
-      <dl> 
-        <% course.packages.each do |package| %>
-          <dt>
-          <%= package %> 
-          <%= link_to icon('edit') + ' edit', edit_package_path(package), title: t(:mod_package) %> 
-          <%= link_to icon('upload') + ' upload', new_package_changelog_path(package), data: { confirm: t(:upload_package_warning)}, title: t(:upload_deb) %>  
-          <%= link_to icon('download') + ' download', packages_download_path(package), title: t(:download_deb) %> 
-          </dt>
-          <dd><%= package.get_description %></dd>
-        <% end %>
-      </dl>
-      <%= link_to icon('edit') + t(:edit), edit_course_path(course), class: :button %></h3>
-      <%= link_to icon('plus')   + t(:new_package), new_course_package_path(course), class: 'button' %>
-    <% end %>
+  <%= dm_card title: "#{course} (abbr: \"#{course.abbr}\", year: #{course.year})" do %>
+    <p><%= t(:to_the_course) %> <%= course %> (<%= course.degree %>)
+    <%= packages.empty? ? t(:no_deb_in_course) : t(:deb_in_course) %></p>
+    <dl> 
+      <% course.packages.each do |package| %>
+        <dt>
+        <%= package %> 
+        <%= link_to icon('edit') + ' edit', edit_package_path(package), title: t(:mod_package) %> 
+        <%= link_to icon('upload') + ' upload', new_package_changelog_path(package), data: { confirm: t(:upload_package_warning)}, title: t(:upload_deb) %>  
+        <%= link_to icon('download') + ' download', packages_download_path(package), title: t(:download_deb) %> 
+        </dt>
+        <dd><%= package.get_description %></dd>
+      <% end %>
+    </dl>
+    <%= link_to icon('edit') + t(:edit), edit_course_path(course), class: :button %>
+    <%= link_to icon('plus')   + t(:new_package), new_course_package_path(course), class: 'button' %>
   <% end %>
-</div>
-</div>
+  <%= render course, with_packages: true %>  
+<% end %>
 
+<% if user_admin? %>  
+<% end %>

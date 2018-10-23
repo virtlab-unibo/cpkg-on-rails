@@ -1,4 +1,4 @@
-<%= dm_form_for @course do |course| %>  
+<%= dm_form_for @course, title: @course.degree do |course| %>  
   <%= course.dm_error_notification %>
 
   <%= course.input :name %>  

@@ -14,7 +14,6 @@
       <%= course.description_to_s %>  
     </p>
     <% if defined?(with_packages) %>  
-    <h4><%= t :packages %></h4>
     <%= t(:to_the_course) %> <%= packages.empty? ? t(:no_deb_in_course) : t(:deb_in_course) %>
     <dl class="ml-3"> 
       <% packages.each do |package| %>
