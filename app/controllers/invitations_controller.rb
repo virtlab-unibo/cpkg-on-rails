@@ -1,5 +1,5 @@
 class InvitationsController < ApplicationController
-  skip_before_action :handle_guest
+  # skip_before_action :handle_guest
 
   def register
     if Invitation.validate_uuid(params[:uuid])
