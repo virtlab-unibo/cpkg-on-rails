@@ -15,7 +15,8 @@ class CoursesController < ApplicationController
   end
 
   def new
-    @course = Course.new(year: Date.today.year, degree_id: params[:degree_id])
+    @degree = Degree.find(params[:degree_id])
+    @course = @degree.courses.new(year: Date.today.year)
   end 
 
   def create
