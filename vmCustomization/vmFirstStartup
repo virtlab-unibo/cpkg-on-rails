@@ -1,7 +1,6 @@
 #!/bin/bash
 # Virtlab first-startup script based on raspi-config script -> raspi-config https://github.com/RPi-Distro/raspi-config
 # 
-#
 ### BEGIN INIT INFO
 # Provides:          vmFirstStartup
 # Required-Start:    
@@ -46,10 +45,10 @@ do_create_new_user() {
 	remove_all_users
         
 	# whiptail --msgbox "You will now be asked to enter the new username followed by password" 10 75 1
-	whiptail --msgbox "Ora vi verrà chiesto di fornire un nuovo utente con password" 10 75 1
+	whiptail --msgbox "Ora ti verrà chiesto di fornire un nuovo utente con password" 10 75 1
 
 	# NEW_USERNAME=$(whiptail --inputbox "Please enter the new username" 10 70 3>&1 1>&2 2>&3)
-  NEW_USERNAME=$(whiptail --inputbox "Inserite, per favore, il nuovo nome utente (per esempio: 'giovanni', 'utente', 'nome.cognome')" 10 70 3>&1 1>&2 2>&3)
+  NEW_USERNAME=$(whiptail --inputbox "Inserisci, per favore, il nuovo nome utente (esempi: 'giovanni', 'utente', 'nome.cognome')" 10 70 3>&1 1>&2 2>&3)
 
 	EXIT_STATUS=$?
 	if [ $EXIT_STATUS != 0 ]; then
@@ -58,7 +57,7 @@ do_create_new_user() {
 
 	NEW_USER_GECOS="-"
 	# NEW_USER_GECOS=$(whiptail --inputbox "Please enter user full name" 10 70 3>&1 1>&2 2>&3)
-  NEW_USER_GECOS=$(whiptail --inputbox "Inserite, per favore, il nome completo del nuovo utente (per esempio 'Giovanni Rossi')" 10 70 3>&1 1>&2 2>&3)
+  NEW_USER_GECOS=$(whiptail --inputbox "Inserisci, per favore, il nome completo del nuovo utente (per esempio 'Giovanni Rossi')" 10 70 3>&1 1>&2 2>&3)
 
 	EXIT_STATUS=$?
 	if [ $EXIT_STATUS != 0 ]; then
@@ -67,7 +66,7 @@ do_create_new_user() {
 
 	while true; do
 		# NEW_PASSWORD=$(whiptail --passwordbox "Please enter the password" 10 70 3>&1 1>&2 2>&3)
-		NEW_PASSWORD=$(whiptail --passwordbox "Inserite, per favore, la password del nuovo utente" 10 70 3>&1 1>&2 2>&3)
+		NEW_PASSWORD=$(whiptail --passwordbox "Inserisci, per favore, la password del nuovo utente" 10 70 3>&1 1>&2 2>&3)
 		
 		EXIT_STATUS=$?
 		if [ $EXIT_STATUS != 0 ]; then
@@ -75,7 +74,7 @@ do_create_new_user() {
 		fi
 
 		# NEW_PASSWORD2=$(whiptail --passwordbox "Please repeat the password" 10 70 3>&1 1>&2 2>&3)
-		NEW_PASSWORD2=$(whiptail --passwordbox "Riscrivete, per favore, la pssword del nuovo utente" 10 70 3>&1 1>&2 2>&3)
+		NEW_PASSWORD2=$(whiptail --passwordbox "Riscrivi, per favore, la password del nuovo utente" 10 70 3>&1 1>&2 2>&3)
 
 		EXIT_STATUS=$?
 		if [ $EXIT_STATUS != 0 ]; then
@@ -83,11 +82,11 @@ do_create_new_user() {
 		fi
 
 		if [ "$NEW_PASSWORD" == "$NEW_PASSWORD2" ]; then
-			whiptail --msgbox "Perfetto, ora creiamo il nuovo utente!" 10 70 1
+			whiptail --msgbox "Perfetto, ora creiamo il tuo nuovo utente!" 10 70 1
 			break
 		else
 			# whiptail --msgbox "Password mismatch, please repeat!" 10 70 1
-			whiptail --msgbox "Le password con corrispondono, riprovate!" 10 70 1
+			whiptail --msgbox "Le password con corrispondono, riprova!" 10 70 1
 			#sleep 2
 		fi
 	done
@@ -100,7 +99,8 @@ do_create_new_user() {
 
 do_configure_keyboard() {
   dpkg-reconfigure keyboard-configuration &&
-  printf "Reloading keymap. This may take a short while\n" &&
+  # printf "Reloading keymap. This may take a short while\n" &&
+  printf "Ricarichiamo la keymap. Ci vorrà un poco di tempo.\n" &&
   invoke-rc.d keyboard-setup start || return $?
   udevadm trigger --subsystem-match=input --action=change
   return 0
@@ -129,14 +129,14 @@ disable_config_at_boot() {
     systemctl set-default graphical.target
     systemctl disable vmFirstStartup.service
     #rm /etc/systemd/system/vmFirstStartup.service
-    chmod -x /etc/init.d/vmFirstStartup
+    chmod -x /usr/local/bin/vmFirstStartup
 }
 
 do_finish() {
-
+  # lock password for root
   passwd -l root
   disable_config_at_boot
-  whiptail --msgbox "Will now reboot!" 9 60 2
+  whiptail --msgbox "Ora il sistema verrà riavviato!" 9 60 2
 
   if [ $? -eq 0 ]; then # yes
    sync
@@ -190,8 +190,9 @@ while true; do
        RET=0
        FIRSTEXEC=1
     fi
-    
-  
+
+    do_finish
+    exit 0 
     FUN=$(whiptail --title "VirtLab - Virtual Machine first startup configuration tool" --menu "Setup Options" $WT_HEIGHT $WT_WIDTH $WT_MENU_HEIGHT --cancel-button Finish --ok-button Select \
       "1 Create the new user and set its password" ""\
       "2 Set up language and regional settings"  ""\

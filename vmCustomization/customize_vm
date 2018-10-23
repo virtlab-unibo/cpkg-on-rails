@@ -9,6 +9,7 @@ echo ""
 
 /bin/cp -v sources.list /etc/apt
 /bin/cp -v vmFirstStartup /usr/local/bin
+chmod 755 /usr/local/bin/vmFirstStartup
 /bin/cp -v vmFirstStartup.service /etc/systemd/system
 
 echo ""
