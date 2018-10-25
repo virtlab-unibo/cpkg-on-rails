@@ -3,9 +3,7 @@
 <h2><%= t :list_of_courses %>:</h2>
 
 <% if @courses.any? %>  
-  <div class="card-columns">
-    <%= render @courses %>
-  </div>
+  <%= render @courses, with_packages: true %>
 <% else %>
   <p class="alert alert-warning"><%= t :no_courses %></p>
 <% end %>
@@ -17,3 +15,16 @@
 <% end %>
 <%= link_to_back root_path %>
 </p>
+
+<%= javascript_tag do %>
+  $(document).ready(function(){
+    $(".dm-card-body").toggle();
+    $(".dm-card-footer").toggle();
+    $(".dm-card-header").click(function() {
+      $(this).css('font-weight', 'bold');
+      //$(this).next(".dm-card-body").slideToggle();
+      $(this).next(".dm-card-body").slideToggle().next(".dm-card-footer").slideToggle();
+    });
+  });
+<% end %>
+
