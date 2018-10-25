@@ -2,21 +2,14 @@
 <small><%= @course.description %></small>
 </h1>
 
-<div class="row">
-  <div class="col-md-6">
-    <% if @course.packages.size > 1 %>  
-      <label>Packages:</label> 
-      <select id="pkg_select" onchange="go_package(this.value);">
-      <% @course.packages.each do |package|  %>  
-        <option value="#<%= package.webid %>"> <%= package.name %></option>
-      <% end %>
-    </select>
-  <% end %>
-  </div>
-  <div class="col-md-6">
-    <%= link_to @course.degree, @course.degree %>  
-  </div>
-</div>
+<% if @course.packages.size > 1 %>  
+  <label>Packages:</label> 
+  <select id="pkg_select" onchange="go_package(this.value);">
+    <% @course.packages.each do |package|  %>  
+      <option value="#<%= package.webid %>"> <%= package.name %></option>
+    <% end %>
+  </select>
+<% end %>
 
 <%= javascript_tag do %>  
   function go_package(val) {

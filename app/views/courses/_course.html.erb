@@ -3,11 +3,7 @@
 <div class="dm-card">
   <div class="dm-card-header">
     <%= course %> 
-    <% if policy(:course).edit? %>  
-      <span class="float-right">
-        <%= link_to_edit edit_course_path(course) %>
-      </span>
-    <% end %>
+    <span class="float-right"><small><%= course.year %></small></span>  
   </div>
   <div class="dm-card-body">
     <p style="border-left: 2px solid; padding-left:10px;">
@@ -19,11 +15,14 @@
       <% packages.each do |package| %>
         <dt>
         <%= package %> 
+        <span class="float-right">
         <% if policy(:course).edit? %>  
           <%= link_to icon('edit') + ' edit', edit_package_path(package), title: t(:mod_package) %> 
           <%= link_to icon('upload') + ' upload', new_package_changelog_path(package), data: { confirm: t(:upload_package_warning)}, title: t(:upload_deb) %>  
+          <%= link_to icon('trash') + ' trash', package_path(package), method: :delete, data: { confirm: t(:delete_package_warning)}, title: t(:delete_deb) %>  
         <% end %>
         <%= link_to icon('download') + ' download', packages_download_path(package), title: t(:download_deb) %> 
+        </span>
         </dt>
         <dd>
         <%= package.get_description %>
@@ -36,7 +35,13 @@
   <% end %>
   </div>
   <div class="dm-card-footer">
-    <small><%= course.year %> abbr: <%= course.abbr %></small>
+    <% if policy(:course).edit? %>  
+      <span class="float-right">
+        <%= link_to_edit edit_course_path(course) %>
+        <%= link_to_delete course %>
+      </span>
+    <% end %>
+    <span><small>abbr: <%= course.abbr %></small></span>
   </div>
 </div>
 

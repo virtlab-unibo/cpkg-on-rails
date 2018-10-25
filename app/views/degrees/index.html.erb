@@ -1,6 +1,6 @@
 <h1><%= t :degrees %> <small><%= t :partecipating %></small></h1>
 
-<div class="list-group mb-3 mt-3">
+<div class="list-group mb-3 mt-3 font-weight-bold">
   <% @degrees.each do |degree| %>  
     <%= link_to degree.to_s_with_code, degree, class: "list-group-item list-group-item-action" %>
   <% end %>

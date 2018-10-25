@@ -1,52 +1,43 @@
-<% deletable = true %>  
 <div class="dm-card mb-3" id="<%= package.webid %>">
-  <div class="dm-card-title"><%= t(:package).capitalize %>: <%= package %></div>
+  <div class="dm-card-title">
+    <%= t(:package).capitalize %>: <%= package %>
+    <% if policy(package).edit? %>
+      <span class="float-right">
+      <%= link_to_edit edit_package_path(package) %>
+      <%= link_to_delete package_path(package) %>
+      </span>
+    <% end %>
+  </div>
 
   <div class="dm-card-body">
     <dl class="dl-horizontal">
       <dt><%= t(:description) %></dt><dd><%= package.get_description %></dd>
       <dt><%= t(:course_name) %></dt><dd><%= link_to package.course, course_path(package.course) %></dd>
-    </dl>
-    <h4><%= t(:materials_included_into_deb) %>:</h4>
-    <% if package.documents.empty? %>
-      <p><i><%= t(:package_without_materials) %></i></p>
-    <% else %>
-      <ul>
+      <dt><%= t(:materials_included_into_deb) %></dt>
+      <% if package.documents.empty? %>
+        <dd><i><%= t(:package_without_materials) %></i></dd>
+      <% else %>
         <% package.documents.each do |document| %>
-          <% deletable = false %>  
-          <li><%= link_to document.name, document.attach.url, title: "Scarica file" %></li>
+          <dd><%= link_to document.name, document.attach.url, title: "Scarica file" %></dd>
         <% end %>
-      </ul>
-    <% end %>
-
-    <h4><%= t(:sw_included_into_deb) %>:</h4>
-    <% if package.depends_on.empty? %> 
-      <p><i><%= t(:package_without_dependecies) %></i></p>
-    <% else %>
-      <ul>
-        <% package.depends_on.each do |package| %>  
-          <li><strong><%= package.name %></strong> (<em><%= package.get_description %></em>)</li>
-        <% end %>
-      </ul>
-    <% end %>
-
-    <% if defined?(other_packages) and other_packages.any? %>
-      <h4><%= t(:other_package_list) %>:</h4>
-      <ul>
-        <% @other_packages.each do |package| %>  
-          <li><%= link_to package, package_path(package) %></li>
-        <% end %>
-      </ul>
-    <% end %>
-  </div>
-
-  <% if policy(package).edit? %>
-    <div class="card-footer">
-      <%= link_to icon('edit') + ' edit', edit_package_path(package), class: :button %>
-      <% if deletable %>  
-        <%= link_to_delete ' delete', package_path(package), button: true %>
       <% end %>
-    </div>
-  <% end %>
+
+      <dt><%= t(:sw_included_into_deb) %></dt>
+      <% if package.depends_on.empty? %> 
+        <dd><i><%= t(:package_without_dependecies) %></i></dd>
+      <% else %>
+        <% package.depends_on.each do |package| %>  
+          <dd><strong><%= package.name %></strong> (<em><%= package.get_description %></em>)</dd>
+        <% end %>
+      <% end %>
+
+      <% if defined?(other_packages) and other_packages.any? %>
+        <dt><%= t(:other_package_list) %></dt>
+        <% @other_packages.each do |package| %>  
+          <dd><%= link_to package, package_path(package) %></dd>
+        <% end %>
+      <% end %>
+    </dl>
+  </div>
 </div>
 

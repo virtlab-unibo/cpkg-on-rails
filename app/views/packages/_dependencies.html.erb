@@ -2,20 +2,21 @@
   <p><%= big_icon('info-circle') %> <%= t(:add_dep_guide_html) %></p>
 </div>
 
-<%= form_tag depend_package_path(@package), method: :put, class: 'simple-form' do %>
-  <p><label class='control-label'><%= t(:new_dep) %></label></p>
-  <p><input class='form-control string' name="depend" type="text" data-searchpath="<%= search_packages_path %>" id="typeahead" style="display: inline"/></p>
-  <p><%= submit_tag t(:add) %></p>
+<%= form_tag depend_package_path(@package), method: :put, class: 'form-inline' do %>
+  <label class="mb-2 mr-sm-2"><%= t(:new_dep) %></label>
+  <div class="input-group mb-2 mr-sm-2">
+    <input name="depend" type="text" data-searchpath="<%= search_packages_path %>" id="typeahead"/>
+  </div>
+  <button type="submit" class="btn btn-primary mb-2"><%= t(:add) %></button>
 <% end %>
 
 <div class="list-group">
 <% @package.depends_on.each do |package| %>
   <div class="list-group-item">
     <strong><%= package.name %></strong>
-    <span class="float-right"><%= link_to icon('trash-alt'), undepend_package_path(@package, depend: package.name), method: :put %></span><br/>
-    <span class="ml-2"><em><%= package.get_description %></em> (<small><%= package.version %></small>)</span>
+    <span class="ml-2"><small><em><%= package.get_description %></em>  (<%= package.version %>)</small></span>
+    <span class="float-right"><%= link_to icon('trash-alt'), undepend_package_path(@package, depend: package.name), method: :put %></span>
   </div>
 <% end %>
 </div>
-
 
