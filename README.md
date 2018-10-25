@@ -55,6 +55,27 @@ To create the first administrator use the `cpkg:users:create_admin_user` task:
 At this point you can start the rails server and login with your 
 google creadentials as administrator.
 
+## GPG
+
+Create new keys to sign packages: RSA and RSA (default) with 4096 bits. For example: Real name: Virtlab Unibo Cpkg, Email address: ****@****, Comment: Package manager for VirtLab courses
+
+    $ gpg --full-gen-key 
+
+and get the sign with 
+
+    $ gpg --list-secret-keys
+
+Copy  the `gpg key-id` as config.gpg_key = "09A0DEDE" in `config/initializers/cpkg.rb`
+
+To export the key 
+
+    $ gpg --output public.key --armor --export 
+
+and to import the key in virtual machine
+
+    $ cat public.key | apt-key add -
+
+
 ## Getting started
 
 Enter as admin and
