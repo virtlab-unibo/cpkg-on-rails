@@ -1,8 +1,8 @@
 class Package < ActiveRecord::Base
   belongs_to :course
-  belongs_to :archive
-  has_many   :documents
-  has_many   :scripts
+  belongs_to :archive, optional: true
+  has_many   :documents, dependent: :destroy
+  has_many   :scripts, dependent: :destroy
   has_many   :changelogs, dependent: :destroy
   has_many   :users, through: :changelogs
 
@@ -14,17 +14,15 @@ class Package < ActiveRecord::Base
 
   #attr_accessible :name, :short_description, :long_description, :depends, :homepage, :documents, :version, :filename
 
-  validates_uniqueness_of :name, message: :package_name_duplication
-  validates_presence_of :name
+  validates :name, presence: true, uniqueness: { message: :package_name_duplication }
 
   scope :ours,  -> { where('course_id IS NOT NULL') }
   # has to be executed before the validation process to 
   # make sure che correct package name is going to be validated
   before_validation :init_name, on: :create
 
-  before_create :add_global_deps,
-                :generate_homepage
-
+  before_create  :generate_homepage
+  before_save    :add_global_deps
   before_destroy :verify_no_dependencies
 
   # automatically generated home page. See homepage_base in configuration
@@ -33,18 +31,22 @@ class Package < ActiveRecord::Base
     self.homepage ||= (Rails.configuration.homepage_base + "/#{self.name}")
   end
 
-  # Adds global dependencies defined in the config file
-  # if not already present.
-  # FIXME
+  # Adds global dependencies defined in the config file if not already present.
+  # only in local packages (without archive_id)
   def add_global_deps
-    if self.depends
-      deps_l = self.depends.split(", ")
-      Rails.configuration.global_deps.split(",").each do |gdep| 
-        (self.depends += ", #{gdep.strip}") unless deps_l.include? gdep.strip
-      end
-    else
-      self.depends = Rails.configuration.global_deps
-    end
+    self.archive_id and return
+
+    complete_depends = (self.depends || '').split(', ') + Rails.configuration.global_deps.split(', ')
+    self.depends = complete_depends.uniq.join(', ')
+
+    #if self.depends
+    #  deps_l = self.depends.split(", ")
+    #  Rails.configuration.global_deps.split(",").each do |gdep| 
+    #    (self.depends += ", #{gdep.strip}") unless deps_l.include? gdep.strip
+    #  end
+    #else
+    #  self.depends = Rails.configuration.global_deps
+    #end
   end
 
   def get_description

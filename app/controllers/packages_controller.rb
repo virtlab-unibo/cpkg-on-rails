@@ -92,7 +92,6 @@ class PackagesController < ApplicationController
 
     begin
       dest_dir = Rails.configuration.tmp_packages_dir
-      @package.add_global_deps
       equivs = ActiveDebianRepository::Equivs.new(@package, dest_dir) 
       path = equivs.create!
       send_file path, type: "application/x-debian-package"
@@ -117,7 +116,6 @@ class PackagesController < ApplicationController
   private
 
   def package_params
-    # only authorized. Shall we move authorize! here
     params.require(:package).permit(:name, :short_description, :long_description, :depends, :homepage, :documents, :version, :filename)
   end
 
