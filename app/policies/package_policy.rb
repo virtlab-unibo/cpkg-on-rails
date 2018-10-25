@@ -33,7 +33,7 @@ class PackagePolicy
   end
 
   def destroy?
-    false
+    update?
   end
 
   # class Scope
