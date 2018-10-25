@@ -34,7 +34,8 @@ class Document < ActiveRecord::Base
                     url: "#{ENV["RACK_BASE_URI"]}/system/:class/:attachment/:id_partition/:style/:filename"
 
   # Validate content type
-  validates_attachment_content_type :attach, content_type: Rails.configuration.content_types 
+  # validates_attachment_content_type :attach, content_type: Rails.configuration.content_types 
+  do_not_validate_attachment_file_type :attach
 
   # in questo modo possiamo mettere :upn nel path del document
   #Paperclip.interpolates :upn do |att, style|
