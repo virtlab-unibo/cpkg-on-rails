@@ -1,7 +1,13 @@
 #!/bin/sh
-# SCRIPT PER PERSONALIZZARE ED ADATTARE UNA MACCHINA VIRTUALE DEBIAN VIRTUALBOX, COME IMMAGINE IN USO PRESSO IL VIRTLAB
 
+echo
 echo "Virtlab Debian Virtual Machine image customization script starting ..."
+echo
+
+# to export the public key gpg --output public.key --armor --export)
+echo "apt-key add  public vlab key"
+PUBKEY_URL="http://virtlab.unibo.it/public.key"
+wget -O - $PUBKEY_URL | apt-key add -
 
 echo ""
 echo "Copy sources.list and startup files ..."
@@ -16,16 +22,10 @@ echo ""
 echo "Update and install the needed packages ..."
 echo ""
 
-# COPIARE, DECOMMENTARE E SOSTITUIRE L'URL PRESENTE CON QUELLO CORRETTO NEL CASO OCCORRA AGGIUNGERE CHIAVI PER REPOSITORY NON DELLA DISTRIBUZIONE
-# wget -O - http://dedalo.cs.unibo.it/repo/vlab.gpg.key | apt-key add -
 
 apt-get update 
 apt-get -y upgrade
 apt-get -y install sudo python-glade2 build-essential network-manager-openvpn-gnome network-manager-openvpn openvpn vim gedit build-essential
-
-# old vpn
-#dpkgARCH=`dpkg --print-architecture`
-#dpkg -i uniboaccountconf_0.7-1_$dpkgARCH.deb
 
 #echo ""
 #echo "Customize Network Manager VPN connections"
