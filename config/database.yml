@@ -15,7 +15,7 @@ default: &default
   pool: 5
   username: cpkg
   database: cpkg
-  password: <%= ENV['CPKG_DATABASE_PASSWORD'] %>
+  password: <%= ENV.fetch('CPKG_DATABASE_PASSWORD') %>
   socket: /var/run/mysqld/mysqld.sock
 
 development:
