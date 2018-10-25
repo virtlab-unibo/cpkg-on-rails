@@ -23,16 +23,31 @@ install it on other linux distros as long as you install dpkg and the debhelper 
 
 Clone the repository and 
 
+```bash
     $ cd cpkg-on-rails
     $ bundle
     $ cp doc/dm_unibo_common.yml config/dm_unibo_common.yaml
     $ cp doc/cpkg.rb.example config/initializers/cpkg.rb
+```
 
 Edit `config/dm_unibo_common.yaml` and `config/initializers/cpkg.rb` 
 to configure your installation. 
 
-In `config/initializers/cpkg.rb` manually change `config.secret_key_base` with a random key. 
-You can generate a new key with `rake secret` (for example `sed -i -e "s/'SECRET KEY BASE.*'/'$(rake secret)'/" cpkg.rb`).
+In `config/database.yml` configure database and username and set the database password
+in your environment as CPKG_DATABASE_PASSWORD.
+
+Generate a new secret_key_base with `rake secret` and put it in your environment as 
+SECRET_KEY_BASE.
+
+Then set the cpkg directory in CPKG_ROOT.
+
+For example your `$HOME/.bashrc` can have 
+
+```bash
+export CPKG_SECRET_KEY_BASE=28ee1481f4376882211efcac2abb2473cc6af6baf86b54ca54605b99bf0109250c7d6c771b9ee1fdfc9aa6442342ab6ab1343dd845a2a5bc8287ec40e5186e36
+export CPKG_DATABASE_PASSWORD=veryveryverysecret
+export CPKG_BASEDIR=/home/rails/cpkg-on-rails
+```
 
 You should also change almost all the other preferences according to your setup.
 
