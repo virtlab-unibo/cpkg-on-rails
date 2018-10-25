@@ -1,16 +1,15 @@
-<div class='row'>
-  <div class="col-md-12 mb-3">
-    <%= render 'form' %>
-  </div>
-  <div class='col-md-6'>
-    <%= dm_card title: t(:dependencies) do %>
-      <%= render 'dependencies' %>
-    <% end %>
-  </div>
-  <div class='col-md-6'>
-    <%= dm_card title: t(:material) do %>
-      <%= render 'documents' %>
-    <% end %>
-  </div>
-  <%= link_to 'indietro', courses_path, class: :button %>  
-</div>
+<%= render 'form' %>
+
+<%= dm_card title: t(:dependencies) do %>
+  <%= render 'dependencies' %>
+<% end %>
+
+<%= dm_card title: t(:material) do %>
+  <%= render 'documents' %>
+<% end %>
+
+<%= link_to icon('edit')     + ' edit',     edit_package_path(@package), class: :button %> 
+<%= link_to icon('upload')   + ' upload',   new_package_changelog_path(@package), data: { confirm: t(:upload_package_warning)}, title: t(:upload_deb), class: :button %>  
+<%= link_to icon('trash')    + ' trash',    package_path(@package), method: :delete, data: { confirm: t(:delete_package_warning)}, title: t(:delete_deb), class: :button %>  
+<%= link_to icon('download') + ' download', packages_download_path(@package), title: t(:download_deb), class: :button %> 
+- <%= link_to_back courses_path %>  
