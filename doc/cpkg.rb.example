@@ -47,8 +47,6 @@ CpkgOnRails::Application.configure do
   config.reprepro_command = "/usr/bin/reprepro"
   config.reprepro_exec = "#{config.reprepro_command} -v --confdir #{config.reprepro_confdir} --basedir #{config.reprepro_basedir} #{config.linux_distro}"
 
-  config.secret_key_base = 'fd79c402a74845cd2b44c17bb6d4219154a58b7dccd1c8d260ec2e4925805edc490bae07bf1410eb83cf36aa6e64e18f2b757b6163e30c6067edba781d629b47'
-
   # List of content types allowed to be uploaded and inserted into a package
   config.content_types = ['application/x-tar', 'application/zip', 'application/x-zip-compressed', 'application/pdf', 'text/plain', 'image/jpeg', 'image/png'] 
   Paperclip.options[:content_type_mappings] = { pdf: [ "application/pdf", "binary/octet-stream" ], tex: [ "application/x-tex", "text/plain" ] }
