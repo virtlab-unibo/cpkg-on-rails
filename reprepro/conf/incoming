@@ -1,0 +1,5 @@
+Name: stretch
+IncomingDir: /home/rails/cpkg-on-rails/reprepro/incoming
+Cleanup: on_deny on_error
+TempDir: /tmp
+Default: stretch
