@@ -2,9 +2,15 @@
 
 set -x
 
-VLAB_CORE_SRC_DIR="/home/rails/cpkg-on-rails/vlab-core"
+if [[ -z "${CPKG_BASEDIR}" ]]; then
+  echo "Missing CPKG_BASEDIR variable. Check your $HOME/.bashrc file"
+  exit 1
+fi
+
+VLAB_CORE_SRC_DIR="${CPKG_BASEDIR}/vlab-core"
 BUILD_DIR="/tmp/build_dir"
 
+mkdir -v $BUILD_DIR
 cd $BUILD_DIR
 
 # 2018031601
@@ -37,6 +43,13 @@ cd $folder_name/debian
 # -uc comes from dpkg-buildpackage (-uc, --unsigned-changes Do not sign the .buildinfo and .changes files)
 # -us comes from dpkg-buildpackage (-us, --unsigned-source)
 /usr/bin/debuild -us -uc
+
+cd $BUILD_DIR
+cp -v vlab-core_${version}* ${CPKG_BASEDIR}/reprepro/incoming
+
+/usr/bin/reprepro -v --confdir ${CPKG_BASEDIR}/reprepro/conf --basedir /var/www/repo processincoming stretch
+
+
 
 
 
