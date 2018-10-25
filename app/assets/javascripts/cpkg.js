@@ -12,15 +12,16 @@ $(function() {
       wildcard: '%QUERY',
       transform: function (response) {
         return $.map($.parseJSON(response.res), function (package) {
+          // singolo package = { id: 83588, name: "thunderbird-locale-en-gb" }
           return { value: package.name };
         });
       }
     }
   });
-  $('#typeahead').typeahead(null, {
+  $('#typeahead').typeahead({}, {
     limit: 30, 
-    display: 'value',
-    source: packages
+    display: 'value', // see Bloodhound above
+    source: packages  // see Bloodhound above
     //minLength: 3
   });
 });
