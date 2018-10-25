@@ -25,7 +25,7 @@
 $(function () {
     $('#fileupload').fileupload({
         acceptFileTypes: /.*/,
-        maxFileSize: 1999000,
+        maxFileSize: 90000000, // 9 Mb
         dataType: 'json',
         done: function (e, data) {
             $.each(data.result.files, function (index, file) {
