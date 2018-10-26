@@ -168,9 +168,7 @@ do_internationalisation_menu() {
 # Interactive use loop
 #
 
-
-
-whiptail --title "VirtLab Virtual Machine first startup configuration tool" --msgbox "First configuration script, it will ask to create a new user, set timezone and keyboard" 10 75 2
+whiptail --title "VirtLab Virtual Machine. Configurazioni iniziali della macchina virtuale." --msgbox "Ora ti chiediamo di configurare questa macchina vituale. Ti verrà richiesto il nome dell'utente che vorrai usare e la sua password." 10 75 2
 
 #
 # Interactive use loop

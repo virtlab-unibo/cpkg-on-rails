@@ -24,7 +24,7 @@ echo ""
 
 
 apt-get update 
-apt-get -y upgrade
+apt-get -y dist-upgrade
 apt-get -y install sudo python-glade2 build-essential network-manager-openvpn-gnome network-manager-openvpn openvpn vim gedit build-essential
 
 #echo ""
@@ -38,7 +38,9 @@ echo ""
 echo "Set the system to start user customization script as first service of the next first boot"
 echo ""
 
-# at the end of vmFirstStartup "systemctl set-default graphical.target" "systemctl disable vmFirstStartup.service"
+# remember: at the end of vmFirstStartup enable graphical and disable vmFirstStartup
+#    -> "systemctl set-default graphical.target" 
+#    -> "systemctl disable vmFirstStartup.service"
 systemctl set-default multi-user.target
 systemctl enable vmFirstStartup.service
 
