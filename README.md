@@ -28,7 +28,7 @@ Clone the repository and
     $ cd cpkg-on-rails
     $ bundle
     $ cp doc/dm_unibo_common.yml config/dm_unibo_common.yaml
-    $ cp doc/cpkg.rb.example config/initializers/cpkg.rb
+    $ cp doc/cpkg_example.rb config/initializers/cpkg.rb
 ```
 
 Then edit `config/dm_unibo_common.yaml` and `config/initializers/cpkg.rb` to configure your installation. 
