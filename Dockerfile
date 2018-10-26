@@ -14,13 +14,14 @@ RUN apt-get update \
 RUN mkdir -p /home/rails/cpkg-on-rails
 WORKDIR /home/rails/cpkg-on-rails
 COPY . .
-COPY doc/Gemfile_docker      ./Gemfile
-COPY doc/Gemfile_docker.lock ./Gemfile.lock
+COPY doc/docker/Gemfile_docker      ./Gemfile
+COPY doc/docker/Gemfile_docker.lock ./Gemfile.lock
+COPY doc/docker/schema_docker.rb    ./db/schema.rb  
 RUN bundle install
 
 # configuration
-RUN ["/bin/cp", "doc/dm_unibo_common_docker.yml", "config/dm_unibo_common.yml"]
-RUN ["/bin/cp", "doc/cpkg_example_docker.rb",     "config/initializers/cpkg.rb"]
+RUN ["/bin/cp", "doc/docker/dm_unibo_common_docker.yml", "config/dm_unibo_common.yml"]
+RUN ["/bin/cp", "doc/docker/cpkg_example_docker.rb",     "config/initializers/cpkg.rb"]
 RUN ["/bin/cp", "doc/sqlite_database.yml",        "config/database.yml"]
 
 # db
