@@ -1,17 +1,14 @@
 Source: vlab-core
 Section: vlab
-Priority: Optional
+Priority: extra
 Maintainer: Pietro Donatini <pietro.donatini@unibo.it>
-Build-Depends: debhelper (>= 8.0.0)
-Standards-Version: 3.9.2
+Build-Depends: debhelper (>=9)
+Standards-Version: 3.9.8
 Homepage: http://www.virtlab.unibo.it
-#Vcs-Git: git://git.debian.org/collab-maint/vlab-core.git
-#Vcs-Browser: http://git.debian.org/?p=collab-maint/vlab-core.git;a=summary
 
 Package: vlab-core
-Architecture: all
+Architecture: any
 Depends: ${misc:Depends}
-Recommends: uniboaccountconf 
 Description: Laboratorio virtuale interdipartimentale
  Pacchetto che configura l'ambiente per la corretta installazione dei pacchetti relativi ai corsi
 
