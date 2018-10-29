@@ -20,3 +20,4 @@ gem 'jquery-fileupload-rails'
  
 gem 'pundit'
 
+# gem 'sqlite3' # for docker
