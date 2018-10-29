@@ -1,7 +1,7 @@
 class Course < ActiveRecord::Base
   has_and_belongs_to_many :users
   belongs_to :degree
-  has_many :packages, dependent: :restrict_with_error
+  has_many :vlab_packages, dependent: :restrict_with_error
 
   validates_presence_of :name, :year, :degree_id, :abbr
   validates :name, presence: true, uniqueness: true

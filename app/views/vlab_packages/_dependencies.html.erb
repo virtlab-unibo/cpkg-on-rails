@@ -2,7 +2,7 @@
   <p><%= big_icon('info-circle') %> <%= t(:add_dep_guide_html) %></p>
 </div>
 
-<%= form_tag depend_package_path(@package), method: :put, class: 'form-inline' do %>
+<%= form_tag depend_vlab_package_path(@package), method: :put, class: 'form-inline' do %>
   <label class="mb-2 mr-sm-2"><%= t(:new_dep) %></label>
   <div class="input-group mb-2 mr-sm-2">
     <input name="depend" type="text" data-searchpath="<%= search_packages_path %>" id="typeahead"/>
@@ -15,7 +15,7 @@
   <div class="list-group-item">
     <strong><%= package.name %></strong>
     <span class="ml-2"><small><em><%= package.get_description %></em>  (<%= package.version %>)</small></span>
-    <span class="float-right"><%= link_to icon('trash-alt'), undepend_package_path(@package, depend: package.name), method: :put %></span>
+    <span class="float-right"><%= link_to icon('trash-alt'), undepend_vlab_package_path(@package, depend: package.name), method: :put %></span>
   </div>
 <% end %>
 </div>

@@ -2,7 +2,7 @@ class DocumentsController < ApplicationController
   # respond_to :json
 
   def index
-    package = Package.find(params[:package_id])
+    package = VlabPackage.find(params[:vlab_package_id])
     @documents = package.documents
     render :json => @documents.map{ |d| { :name => d.name,
                                           :size => d.attach_file_size, 
@@ -18,7 +18,7 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    package = Package.find(params[:package_id])
+    package = VlabPackage.find(params[:vlab_package_id])
     @document = package.documents.new
     @document.name = params[:files].first.original_filename.gsub(/[^0-9A-Za-z.\-_]/, '')
     @document.attach = params[:files].first
@@ -54,7 +54,7 @@ class DocumentsController < ApplicationController
     @document.description = params[:document][:description]
     if @document.save
       flash[:notice] = I18n.t 'updated_attachment' 
-      redirect_to edit_package_path(@document.package.id)
+      redirect_to edit_vlab_package_path(@document.package.id)
     else
       render :edit
     end 
@@ -62,10 +62,10 @@ class DocumentsController < ApplicationController
 
   def destroy
     @document = Document.find(params[:id])
-    user_owns!(@document.package.course)
+    user_owns!(@document.vlab_package.course)
     @document.destroy
     respond_to do |format|
-      format.html { redirect_to edit_package_path(@document.package) }
+      format.html { redirect_to edit_vlab_package_path(@document.package) }
       format.json { head :no_content }
     end
   end

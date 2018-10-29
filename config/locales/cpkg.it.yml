@@ -173,7 +173,8 @@ it:
         name: Al nome verrà preposto il codice e l'abbreviativo dell'insegnamento.
       archive:
         uri: "Es. http://mi.mirror.garr.it/mirrors/debian/"
-        distribution: "Es. precise"
+        distribution: "Es. stretch"
+        component: "Es. main (per debian si possono per esempio creare tre repositories main, contrib, non-free)"
       course:
         abbr: 3-10 lettere. È utilizzato nella creazione dei nome dei pacchetti (solo lettere minuscole (a-z), numeri (0-9), i segni più (+) e meno (-) e punti).'
 

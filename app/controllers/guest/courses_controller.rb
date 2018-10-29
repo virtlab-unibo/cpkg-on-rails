@@ -2,7 +2,7 @@ class Guest::CoursesController < ApplicationController
   skip_before_action :redirect_unsigned_user
 
   def index
-    @courses = Course.includes(:degree, :packages).order('degrees.code').all
+    @courses = Course.includes(:degree, :vlab_packages).order('degrees.code').all
   end
 
   # the show is the index with the @course selected

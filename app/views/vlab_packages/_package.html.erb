@@ -23,10 +23,10 @@
       <% end %>
 
       <dt><%= t(:sw_included_into_deb) %></dt>
-      <% if package.depends_on.empty? %> 
+      <% if package.depends_on('Package').empty? %> 
         <dd><i><%= t(:package_without_dependecies) %></i></dd>
       <% else %>
-        <% package.depends_on.each do |package| %>  
+        <% package.depends_on('Package').each do |package| %>  
           <dd><strong><%= package.name %></strong> (<em><%= package.get_description %></em>)</dd>
         <% end %>
       <% end %>

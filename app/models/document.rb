@@ -2,7 +2,7 @@
 #   url: The default value is “/system/:class/:attachment/:id_partition/:style/:filename”.
 
 class Document < ActiveRecord::Base
-  belongs_to :package
+  belongs_to :vlab_package, foreign_key: 'package_id'
 
   validates :attach, attachment_presence: true
 

@@ -139,6 +139,7 @@ en:
       archive:
         uri: "Ex. http://mi.mirror.garr.it/mirrors/debian/"
         distribution: "Ex. stretch"
+        component: "Ex. main (for debian you can create, for example, three repositories main, contrib, non-free)"
       course:
         abbr: Used to build the name of the packages
 

@@ -31,12 +31,12 @@
            <h3>Software:</h3>
            <div class="scrollable" style="border-style:none; border-top-style:solid ">
              <dl>
-               <% package.depends_on.each do |package| %>  
+               <% package.depends_on('Package').each do |package| %>  
                  <dt><%=  package.name %>  </dt>
                  <dd><%= package.description %></dd>
 	             <% end %>
              </dl>
-             <% if package.depends_on.empty? %> 
+             <% if package.depends_on('Package').empty? %> 
                <p>  <i>Questo pacchetto non installa alcun software.</i> </p>
              <% end %>
            </div>

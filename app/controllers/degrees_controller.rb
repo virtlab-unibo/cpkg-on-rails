@@ -8,7 +8,7 @@ class DegreesController < ApplicationController
 
   def show
     @degree  = Degree.find(params[:id])
-    @courses = @degree.courses.includes(:packages).order(:name).all
+    @courses = @degree.courses.includes(:vlab_packages).order(:name).all
   end
 
   def new

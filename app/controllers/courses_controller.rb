@@ -6,12 +6,12 @@ class CoursesController < ApplicationController
   # only teacher (current_user)
   # students sees degree_path(:id) for list of courses FIXME
   def index
-    @courses = current_user.courses.includes(:packages, :degree)
+    @courses = current_user.courses.includes(:vlab_packages, :degree)
   end
 
   def show
-    @course = Course.includes(packages: :documents).find(params[:id])
-    @packages = @course.packages.all
+    @course = Course.includes(vlab_packages: :documents).find(params[:id])
+    @packages = @course.vlab_packages.all
   end
 
   def new

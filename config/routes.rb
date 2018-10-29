@@ -4,20 +4,23 @@ Rails.application.routes.draw do
   end
 
   resources :courses  do
-    resources :packages do
+    resources :vlab_packages do
       resources :changelogs
     end
   end
 
-  get "packages/:id/download", controller: "packages", action: "download", as: 'packages_download'
+  get "packages/:id/download", controller: "vlab_packages", action: "download", as: 'vlab_package_download'
 
   resources :users 
 
   resources :packages do
+    get :search, on: :collection, as: 'search'
+    get :autocomplete_package_name, on: :collection
+  end
+
+  resources :vlab_packages do
     resources :documents
     resources :changelogs
-    get :autocomplete_package_name, on: :collection
-    get :search, on: :collection, as:'search'
     put :depend, on: :member
     put :undepend, on: :member
   end
@@ -38,7 +41,7 @@ Rails.application.routes.draw do
 
   # FIXME 
   # could be more precise about the match: ex \d+-\w+-\d+ for 8014-so-2013
-  get ':id', controller: "packages", action: "show", module: "guest", constraints: { id: /\d+-\w+-\d+/ }
+  get ':id', controller: "vlab_packages", action: "show", module: "guest", constraints: { id: /\d+-\w+-\d+/ }
 
   root to: 'degrees#index'
 end

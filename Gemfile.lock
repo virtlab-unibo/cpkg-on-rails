@@ -32,9 +32,8 @@ GIT
     dm_unibo_user_search (0.1.1)
       savon
 
-GIT
-  remote: https://github.com/virtlab-unibo/active_debian_repository.git
-  revision: 8456e6e46adb4900e9ecf9c657a673e70352623e
+PATH
+  remote: /home/rails/gems/active_debian_repository
   specs:
     active_debian_repository (0.0.1)
       mini_magick
