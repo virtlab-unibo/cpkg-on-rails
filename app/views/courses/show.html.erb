@@ -1,27 +1,3 @@
-<h1><%= @course %><br/> <small><%= @course.description %></small> </h1>
+<%= render @course, with_packages: true, with_documents: true %>
 
-<% if @packages.size > 1 %>  
-  <label>Packages:</label> 
-  <select id="pkg_select" onchange="go_package(this.value);">
-    <% @packages.each do |package|  %>  
-      <option value="#<%= package.webid %>"> <%= package.name %></option>
-    <% end %>
-  </select>
-<% end %>
-
-<%= javascript_tag do %>  
-  function go_package(val) {
-    window.location=val;
-  }
-<% end %>
-
-<% if @packages.empty? %>  
-  <div class="alert alert-warning">
-    <%= t(:no_packages) %>  
-  </div>
-<% else %>
-  <% @packages.each do |package| %>
-    <%= render package %>  
-  <% end %>
-<% end %>
 

@@ -1,0 +1,46 @@
+<% documents = vlab_package.documents.all %>  
+<% depends_on = vlab_package.depends_on %>  
+
+<div class="dm-card mb-3" id="<%= vlab_package.webid %>">
+  <div class="dm-card-title">
+    <%= t(:package).capitalize %>: <%= vlab_package %>
+    <% if policy(vlab_package).edit? %>
+      <span class="float-right">
+      <%= link_to_edit   edit_vlab_package_path(vlab_package) %>
+      <%= link_to_delete vlab_package_path(vlab_package) %>
+      </span>
+    <% end %>
+  </div>
+
+  <div class="dm-card-body">
+    <p class="alert alert-info"><%= vlab_package.get_description %></p>
+    <dl class="dl-horizontal">
+      <dt><%= t(:materials_included_into_deb) %></dt>
+      <% if documents.empty? %>
+        <dd><i><%= t(:package_without_materials) %></i></dd>
+      <% else %>
+        <% documents.each do |document| %>
+          <dd><%= link_to document.name, document.attach.url, title: "Scarica file" %></dd>
+        <% end %>
+      <% end %>
+
+      <dt><%= t(:sw_included_into_deb) %></dt>
+      <% if depends_on.empty? %> 
+        <dd><i><%= t(:package_without_dependecies) %></i></dd>
+      <% else %>
+        <% depends_on.each do |p| %>  
+          <dd title="<%= p.get_description %>"><strong><%= p.name %></strong> (<em><%= p.get_description %></em>)</dd>
+        <% end %>
+      <% end %>
+
+      <% if defined?(other_packages) and other_packages.any? %>
+        <dt><%= t(:other_package_list) %></dt>
+        <% @other_packages.each do |p| %>  
+          <dd><%= link_to p, vlab_package_path(p) %></dd>
+        <% end %>
+      <% end %>
+    </dl>
+    <p class="mb-0" style="text-align: right"><%= t(:course_name) %> <%= link_to vlab_package.course, course_path(vlab_package.course) %></p>
+  </div>
+</div>
+
