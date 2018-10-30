@@ -1,5 +1,8 @@
 en:
   degrees: Degrees
+  degree: Degree
+  packages: Packages
+  package: Package
   no_packages: There are no packages in this course
   no_courses: There are no courses in this degree
 
@@ -49,7 +52,7 @@ en:
   add: "Add"
   add_dep_guide_html: "To insert a new dependency type its name and select it into the drop down list. After you have selected it just click on the <i>Add</i> button to add it to the package."
   delete_dep: "delete dependency"
-  to_the_course: "To the"
+  to_the_course: "To the course"
   no_deb_in_course: "course there's no package added."
   deb_in_course: "has been added the following packages:"
   mod_package: "Click to modify the package."
