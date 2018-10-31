@@ -7,6 +7,7 @@ class VlabPackagesController < ApplicationController
   def show
     @package = params[:id] =~ /^\d+$/ ? VlabPackage.find(params[:id]) : VlabPackage.find_by_name(params[:id])
     @other_packages = @package.course.vlab_packages - [@package]
+    render layout: false if modal_page
   end
 
   def new
