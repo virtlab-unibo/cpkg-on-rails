@@ -10,25 +10,16 @@
 
     <% if defined?(with_packages) %>  
       <%= t(:to_the_course) %> <%= packages.empty? ? t(:no_deb_in_course) : t(:deb_in_course) %>
-      <ul class=""> 
+      <div class="list-group my-2"> 
         <% packages.each do |package| %>
-          <li style="list-style-type: square">
-            <strong><%= package %> </strong>
-            <span class="float-right">
-              <% if policy(:course).edit? %>  
-                <%= link_to icon('eye')    + ' show', vlab_package_path(package), title: t(:mod_package) %> 
-                <%= link_to icon('upload') + ' upload', new_vlab_package_changelog_path(package), data: { confirm: t(:upload_package_warning)}, title: t(:upload_deb) %>  
-                <%= link_to icon('trash')  + ' trash', vlab_package_path(package), method: :delete, data: { confirm: t(:delete_package_warning)}, title: t(:delete_deb) %>  
-                <%= link_to icon('edit')   + ' edit', edit_vlab_package_path(package), title: t(:mod_package) %> 
-              <% end %>
-              <%= link_to icon('download') + ' download', vlab_package_download_path(package), title: t(:download_deb) %> 
-            </span><br/>
-            <%= package.get_description %>
-          </li>
+          <%= link_to vlab_package_path(package), class: 'modal-link list-group-item list-group-item-action', modal: true do %>  
+            <strong><%= package %></strong>
+            <span class="ml-2 font-weight-light font-italic"><small><%= package.get_description %></small></span>
+          <% end %>
         <% end %>
-      </ul>
+      </div>
       <% if policy(:vlab_package).new? %>  
-        <%= link_to icon('plus') + t(:new_package), new_course_vlab_package_path(course), class: 'btn btn-primary btn-sm' %>
+        <p><%= link_to icon('plus') + t(:new_package), new_course_vlab_package_path(course), class: 'btn btn-primary btn-sm' %></p>
       <% end %>
     <% end %>
 

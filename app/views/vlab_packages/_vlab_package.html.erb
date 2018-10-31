@@ -6,40 +6,46 @@
     <%= t(:package).capitalize %>: <%= vlab_package %>
     <% if policy(vlab_package).edit? %>
       <span class="float-right">
-      <%= link_to_edit   edit_vlab_package_path(vlab_package) %>
-      <%= link_to_delete vlab_package_path(vlab_package) %>
+        <%= link_to icon('edit')   + " #{t :edit}", edit_vlab_package_path(vlab_package), title: t(:mod_package) %> 
+        <%= link_to icon('upload') + " #{t :upload}", new_vlab_package_changelog_path(vlab_package), data: { confirm: t(:upload_package_warning)}, title: t(:upload_deb) %>  
+        <%= link_to icon('trash')  + " #{t :delete}", vlab_package_path(vlab_package), method: :delete, data: { confirm: t(:delete_package_warning)}, title: t(:delete_deb) %>  
       </span>
     <% end %>
   </div>
 
   <div class="dm-card-body">
+
     <p class="alert alert-info"><%= vlab_package.get_description %></p>
-    <dl class="dl-horizontal">
-      <dt><%= t(:materials_included_into_deb) %></dt>
-      <% if documents.empty? %>
-        <dd><i><%= t(:package_without_materials) %></i></dd>
-      <% else %>
-        <% documents.each do |document| %>
-          <dd><%= link_to document.name, document.attach.url, title: "Scarica file" %></dd>
-        <% end %>
-      <% end %>
 
-      <dt><%= t(:sw_included_into_deb) %></dt>
-      <% if depends_on.empty? %> 
-        <dd><i><%= t(:package_without_dependecies) %></i></dd>
-      <% else %>
-        <% depends_on.each do |p| %>  
-          <dd title="<%= p.get_description %>"><strong><%= p.name %></strong> (<em><%= p.get_description %></em>)</dd>
-        <% end %>
-      <% end %>
+    <h2 class="mt-3"><%= t(:materials_included_into_deb) %></h2>
+    <% if documents.empty? %>
+      <p><%= t(:package_without_materials) %></p>
+    <% else %>
+      <%= render partial: 'documents/card_columns_list', locals: { documents: documents } %>
+    <% end %>
 
-      <% if defined?(other_packages) and other_packages.any? %>
-        <dt><%= t(:other_package_list) %></dt>
-        <% @other_packages.each do |p| %>  
-          <dd><%= link_to p, vlab_package_path(p) %></dd>
+    <h2 class="mt-3"><%= t(:sw_included_into_deb) %></h2>
+    <% if depends_on.empty? %> 
+      <p><%= t(:package_without_dependecies) %></p>
+    <% else %>
+      <div class="list-group">
+        <% depends_on.each do |p| %>
+          <div class="list-group-item">
+            <strong><%= p.name %></strong>
+            <span class="ml-2 font-italic"><small><%= p.get_description %></small></span>
+          </div>
         <% end %>
+      </div>
+    <% end %>
+
+    <% if defined?(other_packages) and other_packages.any? %>
+      <h2><%= t(:other_package_list) %></h2>
+      <ul>
+      <% @other_packages.each do |p| %>  
+        <li><%= link_to p, vlab_package_path(p) %></li>
       <% end %>
-    </dl>
+    <% end %>
+    </ul>
     <p class="mb-0" style="text-align: right"><%= t(:course_name) %> <%= link_to vlab_package.course, course_path(vlab_package.course) %></p>
   </div>
 </div>

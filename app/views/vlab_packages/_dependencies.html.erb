@@ -11,12 +11,12 @@
 <% end %>
 
 <div class="list-group">
-<% @package.depends_on.each do |package| %>
-  <div class="list-group-item">
-    <strong><%= package.name %></strong>
-    <span class="ml-2"><small><em><%= package.get_description %></em>  (<%= package.version %>)</small></span>
-    <span class="float-right"><%= link_to icon('trash-alt'), undepend_vlab_package_path(@package, depend: package.name), method: :put %></span>
-  </div>
-<% end %>
+  <% @package.depends_on.each do |package| %>
+    <div class="list-group-item">
+      <strong><%= package.name %></strong>
+      <span class="ml-2 font-italic"><small><%= package.get_description %> (<%= package.version %>)</small></span>
+      <span class="float-right"><%= link_to icon('trash-alt'), undepend_vlab_package_path(@package, depend: package.name), method: :put %></span>
+    </div>
+  <% end %>
 </div>
 

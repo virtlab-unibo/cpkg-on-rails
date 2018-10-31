@@ -1,8 +1,4 @@
-<ul class="list-group mb-3" id="documents_list">
-<% @package.documents.each do |document| %>  
-  <li class="list-group-item"><%= link_to document.name, document.attach.url, target: '_new' %> <span class="float-right"><%= link_to_delete document_path(document) %></span></li>
-<% end %>
-</ul>
+<%= render partial: 'documents/card_columns_list', locals: { documents: @package.documents } %>
 
 <div class="button fileinput-button">
   <i class="fa fa-plus"></i>
@@ -19,7 +15,6 @@
 <!-- The container for the uploaded files -->
 <div id="files" class="files"></div>
 <%# <%= render 'jquery_fileupload_script' %>  
-
 
 <script>
 $(function () {

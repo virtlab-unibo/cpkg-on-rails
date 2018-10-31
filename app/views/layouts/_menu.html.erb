@@ -6,11 +6,8 @@
     <% if user_signed_in? %>
       <li><%= link_to big_icon('list') + " " + t(:my_courses), courses_path %></li>
       <% if current_user.is_admin? %>
-        <%= dropdown_menu '', big_icon('wrench') + " Admin" do  %>  
-          <%= link_to t(:degree_admin), degrees_path %>
-          <%= link_to t(:repo_admin),   archives_path %>
-          <%= link_to t(:users_admin),  users_path %>
-        <% end %>
+        <li><%= link_to big_icon('link') + " " + t(:repos), archives_path %></li>
+        <li><%= link_to big_icon('users') + " " + t(:users),  users_path %></li>
       <% end %>
     <% end %>
 
