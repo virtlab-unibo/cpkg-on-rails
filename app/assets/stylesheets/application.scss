@@ -39,9 +39,15 @@ ul.courses, ul.degrees {
   }
 }
 
+.modal-dialog {
+  width: 90%;
+  max-width: 1200px;
+}
+
 // #typeahead .tt-menu {
 //   max-height: 150px;
 //   overflow-y: auto;
 // }
 
 @import "card_columns";
+
