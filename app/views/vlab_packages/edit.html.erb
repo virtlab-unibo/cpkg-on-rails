@@ -8,8 +8,9 @@
   <%= render 'documents' %>
 <% end %>
 
-<%= link_to icon('edit')     + ' edit',     edit_vlab_package_path(@package), class: :button %> 
-<%= link_to icon('upload')   + ' upload',   new_vlab_package_changelog_path(@package), data: { confirm: t(:upload_package_warning)}, title: t(:upload_deb), class: :button %>  
-<%= link_to icon('trash')    + ' trash',    vlab_package_path(@package), method: :delete, data: { confirm: t(:delete_package_warning)}, title: t(:delete_deb), class: :button %>  
-<%= link_to icon('download') + ' download', vlab_package_download_path(@package), title: t(:download_deb), class: :button %> 
-- <%= link_to_back courses_path %>  
+<div class="text-center">
+  <%= link_to icon('upload')   + ' upload',   new_vlab_package_changelog_path(@package), data: { confirm: t(:upload_package_warning)}, title: t(:upload_deb), class: :button %>  
+  <%= link_to icon('trash')    + ' trash',    vlab_package_path(@package), method: :delete, data: { confirm: t(:delete_package_warning)}, title: t(:delete_deb), class: :button %>  
+  <%= link_to icon('download') + ' download', vlab_package_download_path(@package), title: t(:download_deb), class: :button %> 
+  - <%= link_to_back courses_path %>  
+</div>
