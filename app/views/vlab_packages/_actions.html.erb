@@ -1,0 +1,8 @@
+<% if policy(vlab_package).edit? %>
+  <span class="float-right">
+    <%= link_to icon('edit')   + " #{t :edit}", edit_vlab_package_path(vlab_package), title: t(:mod_package) %> 
+    <%= link_to icon('upload') + " #{t :upload}", new_vlab_package_changelog_path(vlab_package), data: { confirm: t(:upload_package_warning)}, title: t(:upload_deb) %>  
+    <%= link_to icon('trash')  + " #{t :delete}", vlab_package_path(vlab_package), method: :delete, data: { confirm: t(:delete_package_warning)}, title: t(:delete_deb) %>  
+  </span>
+<% end %>
+
