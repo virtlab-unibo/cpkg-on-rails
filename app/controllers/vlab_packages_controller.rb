@@ -117,7 +117,7 @@ class VlabPackagesController < ApplicationController
   private
 
   def package_params
-    params.require(:package).permit(:name, :short_description, :long_description, :depends, :homepage, :documents, :version, :filename)
+    params.require(:vlab_package).permit(:name, :short_description, :long_description, :depends, :homepage, :documents, :version, :filename)
   end
 
   def get_course_and_check_permission

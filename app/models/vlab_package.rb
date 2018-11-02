@@ -1,7 +1,7 @@
 class VlabPackage < Package
   belongs_to :course
   has_many   :documents, dependent: :destroy, foreign_key: 'package_id'
-  has_many   :scripts, dependent: :destroy
+  has_many   :scripts, dependent: :destroy, foreign_key: 'package_id'
   has_many   :users, through: :changelogs
 
   validates :name, presence: true, uniqueness: { message: :package_name_duplication }

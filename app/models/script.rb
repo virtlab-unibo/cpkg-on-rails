@@ -2,7 +2,7 @@
 
 class Script < ActiveRecord::Base
   include Paperclip::Glue
-  belongs_to :vlab_package
+  belongs_to :vlab_package, foreign_key: 'package_id'
 
   validates_format_of :stype, with: /^(preinst|postinst|prerm|postrm)$/, message: :script_type_unknown, multiline: true
 

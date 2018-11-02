@@ -42,7 +42,7 @@ class ChangelogsController < ApplicationController
   private
 
   def get_package_and_check_permission
-    @package = Package.find(params[:package_id])
+    @package = VlabPackage.find(params[:vlab_package_id])
     authorize @package
   end
 
