@@ -18,8 +18,9 @@ $(function() {
       }
     }
   });
+  // see real limit in app/controllers/packages_controller.rb
   $('#typeahead').typeahead({}, {
-    limit: 30, 
+    limit: 100, 
     display: 'value', // see Bloodhound above
     source: packages  // see Bloodhound above
     //minLength: 3

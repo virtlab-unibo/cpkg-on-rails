@@ -43,11 +43,10 @@ ul.courses, ul.degrees {
   width: 90%;
   max-width: 1200px;
 }
-
-// #typeahead .tt-menu {
-//   max-height: 150px;
-//   overflow-y: auto;
-// }
+.tt-menu .tt-dataset {
+  max-height: 250px;
+  overflow-y: auto;
+}
 
 @import "card_columns";
 
