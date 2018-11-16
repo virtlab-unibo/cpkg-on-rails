@@ -12,7 +12,7 @@
       <%= t(:to_the_course) %> <%= packages.empty? ? t(:no_deb_in_course) : t(:deb_in_course) %>
       <div class="list-group my-2"> 
         <% packages.each do |package| %>
-          <%= link_to vlab_package_path(package), class: 'modal-link list-group-item list-group-item-action', modal: true do %>  
+          <%= link_to vlab_package_path(package), class: 'modal-link list-group-item list-group-item-action py-2', modal: true do %>  
             <strong><%= package %></strong><br/>
             <span class="ml-2 font-italic"><%= package.get_description %></span>
           <% end %>
@@ -25,7 +25,7 @@
 
   </div>
   <div class="dm-card-footer">
-    <% if policy(:course).edit? %>  
+    <% if policy(course).edit? %>  
       <span class="float-right">
         <%= link_to_edit edit_course_path(course) %>
         <%= link_to_delete course %>
