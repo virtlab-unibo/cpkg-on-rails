@@ -1,14 +1,8 @@
-# First version: Michele Cucchi  Ottobre-2016 (michele.cucchi223@gmail.com)
+How to create the virtual lab client from clean debian stretch
+=============
 
-README per la personalizzazione e customizzazione di una virtual machine VirtualBox Debian all'utilizzo nel laboratorio virtuale.
-Possono essere utilizzate solo le macchine virtuali Debian Stretch di architettura amd64. 
-
-Si raccomanda in fase di installazione della vm di selezionare nel menu del "tasksel" solamente il desktop manager XFCE 
-per evitare l'installazione non necessaria di ulteriori dm, è consigliata l'installazione del server ssh.
-
-Per customizzare e configurare in modo opportuno una macchina virtuale Debian Stretch per 
-l'utilizzo nel sistema di VirtLab è necessario installare alcuni pacchetti e personalizzare alcune configurazioni 
-tutto ciò è reso automatico dall'esecuzione dello script "vmCustomizer.sh" secondo la procedura seguente.
+  * Architecture amd 64 debian stretch
+  * when installimg debian do not choose desktop
 
 0- scompattare l'archivio compresso nella macchina virtuale nativa, tutte le operazioni successive sono da eseguire come root
 1- installare il software di base che si ritiene indispensabile per la nuova macchina virtuale
@@ -21,3 +15,5 @@ tutto ciò è reso automatico dall'esecuzione dello script "vmCustomizer.sh" sec
 SONO ALLEGATE AGLI SCRIPT DUE IMMAGINI DI MACCHINE VIRTUALI OVA NATIVE DEBIAN Stretch APPENA INSTALLATE DA IMPORTARE IN VIRTUALBOX PER POI CARICARVI DENTRO IL TAR
 
 PER IL REPO DI VIRTLAB VA INSERITO IN SOURCES.LIST PRIMA DI LANCIARE GLI SCRIPT DI PERSONALIZZAZIONE DELLA MACCHINA VIRTUALE NATIVA/VANILLA
+
+# First version: Michele Cucchi  Ottobre-2016 (michele.cucchi223@gmail.com)
