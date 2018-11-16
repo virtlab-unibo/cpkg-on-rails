@@ -1,4 +1,4 @@
-<%= render partial: 'documents/card_columns_list', locals: { documents: @package.documents } %>
+<%= render partial: 'documents/card_columns_list', locals: { documents: @package.documents, deletable: true } %>
 
 <div class="button fileinput-button">
   <i class="fa fa-plus"></i>
@@ -9,8 +9,8 @@
 
 <%# <!-- The global progress bar --> %>
 <%# <div id="progress" class="progress"> %>
-  <%#   <div class="progress-bar progress-bar-success"></div> %>
-  <%# </div> %>
+<%#   <div class="progress-bar progress-bar-success"></div> %>
+<%# </div> %>
 
 <!-- The container for the uploaded files -->
 <div id="files" class="files"></div>

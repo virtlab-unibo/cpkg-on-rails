@@ -8,7 +8,12 @@
   </div>
 
   <div class="dm-card-body">
-    <p class="alert alert-info"><%= vlab_package.get_description %></p>
+    <p class="alert alert-info">
+      <%= vlab_package.get_description %>
+      <% unless vlab_package.long_description.blank? %>  
+        <br/><i><%= vlab_package.long_description %></i>
+      <% end %>
+    </p>
 
     <h2 class="mt-3"><%= t(:sw_included_into_deb) %></h2>
     <% if depends_on.empty? %> 
@@ -16,7 +21,7 @@
     <% else %>
       <div class="list-group">
         <% depends_on.each do |p| %>
-          <div class="list-group-item">
+          <div class="list-group-item py-2">
             <span class="font-weight-bold"><%= p.name %></span><br/>
             <span class="ml-2 font-italic"><%= p.get_description %></span>
           </div>
@@ -31,15 +36,19 @@
       <%= render partial: 'documents/card_columns_list', locals: { documents: documents } %>
     <% end %>
 
-    <% if defined?(other_packages) and other_packages.any? %>
-      <h2><%= t(:other_package_list) %></h2>
-      <ul>
-      <% @other_packages.each do |p| %>  
-        <li><%= link_to p, vlab_package_path(p) %></li>
+
+    <div class="mb-0" style="text-align: right">
+      <% if defined?(other_packages) and other_packages.any? %>
+        <strong><%= t(:other_package_list) %> <%= link_to vlab_package.course, course_path(vlab_package.course) %></strong>:
+        <ul>
+          <% @other_packages.each do |p| %>  
+            <li><%= link_to p, vlab_package_path(p) %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p><strong><%= t(:other_package_list) %> <%= link_to vlab_package.course, course_path(vlab_package.course) %></strong></p>
       <% end %>
-    <% end %>
-    </ul>
-    <p class="mb-0" style="text-align: right"><%= t(:course_name) %> <%= link_to vlab_package.course, course_path(vlab_package.course) %></p>
+    </div>
   </div>
 </div>
 
