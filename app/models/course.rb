@@ -16,8 +16,8 @@ class Course < ActiveRecord::Base
   end
  
   def verify_no_dependencies
-    if self.packages.any?
-      self.errors.add(:base, 'There are packages')
+    if self.vlab_packages.any?
+      self.errors.add(:base, 'There are packages. Please delete them before deleting the course.')
       return false
     end
   end
