@@ -4,12 +4,14 @@
       <div class="card-body">
         <%= link_to  document.attach.url, target: '_new' do %>  
           <div class="card-title">
-            <%= icon('file', size: 80) %>
+            <%= document_icon(document) %>
           </div>
         <% end %>
         <p class="card-text">
-          <%= document.name %>
-          <span class="float-right"><%= link_to_delete document_path(document) %></span>
+          <strong><%= document.name %></strong>
+          <% if defined? deletable and policy(document.vlab_package).edit? %>  
+            <span class="float-right"><%= link_to_delete document_path(document) %></span>
+          <% end %>
         </p>
       </div>
     </div>
