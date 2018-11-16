@@ -1,10 +1,13 @@
 en:
   degrees: Degrees
   degree: Degree
+  repos: Repositories
   packages: Packages
   package: Package
   no_packages: There are no packages in this course
   no_courses: There are no courses in this degree
+  upload: Upload
+  edit: Edit
 
   back: "back"
   other_language_prefix: "it"

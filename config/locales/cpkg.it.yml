@@ -1,8 +1,11 @@
 it:
   degree: Corso di Laurea
   degrees: Corsi di Laurea
+  repos: Repositories
   no_packages: Non sono presenti pacchetti relativi a questo insegnamento.
   no_courses: Non sono presenti corsi relativi a questo Corso di Laurea.
+  upload: Upload
+  edit: Modifica
 
   back: "indietro"
   other_language_prefix: "en"
