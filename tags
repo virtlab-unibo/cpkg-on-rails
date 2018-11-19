@@ -4,31 +4,51 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-$.fn.datepicker	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^	var old = $.fn.datepicker;$/;"	c
 ==	app/models/user.rb	/^  def ==(another_user)$/;"	f	class:User
-Ability	app/models/ability.rb	/^class Ability$/;"	c
+ActiveDebianRepository	../gems/active_debian_repository/lib/active_debian_repository.rb	/^module ActiveDebianRepository$/;"	m
+ActiveDebianRepository	../gems/active_debian_repository/lib/active_debian_repository/aptsource.rb	/^module ActiveDebianRepository$/;"	m
+ActiveDebianRepository	../gems/active_debian_repository/lib/active_debian_repository/changelog.rb	/^module ActiveDebianRepository$/;"	m
+ActiveDebianRepository	../gems/active_debian_repository/lib/active_debian_repository/equivs.rb	/^module ActiveDebianRepository$/;"	m
+ActiveDebianRepository	../gems/active_debian_repository/lib/active_debian_repository/package.rb	/^module ActiveDebianRepository$/;"	m
+ActiveDebianRepository	../gems/active_debian_repository/lib/active_debian_repository/parser.rb	/^module ActiveDebianRepository$/;"	m
+ActiveDebianRepository	../gems/active_debian_repository/lib/active_debian_repository/repository.rb	/^module ActiveDebianRepository $/;"	m
+ActiveDebianRepository	../gems/active_debian_repository/lib/active_debian_repository/version.rb	/^module ActiveDebianRepository$/;"	m
+ActiveDebianRepository	../gems/active_debian_repository/lib/generators/active_debian_repository/migration/migration_generator.rb	/^module ActiveDebianRepository $/;"	m
+ActiveDebianRepositoryMigration	../gems/active_debian_repository/lib/generators/active_debian_repository/migration/templates/migration.rb	/^class ActiveDebianRepositoryMigration < ActiveRecord::Migration$/;"	c
 Admin	app/controllers/admin/admin_controller.rb	/^class Admin::AdminController < ApplicationController$/;"	c
-Admin	app/controllers/admin/courses_controller.rb	/^class Admin::CoursesController < ApplicationController$/;"	c
 Admin	app/controllers/admin/invitations_controller.rb	/^class Admin::InvitationsController < ApplicationController$/;"	c
+ApplicationCable	app/channels/application_cable/channel.rb	/^module ApplicationCable$/;"	m
+ApplicationCable	app/channels/application_cable/connection.rb	/^module ApplicationCable$/;"	m
 ApplicationController	app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c
 ApplicationHelper	app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
+ApplicationJob	app/jobs/application_job.rb	/^class ApplicationJob < ActiveJob::Base$/;"	c
+ApplicationMailer	app/mailers/application_mailer.rb	/^class ApplicationMailer < ActionMailer::Base$/;"	c
+ApplicationRecord	app/models/application_record.rb	/^class ApplicationRecord < ActiveRecord::Base$/;"	c
+AptSource	../gems/active_debian_repository/lib/active_debian_repository/aptsource.rb	/^  module AptSource$/;"	m	class:ActiveDebianRepository
+Aptsource	../gems/active_debian_repository/spec/spec_helper.rb	/^class Aptsource < ActiveRecord::Base$/;"	c
 Archive	app/models/archive.rb	/^class Archive < ActiveRecord::Base$/;"	c
 ArchivesController	app/controllers/archives_controller.rb	/^class ArchivesController < ApplicationController$/;"	c
+BreadcrumbsHelper	app/helpers/breadcrumbs_helper.rb	/^module BreadcrumbsHelper$/;"	m
+Changelog	../gems/active_debian_repository/lib/active_debian_repository/changelog.rb	/^  module Changelog $/;"	m	class:ActiveDebianRepository
+Changelog	../gems/active_debian_repository/spec/spec_helper.rb	/^class Changelog < ActiveRecord::Base$/;"	c
 Changelog	app/models/changelog.rb	/^class Changelog < ActiveRecord::Base$/;"	c
 ChangelogsController	app/controllers/changelogs_controller.rb	/^class ChangelogsController < ApplicationController$/;"	c
+Channel	app/channels/application_cable/channel.rb	/^  class Channel < ActionCable::Channel::Base$/;"	c	class:ApplicationCable
 ClassMethods	../gems/dm_unibo_common/lib/dm_unibo_common/user.rb	/^  module ClassMethods$/;"	m	class:DmUniboCommon
 ClassMethods	../gems/dm_unibo_common/lib/dm_unibo_common/user_upn_methods.rb	/^    module ClassMethods$/;"	m	class:DmUniboCommon.UserUpnMethods
+Connection	app/channels/application_cable/connection.rb	/^  class Connection < ActionCable::Connection::Base$/;"	c	class:ApplicationCable
 Controllers	../gems/dm_unibo_common/lib/dm_unibo_common/controllers/helpers.rb	/^  module Controllers$/;"	m	class:DmUniboCommon
 Course	app/models/course.rb	/^class Course < ActiveRecord::Base$/;"	c
+CoursePolicy	app/policies/course_policy.rb	/^class CoursePolicy$/;"	c
 CoursesController	app/controllers/courses_controller.rb	/^class CoursesController < ApplicationController$/;"	c
 CoursesUser	app/models/courses_user.rb	/^class CoursesUser < ActiveRecord::Base$/;"	c
 CurrencyFloatInput	../gems/dm_unibo_common/app/inputs/currency_float_input.rb	/^class CurrencyFloatInput < SimpleForm::Inputs::Base$/;"	c
 CurrencyInput	../gems/dm_unibo_common/app/inputs/currency_input.rb	/^class CurrencyInput < SimpleForm::Inputs::Base$/;"	c
 DatePickerInput	../gems/dm_unibo_common/app/inputs/date_picker_input.rb	/^class DatePickerInput < SimpleForm::Inputs::Base$/;"	c
-DateRangePicker	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^	var DateRangePicker = function(element, options){$/;"	c
-Datepicker	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^	var Datepicker = function(element, options){$/;"	c
+DatetimePicker2Input	../gems/dm_unibo_common/app/inputs/datetime_picker2_input.rb	/^class DatetimePicker2Input < SimpleForm::Inputs::Base$/;"	c
 DatetimePickerInput	../gems/dm_unibo_common/app/inputs/datetime_picker_input.rb	/^class DatetimePickerInput < SimpleForm::Inputs::Base$/;"	c
 Degree	app/models/degree.rb	/^class Degree < ActiveRecord::Base$/;"	c
+DegreePolicy	app/policies/degree_policy.rb	/^class DegreePolicy$/;"	c
 DegreesController	app/controllers/degrees_controller.rb	/^class DegreesController < ApplicationController$/;"	c
 DevelopmentMailInterceptor	../gems/dm_unibo_common/lib/dm_unibo_common/development_mail_interceptor.rb	/^class DevelopmentMailInterceptor  $/;"	c	class:DmUniboCommon
 DmUniboCommon	../gems/dm_unibo_common/doc/configuration.rb	/^module DmUniboCommon$/;"	m
@@ -45,124 +65,170 @@ DmUniboLinkHelper	../gems/dm_unibo_common/app/helpers/dm_unibo_link_helper.rb	/^
 DmUniboMenuHelper	../gems/dm_unibo_common/app/helpers/dm_unibo_menu_helper.rb	/^module DmUniboMenuHelper$/;"	m
 DmUniboOrganizationsHelper	../gems/dm_unibo_common/app/helpers/dm_unibo_organizations_helper.rb	/^module DmUniboOrganizationsHelper $/;"	m
 DmUniboPrivacyHelper	../gems/dm_unibo_common/app/helpers/dm_unibo_privacy_helper.rb	/^module DmUniboPrivacyHelper $/;"	m
+Document	../gems/active_debian_repository/spec/spec_helper.rb	/^class Document < ActiveRecord::Base$/;"	c
 Document	app/models/document.rb	/^class Document < ActiveRecord::Base$/;"	c
 DocumentsController	app/controllers/documents_controller.rb	/^class DocumentsController < ApplicationController$/;"	c
+DocumentsHelper	app/helpers/documents_helper.rb	/^module DocumentsHelper$/;"	m
 Engine	../gems/dm_unibo_common/lib/dm_unibo_common.rb	/^  class Engine < Rails::Engine$/;"	c	class:DmUniboCommon
+Equivs	../gems/active_debian_repository/lib/active_debian_repository/equivs.rb	/^  class Equivs$/;"	c	class:ActiveDebianRepository
 FormBuilder	../gems/dm_unibo_common/app/helpers/dm_unibo_form_helper.rb	/^  class FormBuilder < ActionView::Helpers::FormBuilder$/;"	c	class:SimpleForm
 Guest	app/controllers/guest/courses_controller.rb	/^class Guest::CoursesController < ApplicationController$/;"	c
 Guest	app/controllers/guest/packages_controller.rb	/^class Guest::PackagesController < ApplicationController$/;"	c
 Helpers	../gems/dm_unibo_common/lib/dm_unibo_common/controllers/helpers.rb	/^    module Helpers$/;"	m	class:DmUniboCommon.Controllers
 ImpersonationsController	../gems/dm_unibo_common/app/controllers/impersonations_controller.rb	/^class ImpersonationsController < ApplicationController$/;"	c
+InstanceMethods	../gems/active_debian_repository/lib/active_debian_repository/aptsource.rb	/^    module InstanceMethods$/;"	m	class:ActiveDebianRepository.AptSource
+InstanceMethods	../gems/active_debian_repository/lib/active_debian_repository/changelog.rb	/^    module InstanceMethods$/;"	m	class:ActiveDebianRepository.Changelog
+InstanceMethods	../gems/active_debian_repository/lib/active_debian_repository/package.rb	/^  module InstanceMethods$/;"	m	class:ActiveDebianRepository.Package
 Invitation	app/models/invitation.rb	/^class Invitation < ActiveRecord::Base$/;"	c
 InvitationMailer	app/mailers/invitation_mailer.rb	/^class InvitationMailer < ActionMailer::Base$/;"	c
 InvitationsController	app/controllers/invitations_controller.rb	/^class InvitationsController < ApplicationController$/;"	c
 LoginsController	../gems/dm_unibo_common/app/controllers/logins_controller.rb	/^class LoginsController < ApplicationController$/;"	c
+MigrationGenerator	../gems/active_debian_repository/lib/generators/active_debian_repository/migration/migration_generator.rb	/^  class MigrationGenerator < Rails::Generators::Base$/;"	c	class:ActiveDebianRepository
 MismatchOrganization	../gems/dm_unibo_common/lib/dm_unibo_common/errors.rb	/^  class MismatchOrganization < RuntimeError; end$/;"	c	class:DmUniboCommon
 NoAccess	../gems/dm_unibo_common/lib/dm_unibo_common/errors.rb	/^  class NoAccess             < RuntimeError; end$/;"	c	class:DmUniboCommon
 NoUser	../gems/dm_unibo_common/lib/dm_unibo_common/errors.rb	/^  class NoUser       < RuntimeError$/;"	c	class:DmUniboCommon
 NotAuthorized	../gems/dm_unibo_common/lib/dm_unibo_common/errors.rb	/^  class NotAuthorized        < RuntimeError; end$/;"	c	class:DmUniboCommon
 NotOwner	../gems/dm_unibo_common/lib/dm_unibo_common/errors.rb	/^  class NotOwner             < RuntimeError; end$/;"	c	class:DmUniboCommon
+Package	../gems/active_debian_repository/lib/active_debian_repository/package.rb	/^module Package$/;"	m	class:ActiveDebianRepository
+Package	../gems/active_debian_repository/spec/spec_helper.rb	/^class Package < ActiveRecord::Base$/;"	c
 Package	app/models/package.rb	/^class Package < ActiveRecord::Base$/;"	c
 PackagesController	app/controllers/packages_controller.rb	/^class PackagesController < ApplicationController$/;"	c
+Parser	../gems/active_debian_repository/lib/active_debian_repository/parser.rb	/^class Parser$/;"	c	class:ActiveDebianRepository
+Railtie	../gems/active_debian_repository/lib/active_debian_repository.rb	/^  class Railtie < ::Rails::Railtie$/;"	c	class:ActiveDebianRepository
+Repository	../gems/active_debian_repository/lib/active_debian_repository/repository.rb	/^  module Repository$/;"	m	class:ActiveDebianRepository
+Script	../gems/active_debian_repository/spec/spec_helper.rb	/^class Script < ActiveRecord::Base$/;"	c
 Script	app/models/script.rb	/^class Script < ActiveRecord::Base$/;"	c
 SimpleForm	../gems/dm_unibo_common/app/helpers/dm_unibo_form_helper.rb	/^module SimpleForm$/;"	m
 TooManyUsers	../gems/dm_unibo_common/lib/dm_unibo_common/errors.rb	/^  class TooManyUsers < RuntimeError$/;"	c	class:DmUniboCommon
-UTCDate	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^	function UTCDate(){$/;"	f
-UTCToday	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^	function UTCToday(){$/;"	f
 User	app/models/user.rb	/^class User < ActiveRecord::Base$/;"	c
 UserUpnMethods	../gems/dm_unibo_common/lib/dm_unibo_common/user_upn_methods.rb	/^  module UserUpnMethods$/;"	m	class:DmUniboCommon
 UsersController	app/controllers/users_controller.rb	/^class UsersController < ApplicationController$/;"	c
-_events	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^		},$/;"	p	class:Datepicker
-_process_options	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^		constructor: Datepicker,$/;"	m	class:Datepicker
-a.fn.sortable	../gems/dm_unibo_common/vendor/assets/javascripts/jquery.sortable.min.js	/^ *\/(function(a){var b,c=a();a.fn.sortable=function(d){var e=String(d);return d=a.extend({connectWith:!1},d),this.each(function(){if(\/^enable|disable|destroy$\/.test(e)){var f=a(this).children(a(this).data("items")).attr("draggable",e=="enable");e=="destroy"&&f.add(this).removeData("connectWith items").off("dragstart.h5s dragend.h5s selectstart.h5s dragover.h5s dragenter.h5s drop.h5s");return}var g,h,f=a(this).children(d.items),i=a("<"+(\/^ul|ol$\/i.test(this.tagName)?"li":"div")+' class="sortable-placeholder">');f.find(d.handle).mousedown(function(){g=!0}).mouseup(function(){g=!1}),a(this).data("items",d.items),c=c.add(i),d.connectWith&&a(d.connectWith).add(this).data("connectWith",d.connectWith),f.attr("draggable","true").on("dragstart.h5s",function(c){if(d.handle&&!g)return!1;g=!1;var e=c.originalEvent.dataTransfer;e.effectAllowed="move",e.setData("Text","dummy"),h=(b=a(this)).addClass("sortable-dragging").index()}).on("dragend.h5s",function(){b.removeClass("sortable-dragging").show(),c.detach(),h!=b.index()&&f.parent().trigger("sortupdate",{item:b}),b=null}).not("a[href], img").on("selectstart.h5s",function(){return this.dragDrop&&this.dragDrop(),!1}).end().add([this,i]).on("dragover.h5s dragenter.h5s drop.h5s",function(e){return!f.is(b)&&d.connectWith!==a(b).parent().data("connectWith")?!0:e.type=="drop"?(e.stopPropagation(),c.filter(":visible").after(b),!1):(e.preventDefault(),e.originalEvent.dataTransfer.dropEffect="move",f.is(this)?(d.forcePlaceholderSize&&i.height(b.outerHeight()),b.hide(),a(this)[i.index()<a(this).index()?"after":"before"](i),c.not(i).detach()):!c.is(this)&&!a(this).children(d.items).length&&(c.detach(),a(this).append(i)),!1)})})}})(jQuery);$/;"	f
+VlabPackage	app/models/vlab_package.rb	/^class VlabPackage < Package$/;"	c
+VlabPackagePolicy	app/policies/vlab_package_policy.rb	/^class VlabPackagePolicy$/;"	c
+VlabPackagesController	app/controllers/vlab_packages_controller.rb	/^class VlabPackagesController < ApplicationController$/;"	c
 abbr	../gems/dm_unibo_common/lib/dm_unibo_common/user.rb	/^  def abbr$/;"	f	class:DmUniboCommon
-add_global_deps	app/models/package.rb	/^  def add_global_deps$/;"	f	class:Package
+acts_as_apt_source	../gems/active_debian_repository/lib/active_debian_repository/aptsource.rb	/^    def acts_as_apt_source(options={})$/;"	f	class:ActiveDebianRepository.AptSource
+acts_as_debian_changelog	../gems/active_debian_repository/lib/active_debian_repository/changelog.rb	/^    def acts_as_debian_changelog$/;"	f	class:ActiveDebianRepository.Changelog
+acts_as_debian_package	../gems/active_debian_repository/lib/active_debian_repository/package.rb	/^  def acts_as_debian_package(options={})$/;"	f	class:ActiveDebianRepository.Package
+add_dependency	../gems/active_debian_repository/lib/active_debian_repository/package.rb	/^    def add_dependency(package_name, versions = nil)$/;"	f	class:ActiveDebianRepository.Package.InstanceMethods
+add_global_deps	app/models/vlab_package.rb	/^  def add_global_deps$/;"	f	class:VlabPackage
+add_package	../gems/active_debian_repository/lib/active_debian_repository/repository.rb	/^    def self.add_package( deb_filename ) $/;"	F	class:ActiveDebianRepository.Repository
+add_packages_from_file	../gems/active_debian_repository/spec/factories/aptsource.rb	/^def FactoryBot.add_packages_from_file(aptsource, file)$/;"	F
+add_script	../gems/active_debian_repository/lib/active_debian_repository/package.rb	/^    def add_script(type, script)$/;"	f	class:ActiveDebianRepository.Package.InstanceMethods
 admin_mails	../gems/dm_unibo_common/lib/dm_unibo_common/user.rb	/^    def admin_mails $/;"	f	class:DmUniboCommon.ClassMethods
-alias	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^	function alias(method){$/;"	f
 allow_and_create	../gems/dm_unibo_common/app/controllers/logins_controller.rb	/^  def allow_and_create$/;"	f	class:LoginsController
 allow_if_email	../gems/dm_unibo_common/app/controllers/logins_controller.rb	/^  def allow_if_email$/;"	f	class:LoginsController
 archive_params	app/controllers/archives_controller.rb	/^  def archive_params$/;"	f	class:ArchivesController
 assistenza_cesia	../gems/dm_unibo_common/app/helpers/dm_unibo_link_helper.rb	/^  def assistenza_cesia$/;"	f	class:DmUniboLinkHelper
+attr_day	../gems/dm_unibo_common/app/inputs/datetime_picker2_input.rb	/^  def attr_day$/;"	f	class:DatetimePicker2Input
 belongs_to_dsa_user	../gems/dm_unibo_common/lib/dm_unibo_common/user_upn_methods.rb	/^      def belongs_to_dsa_user(*args)$/;"	f	class:DmUniboCommon.UserUpnMethods.ClassMethods
-big_icon	../gems/dm_unibo_common/app/helpers/dm_unibo_common_helper.rb	/^  def big_icon(name, size: 26, reg: nil)$/;"	f	class:DmUniboCommonHelper
+big_icon	../gems/dm_unibo_common/app/helpers/dm_unibo_common_helper.rb	/^  def big_icon(name, text: "", size: 26, prefix: 'fas')$/;"	f	class:DmUniboCommonHelper
 bootstrap_flash	../gems/dm_unibo_common/app/helpers/dm_unibo_common_helper.rb	/^  def bootstrap_flash$/;"	f	class:DmUniboCommonHelper
 bootstrap_modal_div	../gems/dm_unibo_common/app/helpers/dm_unibo_common_helper.rb	/^  def bootstrap_modal_div$/;"	f	class:DmUniboCommonHelper
+breadcrumbs	app/helpers/breadcrumbs_helper.rb	/^  def breadcrumbs$/;"	f	class:BreadcrumbsHelper
+change_lines	../gems/active_debian_repository/lib/active_debian_repository/changelog.rb	/^      def change_lines$/;"	f	class:ActiveDebianRepository.Changelog.InstanceMethods
+changelog_file	../gems/active_debian_repository/lib/active_debian_repository/equivs.rb	/^    def changelog_file$/;"	f	class:ActiveDebianRepository.Equivs
 changelog_params	app/controllers/changelogs_controller.rb	/^  def changelog_params$/;"	f	class:ChangelogsController
 check_organization!	../gems/dm_unibo_common/app/helpers/dm_unibo_organizations_helper.rb	/^  def check_organization!(obj)$/;"	f	class:DmUniboOrganizationsHelper
 check_shibboleth_user	app/controllers/application_controller.rb	/^  def check_shibboleth_user$/;"	f	class:ApplicationController
 check_user_is_cesia	../gems/dm_unibo_common/app/helpers/dm_unibo_organizations_helper.rb	/^  def check_user_is_cesia$/;"	f	class:DmUniboOrganizationsHelper
 class_active	../gems/dm_unibo_common/app/helpers/dm_unibo_common_helper.rb	/^  def class_active(x,y)$/;"	f	class:DmUniboCommonHelper
 class_active_val	../gems/dm_unibo_common/app/helpers/dm_unibo_common_helper.rb	/^  def class_active_val(x,y)$/;"	f	class:DmUniboCommonHelper
-clsName	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^			var clsName;$/;"	v
 cn	../gems/dm_unibo_common/lib/dm_unibo_common/user.rb	/^  def cn$/;"	f	class:DmUniboCommon
 cn_militar	../gems/dm_unibo_common/lib/dm_unibo_common/user.rb	/^  def cn_militar$/;"	f	class:DmUniboCommon
-constructor	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^	Datepicker.prototype = {$/;"	p	class:Datepicker
+configure	../gems/active_debian_repository/lib/active_debian_repository/repository.rb	/^    def self.configure(opts = {})$/;"	F	class:ActiveDebianRepository.Repository
 content	app/models/script.rb	/^  def content$/;"	f	class:Script
-course_params	app/controllers/admin/courses_controller.rb	/^  def course_params$/;"	f	class:Admin
-create	app/controllers/admin/courses_controller.rb	/^  def create$/;"	f	class:Admin
+control	../gems/active_debian_repository/lib/active_debian_repository/equivs.rb	/^    def control$/;"	f	class:ActiveDebianRepository.Equivs
+control_file	../gems/active_debian_repository/lib/active_debian_repository/equivs.rb	/^    def control_file(tmp_dir)$/;"	f	class:ActiveDebianRepository.Equivs
+copy_files	../gems/active_debian_repository/lib/active_debian_repository/equivs.rb	/^    def copy_files(dest_dir)$/;"	f	class:ActiveDebianRepository.Equivs
+copyright_file	../gems/active_debian_repository/lib/active_debian_repository/equivs.rb	/^    def copyright_file$/;"	f	class:ActiveDebianRepository.Equivs
+course_params	app/controllers/courses_controller.rb	/^  def course_params$/;"	f	class:CoursesController
+create	../gems/active_debian_repository/lib/active_debian_repository/equivs.rb	/^    def create$/;"	f	class:ActiveDebianRepository.Equivs
+create	../gems/active_debian_repository/lib/active_debian_repository/repository.rb	/^    def create$/;"	f	class:ActiveDebianRepository.Repository
 create	app/controllers/admin/invitations_controller.rb	/^  def create$/;"	f	class:Admin
 create	app/controllers/archives_controller.rb	/^  def create$/;"	f	class:ArchivesController
 create	app/controllers/changelogs_controller.rb	/^  def create$/;"	f	class:ChangelogsController
+create	app/controllers/courses_controller.rb	/^  def create$/;"	f	class:CoursesController
 create	app/controllers/degrees_controller.rb	/^  def create$/;"	f	class:DegreesController
 create	app/controllers/documents_controller.rb	/^  def create$/;"	f	class:DocumentsController
-create	app/controllers/packages_controller.rb	/^  def create$/;"	f	class:PackagesController
 create	app/controllers/users_controller.rb	/^  def create$/;"	f	class:UsersController
+create	app/controllers/vlab_packages_controller.rb	/^  def create$/;"	f	class:VlabPackagesController
+create!	../gems/active_debian_repository/lib/active_debian_repository/equivs.rb	/^    def create!$/;"	f	class:ActiveDebianRepository.Equivs
+create?	app/policies/course_policy.rb	/^  def create?$/;"	f	class:CoursePolicy
+create?	app/policies/degree_policy.rb	/^  def create?$/;"	f	class:DegreePolicy
+create?	app/policies/vlab_package_policy.rb	/^  def create?$/;"	f	class:VlabPackagePolicy
+create_migration_file	../gems/active_debian_repository/lib/generators/active_debian_repository/migration/migration_generator.rb	/^    def create_migration_file$/;"	f	class:ActiveDebianRepository.MigrationGenerator
 current_user	../gems/dm_unibo_common/lib/dm_unibo_common/controllers/helpers.rb	/^      def current_user$/;"	f	class:DmUniboCommon.Controllers.Helpers
-dateChanged	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^			var dateChanged = false,$/;"	v
-dateUpdated	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^		},$/;"	m	class:DateRangePicker
+date_line	../gems/active_debian_repository/lib/active_debian_repository/changelog.rb	/^    def self.date_line$/;"	F	class:ActiveDebianRepository.Changelog
 datumTokenizer	app/assets/javascripts/cpkg.js	/^\/\/ data = [{'name': 'Joe', }, {'name': 'Henry'}, ...]$/;"	f
-days	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.it.js	/^	$.fn.datepicker.dates['it'] = {$/;"	p	class:fn.datepicker.dates
+db_attributes	../gems/active_debian_repository/lib/active_debian_repository/parser.rb	/^  def self.db_attributes(p)$/;"	F	class:ActiveDebianRepository.Parser
 default_attributes	app/models/archive.rb	/^  def self.default_attributes$/;"	F	class:Archive
 default_url_options	app/controllers/application_controller.rb	/^  def default_url_options(options={})$/;"	f	class:ApplicationController
 degree_params	app/controllers/degrees_controller.rb	/^  def degree_params$/;"	f	class:DegreesController
 delivering_email	../gems/dm_unibo_common/lib/dm_unibo_common/development_mail_interceptor.rb	/^  def self.delivering_email(message)  $/;"	F	class:DmUniboCommon.DevelopmentMailInterceptor
-depend	app/controllers/packages_controller.rb	/^  def depend$/;"	f	class:PackagesController
+depend	app/controllers/vlab_packages_controller.rb	/^  def depend$/;"	f	class:VlabPackagesController
+depend?	app/policies/course_policy.rb	/^  def depend?$/;"	f	class:CoursePolicy
+depends_on	../gems/active_debian_repository/lib/active_debian_repository/package.rb	/^    def depends_on$/;"	f	class:ActiveDebianRepository.Package.InstanceMethods
+depends_on?	../gems/active_debian_repository/lib/active_debian_repository/package.rb	/^    def depends_on?(package_name)$/;"	f	class:ActiveDebianRepository.Package.InstanceMethods
+description	../gems/active_debian_repository/lib/active_debian_repository/equivs.rb	/^    def description$/;"	f	class:ActiveDebianRepository.Equivs
 description	../gems/dm_unibo_common/lib/dm_unibo_common/user.rb	/^  def description$/;"	f	class:DmUniboCommon
-destroy	app/controllers/admin/courses_controller.rb	/^  def destroy$/;"	f	class:Admin
+description_to_s	app/models/course.rb	/^  def description_to_s$/;"	f	class:Course
 destroy	app/controllers/archives_controller.rb	/^  def destroy$/;"	f	class:ArchivesController
+destroy	app/controllers/courses_controller.rb	/^  def destroy$/;"	f	class:CoursesController
 destroy	app/controllers/documents_controller.rb	/^  def destroy$/;"	f	class:DocumentsController
-destroy	app/controllers/packages_controller.rb	/^  def destroy$/;"	f	class:PackagesController
 destroy	app/controllers/users_controller.rb	/^  def destroy$/;"	f	class:UsersController
+destroy	app/controllers/vlab_packages_controller.rb	/^  def destroy$/;"	f	class:VlabPackagesController
+destroy?	app/policies/course_policy.rb	/^  def destroy?$/;"	f	class:CoursePolicy
+destroy?	app/policies/degree_policy.rb	/^  def destroy?$/;"	f	class:DegreePolicy
+destroy?	app/policies/vlab_package_policy.rb	/^  def destroy?$/;"	f	class:VlabPackagePolicy
 developer	../gems/dm_unibo_common/app/controllers/logins_controller.rb	/^  def developer$/;"	f	class:LoginsController
 dl_field	../gems/dm_unibo_common/app/helpers/dm_unibo_common_helper.rb	/^  def dl_field(object, what)$/;"	f	class:DmUniboCommonHelper
 dm_card	../gems/dm_unibo_common/app/helpers/dm_unibo_common_helper.rb	/^  def dm_card(title: '')$/;"	f	class:DmUniboCommonHelper
 dm_error_notification	../gems/dm_unibo_common/app/helpers/dm_unibo_form_helper.rb	/^    def dm_error_notification(options = {})$/;"	f	class:SimpleForm.FormBuilder
-dm_footer	../gems/dm_unibo_common/app/helpers/dm_unibo_menu_helper.rb	/^  def dm_footer$/;"	f	class:DmUniboMenuHelper
+dm_footer	../gems/dm_unibo_common/app/helpers/dm_unibo_menu_helper.rb	/^  def dm_footer$/;"	f
+dm_form_default_title	../gems/dm_unibo_common/app/helpers/dm_unibo_form_helper.rb	/^  def dm_form_default_title(record)$/;"	f	class:DmUniboFormHelper
 dm_form_for	../gems/dm_unibo_common/app/helpers/dm_unibo_form_helper.rb	/^  def dm_form_for(record, options={}, &block)$/;"	f	class:DmUniboFormHelper
-dm_header	../gems/dm_unibo_common/app/helpers/dm_unibo_menu_helper.rb	/^  def dm_header$/;"	f	class:DmUniboMenuHelper
-dm_menu	../gems/dm_unibo_common/app/helpers/dm_unibo_menu_helper.rb	/^  def dm_menu(&block)$/;"	f	class:DmUniboMenuHelper
-dm_nav	../gems/dm_unibo_common/app/helpers/dm_unibo_menu_helper.rb	/^  def dm_nav(&block)$/;"	f	class:DmUniboMenuHelper
+dm_header	../gems/dm_unibo_common/app/helpers/dm_unibo_menu_helper.rb	/^  def dm_header$/;"	f
+dm_menu	../gems/dm_unibo_common/app/helpers/dm_unibo_menu_helper.rb	/^  def dm_menu(&block)$/;"	f
+dm_modal_js_helper	../gems/dm_unibo_common/app/helpers/dm_unibo_common_helper.rb	/^  def dm_modal_js_helper$/;"	f	class:DmUniboCommonHelper
+dm_nav	../gems/dm_unibo_common/app/helpers/dm_unibo_menu_helper.rb	/^  def dm_nav(&block)$/;"	f
+document_icon	app/helpers/documents_helper.rb	/^  def document_icon(document)$/;"	f	class:DocumentsHelper
 document_params	app/controllers/documents_controller.rb	/^  def document_params$/;"	f	class:DocumentsController
-download	app/controllers/packages_controller.rb	/^  def download$/;"	f	class:PackagesController
-dropdown_menu	../gems/dm_unibo_common/app/helpers/dm_unibo_menu_helper.rb	/^  def dropdown_menu(id, title, &block)$/;"	f	class:DmUniboMenuHelper
+down	../gems/active_debian_repository/lib/generators/active_debian_repository/migration/templates/migration.rb	/^  def self.down$/;"	F	class:ActiveDebianRepositoryMigration
+download	app/controllers/vlab_packages_controller.rb	/^  def download$/;"	f	class:VlabPackagesController
+dropdown_menu	../gems/dm_unibo_common/app/helpers/dm_unibo_menu_helper.rb	/^  def dropdown_menu(id, title, &block)$/;"	f
 dsaSearchClient	../gems/dm_unibo_common/lib/dm_unibo_common/user.rb	/^    def dsaSearchClient$/;"	f	class:DmUniboCommon.ClassMethods
-edit	app/controllers/admin/courses_controller.rb	/^  def edit$/;"	f	class:Admin
+each	../gems/active_debian_repository/lib/active_debian_repository/parser.rb	/^  def each$/;"	f	class:ActiveDebianRepository.Parser
 edit	app/controllers/courses_controller.rb	/^  def edit$/;"	f	class:CoursesController
 edit	app/controllers/degrees_controller.rb	/^  def edit$/;"	f	class:DegreesController
 edit	app/controllers/documents_controller.rb	/^  def edit$/;"	f	class:DocumentsController
-edit	app/controllers/packages_controller.rb	/^  def edit $/;"	f	class:PackagesController
-element	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^			var element;$/;"	v
-ellipsisText	../gems/dm_unibo_common/vendor/assets/javascripts/jquery.jtruncate.js	/^			lessText: "less",$/;"	p	class:fn.jTruncate.defaults
+edit	app/controllers/vlab_packages_controller.rb	/^  def edit $/;"	f	class:VlabPackagesController
+edit?	app/policies/course_policy.rb	/^  def edit?$/;"	f	class:CoursePolicy
+edit?	app/policies/degree_policy.rb	/^  def edit?$/;"	f	class:DegreePolicy
+edit?	app/policies/vlab_package_policy.rb	/^  def edit?$/;"	f	class:VlabPackagePolicy
+files	../gems/active_debian_repository/lib/active_debian_repository/equivs.rb	/^    def files$/;"	f	class:ActiveDebianRepository.Equivs
 find_or_syncronize	../gems/dm_unibo_common/lib/dm_unibo_common/user.rb	/^    def find_or_syncronize(upn_or_id)$/;"	f	class:DmUniboCommon.ClassMethods
-fn.jTruncate	../gems/dm_unibo_common/vendor/assets/javascripts/jquery.jtruncate.js	/^(function($){$/;"	f
 force_sso_user	../gems/dm_unibo_common/lib/dm_unibo_common/controllers/helpers.rb	/^      def force_sso_user$/;"	f	class:DmUniboCommon.Controllers.Helpers
 force_unique_email	app/models/invitation.rb	/^  def force_unique_email$/;"	f	class:Invitation
-form_legend	../gems/dm_unibo_common/app/helpers/dm_unibo_form_helper.rb	/^  def form_legend(what)$/;"	f
-fwicon	../gems/dm_unibo_common/app/helpers/dm_unibo_common_helper.rb	/^  def fwicon(name, text: "", size: 18, reg: nil)$/;"	f	class:DmUniboCommonHelper
+fwicon	../gems/dm_unibo_common/app/helpers/dm_unibo_common_helper.rb	/^  def fwicon(name, text: "", size: 18, prefix: 'fas')$/;"	f	class:DmUniboCommonHelper
 generate_expiration	app/models/invitation.rb	/^  def generate_expiration$/;"	f	class:Invitation
-generate_homepage	app/models/package.rb	/^  def generate_homepage$/;"	f	class:Package
+generate_homepage	app/models/vlab_package.rb	/^  def generate_homepage$/;"	f	class:VlabPackage
 generate_uuid	app/models/invitation.rb	/^  def generate_uuid$/;"	f	class:Invitation
 get_course_and_check_permission	app/controllers/courses_controller.rb	/^  def get_course_and_check_permission$/;"	f	class:CoursesController
-get_description	app/models/package.rb	/^  def get_description$/;"	f
+get_course_and_check_permission	app/controllers/vlab_packages_controller.rb	/^  def get_course_and_check_permission$/;"	f	class:VlabPackagesController
+get_description	app/models/package.rb	/^  def get_description$/;"	f	class:Package
+get_package_and_check_permission	app/controllers/changelogs_controller.rb	/^  def get_package_and_check_permission$/;"	f	class:ChangelogsController
+get_package_and_check_permission	app/controllers/vlab_packages_controller.rb	/^  def get_package_and_check_permission$/;"	f	class:VlabPackagesController
+get_packages_file_from_net	../gems/active_debian_repository/lib/active_debian_repository/aptsource.rb	/^      def get_packages_file_from_net$/;"	f	class:ActiveDebianRepository.AptSource.InstanceMethods
+get_script	../gems/active_debian_repository/lib/active_debian_repository/package.rb	/^    def get_script type$/;"	f	class:ActiveDebianRepository.Package.InstanceMethods
+get_script_object	../gems/active_debian_repository/lib/active_debian_repository/package.rb	/^    def get_script_object(type)$/;"	f	class:ActiveDebianRepository.Package.InstanceMethods
 google_oauth2	../gems/dm_unibo_common/app/controllers/logins_controller.rb	/^  def google_oauth2$/;"	f	class:LoginsController
 horizontal_form_for	../gems/dm_unibo_common/app/helpers/dm_unibo_form_helper.rb	/^  def horizontal_form_for(record, options={}, &block)$/;"	f
-html	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^			var html = [];$/;"	v
-icon	../gems/dm_unibo_common/app/helpers/dm_unibo_common_helper.rb	/^  def icon(name, text: "", size: 18, reg: nil)$/;"	f	class:DmUniboCommonHelper
+icon	../gems/dm_unibo_common/app/helpers/dm_unibo_common_helper.rb	/^  def icon(name, text: "", size: 18, prefix: 'fas')$/;"	f	class:DmUniboCommonHelper
 impersonate	../gems/dm_unibo_common/app/controllers/impersonations_controller.rb	/^  def impersonate$/;"	f	class:ImpersonationsController
 included	../gems/dm_unibo_common/lib/dm_unibo_common/controllers/helpers.rb	/^      def self.included(base)$/;"	F	class:DmUniboCommon.Controllers.Helpers
 included	../gems/dm_unibo_common/lib/dm_unibo_common/user.rb	/^  def self.included(base)$/;"	F	class:DmUniboCommon
 increment_version	app/models/changelog.rb	/^  def increment_version$/;"	f	class:Changelog
-index	app/controllers/admin/courses_controller.rb	/^  def index$/;"	f	class:Admin
 index	app/controllers/admin/invitations_controller.rb	/^  def index$/;"	f	class:Admin
 index	app/controllers/archives_controller.rb	/^  def index$/;"	f	class:ArchivesController
 index	app/controllers/courses_controller.rb	/^  def index$/;"	f	class:CoursesController
@@ -170,30 +236,34 @@ index	app/controllers/degrees_controller.rb	/^  def index$/;"	f	class:DegreesCon
 index	app/controllers/documents_controller.rb	/^  def index$/;"	f	class:DocumentsController
 index	app/controllers/guest/courses_controller.rb	/^  def index$/;"	f	class:Guest
 index	app/controllers/users_controller.rb	/^  def index$/;"	f	class:UsersController
-init_name	app/models/package.rb	/^  def init_name$/;"	f
-initialize	app/models/ability.rb	/^  def initialize(user)$/;"	f	class:Ability
+index?	app/policies/course_policy.rb	/^  def index?$/;"	f	class:CoursePolicy
+index?	app/policies/degree_policy.rb	/^  def index?$/;"	f	class:DegreePolicy
+index?	app/policies/vlab_package_policy.rb	/^  def index?$/;"	f	class:VlabPackagePolicy
+init_name	app/models/vlab_package.rb	/^  def init_name$/;"	f	class:VlabPackage
+initialize	../gems/active_debian_repository/lib/active_debian_repository/equivs.rb	/^    def initialize(package, dest_dir)$/;"	f	class:ActiveDebianRepository.Equivs
+initialize	../gems/active_debian_repository/lib/active_debian_repository/parser.rb	/^  def initialize(filename)$/;"	f	class:ActiveDebianRepository.Parser
+initialize	app/policies/course_policy.rb	/^  def initialize(user, course)$/;"	f	class:CoursePolicy
+initialize	app/policies/degree_policy.rb	/^  def initialize(user, degree)$/;"	f	class:DegreePolicy
+initialize	app/policies/vlab_package_policy.rb	/^  def initialize(user, package)$/;"	f	class:VlabPackagePolicy
 input	../gems/dm_unibo_common/app/inputs/currency_float_input.rb	/^  def input(wrapper_options)$/;"	f	class:CurrencyFloatInput
 input	../gems/dm_unibo_common/app/inputs/currency_input.rb	/^  def input(wrapper_options)$/;"	f	class:CurrencyInput
 input	../gems/dm_unibo_common/app/inputs/date_picker_input.rb	/^  def input(wrapper_options)$/;"	f	class:DatePickerInput
+input	../gems/dm_unibo_common/app/inputs/datetime_picker2_input.rb	/^  def input(wrapper_options)$/;"	f	class:DatetimePicker2Input
 input	../gems/dm_unibo_common/app/inputs/datetime_picker_input.rb	/^  def input(wrapper_options)$/;"	f	class:DatetimePickerInput
+install_path	app/models/document.rb	/^  def install_path$/;"	f	class:Document
 invitation_email	app/mailers/invitation_mailer.rb	/^  def invitation_email(invitation)$/;"	f	class:InvitationMailer
 is_admin?	../gems/dm_unibo_common/lib/dm_unibo_common/user.rb	/^  def is_admin?$/;"	f	class:DmUniboCommon
 is_cesia?	../gems/dm_unibo_common/lib/dm_unibo_common/user.rb	/^  def is_cesia?$/;"	f	class:DmUniboCommon
 is_chief?	../gems/dm_unibo_common/lib/dm_unibo_common/user.rb	/^  def is_chief?$/;"	f	class:DmUniboCommon
-left	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^			var left = offset.left,$/;"	v
-length	../gems/dm_unibo_common/vendor/assets/javascripts/jquery.jtruncate.js	/^		var defaults = {$/;"	p	class:fn.jTruncate.defaults
-lessAni	../gems/dm_unibo_common/vendor/assets/javascripts/jquery.jtruncate.js	/^			moreAni: "",$/;"	p	class:fn.jTruncate.defaults
-lessText	../gems/dm_unibo_common/vendor/assets/javascripts/jquery.jtruncate.js	/^			moreText: "more",$/;"	p	class:fn.jTruncate.defaults
 link_to_back	../gems/dm_unibo_common/app/helpers/dm_unibo_link_helper.rb	/^  def link_to_back url$/;"	f	class:DmUniboLinkHelper
 link_to_delete	../gems/dm_unibo_common/app/helpers/dm_unibo_link_helper.rb	/^  def link_to_delete(name = "", url, button: false)$/;"	f	class:DmUniboLinkHelper
-link_to_download	../gems/dm_unibo_common/app/helpers/dm_unibo_link_helper.rb	/^  def link_to_download(url)$/;"	f	class:DmUniboLinkHelper
+link_to_download	../gems/dm_unibo_common/app/helpers/dm_unibo_link_helper.rb	/^  def link_to_download(url, txt = "")$/;"	f	class:DmUniboLinkHelper
 link_to_edit	../gems/dm_unibo_common/app/helpers/dm_unibo_link_helper.rb	/^  def link_to_edit(name = "", url, button: false, modal: false)$/;"	f	class:DmUniboLinkHelper
 link_to_edit2	../gems/dm_unibo_common/app/helpers/dm_unibo_link_helper.rb	/^  def link_to_edit2(name = "", url)$/;"	f	class:DmUniboLinkHelper
 link_to_modal_edit	../gems/dm_unibo_common/app/helpers/dm_unibo_link_helper.rb	/^  def link_to_modal_edit(url)$/;"	f	class:DmUniboLinkHelper
 link_to_modal_new	../gems/dm_unibo_common/app/helpers/dm_unibo_link_helper.rb	/^  def link_to_modal_new(name = "", url)$/;"	f	class:DmUniboLinkHelper
 link_to_new	../gems/dm_unibo_common/app/helpers/dm_unibo_link_helper.rb	/^  def link_to_new(name = "", url, button: true, modal: false)$/;"	f	class:DmUniboLinkHelper
 link_to_show	../gems/dm_unibo_common/app/helpers/dm_unibo_link_helper.rb	/^  def link_to_show(name = "", url)$/;"	f	class:DmUniboLinkHelper
-locale_opts	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^	var locale_opts = $.fn.datepicker.locale_opts = [$/;"	v
 log_current_user	../gems/dm_unibo_common/lib/dm_unibo_common/controllers/helpers.rb	/^      def log_current_user$/;"	f	class:DmUniboCommon.Controllers.Helpers
 log_unibo_omniauth	../gems/dm_unibo_common/app/controllers/logins_controller.rb	/^  def log_unibo_omniauth$/;"	f	class:LoginsController
 logged_user	../gems/dm_unibo_common/app/helpers/dm_unibo_menu_helper.rb	/^  def logged_user$/;"	f	class:DmUniboMenuHelper
@@ -202,37 +272,55 @@ login_method	../gems/dm_unibo_common/app/controllers/logins_controller.rb	/^  de
 logout	../gems/dm_unibo_common/app/controllers/logins_controller.rb	/^  def logout$/;"	f	class:LoginsController
 logout_link	../gems/dm_unibo_common/app/helpers/dm_unibo_menu_helper.rb	/^  def logout_link$/;"	f	class:DmUniboMenuHelper
 mail	../gems/dm_unibo_common/lib/dm_unibo_common/user.rb	/^  def mail$/;"	f	class:DmUniboCommon
+mail_to_contact	../gems/dm_unibo_common/app/helpers/dm_unibo_common_helper.rb	/^  def mail_to_contact$/;"	f	class:DmUniboCommonHelper
 main_title	../gems/dm_unibo_common/app/helpers/dm_unibo_common_helper.rb	/^  def main_title(srt)$/;"	f	class:DmUniboCommonHelper
-minTrail	../gems/dm_unibo_common/vendor/assets/javascripts/jquery.jtruncate.js	/^			length: 300,$/;"	p	class:fn.jTruncate.defaults
-modes	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^	var DPGlobal = {$/;"	p	class:DPGlobal
-moreAni	../gems/dm_unibo_common/vendor/assets/javascripts/jquery.jtruncate.js	/^			ellipsisText: "...",$/;"	p	class:fn.jTruncate.defaults
-moreText	../gems/dm_unibo_common/vendor/assets/javascripts/jquery.jtruncate.js	/^			minTrail: 20,$/;"	p	class:fn.jTruncate.defaults
-new	app/controllers/admin/courses_controller.rb	/^  def new$/;"	f	class:Admin
+maintainer	../gems/active_debian_repository/lib/active_debian_repository/equivs.rb	/^    def maintainer$/;"	f	class:ActiveDebianRepository.Equivs
+method_missing	../gems/active_debian_repository/lib/active_debian_repository/changelog.rb	/^      def method_missing (method_name, *args, &block)$/;"	f	class:ActiveDebianRepository.Changelog.InstanceMethods
+method_missing	../gems/active_debian_repository/lib/active_debian_repository/package.rb	/^    def method_missing (method_name, *args, &block)$/;"	f	class:ActiveDebianRepository.Package.InstanceMethods
+mk_dst_dir	../gems/active_debian_repository/lib/active_debian_repository/repository.rb	/^    def self.mk_dst_dir(deb_filename)$/;"	F	class:ActiveDebianRepository.Repository
+modal_link_to	../gems/dm_unibo_common/app/helpers/dm_unibo_link_helper.rb	/^  def modal_link_to(name, url)$/;"	f	class:DmUniboLinkHelper
+modal_page	../gems/dm_unibo_common/lib/dm_unibo_common/controllers/helpers.rb	/^      def modal_page$/;"	f	class:DmUniboCommon.Controllers.Helpers
+name_prefix	app/models/vlab_package.rb	/^  def name_prefix$/;"	f	class:VlabPackage
 new	app/controllers/admin/invitations_controller.rb	/^  def new   $/;"	f	class:Admin
 new	app/controllers/archives_controller.rb	/^  def new$/;"	f	class:ArchivesController
 new	app/controllers/changelogs_controller.rb	/^  def new$/;"	f	class:ChangelogsController
+new	app/controllers/courses_controller.rb	/^  def new$/;"	f	class:CoursesController
 new	app/controllers/degrees_controller.rb	/^  def new$/;"	f	class:DegreesController
-new	app/controllers/packages_controller.rb	/^  def new$/;"	f	class:PackagesController
 new	app/controllers/users_controller.rb	/^  def new   $/;"	f	class:UsersController
+new	app/controllers/vlab_packages_controller.rb	/^  def new$/;"	f	class:VlabPackagesController
+new?	app/policies/course_policy.rb	/^  def new?$/;"	f	class:CoursePolicy
+new?	app/policies/degree_policy.rb	/^  def new?$/;"	f	class:DegreePolicy
+new?	app/policies/vlab_package_policy.rb	/^  def new?$/;"	f	class:VlabPackagePolicy
+next_migration_number	../gems/active_debian_repository/lib/generators/active_debian_repository/migration/migration_generator.rb	/^    def self.next_migration_number(dirname)$/;"	F	class:ActiveDebianRepository.MigrationGenerator
 no_access	../gems/dm_unibo_common/app/controllers/logins_controller.rb	/^  def no_access$/;"	f	class:LoginsController
-old	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^	var old = $.fn.datepicker;$/;"	v
-opts_from_el	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^	function opts_from_el(el, prefix){$/;"	f
-opts_from_locale	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^	function opts_from_locale(lang){$/;"	f
 owns!	../gems/dm_unibo_common/lib/dm_unibo_common/user.rb	/^  def owns!(what)$/;"	f	class:DmUniboCommon
 owns?	../gems/dm_unibo_common/lib/dm_unibo_common/user.rb	/^  def owns?(what)$/;"	f	class:DmUniboCommon
-package_params	app/controllers/packages_controller.rb	/^  def package_params$/;"	f	class:PackagesController
+package_build!	../gems/active_debian_repository/lib/active_debian_repository/equivs.rb	/^    def package_build!(tmp_dir)$/;"	f	class:ActiveDebianRepository.Equivs
+package_filename	../gems/active_debian_repository/lib/active_debian_repository/equivs.rb	/^    def package_filename$/;"	f	class:ActiveDebianRepository.Equivs
+package_params	app/controllers/vlab_packages_controller.rb	/^  def package_params$/;"	f	class:VlabPackagesController
 parse_google_omniauth	../gems/dm_unibo_common/app/controllers/logins_controller.rb	/^  def parse_google_omniauth$/;"	f	class:LoginsController
 parse_unibo_omniauth	../gems/dm_unibo_common/app/controllers/logins_controller.rb	/^  def parse_unibo_omniauth$/;"	f	class:LoginsController
 pippo_show	../gems/dm_unibo_common/app/controllers/logins_controller.rb	/^  def pippo_show$/;"	f	class:LoginsController
+pool	../gems/active_debian_repository/lib/active_debian_repository/repository.rb	/^    def self.pool$/;"	F	class:ActiveDebianRepository.Repository
+pool_full_path	../gems/active_debian_repository/lib/active_debian_repository/repository.rb	/^    def self.pool_full_path$/;"	F	class:ActiveDebianRepository.Repository
 popover_help	../gems/dm_unibo_common/app/helpers/dm_unibo_common_helper.rb	/^  def popover_help(title, content)$/;"	f	class:DmUniboCommonHelper
+populate_package	../gems/active_debian_repository/lib/active_debian_repository/equivs.rb	/^    def populate_package(package_dir)$/;"	f	class:ActiveDebianRepository.Equivs
+postinst	../gems/active_debian_repository/lib/active_debian_repository/equivs.rb	/^    def postinst$/;"	f	class:ActiveDebianRepository.Equivs
+postrm	../gems/active_debian_repository/lib/active_debian_repository/equivs.rb	/^    def postrm$/;"	f	class:ActiveDebianRepository.Equivs
+preinst	../gems/active_debian_repository/lib/active_debian_repository/equivs.rb	/^    def preinst$/;"	f	class:ActiveDebianRepository.Equivs
+prerm	../gems/active_debian_repository/lib/active_debian_repository/equivs.rb	/^    def prerm$/;"	f	class:ActiveDebianRepository.Equivs
 privacy_alert	../gems/dm_unibo_common/app/helpers/dm_unibo_privacy_helper.rb	/^  def privacy_alert$/;"	f	class:DmUniboPrivacyHelper
 privacy_cookie_name	../gems/dm_unibo_common/app/helpers/dm_unibo_privacy_helper.rb	/^  def privacy_cookie_name$/;"	f	class:DmUniboPrivacyHelper
-re_lower	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^		function re_lower(_,a){$/;"	f	function:opts_from_el
+readme_file	../gems/active_debian_repository/lib/active_debian_repository/equivs.rb	/^    def readme_file$/;"	f	class:ActiveDebianRepository.Equivs
 redirect_unsigned_user	../gems/dm_unibo_common/lib/dm_unibo_common/controllers/helpers.rb	/^      def redirect_unsigned_user$/;"	f	class:DmUniboCommon.Controllers.Helpers
 register	app/controllers/invitations_controller.rb	/^  def register$/;"	f	class:InvitationsController
-remove	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^		},$/;"	m	class:DateRangePicker
+remove_dependency	../gems/active_debian_repository/lib/active_debian_repository/package.rb	/^    def remove_dependency(package_name)$/;"	f	class:ActiveDebianRepository.Package.InstanceMethods
+root	../gems/active_debian_repository/lib/active_debian_repository/repository.rb	/^    def self.root$/;"	F	class:ActiveDebianRepository.Repository
+run_dpkg	../gems/active_debian_repository/lib/active_debian_repository/equivs.rb	/^    def run_dpkg(tmp_dir, k_id)$/;"	f	class:ActiveDebianRepository.Equivs
+safe_url	../gems/active_debian_repository/lib/active_debian_repository/aptsource.rb	/^      def safe_url(ext = 'bz2')$/;"	f	class:ActiveDebianRepository.AptSource.InstanceMethods
 search	../gems/dm_unibo_common/lib/dm_unibo_common/user.rb	/^    def search(str)$/;"	f	class:DmUniboCommon.ClassMethods
 search	app/controllers/packages_controller.rb	/^  def search$/;"	f	class:PackagesController
+search	app/controllers/vlab_packages_controller.rb	/^  def search$/;"	f	class:VlabPackagesController
 set_current_user	../gems/dm_unibo_common/lib/dm_unibo_common/controllers/helpers.rb	/^      def set_current_user(user)$/;"	f	class:DmUniboCommon.Controllers.Helpers
 set_locale	app/controllers/application_controller.rb	/^  def set_locale$/;"	f	class:ApplicationController
 set_memberof_session	../gems/dm_unibo_common/app/controllers/logins_controller.rb	/^  def set_memberof_session(isMemberOf)$/;"	f	class:LoginsController
@@ -243,7 +331,12 @@ show	app/controllers/degrees_controller.rb	/^  def show$/;"	f	class:DegreesContr
 show	app/controllers/guest/courses_controller.rb	/^  def show$/;"	f	class:Guest
 show	app/controllers/packages_controller.rb	/^  def show$/;"	f	class:PackagesController
 show	app/controllers/users_controller.rb	/^  def show$/;"	f	class:UsersController
+show	app/controllers/vlab_packages_controller.rb	/^  def show$/;"	f	class:VlabPackagesController
+show?	app/policies/course_policy.rb	/^  def show?$/;"	f	class:CoursePolicy
+show?	app/policies/degree_policy.rb	/^  def show?$/;"	f	class:DegreePolicy
+show?	app/policies/vlab_package_policy.rb	/^  def show?$/;"	f	class:VlabPackagePolicy
 sign_in_and_redirect	../gems/dm_unibo_common/app/controllers/logins_controller.rb	/^  def sign_in_and_redirect(user)$/;"	f	class:LoginsController
+source_root	../gems/active_debian_repository/lib/generators/active_debian_repository/migration/migration_generator.rb	/^    def self.source_root$/;"	F	class:ActiveDebianRepository.MigrationGenerator
 sso_user_upn	../gems/dm_unibo_common/app/helpers/dm_unibo_common_helper.rb	/^  def sso_user_upn$/;"	f	class:DmUniboCommonHelper
 start_impersonation_link	../gems/dm_unibo_common/app/helpers/dm_unibo_link_helper.rb	/^  def start_impersonation_link$/;"	f	class:DmUniboLinkHelper
 stop_impersonating	../gems/dm_unibo_common/app/controllers/impersonations_controller.rb	/^  def stop_impersonating$/;"	f	class:ImpersonationsController
@@ -251,9 +344,13 @@ stop_impersonation_link	../gems/dm_unibo_common/app/helpers/dm_unibo_link_helper
 support_mail	../gems/dm_unibo_common/app/helpers/dm_unibo_link_helper.rb	/^  def support_mail$/;"	f	class:DmUniboLinkHelper
 sync	app/controllers/archives_controller.rb	/^  def sync$/;"	f	class:ArchivesController
 syncronize	../gems/dm_unibo_common/lib/dm_unibo_common/user.rb	/^    def syncronize(upn_or_id, c = User)$/;"	f	class:DmUniboCommon.ClassMethods
-target	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^			var target = $(e.target).closest('span, td, th'),$/;"	v
-test	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^				new_date.setUTCDate(day);$/;"	f
 to_jq_upload	app/models/document.rb	/^  def to_jq_upload$/;"	f	class:Document
+to_s	../gems/active_debian_repository/lib/active_debian_repository/aptsource.rb	/^      def to_s$/;"	f	class:ActiveDebianRepository.AptSource.InstanceMethods
+to_s	../gems/active_debian_repository/lib/active_debian_repository/changelog.rb	/^      def to_s$/;"	f	class:ActiveDebianRepository.Changelog.InstanceMethods
+to_s	../gems/active_debian_repository/lib/active_debian_repository/equivs.rb	/^    def to_s$/;"	f	class:ActiveDebianRepository.Equivs
+to_s	../gems/active_debian_repository/lib/active_debian_repository/package.rb	/^    def to_s$/;"	f	class:ActiveDebianRepository.Package.InstanceMethods
+to_s	../gems/active_debian_repository/spec/spec_helper.rb	/^  def to_s$/;"	f	class:Document
+to_s	../gems/active_debian_repository/spec/spec_helper.rb	/^  def to_s$/;"	f	class:Script
 to_s	../gems/dm_unibo_common/lib/dm_unibo_common/errors.rb	/^    def to_s$/;"	f	class:DmUniboCommon.NoUser
 to_s	../gems/dm_unibo_common/lib/dm_unibo_common/errors.rb	/^    def to_s$/;"	f	class:DmUniboCommon.TooManyUsers
 to_s	../gems/dm_unibo_common/lib/dm_unibo_common/user.rb	/^  def to_s$/;"	f	class:DmUniboCommon
@@ -262,20 +359,26 @@ to_s	app/models/degree.rb	/^  def to_s$/;"	f	class:Degree
 to_s	app/models/document.rb	/^  def to_s$/;"	f	class:Document
 to_s	app/models/script.rb	/^  def to_s$/;"	f	class:Script
 to_s_with_code	app/models/degree.rb	/^  def to_s_with_code$/;"	f	class:Degree
-toggle_button	../gems/dm_unibo_common/app/helpers/dm_unibo_menu_helper.rb	/^  def toggle_button$/;"	f	class:DmUniboMenuHelper
+toggle_button	../gems/dm_unibo_common/app/helpers/dm_unibo_menu_helper.rb	/^  def toggle_button$/;"	f
 tooltip	../gems/dm_unibo_common/app/helpers/dm_unibo_common_helper.rb	/^  def tooltip(key)$/;"	f	class:DmUniboCommonHelper
 true_user_can_impersonate?	../gems/dm_unibo_common/app/controllers/impersonations_controller.rb	/^  def true_user_can_impersonate?$/;"	f	class:ImpersonationsController
 true_user_can_impersonate?	../gems/dm_unibo_common/app/helpers/dm_unibo_common_helper.rb	/^  def true_user_can_impersonate?$/;"	f	class:DmUniboCommonHelper
 types	app/models/script.rb	/^  def Script.types$/;"	F	class:Script
-undepend	app/controllers/packages_controller.rb	/^  def undepend$/;"	f	class:PackagesController
-update	app/controllers/admin/courses_controller.rb	/^  def update$/;"	f	class:Admin
+undepend	app/controllers/vlab_packages_controller.rb	/^  def undepend$/;"	f	class:VlabPackagesController
+undepend?	app/policies/course_policy.rb	/^  def undepend?$/;"	f	class:CoursePolicy
+up	../gems/active_debian_repository/lib/generators/active_debian_repository/migration/templates/migration.rb	/^  def self.up$/;"	F	class:ActiveDebianRepositoryMigration
 update	app/controllers/courses_controller.rb	/^  def update$/;"	f	class:CoursesController
 update	app/controllers/degrees_controller.rb	/^  def update$/;"	f	class:DegreesController
 update	app/controllers/documents_controller.rb	/^  def update$/;"	f	class:DocumentsController
-update	app/controllers/packages_controller.rb	/^  def update$/;"	f	class:PackagesController
-updateDates	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^	DateRangePicker.prototype = {$/;"	m	class:DateRangePicker
-updateRanges	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^		},$/;"	m	class:DateRangePicker
+update	app/controllers/vlab_packages_controller.rb	/^  def update$/;"	f	class:VlabPackagesController
+update?	app/policies/course_policy.rb	/^  def update?$/;"	f	class:CoursePolicy
+update?	app/policies/degree_policy.rb	/^  def update?$/;"	f	class:DegreePolicy
+update?	app/policies/vlab_package_policy.rb	/^  def update?$/;"	f	class:VlabPackagePolicy
+update_db	../gems/active_debian_repository/lib/active_debian_repository/aptsource.rb	/^      def update_db(packages_file = nil)$/;"	f	class:ActiveDebianRepository.AptSource.InstanceMethods
+update_db_in_background	../gems/active_debian_repository/lib/active_debian_repository/aptsource.rb	/^      def update_db_in_background(packages_file = nil)$/;"	f	class:ActiveDebianRepository.AptSource.InstanceMethods
+update_db_running?	../gems/active_debian_repository/lib/active_debian_repository/aptsource.rb	/^      def update_db_running?$/;"	f	class:ActiveDebianRepository.AptSource.InstanceMethods
 update_package_version	app/models/changelog.rb	/^  def update_package_version$/;"	f	class:Changelog
+url	../gems/active_debian_repository/lib/active_debian_repository/aptsource.rb	/^      def url(ext = 'bz2')$/;"	f	class:ActiveDebianRepository.AptSource.InstanceMethods
 user_admin!	../gems/dm_unibo_common/lib/dm_unibo_common/controllers/helpers.rb	/^      def user_admin!$/;"	f	class:DmUniboCommon.Controllers.Helpers
 user_admin?	../gems/dm_unibo_common/lib/dm_unibo_common/controllers/helpers.rb	/^      def user_admin?$/;"	f	class:DmUniboCommon.Controllers.Helpers
 user_cesia!	../gems/dm_unibo_common/lib/dm_unibo_common/controllers/helpers.rb	/^      def user_cesia!$/;"	f	class:DmUniboCommon.Controllers.Helpers
@@ -285,11 +388,7 @@ user_owns?	../gems/dm_unibo_common/lib/dm_unibo_common/controllers/helpers.rb	/^
 user_signed_in?	../gems/dm_unibo_common/lib/dm_unibo_common/controllers/helpers.rb	/^      def user_signed_in?$/;"	f	class:DmUniboCommon.Controllers.Helpers
 validate_uuid	app/models/invitation.rb	/^  def self.validate_uuid(uuid, email)$/;"	F	class:Invitation
 verify_no_dependencies	app/models/course.rb	/^  def verify_no_dependencies$/;"	f	class:Course
-verify_no_dependencies	app/models/package.rb	/^  def verify_no_dependencies$/;"	f
+verify_no_dependencies	app/models/vlab_package.rb	/^  def verify_no_dependencies$/;"	f	class:VlabPackage
 vertical_form_for	../gems/dm_unibo_common/app/helpers/dm_unibo_form_helper.rb	/^  def vertical_form_for(record, options={}, &block)$/;"	f
-webid	app/models/package.rb	/^  def webid$/;"	f
+webid	app/models/package.rb	/^  def webid$/;"	f	class:Package
 who_impersonate	../gems/dm_unibo_common/app/controllers/impersonations_controller.rb	/^  def who_impersonate$/;"	f	class:ImpersonationsController
-x	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^			o.orientation = {x: 'auto', y: 'auto'};$/;"	p	class:o.o
-y	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^			o.orientation = {x: 'auto', y: 'auto'};$/;"	p	class:o.o
-years	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^			var years = $.map(this.dates, function(d){$/;"	v
-zIndex	../gems/dm_unibo_common/vendor/assets/javascripts/bootstrap-datepicker.js	/^			var zIndex = parseInt(this.element.parents().filter(function(){$/;"	v
