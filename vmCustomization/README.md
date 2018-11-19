@@ -4,6 +4,11 @@ How to create the virtual lab client from clean debian stretch
   * Architecture amd 64 debian stretch
   * when installimg debian do not choose desktop
 
+```bash
+get https://raw.githubusercontent.com/virtlab-unibo/cpkg-on-rails/master/vmCustomization/customize_vm -O /usr/local/sbin/customize_vm
+```
+
+
 0- scompattare l'archivio compresso nella macchina virtuale nativa, tutte le operazioni successive sono da eseguire come root
 1- installare il software di base che si ritiene indispensabile per la nuova macchina virtuale
 2- personalizzare il file sources.list nella directory che contiene questo README con gli url dei repository che si vuole aggiungere alla macchina virtuale 
