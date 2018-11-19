@@ -17,11 +17,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def default_url_options(options={})
-    { locale: I18n.locale }
-  end
-
   def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
+    if params[:locale] and I18n.config.available_locales.inspect.include?(params[:locale])
+      session[:locale] = params[:locale]
+    end
+    I18n.locale = session[:locale] || I18n.default_locale
   end
 end
