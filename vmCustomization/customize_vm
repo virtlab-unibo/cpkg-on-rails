@@ -6,7 +6,7 @@ echo
 
 # to export the public key gpg --output public.key --armor --export)
 echo "apt-key add  public vlab key"
-PUBKEY_URL="http://virtlab.unibo.it/public.key"
+PUBKEY_URL="https://www.virtlab.unibo.it/public.key"
 wget -O - $PUBKEY_URL | apt-key add -
 
 echo ""
@@ -14,18 +14,28 @@ echo "Copy sources.list and startup files ..."
 echo ""
 
 /bin/cp -v sources.list /etc/apt
-/bin/cp -v vmFirstStartup /usr/local/bin
+echo "deb http://www.virtlab.unibo.it/ stretch vlab" > /etc/apt/sources.list.d/virtlab.list
+wget -O /usr/local/bin/vmFirstStartup https://raw.githubusercontent.com/virtlab-unibo/cpkg-on-rails/master/vmCustomization/vmFirstStartup
 chmod 755 /usr/local/bin/vmFirstStartup
-/bin/cp -v vmFirstStartup.service /etc/systemd/system
+wget -O /etc/systemd/system/vmFirstStartup.service https://raw.githubusercontent.com/virtlab-unibo/cpkg-on-rails/master/vmCustomization/vmFirstStartup.service
+
+sed -i -e 's/# it_IT.UTF-8 UTF-8/it_IT.UTF-8 UTF-8/' /etc/locale.gen
+locale-gen
+cat > /etc/default/locale <<EOF
+LANG="it_IT.UTF-8"
+LANGUAGE="it_IT.UTF-8"
+LC_ALL="it_IT.UTF-8"
+EOF
 
 echo ""
 echo "Update and install the needed packages ..."
 echo ""
 
-
 apt-get update 
 apt-get -y dist-upgrade
-apt-get -y install sudo python-glade2 build-essential network-manager-openvpn-gnome network-manager-openvpn openvpn vim gedit build-essential
+apt-get -y install sudo python-glade2 build-essential network-manager-openvpn-gnome network-manager-openvpn openvpn vim gedit xfce4 firefox-esr firefox-esr-l10n-it \
+           synaptic policykit-1-gnome
+apt-get -y install vlab-core
 
 #echo ""
 #echo "Customize Network Manager VPN connections"
