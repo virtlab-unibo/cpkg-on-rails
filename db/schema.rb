@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(version: 2012_08_28_221401) do
     t.string "attach_content_type", limit: 100
     t.integer "attach_file_size"
     t.datetime "attach_updated_at"
-    t.text "install_path"
     t.index ["package_id"], name: "package_id"
   end
 
@@ -72,6 +71,7 @@ ActiveRecord::Schema.define(version: 2012_08_28_221401) do
   end
 
   create_table "packages", id: :integer, unsigned: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "type", limit: 50
     t.integer "archive_id", unsigned: true
     t.integer "course_id", unsigned: true
     t.string "name", null: false

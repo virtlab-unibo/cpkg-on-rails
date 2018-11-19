@@ -1,33 +1,10 @@
-# has_attached_file:
-#   url: The default value is “/system/:class/:attachment/:id_partition/:style/:filename”.
-
 class Document < ActiveRecord::Base
   belongs_to :vlab_package, foreign_key: 'package_id'
 
   validates :attach, attachment_presence: true
-
-  validates_uniqueness_of :attach_file_name, scope: :package_id, 
-                          message: "Il File non e' stato uploadato. Il nome del file deve essere univoco nel pacchetto." 
-
-  validates_presence_of   :name, message: "Si prega di assegnare un nome al documento allegato" 
-  validates_uniqueness_of :name, scope: :package_id,
-                          message: "Il File non e' stato uploadato. Il nome del file deve essere univoco nel pacchetto." 
-
-  #Paperclip 3.0 introduces a non-backward compatible change in your attachment
-  #path. This will help to prevent attachment name clashes when you have
-  #multiple attachments with the same name. If you didn't alter your
-  #attachment's path and are using Paperclip's default, you'll have to add
-  #`:path` and `:url` to your `has_attached_file` definition. For example:
-  # url  = da dove si scarica (creato in config/routes)
-  # path = dove si salva il file
-  # rack_base_uri = ENV["RACK_BASE_URI"] || ''
-  #has_attached_file :avatar,
-  #    path: ":rails_root/public/system/:class/:attachment/:id_partition/:style/:filename"
-  #    url: "/system/:attachment/:id/:style/:filename"
-  # has_attached_file :attach,
-  #                   url: rack_base_uri + "/documents/:id/download",
-  #                   path: ":rails_root/files/:upn/:filename"
-
+  validates :attach_file_name, uniqueness: { scope: :package_id, message: "Il File non è stato uploadato. Il nome del file deve essere univoco nel pacchetto." }
+  validates :name, presence: { message: "Si prega di assegnare un nome al documento allegato" },
+                   uniqueness: { scope: :package_id, message: "Il File non è stato uploadato. Il nome del file deve essere univoco nel pacchetto." }
 
   has_attached_file :attach, 
                     path: ":rails_root/public/system/:class/:attachment/:id_partition/:style/:filename",
@@ -60,6 +37,8 @@ class Document < ActiveRecord::Base
     }
   end
 
-
+  def install_path
+    File.join(Rails.configuration.vlab_files_basedir, self.vlab_package.course.abbr, self.vlab_package.name)
+  end
 end
 
