@@ -13,12 +13,15 @@ echo ""
 echo "Copy sources.list and startup files ..."
 echo ""
 
+wget -O sources.list https://raw.githubusercontent.com/virtlab-unibo/cpkg-on-rails/master/vmCustomization/sources.list
 /bin/cp -v sources.list /etc/apt
 echo "deb http://www.virtlab.unibo.it/ stretch vlab" > /etc/apt/sources.list.d/virtlab.list
 wget -O /usr/local/bin/vmFirstStartup https://raw.githubusercontent.com/virtlab-unibo/cpkg-on-rails/master/vmCustomization/vmFirstStartup
-chmod 755 /usr/local/bin/vmFirstStartup
+chmod -v 755 /usr/local/bin/vmFirstStartup
 wget -O /etc/systemd/system/vmFirstStartup.service https://raw.githubusercontent.com/virtlab-unibo/cpkg-on-rails/master/vmCustomization/vmFirstStartup.service
 
+# ITALIAN
+sed -i -e 's/XKBLAYOUT=".."/XKBLAYOUT="it"/' /etc/default/keyboard
 sed -i -e 's/# it_IT.UTF-8 UTF-8/it_IT.UTF-8 UTF-8/' /etc/locale.gen
 locale-gen
 cat > /etc/default/locale <<EOF
