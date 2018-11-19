@@ -1,6 +1,7 @@
 class VlabPackagesController < ApplicationController
   skip_before_action :redirect_unsigned_user, only: :show
   before_action :get_course_and_check_permission, only: [:new, :create]
+  before_action :get_package_and_check_permission, only: [:edit, :update, :destroy]
 
   # reach this also with url like '8080-so-2013'
   # get ':id', controller: "packages", action: "show", constraints: { id: /\d+-\w+-\d+/ }
@@ -25,7 +26,6 @@ class VlabPackagesController < ApplicationController
   end
 
   def edit 
-    @package = VlabPackage.find(params[:id])
     @course = @package.course
   end
 
@@ -46,8 +46,6 @@ class VlabPackagesController < ApplicationController
   end
 
   def destroy
-    @package = VlabPackage.find(params[:id])
-    authorize @package
     if @package.destroy
       flash[:notice] = 'The package has been deleted.'
     else
@@ -118,6 +116,11 @@ class VlabPackagesController < ApplicationController
 
   def package_params
     params.require(:vlab_package).permit(:name, :short_description, :long_description, :depends, :homepage, :documents, :version, :filename)
+  end
+
+  def get_package_and_check_permission
+    @package = VlabPackage.find(params[:id])
+    authorize @package
   end
 
   def get_course_and_check_permission
