@@ -13,6 +13,8 @@ CpkgOnRails::Application.configure do
   config.homepage_base = "https://www.virtlab.unibo.it/cpkg"
   # Location to store packages created to be downloaded 
   config.tmp_packages_dir = "/var/www/tmp/packages"
+  # where to install package documents (see document.install_path)
+  config.vlab_files_basedir = "/usr/share/unibo"
 
   config.i18n.default_locale = :it
   # the gpg key-id of the gpg key you want to use to sign packages.
