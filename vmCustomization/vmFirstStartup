@@ -168,7 +168,7 @@ do_internationalisation_menu() {
 # Interactive use loop
 #
 
-whiptail --title "VirtLab Virtual Machine. Configurazioni iniziali della macchina virtuale." --msgbox "Ora ti chiediamo di configurare questa macchina vituale. Ti verrà richiesto il nome dell'utente che vorrai usare e la sua password." 10 75 2
+whiptail --title "VirtLab Virtual Machine. Configurazioni iniziali." --msgbox "Puoi configurare questa nuova macchina vituale con un tuo username e una tua password." 10 75 2
 
 #
 # Interactive use loop
