@@ -15,7 +15,7 @@ echo ""
 
 wget -O sources.list https://raw.githubusercontent.com/virtlab-unibo/cpkg-on-rails/master/vmCustomization/sources.list
 /bin/cp -v sources.list /etc/apt
-echo "deb http://www.virtlab.unibo.it/ stretch vlab" > /etc/apt/sources.list.d/virtlab.list
+echo "deb http://repo.virtlab.unibo.it/ stretch vlab" > /etc/apt/sources.list.d/virtlab.list
 wget -O /usr/local/bin/vmFirstStartup https://raw.githubusercontent.com/virtlab-unibo/cpkg-on-rails/master/vmCustomization/vmFirstStartup
 chmod -v 755 /usr/local/bin/vmFirstStartup
 wget -O /etc/systemd/system/vmFirstStartup.service https://raw.githubusercontent.com/virtlab-unibo/cpkg-on-rails/master/vmCustomization/vmFirstStartup.service
