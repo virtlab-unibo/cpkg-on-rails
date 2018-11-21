@@ -45,7 +45,7 @@ do_create_new_user() {
 	remove_all_users
         
 	# whiptail --msgbox "You will now be asked to enter the new username followed by password" 10 75 1
-	whiptail --msgbox "Ora ti verrà chiesto di fornire un nuovo utente con password" 10 75 1
+	# whiptail --msgbox "Ora ti verrà chiesto di fornire un nuovo utente con password" 10 75 1
 
 	# NEW_USERNAME=$(whiptail --inputbox "Please enter the new username" 10 70 3>&1 1>&2 2>&3)
   NEW_USERNAME=$(whiptail --inputbox "Inserisci, per favore, il nuovo nome utente (esempi: 'giovanni', 'utente', 'nome.cognome')" 10 70 3>&1 1>&2 2>&3)
@@ -82,7 +82,7 @@ do_create_new_user() {
 		fi
 
 		if [ "$NEW_PASSWORD" == "$NEW_PASSWORD2" ]; then
-			whiptail --msgbox "Perfetto, ora creiamo il tuo nuovo utente!" 10 70 1
+			whiptail --msgbox "Perfetto, ora creiamo il tuo nuovo utente! Ricorda che una volta loggato con questo utente potrai usare il programma `sudo` per fare modifiche al sistema." 10 70 1
 			break
 		else
 			# whiptail --msgbox "Password mismatch, please repeat!" 10 70 1
