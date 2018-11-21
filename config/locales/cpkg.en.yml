@@ -108,7 +108,7 @@ en:
   repo_updated_no: "ERROR: the Repository has not been updated successfully."
   repo_updated_ok: "The package's list of the repository has been updated successfully."
   repo_ins_ok: "The archive has been inserted successfully."
-  user_del_ok: "The User has not been deleted. Feature not implemented yet."
+  user_del_ok: "The User has been deleted."
   user_crtd_ok: "The User has been created successfully."
   package_updt_ok: "The package has been updated successfully."
   package_crtd_ok: "The package has been created successfully."

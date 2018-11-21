@@ -106,7 +106,7 @@ it:
   repo_updated_no: "ERRORE: Il Repository non è stato aggiornato correttamente."
   repo_updated_ok: "La lista dei pacchetti nel repository è stata aggiornata."
   repo_ins_ok: "L'archivio è stato inserito."
-  user_del_ok: "L'utente non è stato eliminato. Feature non implementata."
+  user_del_ok: "L'utente è stato eliminato."
   user_crtd_ok: "L'utente è stato creato con successo."
   course_updt_ok: "The package has been updated successfully."
   course_crtd_ok: "The package has been created successfully."
