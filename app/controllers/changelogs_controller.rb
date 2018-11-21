@@ -9,9 +9,6 @@ class ChangelogsController < ApplicationController
   def create
     @changelog = @package.changelogs.new(changelog_params)
     @changelog.user_id = current_user.id
-    @changelog.date = ActiveDebianRepository::Changelog.date_line
-    @changelog.urgency = "medium"
-    @changelog.distributions = Rails.configuration.linux_distro
 
     if ! File.file?(Rails.configuration.reprepro_command)
       flash[:error] = "Missing #{Rails.configuration.reprepro_command}. Try apt-get install reprepro."

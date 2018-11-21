@@ -6,8 +6,16 @@ class Changelog < ActiveRecord::Base
 
   validates_presence_of :package_id, :user_id
 
+  after_initialize :set_defaults, unless: :persisted?
+
   before_create :increment_version
   after_create  :update_package_version
+
+  def set_defaults
+    self.date = ActiveDebianRepository::Changelog.date_line
+    self.urgency = "medium"
+    self.distributions = Rails.configuration.linux_distro
+  end
 
   # version is date-ver (20120703-3)
   def increment_version
