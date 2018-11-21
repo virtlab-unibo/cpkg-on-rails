@@ -6,22 +6,18 @@
 
 
 <%= dm_card title: t(:list_of_repo_incpkg) do %>  
-<table class="table table-sm">
-  <tr>
-    <th>Repository</th>
-    <th><%= t(:actual_number) %></th>
-    <th><%= t(:update) %></th>
-    <th><%= t(:delete) %></th>
-  </tr>
+<ul class="list-group list-group-flush">
   <% @archives.each do |archive| %>  
-    <tr>
-      <td> <%= archive %> </td>
-      <td> <%= archive.packages.count %> </td>
-      <td> <%= link_to icon('sync'), sync_archive_path(archive), data: { confirm: t(:update_repo_wrng) }, title: t(:sync) %> </td>
-      <td> <%= link_to icon('trash'), archive_path(archive), data: { confirm: t(:delete_repo_wrng) }, title: t(:del_repo), method: :delete %> </td>
-    </tr>  
+    <li class="list-group-item">
+      <samp><%= archive %></samp>
+      <span class="float-right">
+        <span class="badge badge-pill badge-info mr-3"><%= archive.packages.count %></span>
+        <%= link_to icon('sync'), sync_archive_path(archive), data: { confirm: t(:update_repo_wrng) }, title: t(:sync) %> 
+        <%= link_to icon('trash'), archive_path(archive), data: { confirm: t(:delete_repo_wrng) }, title: t(:del_repo), method: :delete %> 
+      </span>
+    </li>
   <% end %>
-</table>
+</ul>
 <% end %>
 
 <%= link_to t(:add_repo), new_archive_path, class: :button %>  - <%= link_to_back root_path %>
