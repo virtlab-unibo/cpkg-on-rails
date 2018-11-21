@@ -6,19 +6,15 @@ echo
 
 # to export the public key gpg --output public.key --armor --export)
 echo "apt-key add  public vlab key"
-PUBKEY_URL="https://www.virtlab.unibo.it/public.key"
+PUBKEY_URL="https://www.virtlab.unibo.it/certs/public.key"
 wget -O - $PUBKEY_URL | apt-key add -
 
 echo ""
 echo "Copy sources.list and startup files ..."
 echo ""
 
-wget -O sources.list https://raw.githubusercontent.com/virtlab-unibo/cpkg-on-rails/master/vmCustomization/sources.list
-/bin/cp -v sources.list /etc/apt
+wget -O /etc/apt/sources.list https://raw.githubusercontent.com/virtlab-unibo/cpkg-on-rails/master/vmCustomization/sources.list
 echo "deb http://repo.virtlab.unibo.it/ stretch vlab" > /etc/apt/sources.list.d/virtlab.list
-wget -O /usr/local/bin/vmFirstStartup https://raw.githubusercontent.com/virtlab-unibo/cpkg-on-rails/master/vmCustomization/vmFirstStartup
-chmod -v 755 /usr/local/bin/vmFirstStartup
-wget -O /etc/systemd/system/vmFirstStartup.service https://raw.githubusercontent.com/virtlab-unibo/cpkg-on-rails/master/vmCustomization/vmFirstStartup.service
 
 # ITALIAN
 sed -i -e 's/XKBLAYOUT=".."/XKBLAYOUT="it"/' /etc/default/keyboard
@@ -36,20 +32,34 @@ echo ""
 
 apt-get update 
 apt-get -y dist-upgrade
-apt-get -y install sudo python-glade2 build-essential network-manager-openvpn-gnome network-manager-openvpn openvpn vim gedit xfce4 firefox-esr firefox-esr-l10n-it \
-           synaptic policykit-1-gnome
+apt-get -y install sudo python-glade2 build-essential network-manager-openvpn-gnome network-manager-openvpn openvpn vim gedit xfce4 firefox-esr firefox-esr-l10n-it network-manager-gnome \
+           synaptic policykit-1-gnome 
+apt-get -y install task-xfce-desktop
 apt-get -y install vlab-core
+
+apt-get purge gimp gimp-data openjdk-8-jre openjdk-8-jre*
+apt-get autoremove 
+
+apt-get clean
+
+# to see sizes
+# dpkg-query -W --showformat='${Installed-Size;10}\t${Package}\n' | sort -k1,1n
 
 #echo ""
 #echo "Customize Network Manager VPN connections"
 #echo ""
 
 #/bin/cp -v unibo /etc/NetworkManager/system-connections
+# chmod 600 /etc/NetworkManager/system-connections/unibo
 #service network-manager restart
 
 echo ""
 echo "Set the system to start user customization script as first service of the next first boot"
 echo ""
+
+wget -O /usr/local/bin/vmFirstStartup https://raw.githubusercontent.com/virtlab-unibo/cpkg-on-rails/master/vmCustomization/vmFirstStartup
+chmod -v 755 /usr/local/bin/vmFirstStartup
+wget -O /etc/systemd/system/vmFirstStartup.service https://raw.githubusercontent.com/virtlab-unibo/cpkg-on-rails/master/vmCustomization/vmFirstStartup.service
 
 # remember: at the end of vmFirstStartup enable graphical and disable vmFirstStartup
 #    -> "systemctl set-default graphical.target" 
