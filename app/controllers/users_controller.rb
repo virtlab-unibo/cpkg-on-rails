@@ -24,8 +24,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    # FIXME: we need to carefully think about this.
-    flash[:alert] = I18n.t 'user_del_ok'
+    @user = User.find(params[:id])
+    if @user.courses.empty? and @user.packages.empty?
+      @user.destroy
+    end
     redirect_to users_path
   end
 end
