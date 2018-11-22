@@ -1,7 +1,5 @@
 <h1>Courses of <%= @user %></h1>
 
-<ul>
 <% @user.courses.each do |course| %>  
-  <li><%= link_to course, course %> </li>
+  <%= render course, with_packages: true %>  
 <% end %>
-</ul>
