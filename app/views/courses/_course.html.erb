@@ -10,7 +10,7 @@
 
     <% if defined?(with_packages) %>  
       <%= t(:to_the_course) %> <%= packages.empty? ? t(:no_deb_in_course) : t(:deb_in_course) %>
-      <div class="list-group my-2"> 
+      <div class="list-group my-3"> 
         <% packages.each do |package| %>
           <%= link_to vlab_package_path(package), class: 'modal-link list-group-item list-group-item-action py-2', modal: true do %>  
             <strong><%= package %></strong><br/>
