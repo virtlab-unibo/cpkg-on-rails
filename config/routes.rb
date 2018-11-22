@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :users 
 
   resources :packages do
-    get :search, on: :collection, as: 'search'
+    get :search, on: :collection
     get :autocomplete_package_name, on: :collection
   end
 
