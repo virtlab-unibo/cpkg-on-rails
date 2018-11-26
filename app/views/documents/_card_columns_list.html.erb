@@ -1,13 +1,13 @@
-<div class="card-columns" id="documents_list" style="column-count: 4">
+<div class="documents-columns" id="documents_list">
   <% documents.each do |document| %>  
     <div class="card text-center">
       <div class="card-body">
-        <%= link_to  document.attach.url, target: '_new' do %>  
+        <%= link_to document.attach.url, target: '_new' do %>  
           <div class="card-title">
             <%= document_icon(document) %>
           </div>
         <% end %>
-        <p class="card-text">
+        <p class="card-text" style="height: 2em">
           <strong><%= document.name %></strong>
           <% if defined? deletable and policy(document.vlab_package).edit? %>  
             <span class="float-right"><%= link_to_delete document_path(document) %></span>
