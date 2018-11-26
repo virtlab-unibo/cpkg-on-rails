@@ -13,7 +13,7 @@ module DocumentsHelper
       'file-audio'
     else
       'file'
-    end, size: 50)
+    end, size: 35)
   end
 end
 
