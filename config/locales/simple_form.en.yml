@@ -35,7 +35,7 @@ en:
         description: "Description"
         attach: "Attachment"
       changelog:
-        description: Insert a description <small>(Optional)</small>
+        description: Insert a description (optional)
       archive:
         distribution: Distribution
         component:    Component
