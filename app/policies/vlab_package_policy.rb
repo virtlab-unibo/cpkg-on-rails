@@ -17,7 +17,7 @@ class VlabPackagePolicy
   end
 
   def create?
-    @user and (@user.is_admin? or @package.user_ids.include?(user.id))
+    @user and (@user.is_admin? or @package.user_ids.include?(@user.id))
   end
 
   def new?
@@ -25,7 +25,7 @@ class VlabPackagePolicy
   end
 
   def update?
-    @user and (@user.is_admin? or @package.user_ids.include?(user.id))
+    @user and (@user.is_admin? or @package.user_ids.include?(@user.id))
   end
 
   def edit?
