@@ -1,19 +1,24 @@
 module DocumentsHelper
   def document_icon(document)
-    icon(case document.attach_content_type 
+    c = case document.attach_content_type 
     when 'application/pdf'
-      'file-pdf'
+      'fas fa-file-pdf '
     when 'application/zip'
-      'file-archive'
+      'fas fa-file-archive'
     when 'text/plain'
-      'file-alt'
+      'fas fa-file-alt'
     when 'image/jpeg', 'image/png'
-      'image'
+      'fas fa-image'
     when 'audio/mpeg'
-      'file-audio'
+      'fas fa-file-audio'
+    when 'text/x-python'
+      'fab fa-python'
+    when 'text/html'
+      'fab fa-html5'
     else
-      'file'
-    end, size: 35)
+      'fas fa-file'
+    end
+    content_tag(:i, '', style: "font-size: 35px", class: c)
   end
 end
 
