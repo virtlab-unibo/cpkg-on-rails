@@ -9,17 +9,18 @@ class VlabPackagePolicy
   end
 
   def index?
-    false
+    true
   end
 
   def show?
-    false
+    true
   end
 
   def create?
     @user and (@user.is_admin? or @package.course.user_ids.include?(@user.id))
   end
 
+  # must have course 
   def new?
     create?
   end
