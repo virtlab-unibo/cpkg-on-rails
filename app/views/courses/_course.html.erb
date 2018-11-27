@@ -18,7 +18,7 @@
           <% end %>
         <% end %>
       </div>
-      <% if policy(:vlab_package).new? %>  
+      <% if policy(course).edit? %>  
         <p><%= link_to icon('plus') + t(:new_package), new_course_vlab_package_path(course), class: 'btn btn-primary btn-sm' %></p>
       <% end %>
     <% end %>
