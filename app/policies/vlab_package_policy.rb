@@ -17,7 +17,7 @@ class VlabPackagePolicy
   end
 
   def create?
-    @user and @user.is_admin? 
+    @user and (@user.is_admin? or @package.user_ids.include?(user.id))
   end
 
   def new?
