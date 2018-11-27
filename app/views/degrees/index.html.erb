@@ -3,7 +3,7 @@
 <div class="list-group mb-3 mt-3 font-weight-bold">
   <% @degrees.each do |degree| %>  
     <%= link_to degree_path(degree), class: "list-group-item list-group-item-action" do %>
-      <span class="btn btn-info btn-sm"><%= degree.code %></span> - <%= degree.name %>
+      <span class="btn btn-info py-1 font-weight-bold"><%= degree.code %></span> - <%= degree.name %>
     <% end %>
   <% end %>
 </div>
