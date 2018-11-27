@@ -12,7 +12,7 @@ $(function() {
       wildcard: '%QUERY',
       transform: function (response) {
         return $.map($.parseJSON(response.res), function (package) {
-          // singolo package = { id: 83588, name: "thunderbird-locale-en-gb" }
+          // singolo package = { "id": 83588, "name": "thunderbird-locale-en-gb" }
           return { value: package.name };
         });
       }
@@ -20,7 +20,7 @@ $(function() {
   });
   // see real limit in app/controllers/packages_controller.rb
   $('#typeahead').typeahead({}, {
-    limit: 100, 
+    limit: 70, 
     display: 'value', // see Bloodhound above
     source: packages  // see Bloodhound above
     //minLength: 3
