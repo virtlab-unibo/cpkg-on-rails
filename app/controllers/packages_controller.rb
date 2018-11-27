@@ -9,9 +9,9 @@ class PackagesController < ApplicationController
 
   def search
     logger.info(params.inspect)
-    is_full_search = true
+    is_full_search = false
     term = params[:q]
-    res = Package.where(["LOWER(name) LIKE ?", "#{(is_full_search ? '%' : '')}#{term.downcase}%"]).limit(100).select(:id, :name)
+    res = Package.where(["LOWER(name) LIKE ?", "#{(is_full_search ? '%' : '')}#{term.downcase}%"]).limit(80).select(:id, :name)
     render json: { status: :ok, res: res.to_json}
   end
 end
