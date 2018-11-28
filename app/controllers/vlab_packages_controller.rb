@@ -4,7 +4,7 @@ class VlabPackagesController < ApplicationController
   before_action :get_package_and_check_permission, only: [:edit, :update, :destroy]
 
   # reach this also with url like '8080-so-2013'
-  # get ':id', controller: "packages", action: "show", constraints: { id: /\d+-\w+-\d+/ }
+  # get ':id', controller: "vlab_packages", action: "show", constraints: { id: /\d+(-\w+)+/ }
   def show
     @package = params[:id] =~ /^\d+$/ ? VlabPackage.find(params[:id]) : VlabPackage.find_by_name(params[:id])
     @other_packages = @package.course.vlab_packages - [@package]
