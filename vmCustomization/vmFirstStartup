@@ -48,7 +48,7 @@ do_create_new_user() {
 	# whiptail --msgbox "Ora ti verrà chiesto di fornire un nuovo utente con password" 10 75 1
 
 	# NEW_USERNAME=$(whiptail --inputbox "Please enter the new username" 10 70 3>&1 1>&2 2>&3)
-  NEW_USERNAME=$(whiptail --inputbox "Inserisci, per favore, il nuovo nome utente (esempi: 'giovanni', 'utente', 'nome.cognome')" 10 70 3>&1 1>&2 2>&3)
+  NEW_USERNAME=$(whiptail --inputbox "Inserisci, per favore, il nuovo nome utente (esempi: 'giovanni', 'utente'. Consigliamo di usare solo lettere minuscole e numeri.)" 10 70 3>&1 1>&2 2>&3)
 
 	EXIT_STATUS=$?
 	if [ $EXIT_STATUS != 0 ]; then
@@ -92,7 +92,7 @@ do_create_new_user() {
 	done
 
 	# Add new user
-	/usr/sbin/adduser --disabled-password --gecos "$NEW_USER_GECOS" $NEW_USERNAME 
+	/usr/sbin/adduser --force-badname --disabled-password --gecos "$NEW_USER_GECOS" $NEW_USERNAME 
 	/usr/sbin/usermod -a -G sudo $NEW_USERNAME
 	echo $NEW_USERNAME:$NEW_PASSWORD | chpasswd
 }
