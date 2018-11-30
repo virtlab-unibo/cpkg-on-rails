@@ -1,16 +1,17 @@
 class DocumentsController < ApplicationController
   # respond_to :json
+  # before_action :get_document_and_check_permission, only: [:new, :create]
 
   def index
     package = VlabPackage.find(params[:vlab_package_id])
     @documents = package.documents
-    render :json => @documents.map{ |d| { :name => d.name,
-                                          :size => d.attach_file_size, 
-                                          # FIXME aaaaarrrrrghhhhh
-                                          # d.attach.url non funziona da solo
-                                          :url  => d.attach.url, # attach.url(:original),
-                                          :delete_url  => document_path(d), # http://api.rubyonrails.org/classes/ActionDispatch/Routing/UrlFor.html
-                                          :delete_type => "DELETE" } } 
+    render json: @documents.map{ |d| { name: d.name,
+                                       size: d.attach_file_size, 
+                                       # FIXME aaaaarrrrrghhhhh
+                                       # d.attach.url non funziona da solo
+                                       url: d.attach.url, # attach.url(:original),
+                                       delete_url: document_path(d), # http://api.rubyonrails.org/classes/ActionDispatch/Routing/UrlFor.html
+                                       delete_type: "DELETE" } } 
   end
 
   def edit
@@ -19,6 +20,7 @@ class DocumentsController < ApplicationController
 
   def create
     package = VlabPackage.find(params[:vlab_package_id])
+    authorize package
     @document = package.documents.new
     @document.name = params[:files].first.original_filename.gsub(/[^0-9A-Za-z.\-_]/, '')
     @document.attach = params[:files].first
@@ -44,17 +46,19 @@ class DocumentsController < ApplicationController
       #                   :location => @document ]
     else
       # FIXME 
-      render :json => [@document.errors, status: :unprocessable_entity]
+      render json: [@document.errors, status: :unprocessable_entity]
     end
   end
 
   def update
     @document = Document.find(params[:id])
+    package = @document.vlab_package
+    authorize package
     @document.name = params[:document][:name]
     @document.description = params[:document][:description]
     if @document.save
       flash[:notice] = I18n.t 'updated_attachment' 
-      redirect_to edit_vlab_package_path(@document.package.id)
+      redirect_to edit_vlab_package_path(package)
     else
       render :edit
     end 
@@ -62,10 +66,11 @@ class DocumentsController < ApplicationController
 
   def destroy
     @document = Document.find(params[:id])
-    user_owns!(@document.vlab_package.course)
+    package = @document.vlab_package
+    authorize package
     @document.destroy
     respond_to do |format|
-      format.html { redirect_to edit_vlab_package_path(@document.package) }
+      format.html { redirect_to edit_vlab_package_path(package) }
       format.json { head :no_content }
     end
   end
@@ -75,7 +80,5 @@ class DocumentsController < ApplicationController
   def document_params
     params[:files].first
   end
-
-
 end
 
