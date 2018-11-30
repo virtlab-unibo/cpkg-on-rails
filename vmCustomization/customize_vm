@@ -71,4 +71,5 @@ echo ""
 echo "Type reboot to restart system now, or poweroff to shutdown the vm without restart!"
 echo ""
 
+poweroff
 
