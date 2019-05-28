@@ -8,13 +8,13 @@ module BreadcrumbsHelper
       content_tag :ol, class: 'breadcrumb' do
         concat content_tag(:li, link_to('Home', root_path), class: "breadcrumb-item")
         if degree and ! degree.new_record?
-          concat content_tag(:li, link_to(I18n.t(:degree) + ": #{degree}", degree), class: "breadcrumb-item")
+          concat content_tag(:li, link_to(I18n.t(:degree) + ": #{degree.to_s.upcase}", degree), class: "breadcrumb-item")
         end
         if course and ! course.new_record?
-          concat content_tag(:li, link_to(I18n.t(:course) + ": #{course}", course), class: "breadcrumb-item")
+          concat content_tag(:li, link_to(I18n.t(:course) + ": #{course.to_s.upcase}", course), class: "breadcrumb-item")
         end
         if package and ! package.new_record?
-          concat content_tag(:li, link_to(I18n.t(:package) + ": #{package}", package), class: "breadcrumb-item")
+          concat content_tag(:li, link_to(I18n.t(:package) + ": #{package.to_s.upcase}", package), class: "breadcrumb-item")
         end
       end
     end
