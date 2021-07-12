@@ -36,7 +36,7 @@ class VlabPackagesController < ApplicationController
     # name and dependencies cannot be changed 
     params[:vlab_package].delete(:name)
     params[:vlab_package].delete(:depends)
-    if @package.update_attributes(package_params)
+    if @package.update(package_params)
       flash[:notice] = I18n.t 'package_updt_ok'
       redirect_to edit_vlab_package_path(@package), notice: I18n.t('package_updt_ok')
     else
