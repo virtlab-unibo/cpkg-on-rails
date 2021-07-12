@@ -24,8 +24,9 @@ GIT
       rails
       savon
 
-PATH
-  remote: /home/rails/gems/active_debian_repository
+GIT
+  remote: https://github.com/virtlab-unibo/active_debian_repository.git
+  revision: 58f200a2be5ad6a2374d533b8bff6a3e3f66ab30
   specs:
     active_debian_repository (0.0.1)
       mini_magick
