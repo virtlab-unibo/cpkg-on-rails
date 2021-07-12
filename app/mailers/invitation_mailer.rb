@@ -1,4 +1,4 @@
-class InvitationMailer < ActionMailer::Base
+class InvitationMailer < ApplicationMailer
   default from: "donatini@dm.unibo.it"
 
   def invitation_email(invitation)
